@@ -2,6 +2,7 @@ use crate::ai::types::{
     ChatMessage, ChatParams, ChatStreamEventPayload, CliAccountInfo, CliStatus, ProviderConfig,
 };
 use crate::error::AppError;
+use crate::locale::{host_format, host_text, NativeText};
 use futures_util::StreamExt;
 use std::path::{Path, PathBuf};
 use std::process::Stdio;
@@ -238,7 +239,8 @@ pub async fn check_cli_status_in(
                     path: Some(path_str),
                     version: None,
                     error: Some(if err_msg.is_empty() {
-                        "CLI exited with non-zero status on version check".to_string()
+                        crate::locale::native_text(locale, NativeText::CliVersionNonZero)
+                            .to_string()
                     } else {
                         err_msg
                     }),
@@ -250,14 +252,20 @@ pub async fn check_cli_status_in(
             installed: true,
             path: Some(path_str),
             version: None,
-            error: Some(format!("Failed to execute CLI binary: {e}")),
+            error: Some(crate::locale::native_format(
+                locale,
+                NativeText::CliExecFailed,
+                &[("error", &e.to_string())],
+            )),
             account: None,
         },
         Err(_) => CliStatus {
             installed: true,
             path: Some(path_str),
             version: None,
-            error: Some("Timeout querying CLI version".to_string()),
+            error: Some(
+                crate::locale::native_text(locale, NativeText::CliVersionTimeout).to_string(),
+            ),
             account: None,
         },
     }
@@ -499,7 +507,9 @@ pub fn parse_cli_stream_line_stateful(
                                 .and_then(|t| t.as_str())
                                 .map(str::to_string)
                         })
-                        .unwrap_or_else(|| "Claude Code reported an error".to_string());
+                        .unwrap_or_else(|| {
+                            host_text(NativeText::ClaudeCodeReportedError).to_string()
+                        });
                     events.push(ChatStreamEventPayload::Error { error });
                 }
                 _ => {}
@@ -865,7 +875,7 @@ fn cli_failure_message(stderr: &str, stream_error: Option<&str>, status: &str) -
     } else if let Some(err) = stream_error.filter(|e| !e.trim().is_empty()) {
         err.to_string()
     } else {
-        format!("CLI process exited with code {status}")
+        host_format(NativeText::CliExitedWithCode, &[("status", status)])
     }
 }
 
@@ -888,7 +898,10 @@ where
 
     let bin_path =
         resolve_cli_binary(engine_type, config.cli_binary_path.as_deref()).ok_or_else(|| {
-            let err_msg = format!("CLI binary for '{engine_type}' could not be found.");
+            let err_msg = host_format(
+                NativeText::CliEngineBinaryNotFound,
+                &[("engine", engine_type)],
+            );
             on_event(ChatStreamEventPayload::Error {
                 error: err_msg.clone(),
             });
@@ -964,7 +977,13 @@ where
     hide_console_window(&mut cmd);
 
     let mut child = cmd.spawn().map_err(|e| {
-        let err_msg = format!("Failed to spawn CLI process '{bin_path:?}': {e}");
+        let err_msg = host_format(
+            NativeText::CliSpawnFailed,
+            &[
+                ("path", &format!("{bin_path:?}")),
+                ("error", &e.to_string()),
+            ],
+        );
         on_event(ChatStreamEventPayload::Error {
             error: err_msg.clone(),
         });

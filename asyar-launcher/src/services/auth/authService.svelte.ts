@@ -4,6 +4,7 @@ import { logService } from '../log/logService';
 import * as commands from '../../lib/ipc/commands';
 import type { AuthUser } from '../../lib/ipc/commands';
 import { appListen } from '../../lib/ipc/bridgeEvents';
+import { userErrorMessage } from '../../lib/userErrorMessage';
 
 /** How long (seconds) cached entitlements are considered fresh without a network refresh. */
 const ENTITLEMENT_GRACE_PERIOD_SECONDS = 7 * 24 * 60 * 60; // 7 days
@@ -162,7 +163,7 @@ class AuthService {
           this.isLoading = true;
           await this._completePoll(sessionCode);
         } catch (err) {
-          this.loginError = t('services_extra.auth.login_failed', { error: String(err) });
+          this.loginError = t('services_extra.auth.login_failed', { error: userErrorMessage(err) });
           logService.error(`Auth: OAuth completion failed: ${err}`);
         } finally {
           this.isLoading = false;
@@ -182,7 +183,9 @@ class AuthService {
     } catch (err) {
       this.isLoading = false;
       this.isAwaitingOAuth = false;
-      this.loginError = t('services_extra.auth.login_start_failed', { error: String(err) });
+      this.loginError = t('services_extra.auth.login_start_failed', {
+        error: userErrorMessage(err),
+      });
       logService.error(`Auth: startLogin failed: ${err}`);
     }
   }
@@ -261,7 +264,7 @@ class AuthService {
       await new Promise((r) => setTimeout(r, 500));
       const retry = await commands.authPoll(sessionCode);
       if (retry.status !== 'complete') {
-        throw new Error('OAuth completed but session data not ready');
+        throw new Error(t('services_extra.auth.session_not_ready'));
       }
       await this._applyPollResult(retry);
       return;

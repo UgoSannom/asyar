@@ -2,6 +2,7 @@ import { t } from '../i18n';
 import { logService } from '../log/logService';
 import { feedbackService } from '../feedback/feedbackService.svelte';
 import { actionService } from './actionService.svelte';
+import { userErrorMessage } from '../../lib/userErrorMessage';
 
 /**
  * Runs an action the way a user-initiated invocation should: behind its
@@ -36,7 +37,7 @@ export async function invokeAction(
       context: { message: action.label },
     });
   } catch (error) {
-    const msg = error instanceof Error ? error.message : String(error);
+    const msg = userErrorMessage(error);
     logService.error(`[invokeAction] Failed to execute action ${action.id}: ${error}`);
     await feedbackService.report({
       source: 'frontend',

@@ -8,6 +8,7 @@
   import { FormField, Icon } from '../../components';
   import { setFocusLock } from '../../lib/ipc/commands';
   import { t } from '../../services/i18n';
+  import { userErrorMessage } from '../../lib/userErrorMessage';
 
   let typeOptions = $derived<
     { value: ExtensionType; label: string; icon: string; description: string }[]
@@ -99,7 +100,7 @@
         logService.error(`Failed to trigger reload: ${err}`);
       }
     } catch (e: any) {
-      generateStatus = t('features_extra.mcp.test_error', { error: e.message || String(e) });
+      generateStatus = t('features_extra.mcp.test_error', { error: userErrorMessage(e) });
 
       isGenerating = false;
     }

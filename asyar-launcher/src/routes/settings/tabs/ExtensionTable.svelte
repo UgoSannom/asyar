@@ -20,6 +20,7 @@
   import { t } from '../../../services/i18n';
   import AppIcon from '../../../components/base/AppIcon.svelte';
   import ExtensionCommandRows from './ExtensionCommandRows.svelte';
+  import { userErrorMessage } from '../../../lib/userErrorMessage';
   let {
     handler,
     scope,
@@ -65,7 +66,9 @@
       if (handler.loadExtensions) await handler.loadExtensions();
     } catch (error) {
       installError = true;
-      installMessage = t('ui_extra.extension_table.install_failed', { error: String(error) });
+      installMessage = t('ui_extra.extension_table.install_failed', {
+        error: userErrorMessage(error),
+      });
     } finally {
       isInstallingFromFile = false;
       setTimeout(() => {

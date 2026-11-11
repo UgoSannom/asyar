@@ -10,6 +10,7 @@
   import type { IStorageService } from 'asyar-sdk/contracts';
   import { ActionContext } from 'asyar-sdk/contracts';
   import { t } from '../../services/i18n';
+  import { userErrorMessage } from '../../lib/userErrorMessage';
 
   interface Props {
     store?: IStorageService;
@@ -41,7 +42,7 @@
         retryable: false,
         context: {
           message: err.message
-            ? t('features.window_management.err_save_detail', { detail: err.message })
+            ? t('features.window_management.err_save_detail', { detail: userErrorMessage(err) })
             : t('features.window_management.err_save'),
         },
       });

@@ -2313,7 +2313,8 @@
       "mode_view": "Visualização",
       "mode_background": "Segundo plano",
       "aria_list": "Extensões da Loja",
-      "by_author": "Por {name}"
+      "by_author": "Por {name}",
+      "http_status_error": "Erro HTTP! Status: {status}"
     },
     "scripts": {
       "issue_dir_unavailable": "Diretório indisponível",
@@ -3346,7 +3347,8 @@
       "login_failed": "Falha no login: {error}",
       "login_timed_out": "O login expirou. Tente novamente.",
       "login_start_failed": "Não foi possível iniciar o login: {error}",
-      "login_expired": "A sessão de login expirou. Tente novamente."
+      "login_expired": "A sessão de login expirou. Tente novamente.",
+      "session_not_ready": "OAuth concluído, mas os dados da sessão ainda não estão prontos"
     },
     "profile": {
       "settings": "Configurações do aplicativo",

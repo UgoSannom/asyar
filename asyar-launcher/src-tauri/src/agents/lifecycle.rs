@@ -280,8 +280,9 @@ fn ensure_stored_key_decryptable(
             Ok(crate::storage::ai_credentials::CredentialState::NeedsReentry)
         )
     {
-        return Err(AppError::Validation(format!(
-            "API key for provider '{provider_id}' cannot be decrypted (keychain master key changed). Please re-enter your key in Settings → AI."
+        return Err(AppError::Validation(crate::locale::host_format(
+            crate::locale::NativeText::ProviderApiKeyUndecryptable,
+            &[("provider", provider_id)],
         )));
     }
     Ok(())

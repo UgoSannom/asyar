@@ -27,6 +27,7 @@ import { agentService } from './agentService.svelte';
 import { createAgentStreamChannel } from './agentStreamBridge';
 import type { AgentDef, SilentInputSource, SilentOutputAction } from './types';
 import { t } from '../../services/i18n';
+import { userErrorMessage } from '../../lib/userErrorMessage';
 
 const CLIPBOARD_RESTORE_DELAY_MS = 200;
 
@@ -183,7 +184,7 @@ async function runSilentAgentCommand(input: SilentDispatchInput): Promise<void> 
       });
       spinner = null;
     }
-    await reportFailure(errorTarget, detail);
+    await reportFailure(errorTarget, userErrorMessage(cause), detail);
   } finally {
     removeAbortListener?.();
     dispose?.();
@@ -336,7 +337,11 @@ async function loadAgent(agentId: string): Promise<AgentDef> {
   return fetched;
 }
 
-async function reportFailure(agent: Pick<AgentDef, 'id' | 'name'>, detail: string): Promise<void> {
+async function reportFailure(
+  agent: Pick<AgentDef, 'id' | 'name'>,
+  message: string,
+  detail: string = message,
+): Promise<void> {
   try {
     await feedbackService.report({
       source: 'frontend',
@@ -344,7 +349,7 @@ async function reportFailure(agent: Pick<AgentDef, 'id' | 'name'>, detail: strin
       severity: 'warning',
       retryable: false,
       developerDetail: detail,
-      context: { message: `${agent.name}: ${detail}`, agentId: agent.id },
+      context: { message: `${agent.name}: ${message}`, agentId: agent.id },
     });
   } catch {
     // Diagnostics are best-effort for background hotkey commands.
@@ -353,7 +358,7 @@ async function reportFailure(agent: Pick<AgentDef, 'id' | 'name'>, detail: strin
   try {
     await feedbackService.sendBackgroundForSource('agents', {
       title: agent.name,
-      body: detail,
+      body: message,
     });
   } catch (cause) {
     logService.warn(`[silent-agents] notification failed: ${cause}`);

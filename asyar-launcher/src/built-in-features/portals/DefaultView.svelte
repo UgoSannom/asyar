@@ -17,6 +17,7 @@
   import { viewManager } from '../../services/extension/viewManager.svelte';
   import { ActionContext } from 'asyar-sdk/contracts';
   import { t, i18nService } from '../../services/i18n';
+  import { userErrorMessage } from '../../lib/userErrorMessage';
 
   let portals = $derived(portalStore.portals);
   let selectedIndex = $derived(portalsUiState.selectedIndex);
@@ -140,7 +141,9 @@
         kind: 'manual',
         severity: 'warning',
         retryable: false,
-        context: { message: t('features.portals.ui.remove_failed', { error: String(err) }) },
+        context: {
+          message: t('features.portals.ui.remove_failed', { error: userErrorMessage(err) }),
+        },
       });
     }
   }
@@ -161,7 +164,9 @@
         kind: 'manual',
         severity: 'warning',
         retryable: false,
-        context: { message: t('features.portals.ui.index_failed', { error: String(err) }) },
+        context: {
+          message: t('features.portals.ui.index_failed', { error: userErrorMessage(err) }),
+        },
       });
     }
     await tick();

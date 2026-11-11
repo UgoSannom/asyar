@@ -68,6 +68,32 @@ pub enum McpClientError {
     Json(#[from] serde_json::Error),
 }
 
+impl McpClientError {
+    /// The error in the host locale, for the "Test server" result shown in
+    /// the MCP install form. `Display` stays English for logs; the `io` and
+    /// `json` variants keep it, as their detail comes from the OS or serde.
+    pub fn localized(&self) -> String {
+        use crate::locale::{host_format, host_text, NativeText};
+        match self {
+            McpClientError::Transport(error) => {
+                host_format(NativeText::McpTransportError, &[("error", error)])
+            }
+            McpClientError::Protocol(error) => {
+                host_format(NativeText::McpProtocolError, &[("error", error)])
+            }
+            McpClientError::Rpc { code, message } => host_format(
+                NativeText::McpRpcError,
+                &[("code", &code.to_string()), ("message", message)],
+            ),
+            McpClientError::EarlyExit => host_text(NativeText::McpEarlyExit).to_string(),
+            McpClientError::Timeout(id) => {
+                host_format(NativeText::McpTimeout, &[("id", &id.to_string())])
+            }
+            McpClientError::Io(_) | McpClientError::Json(_) => self.to_string(),
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

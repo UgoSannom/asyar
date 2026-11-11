@@ -2,6 +2,7 @@ use crate::ai::providers;
 use crate::ai::sse::LineBuffer;
 use crate::ai::types::{ChatMessage, ChatParams, ChatStreamEventPayload, ProviderConfig};
 use crate::error::AppError;
+use crate::locale::{host_format, host_text, NativeText};
 use futures_util::StreamExt;
 
 fn emit_stream_event<F>(event: crate::ai::types::ChatStreamEvent, on_event: &F)
@@ -160,7 +161,7 @@ pub async fn ai_save_credential(
     let trimmed = secret.trim();
     if trimmed.is_empty() {
         return Err(AppError::Validation(
-            "Credential secret cannot be empty".to_string(),
+            host_text(NativeText::CredentialSecretEmpty).to_string(),
         ));
     }
     let credential_id = target.to_credential_id()?;
@@ -194,8 +195,9 @@ pub async fn ai_resolve_provider_credential(
     match crate::storage::ai_credentials::get(&conn, &credential_id, keystore.master_key()) {
         Ok(Some(k)) => Ok(Some(k.to_string())),
         Ok(None) => Ok(None),
-        Err(asyar_storage::StorageError::Encryption(_)) => Err(AppError::Validation(format!(
-            "API key for provider '{provider_id}' cannot be decrypted."
+        Err(asyar_storage::StorageError::Encryption(_)) => Err(AppError::Validation(host_format(
+            NativeText::ProviderApiKeyUndecryptableShort,
+            &[("provider", &provider_id)],
         ))),
         Err(e) => Err(e.into()),
     }

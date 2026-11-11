@@ -6,6 +6,7 @@ import {
 } from './createdExtensions';
 import { useListSelection } from '../../../lib/listSelection.svelte';
 import { feedbackService } from '../../../services/feedback/feedbackService.svelte';
+import { userErrorMessage } from '../../../lib/userErrorMessage';
 
 class CreatedExtensionsViewState {
   // The currently displayed list. Rust owns scanning and filtering; this always
@@ -26,7 +27,9 @@ class CreatedExtensionsViewState {
         severity: 'warning',
         retryable: false,
         context: {
-          message: t('features.create_extension.view.list_failed', { error: String(err) }),
+          message: t('features.create_extension.view.list_failed', {
+            error: userErrorMessage(err),
+          }),
         },
       });
     }
@@ -56,7 +59,9 @@ class CreatedExtensionsViewState {
         severity: 'warning',
         retryable: false,
         context: {
-          message: t('features.create_extension.view.search_failed', { error: String(err) }),
+          message: t('features.create_extension.view.search_failed', {
+            error: userErrorMessage(err),
+          }),
         },
       });
     }

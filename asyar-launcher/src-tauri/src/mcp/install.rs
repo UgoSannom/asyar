@@ -338,7 +338,7 @@ pub async fn test_server(
         },
         Err(e) => McpTestResult {
             tools_count: 0,
-            error: Some(format!("{e}")),
+            error: Some(e.localized()),
         },
     }
 }

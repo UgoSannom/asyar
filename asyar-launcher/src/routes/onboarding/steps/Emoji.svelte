@@ -9,6 +9,7 @@
   import { listInstalledExtensions } from '../../../lib/ipc/commands';
   import { isEmojiInstalled } from '../../../lib/installedExtensions';
   import { appListen } from '../../../lib/ipc/bridgeEvents';
+  import { userErrorMessage } from '../../../lib/userErrorMessage';
 
   let installed = $state(false);
   let installing = $state(false);
@@ -37,7 +38,7 @@
     try {
       installed = await installEmoji();
     } catch (e) {
-      error = e instanceof Error ? e.message : String(e);
+      error = userErrorMessage(e);
     } finally {
       installing = false;
     }

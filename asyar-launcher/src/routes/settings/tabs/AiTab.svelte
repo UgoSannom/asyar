@@ -66,6 +66,7 @@
   } from 'asyar-sdk/contracts';
   import { invokeExtensionAiProviderListModels } from '../../../services/extension/extensionAiProviderDispatch';
   import type { SettingsHandler } from '../settingsHandlers.svelte';
+  import { userErrorMessage } from '../../../lib/userErrorMessage';
 
   let { handler, mode = 'full' }: { handler?: SettingsHandler; mode?: 'full' | 'providers-only' } =
     $props();
@@ -419,7 +420,8 @@
     } catch (e: unknown) {
       fetchErrors = {
         ...fetchErrors,
-        [providerId]: e instanceof Error ? e.message : t('settings.ai.fetch_models_failed'),
+        [providerId]:
+          e instanceof Error ? userErrorMessage(e) : t('settings.ai.fetch_models_failed'),
       };
       sessionModelCache = { ...sessionModelCache, [providerId]: [] };
     } finally {
@@ -441,7 +443,7 @@
           installed: false,
           path: null,
           version: null,
-          error: e instanceof Error ? e.message : t('settings.ai.probe_cli_error'),
+          error: e instanceof Error ? userErrorMessage(e) : t('settings.ai.probe_cli_error'),
           account: null,
         },
       };

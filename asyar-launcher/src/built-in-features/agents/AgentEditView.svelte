@@ -32,7 +32,6 @@
   import { settingsService } from '../../services/settings/settingsService.svelte';
   import { agentService } from './agentService.svelte';
   import type { ModelInfo, ProviderId } from '../../services/ai/IProviderPlugin';
-  import { extractErrorMessage } from '../../lib/errors';
   import ToolPickerTree from './ToolPickerTree.svelte';
   import { fetchPlaceholders } from '../../lib/placeholders/placeholderResolver';
   import { formatEditorToolsUnavailableWarning } from './agentChatView.helpers';
@@ -145,7 +144,8 @@
     } catch (err) {
       modelFetchError = {
         ...modelFetchError,
-        [providerId]: err instanceof Error ? err.message : t('settings.ai.fetch_models_failed'),
+        [providerId]:
+          err instanceof Error ? userErrorMessage(err) : t('settings.ai.fetch_models_failed'),
       };
     } finally {
       fetchingModels = { ...fetchingModels, [providerId]: false };
@@ -161,6 +161,7 @@
   });
 
   import { feedbackService } from '../../services/feedback/feedbackService.svelte';
+  import { userErrorMessage } from '../../lib/userErrorMessage';
 
   let cachedItems = $state<[string, string][]>([]);
 
@@ -222,7 +223,7 @@
       await agentsEditorSave(editAgentId, form);
       viewManager.goBack();
     } catch (cause) {
-      validationError = extractErrorMessage(cause);
+      validationError = userErrorMessage(cause);
     } finally {
       saving = false;
     }
@@ -359,9 +360,11 @@
   onsubmit={onSave}
 >
   {#snippet header()}
-    <h2 class="agent-edit-heading">{editAgentId
+    <h2 class="agent-edit-heading">
+      {editAgentId
         ? t('features_extra.agents.edit_heading')
-        : t('features_extra.agents.new_heading')}</h2>
+        : t('features_extra.agents.new_heading')}
+    </h2>
   {/snippet}
 
   {#if form}

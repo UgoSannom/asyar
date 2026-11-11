@@ -19,6 +19,7 @@ import {
   exportProfile,
   importProfile,
 } from '../../../lib/ipc/commands';
+import { userErrorMessage } from '../../../lib/userErrorMessage';
 
 export class BackupHandler {
   // Shared
@@ -155,7 +156,7 @@ export class BackupHandler {
       }, 4000);
     } catch (err) {
       this.exportStatus = 'error';
-      this.exportMessage = err instanceof Error ? err.message : String(err);
+      this.exportMessage = userErrorMessage(err);
     }
   }
 
@@ -188,7 +189,7 @@ export class BackupHandler {
       this.importModalOpen = true;
     } catch (err) {
       this.importStatus = 'error';
-      this.importMessage = err instanceof Error ? err.message : String(err);
+      this.importMessage = userErrorMessage(err);
     }
   }
 
@@ -207,7 +208,7 @@ export class BackupHandler {
       this.importStatus = 'idle';
       this.importModalOpen = true;
     } catch (err) {
-      this.importMessage = err instanceof Error ? err.message : String(err);
+      this.importMessage = userErrorMessage(err);
       this.importStatus = 'error';
     }
   }
@@ -281,7 +282,7 @@ export class BackupHandler {
       }, 4000);
     } catch (err) {
       this.importStatus = 'error';
-      this.importMessage = err instanceof Error ? err.message : String(err);
+      this.importMessage = userErrorMessage(err);
     }
   }
 

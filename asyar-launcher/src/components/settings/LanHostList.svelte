@@ -3,6 +3,7 @@
   import { lanHostsList, lanHostsAdd, lanHostsRemove } from '../../lib/ipc/lanCommands';
   import type { LanAllowedHost } from '../../lib/ipc/lanCommands';
   import { t } from '../../services/i18n';
+  import { userErrorMessage } from '../../lib/userErrorMessage';
 
   interface Props {
     extensionId: string;
@@ -43,7 +44,7 @@
       newPort = '';
       isAdding = false;
     } catch (e: any) {
-      addError = e?.message ?? t('settings.extensions.lan_add_error');
+      addError = e ? userErrorMessage(e) : t('settings.extensions.lan_add_error');
     }
   }
 

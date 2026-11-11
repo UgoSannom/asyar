@@ -120,7 +120,7 @@ describe('RaycastImportState', () => {
     await state.runImport();
 
     expect(state.phase).toBe('error');
-    expect(state.errorMessage).toBe('Error: registerItemShortcut failed');
+    expect(state.errorMessage).toBe('registerItemShortcut failed');
     expect(state.summary).toBeNull();
   });
 

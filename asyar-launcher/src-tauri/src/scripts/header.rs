@@ -63,6 +63,38 @@ pub enum HeaderError {
     InvalidRefreshTime { value: String },
 }
 
+impl HeaderError {
+    /// The error in the host locale, for the script library's issue list.
+    /// `Display` stays English for logs.
+    pub fn localized(&self) -> String {
+        use crate::locale::{host_format, NativeText};
+        match self {
+            HeaderError::InvalidArgumentJson { line, message } => host_format(
+                NativeText::ScriptHeaderArgumentJson,
+                &[("line", &line.to_string()), ("message", message)],
+            ),
+            HeaderError::InvalidArgumentIndex { index } => host_format(
+                NativeText::ScriptHeaderArgumentIndex,
+                &[("index", &index.to_string())],
+            ),
+            HeaderError::DuplicateArgumentIndex { index } => host_format(
+                NativeText::ScriptHeaderDuplicateIndex,
+                &[("index", &index.to_string())],
+            ),
+            HeaderError::InvalidMode { value } => {
+                host_format(NativeText::ScriptHeaderInvalidMode, &[("value", value)])
+            }
+            HeaderError::InvalidRequireAnyOf { line, message } => host_format(
+                NativeText::ScriptHeaderRequireAnyOf,
+                &[("line", &line.to_string()), ("message", message)],
+            ),
+            HeaderError::InvalidRefreshTime { value } => {
+                host_format(NativeText::ScriptHeaderRefreshTime, &[("value", value)])
+            }
+        }
+    }
+}
+
 /// Parse Raycast-compatible script metadata headers from the top of a script file.
 pub fn parse_header(content: &str) -> Result<ParsedScriptHeader, HeaderError> {
     let mut header = ParsedScriptHeader::default();

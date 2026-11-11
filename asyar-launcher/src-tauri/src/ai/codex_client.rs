@@ -1,5 +1,6 @@
 use crate::ai::types::{ChatStreamEventPayload, CliAccountInfo, ModelInfo};
 use crate::error::AppError;
+use crate::locale::{host_format, host_text, NativeText};
 use futures_util::StreamExt;
 use std::path::{Path, PathBuf};
 use std::process::Stdio;
@@ -36,21 +37,19 @@ pub fn prepare_codex_home_in(
             crate::ai::cli::resolve_home_dir()
                 .map(|h| h.join(".codex").join("auth.json"))
                 .ok_or_else(|| {
-                    AppError::Other(
-                        "Could not resolve user home directory for Codex login".to_string(),
-                    )
+                    AppError::Other(host_text(NativeText::CodexHomeUnresolved).to_string())
                 })?
         }
     } else {
         crate::ai::cli::resolve_home_dir()
             .map(|h| h.join(".codex").join("auth.json"))
             .ok_or_else(|| {
-                AppError::Other("Could not resolve user home directory for Codex login".to_string())
+                AppError::Other(host_text(NativeText::CodexHomeUnresolved).to_string())
             })?
     };
 
     if !auth_src.is_file() {
-        let err_msg = "Codex login not found. Please log in using the Codex CLI first.".to_string();
+        let err_msg = host_text(NativeText::CodexLoginNotFound).to_string();
         log::warn!("[codex] {err_msg} (checked {auth_src:?})");
         return Err(AppError::Other(err_msg));
     }
@@ -63,7 +62,7 @@ pub fn prepare_codex_home_in(
     #[cfg(unix)]
     {
         std::os::unix::fs::symlink(&auth_src, &auth_dst).map_err(|e| {
-            let err_msg = format!("Couldn't link your Codex login for Asyar: {e}");
+            let err_msg = host_format(NativeText::CodexLinkFailed, &[("error", &e.to_string())]);
             log::error!("[codex] {err_msg} (symlink from {auth_src:?} to {auth_dst:?})");
             AppError::Other(err_msg)
         })?;
@@ -72,7 +71,7 @@ pub fn prepare_codex_home_in(
     #[cfg(windows)]
     {
         std::fs::hard_link(&auth_src, &auth_dst).map_err(|e| {
-            let err_msg = format!("Couldn't link your Codex login for Asyar: {e}");
+            let err_msg = host_format(NativeText::CodexLinkFailed, &[("error", &e.to_string())]);
             log::error!("[codex] {err_msg} (hard link from {auth_src:?} to {auth_dst:?})");
             AppError::Other(err_msg)
         })?;
@@ -512,7 +511,7 @@ impl CodexClient {
         match result {
             Ok(r) => r,
             Err(_) => Err(AppError::Other(
-                "Timeout listing models from codex app-server".into(),
+                host_text(NativeText::CodexModelsTimeout).into(),
             )),
         }
     }
@@ -557,8 +556,12 @@ impl CodexClient {
         crate::ai::cli::hide_console_window(&mut cmd);
 
         let mut child = cmd.spawn().map_err(|e| {
-            AppError::Other(format!(
-                "Failed to spawn codex app-server '{binary_path:?}': {e}"
+            AppError::Other(host_format(
+                NativeText::CodexSpawnFailed,
+                &[
+                    ("path", &format!("{binary_path:?}")),
+                    ("error", &e.to_string()),
+                ],
             ))
         })?;
 
@@ -599,7 +602,7 @@ impl CodexClient {
                         let err_msg = err
                             .get("message")
                             .and_then(|m| m.as_str())
-                            .unwrap_or("Failed to start thread in codex app-server");
+                            .unwrap_or(host_text(NativeText::CodexThreadStartFailed));
                         on_event(ChatStreamEventPayload::Error {
                             error: err_msg.to_string(),
                         });
@@ -620,7 +623,7 @@ impl CodexClient {
         }
 
         let Some(tid) = thread_id else {
-            let err = "Failed to obtain thread ID from codex app-server".to_string();
+            let err = host_text(NativeText::CodexThreadIdMissing).to_string();
             on_event(ChatStreamEventPayload::Error { error: err.clone() });
             let _ = child.kill().await;
             return Err(AppError::Other(err));
@@ -653,7 +656,10 @@ impl CodexClient {
             let line = match line_res {
                 Ok(l) => l,
                 Err(e) => {
-                    let err = format!("Stream read error: {e}");
+                    let err = host_format(
+                        NativeText::CodexStreamReadError,
+                        &[("error", &e.to_string())],
+                    );
                     on_event(ChatStreamEventPayload::Error { error: err.clone() });
                     let _ = child.kill().await;
                     return Err(AppError::Other(err));
@@ -707,7 +713,7 @@ impl CodexClient {
                             .get("params")
                             .and_then(|p| p.get("message"))
                             .and_then(|m| m.as_str())
-                            .unwrap_or("Unknown error from codex app-server");
+                            .unwrap_or(host_text(NativeText::CodexUnknownError));
                         on_event(ChatStreamEventPayload::Error {
                             error: err_msg.to_string(),
                         });
@@ -724,7 +730,7 @@ impl CodexClient {
                     let err_msg = err
                         .get("message")
                         .and_then(|m| m.as_str())
-                        .unwrap_or("Failed to start turn in codex app-server");
+                        .unwrap_or(host_text(NativeText::CodexTurnStartFailed));
                     on_event(ChatStreamEventPayload::Error {
                         error: err_msg.to_string(),
                     });

@@ -2313,7 +2313,8 @@
       "mode_view": "View",
       "mode_background": "Background",
       "aria_list": "Store Extensions",
-      "by_author": "By {name}"
+      "by_author": "By {name}",
+      "http_status_error": "HTTP error! status: {status}"
     },
     "scripts": {
       "issue_dir_unavailable": "Directory unavailable",
@@ -3346,7 +3347,8 @@
       "login_failed": "Login failed: {error}",
       "login_timed_out": "Login timed out. Please try again.",
       "login_start_failed": "Could not start login: {error}",
-      "login_expired": "Login session expired. Please try again."
+      "login_expired": "Login session expired. Please try again.",
+      "session_not_ready": "OAuth completed but session data not ready"
     },
     "profile": {
       "settings": "Application Settings",

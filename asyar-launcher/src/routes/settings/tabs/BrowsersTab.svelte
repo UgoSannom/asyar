@@ -13,6 +13,7 @@
     type PendingPairing,
   } from '../../../lib/ipc/settingsUiCommands';
   import type { BrowserId, BrowserKey, BrowserFamily } from 'asyar-sdk/contracts';
+  import { userErrorMessage } from '../../../lib/userErrorMessage';
 
   type PairRequestEvent = { pairing_id: string; family: string; variant: string };
 
@@ -31,7 +32,7 @@
         kind: 'browser:settings.install-link-failed',
         severity: 'error',
         retryable: true,
-        context: { message: err instanceof Error ? err.message : String(err) },
+        context: { message: userErrorMessage(err) },
       });
     }
   }

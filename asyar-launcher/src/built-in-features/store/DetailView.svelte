@@ -25,6 +25,7 @@
   import type { ManifestCommand, ManifestPreference } from './state.svelte';
   import { t, i18nService } from '../../services/i18n';
   import { isSdkCompatible } from './sdkCompatibility';
+  import { userErrorMessage } from '../../lib/userErrorMessage';
 
   // Define structure for detailed API response
   interface ExtensionDetail {
@@ -209,7 +210,9 @@
     try {
       const response = await fetch(`${envService.storeApiBaseUrl}/api/extensions/${slug}`);
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(
+          t('features_extra.store.http_status_error', { status: String(response.status) }),
+        );
       }
       const data = await response.json();
       if (slug !== currentSlug) return;
@@ -222,7 +225,7 @@
       if (slug !== currentSlug) return;
       logService.error(`[DetailView] Fetch error: ${e}`); // Log fetch errors
       logService?.error(`Failed to fetch extension details: ${e.message}`);
-      error = t('features_extra.store.details_load_failed', { error: e.message });
+      error = t('features_extra.store.details_load_failed', { error: userErrorMessage(e) });
     } finally {
       if (slug !== currentSlug) return;
       isLoading = false;
@@ -253,8 +256,7 @@
       await storeExtension.installExtension(currentSlug, extensionDetail.id, extensionDetail.name);
       if (extensionDetail?.id) await checkIsInstalled(extensionDetail.id);
     } catch (e: any) {
-      const errorMessage = typeof e === 'string' ? e : e?.message || String(e);
-      error = t('features_extra.store.err_install', { error: errorMessage });
+      error = t('features_extra.store.err_install', { error: userErrorMessage(e) });
     }
   }
 
@@ -278,8 +280,7 @@
       );
       if (extensionDetail?.id) await checkIsInstalled(extensionDetail.id);
     } catch (e: any) {
-      const errorMessage = typeof e === 'string' ? e : e?.message || String(e);
-      error = t('features_extra.store.err_uninstall', { error: errorMessage });
+      error = t('features_extra.store.err_uninstall', { error: userErrorMessage(e) });
     }
   }
 
@@ -290,8 +291,7 @@
       await storeExtension.updateExtension(currentSlug, extensionDetail.id, extensionDetail.name);
       if (extensionDetail?.id) await checkIsInstalled(extensionDetail.id);
     } catch (e: any) {
-      const errorMessage = typeof e === 'string' ? e : e?.message || String(e);
-      error = t('features_extra.store.err_update', { error: errorMessage });
+      error = t('features_extra.store.err_update', { error: userErrorMessage(e) });
     }
   }
 

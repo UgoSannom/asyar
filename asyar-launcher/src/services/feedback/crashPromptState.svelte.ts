@@ -1,5 +1,6 @@
 import * as commands from '../../lib/ipc/commands';
 import type { CrashPayload } from '../../lib/ipc/commands';
+import { userErrorMessage } from '../../lib/userErrorMessage';
 
 export class CrashPromptState {
   /** Whether the Ask-mode banner is visible. */
@@ -49,7 +50,7 @@ export class CrashPromptState {
       this.payload = null;
       this.visible = false;
     } catch (err) {
-      this.sendError = err instanceof Error ? err.message : String(err);
+      this.sendError = userErrorMessage(err);
     } finally {
       this.isSending = false;
     }

@@ -4,6 +4,7 @@
   import { Button, Input, Checkbox } from '../index';
   import { syncEncryptionService } from '../../services/sync/syncEncryptionService.svelte';
   import { logService } from '../../services/log/logService';
+  import { userErrorMessage } from '../../lib/userErrorMessage';
 
   let {
     isOpen = $bindable(false),
@@ -88,7 +89,7 @@
         })
         .catch((err) => {
           logService.warn(`device recovery phrase fetch failed: ${String(err)}`);
-          errorMessage = String(err);
+          errorMessage = userErrorMessage(err);
           deviceFetchFailed = true;
           stage = 'passphrase';
         });

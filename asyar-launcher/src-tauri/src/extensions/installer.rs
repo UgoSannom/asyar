@@ -2,6 +2,7 @@
 
 use crate::error::AppError;
 use crate::extensions::{get_app_data_dir, read_theme_definition, ExtensionManifest};
+use crate::locale::{host_format, host_text, NativeText};
 use async_zip::tokio::read::seek::ZipFileReader;
 use futures_util::StreamExt;
 use log::{info, warn};
@@ -314,9 +315,9 @@ pub(crate) fn validate_package_structure(
 
 pub(crate) fn validate_download_url(url: &str) -> Result<(), AppError> {
     if !url.starts_with("https://") {
-        return Err(AppError::Validation(format!(
-            "Extension downloads require HTTPS. Insecure URL: {}",
-            url
+        return Err(AppError::Validation(host_format(
+            NativeText::ExtHttpsRequired,
+            &[("url", url)],
         )));
     }
     Ok(())
@@ -338,9 +339,9 @@ pub(crate) fn verify_checksum(file_path: &Path, expected_checksum: &str) -> Resu
     }
     let calculated = format!("sha256:{:x}", hasher.finalize());
     if calculated != expected_checksum {
-        return Err(AppError::Validation(format!(
-            "Checksum mismatch! Expected: {}, Calculated: {}",
-            expected_checksum, calculated
+        return Err(AppError::Validation(host_format(
+            NativeText::ExtChecksumMismatch,
+            &[("expected", expected_checksum), ("calculated", &calculated)],
         )));
     }
     info!("Checksum verified successfully.");
@@ -381,7 +382,7 @@ pub(crate) fn validate_file_path(path: &Path) -> Result<(), AppError> {
     match path.extension().and_then(|e| e.to_str()) {
         Some("asyar") => Ok(()),
         _ => Err(AppError::Validation(
-            "File must have .asyar extension".to_string(),
+            host_text(NativeText::ExtFileMustBeAsyar).to_string(),
         )),
     }
 }
@@ -408,15 +409,18 @@ pub(crate) async fn install_from_file(
         supported,
     } = &compat
     {
-        return Err(AppError::Validation(format!(
-            "Extension '{}' does not support {} (supported: {})",
-            manifest.name,
-            platform,
-            if supported.is_empty() {
-                "none".to_string()
-            } else {
-                supported.join(", ")
-            }
+        let supported = if supported.is_empty() {
+            host_text(NativeText::ExtSupportedNone).to_string()
+        } else {
+            supported.join(", ")
+        };
+        return Err(AppError::Validation(host_format(
+            NativeText::ExtPlatformUnsupported,
+            &[
+                ("name", &manifest.name),
+                ("platform", &platform.to_string()),
+                ("supported", &supported),
+            ],
         )));
     }
 
@@ -439,10 +443,12 @@ pub(crate) async fn install_from_file(
             fs::remove_dir_all(&install_dir)?;
         }
         VersionAction::AlreadyInstalled => {
-            return Err(AppError::Validation(format!(
-                "Extension '{}' v{} is already installed (same or newer version)",
-                manifest.id,
-                existing_version.unwrap_or_default()
+            return Err(AppError::Validation(host_format(
+                NativeText::ExtAlreadyInstalled,
+                &[
+                    ("id", &manifest.id),
+                    ("version", &existing_version.unwrap_or_default()),
+                ],
             )));
         }
     }
@@ -574,15 +580,18 @@ pub(crate) async fn install_from_url(
                     } = validate_compatibility(&manifest)
                     {
                         let _ = fs::remove_dir_all(&install_dir);
-                        return Err(AppError::Validation(format!(
-                            "Extension '{}' does not support {} (supported platforms: {})",
-                            extension_name,
-                            platform,
-                            if supported.is_empty() {
-                                "none declared".to_string()
-                            } else {
-                                supported.join(", ")
-                            }
+                        let supported = if supported.is_empty() {
+                            host_text(NativeText::ExtSupportedNoneDeclared).to_string()
+                        } else {
+                            supported.join(", ")
+                        };
+                        return Err(AppError::Validation(host_format(
+                            NativeText::ExtPlatformUnsupportedDeclared,
+                            &[
+                                ("name", &extension_name.to_string()),
+                                ("platform", &platform.to_string()),
+                                ("supported", &supported),
+                            ],
                         )));
                     }
                     manifest.write_icon_copies(&install_dir);

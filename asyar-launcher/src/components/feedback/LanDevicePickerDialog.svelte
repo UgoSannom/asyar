@@ -12,6 +12,7 @@
   } from '../../lib/ipc/lanCommands';
   import type { LanPickerRequest } from '../../services/network/lanDevicePickerService.svelte';
   import { t } from '../../services/i18n';
+  import { userErrorMessage } from '../../lib/userErrorMessage';
 
   interface Props {
     request: LanPickerRequest;
@@ -65,7 +66,8 @@
         validationError = '';
         isValidManual = true;
       } catch (cause) {
-        validationError = cause instanceof Error ? cause.message : t('lan_picker.invalid_endpoint');
+        validationError =
+          cause instanceof Error ? userErrorMessage(cause) : t('lan_picker.invalid_endpoint');
         isValidManual = false;
       }
     }, 200);
@@ -80,7 +82,8 @@
       const added = await lanHostsAdd(request.extensionId, device.host, device.port, device.name);
       onPicked({ host: added.host, port: added.port, label: added.label });
     } catch (cause) {
-      generalError = cause instanceof Error ? cause.message : t('ui_extra.lan_picker.allow_failed');
+      generalError =
+        cause instanceof Error ? userErrorMessage(cause) : t('ui_extra.lan_picker.allow_failed');
     } finally {
       busy = false;
     }
@@ -101,7 +104,9 @@
       onPicked({ host: added.host, port: added.port, label: added.label });
     } catch (cause) {
       generalError =
-        cause instanceof Error ? cause.message : t('ui_extra.lan_picker.endpoint_not_allowed');
+        cause instanceof Error
+          ? userErrorMessage(cause)
+          : t('ui_extra.lan_picker.endpoint_not_allowed');
     } finally {
       busy = false;
     }
@@ -120,7 +125,8 @@
       );
       onPicked({ host: added.host, port: added.port, label: added.label });
     } catch (cause) {
-      generalError = cause instanceof Error ? cause.message : t('ui_extra.lan_picker.allow_failed');
+      generalError =
+        cause instanceof Error ? userErrorMessage(cause) : t('ui_extra.lan_picker.allow_failed');
     } finally {
       busy = false;
     }

@@ -5,6 +5,7 @@
   import { seedSampleSnippet, enableExpansion } from './snippetsSetup';
   import { onboardingNav } from '../onboardingNav.svelte';
   import { t } from '../../../services/i18n';
+  import { userErrorMessage } from '../../../lib/userErrorMessage';
 
   let seeded = $state(false);
   let enabled = $state(false);
@@ -32,7 +33,7 @@
         enabled = true;
       }
     } catch (e) {
-      error = e instanceof Error ? e.message : String(e);
+      error = userErrorMessage(e);
     } finally {
       working = false;
     }

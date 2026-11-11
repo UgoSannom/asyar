@@ -13,6 +13,7 @@
   import { hideWindow } from '../../lib/ipc/commands';
   import { resetLauncherState } from '../../lib/launcher/launcherReset';
   import { writeText } from 'tauri-plugin-clipboard-x-api';
+  import { userErrorMessage } from '../../lib/userErrorMessage';
 
   interface Props {
     extensionManager?: any;
@@ -55,7 +56,7 @@
         retryable: false,
         context: {
           message: t('features.window_management.ui.list_failed', {
-            error: String(err?.message ?? err),
+            error: userErrorMessage(err),
           }),
         },
       });
@@ -78,7 +79,7 @@
         retryable: false,
         context: {
           message: t('features.window_management.ui.switch_failed', {
-            error: String(err?.message ?? err),
+            error: userErrorMessage(err),
           }),
         },
       });
@@ -98,7 +99,7 @@
         retryable: false,
         context: {
           message: t('features.window_management.ui.close_failed', {
-            error: String(err?.message ?? err),
+            error: userErrorMessage(err),
           }),
         },
       });
@@ -129,7 +130,7 @@
         retryable: false,
         context: {
           message: t('features.window_management.ui.copy_title_failed', {
-            error: String(err?.message ?? err),
+            error: userErrorMessage(err),
           }),
         },
       });

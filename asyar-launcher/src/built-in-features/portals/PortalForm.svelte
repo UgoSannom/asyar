@@ -10,6 +10,7 @@
   import { viewManager } from '../../services/extension/viewManager.svelte';
   import { ActionContext } from 'asyar-sdk/contracts';
   import { t } from '../../services/i18n';
+  import { userErrorMessage } from '../../lib/userErrorMessage';
 
   let {
     portal,
@@ -69,7 +70,9 @@
         kind: 'manual',
         severity: 'error',
         retryable: false,
-        context: { message: t('features.portals.ui.save_failed', { error: String(err) }) },
+        context: {
+          message: t('features.portals.ui.save_failed', { error: userErrorMessage(err) }),
+        },
       });
     } finally {
       portalsUiState.clearDraft();
@@ -186,9 +189,9 @@
   oncancel={handleCancel}
 >
   {#snippet header()}
-    <h2 class="form-title">{resolvedIsEditing
-        ? t('features_extra.portals.edit_portal')
-        : t('features.portals.act.new')}</h2>
+    <h2 class="form-title">
+      {resolvedIsEditing ? t('features_extra.portals.edit_portal') : t('features.portals.act.new')}
+    </h2>
   {/snippet}
 
   <FormField label={t('common.name')} id="portal-name">

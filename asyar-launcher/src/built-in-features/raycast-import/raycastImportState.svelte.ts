@@ -1,6 +1,7 @@
 import { raycastImportParse } from '../../lib/ipc/commands';
 import { applyBundle } from './importApplier';
 import type { ImportBundle, ImportSelection, ImportSummary } from './types';
+import { userErrorMessage } from '../../lib/userErrorMessage';
 
 export type ImportPhase = 'pick' | 'password' | 'preview' | 'importing' | 'done' | 'error';
 
@@ -91,7 +92,7 @@ export class RaycastImportState {
       // call failing) left the wizard stuck on the loading spinner forever
       // with no way back — the launcher appeared "frozen" from the user's
       // perspective even though the rest of the app was fine.
-      this.errorMessage = String(e);
+      this.errorMessage = userErrorMessage(e);
       this.phase = 'error';
     }
   }

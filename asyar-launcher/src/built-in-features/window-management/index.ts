@@ -21,6 +21,7 @@ import {
   type IExtensionManager,
   ActionContext,
 } from 'asyar-sdk/contracts';
+import { userErrorMessage } from '../../lib/userErrorMessage';
 
 class WindowManagementExtension implements Extension {
   onUnload: any;
@@ -144,7 +145,7 @@ class WindowManagementExtension implements Extension {
         retryable: false,
         context: {
           message: err.message
-            ? t('features.window_management.err_apply_detail', { detail: err.message })
+            ? t('features.window_management.err_apply_detail', { detail: userErrorMessage(err) })
             : t('features.window_management.err_apply'),
         },
       });
@@ -174,7 +175,7 @@ class WindowManagementExtension implements Extension {
         retryable: false,
         context: {
           message: err.message
-            ? t('features.window_management.err_restore_detail', { detail: err.message })
+            ? t('features.window_management.err_restore_detail', { detail: userErrorMessage(err) })
             : t('features.window_management.err_restore'),
         },
       });
@@ -291,7 +292,7 @@ class WindowManagementExtension implements Extension {
         retryable: false,
         context: {
           message: err.message
-            ? t('features.window_management.err_save_detail', { detail: err.message })
+            ? t('features.window_management.err_save_detail', { detail: userErrorMessage(err) })
             : t('features.window_management.err_save'),
         },
       });

@@ -5,6 +5,7 @@ use std::path::{Path, PathBuf};
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 
+use crate::locale::{host_format, NativeText};
 use crate::scripts::header::{parse_header, ParsedScriptHeader};
 
 /// A script file discovered during a directory scan.
@@ -75,7 +76,10 @@ pub fn scan_directories(dirs: &[PathBuf]) -> ScriptScanReport {
                 issues.push(scan_issue(
                     dir.clone(),
                     ScriptScanIssueReason::DirectoryUnreadable,
-                    format!("Could not read watched directory: {error}"),
+                    host_format(
+                        NativeText::ScriptDirUnreadable,
+                        &[("error", &error.to_string())],
+                    ),
                     None,
                 ));
                 continue;
@@ -91,7 +95,10 @@ pub fn scan_directories(dirs: &[PathBuf]) -> ScriptScanReport {
                     issues.push(scan_issue(
                         path,
                         ScriptScanIssueReason::MetadataUnreadable,
-                        format!("Could not inspect file metadata: {error}"),
+                        host_format(
+                            NativeText::ScriptMetadataUnreadable,
+                            &[("error", &error.to_string())],
+                        ),
                         None,
                     ));
                     continue;
@@ -108,7 +115,10 @@ pub fn scan_directories(dirs: &[PathBuf]) -> ScriptScanReport {
                     issues.push(scan_issue(
                         path,
                         ScriptScanIssueReason::PathUnavailable,
-                        format!("Could not resolve file path: {error}"),
+                        host_format(
+                            NativeText::ScriptPathUnavailable,
+                            &[("error", &error.to_string())],
+                        ),
                         None,
                     ));
                     continue;
@@ -126,7 +136,7 @@ pub fn scan_directories(dirs: &[PathBuf]) -> ScriptScanReport {
                 issues.push(scan_issue(
                     absolute_path,
                     ScriptScanIssueReason::NotExecutable,
-                    "Script is not executable".to_string(),
+                    crate::locale::host_text(NativeText::ScriptNotExecutable).to_string(),
                     Some(ScriptScanIssueFix::MakeExecutable),
                 ));
                 continue;
@@ -138,7 +148,10 @@ pub fn scan_directories(dirs: &[PathBuf]) -> ScriptScanReport {
                     issues.push(scan_issue(
                         absolute_path,
                         ScriptScanIssueReason::ContentUnreadable,
-                        format!("Could not read script: {error}"),
+                        host_format(
+                            NativeText::ScriptContentUnreadable,
+                            &[("error", &error.to_string())],
+                        ),
                         None,
                     ));
                     continue;
@@ -156,7 +169,10 @@ pub fn scan_directories(dirs: &[PathBuf]) -> ScriptScanReport {
                     issues.push(scan_issue(
                         absolute_path,
                         ScriptScanIssueReason::InvalidHeader,
-                        format!("Invalid script header: {e}"),
+                        host_format(
+                            NativeText::ScriptInvalidHeader,
+                            &[("error", &e.localized())],
+                        ),
                         None,
                     ));
                     continue;

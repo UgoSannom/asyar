@@ -5,6 +5,7 @@
     enabledPersistence,
   } from '../../built-in-features/snippets/snippetService';
   import { t } from '../../services/i18n';
+  import { userErrorMessage } from '../../lib/userErrorMessage';
 
   let snippetsEnabled = $state(enabledPersistence.loadSync(true));
   let snippetsToggleError = $state<string | null>(null);
@@ -16,7 +17,7 @@
       await snippetService.setEnabled(next);
       snippetsEnabled = next;
     } catch (e) {
-      snippetsToggleError = (e as Error).message || t('ui_extra.snippets_card.toggle_failed');
+      snippetsToggleError = userErrorMessage(e) || t('ui_extra.snippets_card.toggle_failed');
     }
   }
 </script>

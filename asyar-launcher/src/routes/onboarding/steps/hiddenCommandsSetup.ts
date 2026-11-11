@@ -1,6 +1,7 @@
 import { t } from '../../../services/i18n';
 import { agentService } from '../../../built-in-features/agents/agentService.svelte';
 import { shortcutService } from '../../../built-in-features/shortcuts/shortcutService';
+import { userErrorMessage } from '../../../lib/userErrorMessage';
 
 export async function setUpHiddenCommand(
   modifier: string,
@@ -29,6 +30,6 @@ export async function setUpHiddenCommand(
     }
     return { ok: true };
   } catch (e) {
-    return { ok: false, error: e instanceof Error ? e.message : String(e) };
+    return { ok: false, error: userErrorMessage(e) };
   }
 }

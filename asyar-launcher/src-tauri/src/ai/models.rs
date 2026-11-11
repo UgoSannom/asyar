@@ -1,5 +1,6 @@
 use crate::ai::types::{ModelInfo, ProviderConfig};
 use crate::error::AppError;
+use crate::locale::{host_format, host_text, NativeText};
 use futures_util::future::join_all;
 use serde_json::{json, Value};
 use std::collections::HashMap;
@@ -95,7 +96,7 @@ pub(super) fn provider_model_request(
         },
         "custom" => {
             let raw_base = config.base_url.as_deref().ok_or_else(|| {
-                AppError::Validation("Custom AI provider requires a base URL".into())
+                AppError::Validation(host_text(NativeText::CustomProviderRequiresBaseUrl).into())
             })?;
             let mut headers = authorization_header(api_key);
             headers.insert(
@@ -632,8 +633,9 @@ pub(crate) fn resolve_model_listing_key_in(
     match crate::storage::ai_credentials::get(conn, &cred_id, master_key) {
         Ok(Some(k)) => Ok(Some(k)),
         Ok(None) => Ok(None),
-        Err(asyar_storage::StorageError::Encryption(_)) => Err(AppError::Validation(format!(
-            "API key for provider '{provider_id}' cannot be decrypted (keychain master key changed). Please re-enter your key in Settings → AI."
+        Err(asyar_storage::StorageError::Encryption(_)) => Err(AppError::Validation(host_format(
+            NativeText::ProviderApiKeyUndecryptable,
+            &[("provider", provider_id)],
         ))),
         Err(e) => Err(e.into()),
     }

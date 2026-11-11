@@ -44,6 +44,7 @@
   import { ActionContext } from 'asyar-sdk/contracts';
   import { t, i18nService } from '../../services/i18n';
   import { isAnyModalOpen } from '../../components/base/Modal.logic';
+  import { userErrorMessage } from '../../lib/userErrorMessage';
 
   // The ⌘P agent switcher is owned by the Ask AI command's view.
   const ACCESSORY_EXTENSION_ID = 'agents';
@@ -206,7 +207,7 @@
         nextThreads = await agentService.listThreads(currentAgentId);
       } catch (err) {
         if (cancelled) return;
-        loadError = err instanceof Error ? err.message : String(err);
+        loadError = userErrorMessage(err);
         return;
       }
 

@@ -5,6 +5,7 @@ use crate::ai::types::{
     ChatMessage, ChatParams, ChatStreamEventPayload, ProviderConfig, ToolCall, ToolDefinition,
 };
 use crate::error::AppError;
+use crate::locale::NativeText;
 use crate::storage::agents::{
     get_thread, insert_message, list_messages_for_thread, update_thread_title, AgentRow,
     MessageRole, MessageRow, SilentInputSource,
@@ -640,13 +641,15 @@ pub(crate) fn resolve_provider_config(
     master_key: &[u8; 32],
 ) -> Result<crate::ai::types::ResolvedProviderConfig, AppError> {
     let Some(config) = configs.get(provider_id) else {
-        return Err(AppError::Validation(format!(
-            "provider '{provider_id}' is not configured"
+        return Err(AppError::Validation(crate::locale::host_format(
+            NativeText::ProviderNotConfigured,
+            &[("provider", provider_id)],
         )));
     };
     if !config.enabled {
-        return Err(AppError::Validation(format!(
-            "provider '{provider_id}' is disabled"
+        return Err(AppError::Validation(crate::locale::host_format(
+            NativeText::ProviderDisabled,
+            &[("provider", provider_id)],
         )));
     }
     // Named connections carry an opaque id like "custom_60f9a975"; the
@@ -659,22 +662,25 @@ pub(crate) fn resolve_provider_config(
         "openai" | "anthropic" | "google" | "ollama" | "openrouter" | "custom"
     ) && !is_extension
     {
-        return Err(AppError::Validation(format!(
-            "provider '{provider_id}' is not registered"
+        return Err(AppError::Validation(crate::locale::host_format(
+            NativeText::ProviderNotRegistered,
+            &[("provider", provider_id)],
         )));
     }
     let is_cli = config.connection_mode.as_deref() == Some("cli");
     if is_cli {
         if !matches!(engine_type, "google" | "openai" | "anthropic") {
-            return Err(AppError::Validation(format!(
-                "CLI mode is not supported for provider '{provider_id}'"
+            return Err(AppError::Validation(crate::locale::host_format(
+                NativeText::ProviderCliModeUnsupported,
+                &[("provider", provider_id)],
             )));
         }
         if crate::ai::cli::resolve_cli_binary(engine_type, config.cli_binary_path.as_deref())
             .is_none()
         {
-            return Err(AppError::Validation(format!(
-                "CLI executable for provider '{provider_id}' was not found"
+            return Err(AppError::Validation(crate::locale::host_format(
+                NativeText::ProviderCliNotFound,
+                &[("provider", provider_id)],
             )));
         }
         return Ok(crate::ai::types::ResolvedProviderConfig {
@@ -688,8 +694,9 @@ pub(crate) fn resolve_provider_config(
         Ok(Some(key)) => Some(key),
         Ok(None) => None,
         Err(asyar_storage::StorageError::Encryption(_)) => {
-            return Err(AppError::Validation(format!(
-                "API key for provider '{provider_id}' cannot be decrypted (keychain master key changed). Please re-enter your key in Settings → AI."
+            return Err(AppError::Validation(crate::locale::host_format(
+                NativeText::ProviderApiKeyUndecryptable,
+                &[("provider", provider_id)],
             )));
         }
         Err(e) => return Err(e.into()),
@@ -700,8 +707,9 @@ pub(crate) fn resolve_provider_config(
         "openai" | "anthropic" | "google" | "openrouter"
     ) && resolved_key.is_none()
     {
-        return Err(AppError::Validation(format!(
-            "API key for provider '{provider_id}' is not configured"
+        return Err(AppError::Validation(crate::locale::host_format(
+            NativeText::ProviderApiKeyMissing,
+            &[("provider", provider_id)],
         )));
     }
     if matches!(engine_type, "ollama" | "custom")
@@ -712,8 +720,9 @@ pub(crate) fn resolve_provider_config(
             .trim()
             .is_empty()
     {
-        return Err(AppError::Validation(format!(
-            "Base URL for provider '{provider_id}' is not configured"
+        return Err(AppError::Validation(crate::locale::host_format(
+            NativeText::ProviderBaseUrlMissing,
+            &[("provider", provider_id)],
         )));
     }
 
@@ -910,8 +919,9 @@ where
             }
 
             if let Some(err) = stream_error {
-                Err(AppError::Other(format!(
-                    "Extension AI provider failed: {err}"
+                Err(AppError::Other(crate::locale::host_format(
+                    NativeText::ExtensionAiProviderFailed,
+                    &[("error", &err)],
                 )))
             } else {
                 Ok(())

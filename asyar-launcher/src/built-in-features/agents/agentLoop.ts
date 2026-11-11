@@ -1,5 +1,4 @@
 import type { AgentStreamEvent } from '../../bindings';
-import { extractErrorMessage } from '../../lib/errors';
 import {
   agentsCancelRun,
   agentsGet,
@@ -13,6 +12,7 @@ import { settingsService } from '../../services/settings/settingsService.svelte'
 import { agentService } from './agentService.svelte';
 import { createAgentStreamChannel } from './agentStreamBridge';
 import type { AgentDef } from './types';
+import { userErrorMessage } from '../../lib/userErrorMessage';
 
 export interface RunAgentInput {
   agentId: string;
@@ -166,7 +166,7 @@ export async function runAgent(input: RunAgentInput): Promise<void> {
       if (!externallyCancelled) await handle.cancel().catch(() => undefined);
       return;
     }
-    await handle.fail(extractErrorMessage(cause));
+    await handle.fail(userErrorMessage(cause));
     throw cause;
   } finally {
     input.abortSignal?.removeEventListener('abort', onAbort);

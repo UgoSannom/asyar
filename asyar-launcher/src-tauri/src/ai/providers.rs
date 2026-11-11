@@ -1,5 +1,6 @@
 use crate::ai::types::{ChatMessage, ChatParams, ChatStreamEvent, ProviderConfig, RequestSpec};
 use crate::error::AppError;
+use crate::locale::{host_text, NativeText};
 use serde_json::{json, Value};
 use std::collections::{BTreeMap, HashMap};
 
@@ -227,7 +228,7 @@ impl ProviderStreamParser {
                             .as_str()
                             .or_else(|| error.get("message").and_then(Value::as_str))
                     })
-                    .unwrap_or("OpenAI Responses request failed");
+                    .unwrap_or(host_text(NativeText::OpenAiResponsesRequestFailed));
                 Err(AppError::Other(message.to_string()))
             }
             _ => Ok(Vec::new()),
@@ -295,7 +296,7 @@ impl ProviderStreamParser {
                 let message = value
                     .pointer("/error/message")
                     .and_then(Value::as_str)
-                    .unwrap_or("Anthropic request failed");
+                    .unwrap_or(host_text(NativeText::AnthropicRequestFailed));
                 Err(AppError::Other(message.to_string()))
             }
             _ => Ok(Vec::new()),
@@ -780,7 +781,7 @@ fn build_google_request(
         params.model_id.starts_with("gemini-3-") || params.model_id.starts_with("gemini-3.");
     if search_enabled && !custom_tools.is_empty() && !gemini_3 {
         return Err(AppError::Validation(
-            "Google Search with agent tools requires Gemini 3. Select a Gemini 3 model, remove the agent's tools, or disable Google Search in AI settings.".into(),
+            host_text(NativeText::GoogleSearchNeedsGemini3).into(),
         ));
     }
     let api_key = api_key.unwrap_or("");
@@ -1075,7 +1076,7 @@ fn build_custom_request(
     let base_url = config.base_url.as_deref().unwrap_or("");
     if base_url.trim().is_empty() {
         return Err(AppError::Other(
-            "Custom provider base URL must not be empty".to_string(),
+            host_text(NativeText::CustomProviderBaseUrlEmpty).to_string(),
         ));
     }
 

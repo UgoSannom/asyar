@@ -7,6 +7,7 @@
   import { agentService } from '../../../built-in-features/agents/agentService.svelte';
   import { setUpHiddenCommand } from './hiddenCommandsSetup';
   import { onboardingNav } from '../onboardingNav.svelte';
+  import { userErrorMessage } from '../../../lib/userErrorMessage';
 
   let modifier = $state(DEFAULT_GRAMMAR_FIX_HOTKEY.modifier);
   let key = $state(DEFAULT_GRAMMAR_FIX_HOTKEY.key);
@@ -39,7 +40,7 @@
       configured = res.ok;
       if (!res.ok) error = res.error ?? t('onboarding.generic_error');
     } catch (e) {
-      error = e instanceof Error ? e.message : String(e);
+      error = userErrorMessage(e);
     } finally {
       working = false;
     }

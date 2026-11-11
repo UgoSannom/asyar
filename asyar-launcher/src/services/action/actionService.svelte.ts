@@ -10,6 +10,7 @@ import { searchService } from '../search/SearchService';
 import type { SearchResult } from '../search/interfaces/SearchResult';
 import { searchStores } from '../search/stores/search.svelte';
 import { feedbackService } from '../feedback/feedbackService.svelte';
+import { userErrorMessage } from '../../lib/userErrorMessage';
 
 type SelectedItemProvider = () => SearchResult | undefined;
 let globalSelectedItemProvider: SelectedItemProvider = () => undefined;
@@ -795,7 +796,7 @@ export class ActionService implements IActionService {
           await feedbackService.showHUD(successHud);
         } catch (err) {
           logService.error(`Uninstall failed for '${appPath}': ${err}`);
-          const reason = err instanceof Error ? err.message : String(err);
+          const reason = userErrorMessage(err);
           await feedbackService.showHUD(t('core_actions.uninstall_failed', { reason }), {
             severity: 'error',
           });

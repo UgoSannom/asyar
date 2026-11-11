@@ -7,6 +7,7 @@ import { commandService } from '../../services/extension/commandService.svelte';
 import { shortcutService } from '../shortcuts/shortcutService';
 import { logService } from '../../services/log/logService';
 import type { IStorageService } from 'asyar-sdk/contracts';
+import { userErrorMessage } from '../../lib/userErrorMessage';
 
 export async function applyCustomLayout(
   layout: CustomLayout,
@@ -28,7 +29,7 @@ export async function applyCustomLayout(
       retryable: false,
       context: {
         message: err.message
-          ? t('features.window_management.err_apply_detail', { detail: err.message })
+          ? t('features.window_management.err_apply_detail', { detail: userErrorMessage(err) })
           : t('features.window_management.err_apply'),
       },
     });

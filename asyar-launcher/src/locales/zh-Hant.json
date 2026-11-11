@@ -2313,7 +2313,8 @@
       "mode_view": "檢視",
       "mode_background": "背景",
       "aria_list": "商店擴充功能",
-      "by_author": "作者：{name}"
+      "by_author": "作者：{name}",
+      "http_status_error": "HTTP 錯誤！狀態：{status}"
     },
     "scripts": {
       "issue_dir_unavailable": "目錄無法使用",
@@ -3346,7 +3347,8 @@
       "login_failed": "登入失敗：{error}",
       "login_timed_out": "登入逾時，請再試一次。",
       "login_start_failed": "無法開始登入：{error}",
-      "login_expired": "登入工作階段已過期，請再試一次。"
+      "login_expired": "登入工作階段已過期，請再試一次。",
+      "session_not_ready": "OAuth 已完成，但工作階段資料尚未就緒"
     },
     "profile": {
       "settings": "應用程式設定",

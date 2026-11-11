@@ -1,5 +1,6 @@
 import { appUpdaterCheckNow } from '../../lib/ipc/updateCommands';
 import { logService } from '../log/logService';
+import { userErrorMessage } from '../../lib/userErrorMessage';
 
 export type UpdateChannel = 'stable' | 'beta';
 
@@ -33,9 +34,9 @@ export async function runUpdateCheck(): Promise<UpdateResult> {
     logService.info(`updateService: update ${version} downloaded`);
     return { kind: 'installed', version };
   } catch (error) {
-    const message = error instanceof Error ? error.message : String(error);
-    logService.error(`updateService: check failed — ${message}`);
-    return { kind: 'error', message };
+    const detail = error instanceof Error ? error.message : String(error);
+    logService.error(`updateService: check failed — ${detail}`);
+    return { kind: 'error', message: userErrorMessage(error) };
   } finally {
     inFlight = false;
   }

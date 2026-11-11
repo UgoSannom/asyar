@@ -5,6 +5,7 @@
   import { syncEncryptionService } from '../../services/sync/syncEncryptionService.svelte';
   import { cloudSyncService } from '../../services/sync/cloudSyncService.svelte';
   import { logService } from '../../services/log/logService';
+  import { userErrorMessage } from '../../lib/userErrorMessage';
 
   let {
     isOpen = $bindable(false),
@@ -37,7 +38,7 @@
       onComplete?.();
     } catch (err) {
       logService.error(`Reset Cloud Sync failed: ${String(err)}`);
-      errorMessage = String(err);
+      errorMessage = userErrorMessage(err);
     } finally {
       isResetting = false;
     }

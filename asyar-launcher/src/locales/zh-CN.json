@@ -2313,7 +2313,8 @@
       "mode_view": "视图",
       "mode_background": "后台",
       "aria_list": "商店扩展",
-      "by_author": "作者：{name}"
+      "by_author": "作者：{name}",
+      "http_status_error": "HTTP 错误！状态：{status}"
     },
     "scripts": {
       "issue_dir_unavailable": "目录不可用",
@@ -3346,7 +3347,8 @@
       "login_failed": "登录失败：{error}",
       "login_timed_out": "登录超时，请重试。",
       "login_start_failed": "无法开始登录：{error}",
-      "login_expired": "登录会话已过期，请重试。"
+      "login_expired": "登录会话已过期，请重试。",
+      "session_not_ready": "OAuth 已完成，但会话数据尚未就绪"
     },
     "profile": {
       "settings": "应用设置",

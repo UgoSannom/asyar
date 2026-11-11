@@ -2313,7 +2313,8 @@
       "mode_view": "Vue",
       "mode_background": "Arrière-plan",
       "aria_list": "Extensions de la boutique",
-      "by_author": "Par {name}"
+      "by_author": "Par {name}",
+      "http_status_error": "Erreur HTTP ! Statut : {status}"
     },
     "scripts": {
       "issue_dir_unavailable": "Dossier indisponible",
@@ -3346,7 +3347,8 @@
       "login_failed": "Échec de la connexion : {error}",
       "login_timed_out": "Délai de connexion dépassé. Veuillez réessayer.",
       "login_start_failed": "Impossible de lancer la connexion : {error}",
-      "login_expired": "La session de connexion a expiré. Veuillez réessayer."
+      "login_expired": "La session de connexion a expiré. Veuillez réessayer.",
+      "session_not_ready": "OAuth terminé, mais les données de session ne sont pas encore prêtes"
     },
     "profile": {
       "settings": "Réglages de l'application",

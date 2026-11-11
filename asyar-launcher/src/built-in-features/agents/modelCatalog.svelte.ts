@@ -2,6 +2,7 @@ import { aiListModels } from '../../lib/ipc/commands';
 import type { CredentialState } from '../../bindings';
 import type { ModelInfo, ProviderConfig } from '../../services/ai/IProviderPlugin';
 import { providerLabel } from './agentChatView.helpers';
+import { userErrorMessage } from '../../lib/userErrorMessage';
 
 /** A provider/model pair, as stored on a thread or an agent. */
 export interface ModelRef {
@@ -106,7 +107,7 @@ export class ModelCatalog {
     } catch (err) {
       this.errors = {
         ...this.errors,
-        [providerId]: err instanceof Error ? err.message : String(err),
+        [providerId]: userErrorMessage(err),
       };
     } finally {
       this.loading = { ...this.loading, [providerId]: false };

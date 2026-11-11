@@ -23,6 +23,7 @@ import { extensionStateManager } from '../../services/extension/extensionStateMa
 import { downloadDeclaredRuntimes } from '../../services/extension/runtimeDownloads';
 import { getRuntimeDownloadSizes } from '../../lib/ipc/runtimeCommands';
 import { fetchAllStoreItems } from './storeFetch';
+import { userErrorMessage } from '../../lib/userErrorMessage';
 
 const EXTENSION_ID = 'store';
 const ACTION_ID_INSTALL_DETAIL = 'app.asyar.store:install-detail'; // Action ID for detail view
@@ -246,7 +247,7 @@ class StoreExtension implements Extension {
       this.logService?.error(`Installation failed for ${displayName}: ${errorMessage}`);
       await installProgress?.fail(
         t('features_extra.store.p_install_failed', { name: displayName }),
-        errorMessage,
+        userErrorMessage(e),
       );
       this.sendNotification({
         title: t('features.store.t_installation_failed'),
@@ -311,7 +312,7 @@ class StoreExtension implements Extension {
       this.logService?.error(`Uninstall failed for ${displayName}: ${errorMessage}`);
       await uninstallProgress?.fail(
         t('features_extra.store.p_uninstall_failed', { name: displayName }),
-        errorMessage,
+        userErrorMessage(e),
       );
       this.sendNotification({
         title: t('features.store.t_uninstall_failed'),
@@ -382,7 +383,7 @@ class StoreExtension implements Extension {
       this.logService?.error(`Update failed for ${displayName}: ${errorMessage}`);
       await updateProgress?.fail(
         t('features_extra.store.p_update_failed', { name: displayName }),
-        errorMessage,
+        userErrorMessage(e),
       );
     } finally {
       if (this.currentView === `${EXTENSION_ID}/DetailView`) {
@@ -470,7 +471,9 @@ class StoreExtension implements Extension {
       }
     } catch (e: any) {
       this.logService?.error(`Failed to fetch extensions: ${e.message}`);
-      storeViewState.setError(t('features_extra.store.load_failed', { error: e.message }));
+      storeViewState.setError(
+        t('features_extra.store.load_failed', { error: userErrorMessage(e) }),
+      );
     }
   }
 
