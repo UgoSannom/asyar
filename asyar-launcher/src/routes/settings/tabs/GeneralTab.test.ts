@@ -22,6 +22,11 @@ const {
   updateSettingsMock: vi.fn().mockResolvedValue(true),
 }));
 
+// The Dock row is macOS-only; render as macOS so all three startup toggles exist.
+vi.mock('../../../lib/keyboard/hostPlatform', () => ({
+  getHostPlatform: () => 'macos',
+}));
+
 vi.mock('@tauri-apps/api/event', () => ({
   emit: emitMock,
   listen: vi.fn().mockResolvedValue(() => {}),

@@ -5,6 +5,7 @@
     MODIFIER_ORDER,
     isHyperModifier,
     HYPER_SYMBOL,
+    localizeKeyName,
   } from '../../built-in-features/shortcuts/shortcutFormatter';
   import { getHostPlatform } from '../../lib/keyboard/hostPlatform';
   import { t } from '../../services/i18n';
@@ -91,7 +92,8 @@
   });
 
   // The "e.g." chord: ⇧⌘ on macOS, Ctrl+Shift where the logo key belongs to the OS.
-  const exampleModifierChips = getHostPlatform() === 'macos' ? ['⇧', '⌘'] : ['Ctrl', 'Shift'];
+  const exampleModifierChips =
+    getHostPlatform() === 'macos' ? ['⇧', '⌘'] : ['Ctrl', localizeKeyName('Shift')];
 
   let idleChips = $derived.by(() => {
     if (key) {
@@ -175,7 +177,7 @@
           </div>
         {:else}
           <div class="key-chips">
-            <span class="example-label">e.g.</span>
+            <span class="example-label">{t('keys.example')}</span>
             {#each exampleModifierChips as chip}
               <span class="chip example-chip">{chip}</span>
             {/each}

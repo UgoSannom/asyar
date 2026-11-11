@@ -11,6 +11,7 @@ import {
   isHyperModifier,
   HYPER_SYMBOL,
   modifierLabel,
+  localizeKeyName,
 } from '../built-in-features/shortcuts/shortcutFormatter';
 
 export interface CaptureConfig {
@@ -39,7 +40,7 @@ function modifierSymbol(mod: string): string {
 }
 
 function displayKey(k: string): string {
-  return KEY_DISPLAY[k] ?? k;
+  return KEY_DISPLAY[k] ?? localizeKeyName(k);
 }
 
 export function useShortcutCapture(config: CaptureConfig) {

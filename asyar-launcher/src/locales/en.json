@@ -144,7 +144,9 @@
       "wayland_hotkey_hint": "On Wayland ({compositor}), bind asyar-summon in your compositor or desktop shortcut settings for instant global summon.",
       "wayland_copy_cmd": "Copy",
       "wayland_copied": "✓ Copied",
-      "section_behavior": "Behavior"
+      "section_behavior": "Behavior",
+      "show_tray_icon_tray": "Show icon in system tray",
+      "show_tray_icon_tray_description": "Keep Asyar accessible from the system tray"
     },
     "appearance": {
       "theme": "Theme",
@@ -3641,5 +3643,12 @@
     "window_mode": {
       "aria": "{mode} window mode"
     }
+  },
+  "keys": {
+    "shift": "Shift",
+    "space": "Space",
+    "enter": "Enter",
+    "escape": "Esc",
+    "example": "e.g."
   }
 }

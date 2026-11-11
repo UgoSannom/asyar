@@ -2,6 +2,7 @@
   import { t } from '../../services/i18n';
   import { helpViewState } from './helpState.svelte';
   import { LAUNCHER_SHORTCUTS } from '../../lib/keyboard/shortcutCatalog';
+  import { localizeKeyName } from '../shortcuts/shortcutFormatter';
   import { actionShortcutEntries } from '../../lib/keyboard/actionShortcutCatalog';
   import { actionService } from '../../services/action/actionService.svelte';
   import AppIcon from '../../components/base/AppIcon.svelte';
@@ -41,7 +42,7 @@
       {#each LAUNCHER_SHORTCUTS as s}
         <li class="shortcut-row">
           <span class="keys">
-            {#each s.keys as k}<kbd>{k}</kbd>{/each}
+            {#each s.keys as k}<kbd>{localizeKeyName(k)}</kbd>{/each}
           </span>
           <span class="label">{s.label}</span>
         </li>
@@ -53,7 +54,7 @@
         {#each actionShortcuts as s}
           <li class="shortcut-row">
             <span class="keys">
-              {#each s.keys as k}<kbd>{k}</kbd>{/each}
+              {#each s.keys as k}<kbd>{localizeKeyName(k)}</kbd>{/each}
             </span>
             <span class="label">{s.label}</span>
           </li>

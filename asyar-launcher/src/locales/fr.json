@@ -144,7 +144,9 @@
       "wayland_hotkey_hint": "Sous Wayland ({compositor}), associez asyar-summon dans les raccourcis de votre compositeur ou de votre bureau pour ouvrir Asyar instantanément.",
       "wayland_copy_cmd": "Copier",
       "wayland_copied": "✓ Copié",
-      "section_behavior": "Comportement"
+      "section_behavior": "Comportement",
+      "show_tray_icon_tray": "Afficher dans la zone de notification",
+      "show_tray_icon_tray_description": "Garder Asyar accessible depuis la zone de notification"
     },
     "appearance": {
       "theme": "Thème",
@@ -3641,5 +3643,12 @@
     "window_mode": {
       "aria": "Mode de fenêtre {mode}"
     }
+  },
+  "keys": {
+    "shift": "Maj",
+    "space": "Espace",
+    "enter": "Entrée",
+    "escape": "Échap",
+    "example": "ex. :"
   }
 }

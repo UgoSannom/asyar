@@ -144,7 +144,9 @@
       "wayland_hotkey_hint": "No Wayland ({compositor}), vincule asyar-summon no seu compositor ou nas configurações de atalhos da área de trabalho para abrir o Asyar instantaneamente.",
       "wayland_copy_cmd": "Copiar",
       "wayland_copied": "✓ Copiado",
-      "section_behavior": "Comportamento"
+      "section_behavior": "Comportamento",
+      "show_tray_icon_tray": "Mostrar ícone na bandeja do sistema",
+      "show_tray_icon_tray_description": "Manter o Asyar acessível pela bandeja do sistema"
     },
     "appearance": {
       "theme": "Tema",
@@ -3641,5 +3643,12 @@
     "window_mode": {
       "aria": "Modo de janela {mode}"
     }
+  },
+  "keys": {
+    "shift": "Shift",
+    "space": "Espaço",
+    "enter": "Enter",
+    "escape": "Esc",
+    "example": "ex.:"
   }
 }

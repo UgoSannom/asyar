@@ -25,6 +25,7 @@
   import { clampUiScale, DEFAULT_UI_SCALE, UI_SCALE_OPTIONS } from '../../../lib/launcher/uiScale';
   import { feedbackService } from '../../../services/feedback/feedbackService.svelte';
   import { t } from '../../../services/i18n';
+  import { getHostPlatform } from '../../../lib/keyboard/hostPlatform';
   import { launcherPlacementService } from '../../../services/launcher/launcherPlacementService.svelte';
   import { logService } from '../../../services/log/logService';
   import { settingsService } from '../../../services/settings/settingsService.svelte';
@@ -33,6 +34,8 @@
   import type { SettingsHandler } from '../settingsHandlers.svelte';
   import type { PopToRootDelay } from '../../../services/settings/types/AppSettingsType';
   import { resolveEscapeBehavior, type EscapeBehavior } from '../../../lib/keyboard/escapeBehavior';
+
+  const isMacHost = getHostPlatform() === 'macos';
 
   let {
     handler,
@@ -293,9 +296,15 @@
       </div>
     {/if}
     <SettingsRow
-      label={t('settings.general.show_tray_icon')}
+      label={t(
+        isMacHost ? 'settings.general.show_tray_icon' : 'settings.general.show_tray_icon_tray',
+      )}
       description={handler.settings.general.showTrayIcon
-        ? t('settings.general.show_tray_icon_description')
+        ? t(
+            isMacHost
+              ? 'settings.general.show_tray_icon_description'
+              : 'settings.general.show_tray_icon_tray_description',
+          )
         : t('settings.general.show_tray_icon_tip')}
     >
       <Toggle
@@ -303,15 +312,17 @@
         onchange={() => handler.handleTrayIconToggle()}
       />
     </SettingsRow>
-    <SettingsRow
-      label={t('settings.general.show_dock_icon')}
-      description={t('settings.general.show_dock_icon_description')}
-    >
-      <Toggle
-        checked={handler.settings.general.showDockIcon}
-        onchange={() => handler.handleDockIconToggle()}
-      />
-    </SettingsRow>
+    {#if isMacHost}
+      <SettingsRow
+        label={t('settings.general.show_dock_icon')}
+        description={t('settings.general.show_dock_icon_description')}
+      >
+        <Toggle
+          checked={handler.settings.general.showDockIcon}
+          onchange={() => handler.handleDockIconToggle()}
+        />
+      </SettingsRow>
+    {/if}
   </div>
 </SettingsCard>
 

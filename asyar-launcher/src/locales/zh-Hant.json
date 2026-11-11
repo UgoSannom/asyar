@@ -144,7 +144,9 @@
       "wayland_hotkey_hint": "在 Wayland（{compositor}）上，請在合成器或桌面快速鍵設定中綁定 asyar-summon，以實現瞬時全域喚起。",
       "wayland_copy_cmd": "複製",
       "wayland_copied": "✓ 已複製",
-      "section_behavior": "行為"
+      "section_behavior": "行為",
+      "show_tray_icon_tray": "在系統匣中顯示圖示",
+      "show_tray_icon_tray_description": "讓 Asyar 可從系統匣存取"
     },
     "appearance": {
       "theme": "主題",
@@ -3641,5 +3643,12 @@
     "window_mode": {
       "aria": "{mode}視窗模式"
     }
+  },
+  "keys": {
+    "shift": "Shift",
+    "space": "空白鍵",
+    "enter": "Enter",
+    "escape": "Esc",
+    "example": "例如"
   }
 }

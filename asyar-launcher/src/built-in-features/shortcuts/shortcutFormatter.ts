@@ -1,4 +1,27 @@
 import { getHostPlatform, type HostPlatform } from '../../lib/keyboard/hostPlatform';
+import { t } from '../../services/i18n';
+
+/** Key names that have a localized keycap label (e.g. French "Maj", "Entrée"). */
+const LOCALIZED_KEY_IDS: Record<string, string> = {
+  Shift: 'shift',
+  Space: 'space',
+  Enter: 'enter',
+  Esc: 'escape',
+  Escape: 'escape',
+};
+
+/**
+ * The keycap text for a named key in the active UI language: `Shift` → "Maj",
+ * `Space` → "Espace", `Enter` → "Entrée" in French. Anything else (letters,
+ * glyphs, `Ctrl`, `Alt`, `Tab`) is returned unchanged, as is English.
+ */
+export function localizeKeyName(label: string): string {
+  const id = LOCALIZED_KEY_IDS[label];
+  if (!id) return label;
+  const key = `keys.${id}`;
+  const value = t(key);
+  return value === key ? label : value;
+}
 
 export const MODIFIER_KEYS = ['Meta', 'Shift', 'Alt', 'Control'];
 
@@ -176,7 +199,7 @@ export function toDisplayString(s: string, platform: HostPlatform = getHostPlatf
       return `${HYPER_SYMBOL}${key}`;
     }
     if (platform !== 'macos') {
-      return [...modifiers.map((m) => modifierLabel(m, platform)), key].join('+');
+      return [...modifiers.map((m) => modifierLabel(m, platform)), localizeKeyName(key)].join('+');
     }
   }
   return s
@@ -204,7 +227,7 @@ const PLAIN_MODIFIER_LABEL: Record<string, string> = {
 export function modifierLabel(m: string, platform: HostPlatform = getHostPlatform()): string {
   if (platform === 'macos') return m === 'Mod' ? '⌘' : (MODIFIER_SYMBOL[m] ?? m);
   if (m === 'Super' && platform === 'windows') return 'Win';
-  return PLAIN_MODIFIER_LABEL[m] ?? m;
+  return localizeKeyName(PLAIN_MODIFIER_LABEL[m] ?? m);
 }
 
 /**
@@ -249,14 +272,17 @@ export function toDisplayKeys(s: string, platform: HostPlatform = getHostPlatfor
   const parts = s.split('+');
   if (parts.length === 1) {
     const key = parts[0];
-    return [KEY_SYMBOL[key] ?? key];
+    return [KEY_SYMBOL[key] ?? localizeKeyName(key)];
   }
   const key = parts[parts.length - 1];
   const modifiers = parts.slice(0, -1);
   if (isHyperModifier(modifiers)) {
-    return [HYPER_SYMBOL, KEY_SYMBOL[key] ?? key];
+    return [HYPER_SYMBOL, KEY_SYMBOL[key] ?? localizeKeyName(key)];
   }
-  return [...modifiers.map((m) => modifierLabel(m, platform)), KEY_SYMBOL[key] ?? key];
+  return [
+    ...modifiers.map((m) => modifierLabel(m, platform)),
+    KEY_SYMBOL[key] ?? localizeKeyName(key),
+  ];
 }
 
 /** The physical key of a keydown event, unaffected by Shift/Alt. */
