@@ -10,6 +10,7 @@
   import { isAnyModalOpen } from '../../components/base/Modal.logic';
   import { scrollSelectedIntoView, resetListScroll } from '../../lib/listScroll';
   import { t } from '../../services/i18n';
+  import { modPrefix } from '../shortcuts/shortcutFormatter';
 
   const deps = $derived({ service: agentService, manager: agentsManager, viewManager });
   const agents = $derived(agentService.agents);
@@ -94,7 +95,7 @@
   {#if agents.length === 0}
     <EmptyState
       message={t('features.agents.no_agents')}
-      description={t('features.agents.no_agents_description')}
+      description={t('features.agents.no_agents_description', { mod: modPrefix() })}
     />
   {:else}
     <div class="agents-list custom-scrollbar" bind:this={listEl}>

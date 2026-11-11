@@ -17,6 +17,10 @@ import {
   KEY_DISPLAY,
   DOM_TO_MODIFIER,
   isBareKeyAllowed,
+  modifierLabel,
+  modPrefix,
+  toInlineShortcut,
+  fillModifierTokens,
 } from './shortcutFormatter';
 
 beforeEach(() => {
@@ -74,76 +78,76 @@ beforeEach(() => {
 
 // ── toDisplayString ───────────────────────────────────────────────────────────
 
-describe('toDisplayString', () => {
+describe('toDisplayString on macOS', () => {
   it('converts Super to ⌘', () => {
-    expect(toDisplayString('Super+K')).toBe('⌘K');
+    expect(toDisplayString('Super+K', 'macos')).toBe('⌘K');
   });
 
   it('converts Shift to ⇧', () => {
-    expect(toDisplayString('Shift+A')).toBe('⇧A');
+    expect(toDisplayString('Shift+A', 'macos')).toBe('⇧A');
   });
 
   it('converts Alt to ⌥', () => {
-    expect(toDisplayString('Alt+Space')).toBe('⌥Space');
+    expect(toDisplayString('Alt+Space', 'macos')).toBe('⌥Space');
   });
 
   it('converts Control to ⌃', () => {
-    expect(toDisplayString('Control+C')).toBe('⌃C');
+    expect(toDisplayString('Control+C', 'macos')).toBe('⌃C');
   });
 
   it('handles multi-modifier shortcuts', () => {
-    expect(toDisplayString('Super+Shift+K')).toBe('⌘⇧K');
+    expect(toDisplayString('Super+Shift+K', 'macos')).toBe('⌘⇧K');
   });
 
   it('removes all + separators', () => {
-    expect(toDisplayString('Super+Alt+F')).toBe('⌘⌥F');
+    expect(toDisplayString('Super+Alt+F', 'macos')).toBe('⌘⌥F');
   });
 
   it('leaves plain keys unchanged', () => {
-    expect(toDisplayString('K')).toBe('K');
+    expect(toDisplayString('K', 'macos')).toBe('K');
   });
 
   it('formats Hyper combination (all 4 modifiers) with ✦ glyph', () => {
-    expect(toDisplayString('Control+Alt+Shift+Super+A')).toBe('✦A');
-    expect(toDisplayString('Super+Shift+Alt+Control+K')).toBe('✦K');
-    expect(toDisplayString('Hyper+K')).toBe('✦K');
+    expect(toDisplayString('Control+Alt+Shift+Super+A', 'macos')).toBe('✦A');
+    expect(toDisplayString('Super+Shift+Alt+Control+K', 'macos')).toBe('✦K');
+    expect(toDisplayString('Hyper+K', 'macos')).toBe('✦K');
   });
 });
 
 // ── toDisplayKeys ─────────────────────────────────────────────────────────────
 
-describe('toDisplayKeys', () => {
+describe('toDisplayKeys on macOS', () => {
   it('splits a single-modifier shortcut into [symbol, key]', () => {
-    expect(toDisplayKeys('Super+K')).toEqual(['⌘', 'K']);
+    expect(toDisplayKeys('Super+K', 'macos')).toEqual(['⌘', 'K']);
   });
 
   it('splits a multi-modifier shortcut, one chip per part', () => {
-    expect(toDisplayKeys('Super+Shift+K')).toEqual(['⌘', '⇧', 'K']);
+    expect(toDisplayKeys('Super+Shift+K', 'macos')).toEqual(['⌘', '⇧', 'K']);
   });
 
   it('collapses all 4 modifiers into the Hyper ✦ chip', () => {
-    expect(toDisplayKeys('Control+Alt+Shift+Super+A')).toEqual(['✦', 'A']);
-    expect(toDisplayKeys('Super+Shift+Alt+Control+K')).toEqual(['✦', 'K']);
-    expect(toDisplayKeys('Hyper+K')).toEqual(['✦', 'K']);
+    expect(toDisplayKeys('Control+Alt+Shift+Super+A', 'macos')).toEqual(['✦', 'A']);
+    expect(toDisplayKeys('Super+Shift+Alt+Control+K', 'macos')).toEqual(['✦', 'K']);
+    expect(toDisplayKeys('Hyper+K', 'macos')).toEqual(['✦', 'K']);
   });
 
   it('does not collapse when fewer than 4 modifiers are present', () => {
-    expect(toDisplayKeys('Control+Alt+Super+A')).toEqual(['⌃', '⌥', '⌘', 'A']);
+    expect(toDisplayKeys('Control+Alt+Super+A', 'macos')).toEqual(['⌃', '⌥', '⌘', 'A']);
   });
 
   it('passes through plain key when no modifier is present', () => {
-    expect(toDisplayKeys('K')).toEqual(['K']);
+    expect(toDisplayKeys('K', 'macos')).toEqual(['K']);
   });
 
   it('passes through multi-character keys like F12 unchanged', () => {
-    expect(toDisplayKeys('Control+F12')).toEqual(['⌃', 'F12']);
+    expect(toDisplayKeys('Control+F12', 'macos')).toEqual(['⌃', 'F12']);
   });
 
   it('maps non-modifier keys with conventional glyphs (Backspace, Enter, Tab, arrows)', () => {
-    expect(toDisplayKeys('Super+Backspace')).toEqual(['⌘', '⌫']);
-    expect(toDisplayKeys('Enter')).toEqual(['↵']);
-    expect(toDisplayKeys('Tab')).toEqual(['⇥']);
-    expect(toDisplayKeys('ArrowUp')).toEqual(['↑']);
+    expect(toDisplayKeys('Super+Backspace', 'macos')).toEqual(['⌘', '⌫']);
+    expect(toDisplayKeys('Enter', 'macos')).toEqual(['↵']);
+    expect(toDisplayKeys('Tab', 'macos')).toEqual(['⇥']);
+    expect(toDisplayKeys('ArrowUp', 'macos')).toEqual(['↑']);
   });
 });
 
@@ -500,7 +504,66 @@ describe('toDisplayKeys with the platform-neutral Mod modifier', () => {
     expect(toDisplayKeys('F5', 'macos')).toEqual(['F5']);
   });
 
-  it('keeps rendering physical-modifier shortcuts as before', () => {
-    expect(toDisplayKeys('Super+Shift+K')).toEqual(['⌘', '⇧', 'K']);
+  it('keeps rendering physical-modifier shortcuts with glyphs on macOS', () => {
+    expect(toDisplayKeys('Super+Shift+K', 'macos')).toEqual(['⌘', '⇧', 'K']);
+  });
+});
+
+describe('physical-modifier shortcuts off macOS', () => {
+  it('names the modifiers instead of drawing macOS glyphs', () => {
+    expect(toDisplayKeys('Alt+Space', 'windows')).toEqual(['Alt', '␣']);
+    expect(toDisplayKeys('Control+Alt+Shift+F12', 'other')).toEqual([
+      'Ctrl',
+      'Alt',
+      'Shift',
+      'F12',
+    ]);
+    expect(toDisplayString('Alt+Space', 'windows')).toBe('Alt+Space');
+    expect(toDisplayString('Control+Shift+K', 'other')).toBe('Ctrl+Shift+K');
+  });
+
+  it('calls the logo key Win on Windows and Super on Linux', () => {
+    expect(toDisplayKeys('Super+Shift+K', 'windows')).toEqual(['Win', 'Shift', 'K']);
+    expect(toDisplayKeys('Super+Shift+K', 'other')).toEqual(['Super', 'Shift', 'K']);
+    expect(toDisplayString('Super+K', 'windows')).toBe('Win+K');
+  });
+
+  it('keeps the Hyper glyph, which is not a macOS key', () => {
+    expect(toDisplayKeys('Hyper+K', 'windows')).toEqual(['✦', 'K']);
+    expect(toDisplayString('Control+Alt+Shift+Super+A', 'windows')).toBe('✦A');
+  });
+});
+
+describe('modifierLabel', () => {
+  it('draws glyphs on macOS and names keys elsewhere', () => {
+    expect(
+      ['Mod', 'Control', 'Alt', 'Shift', 'Super'].map((m) => modifierLabel(m, 'macos')),
+    ).toEqual(['⌘', '⌃', '⌥', '⇧', '⌘']);
+    expect(
+      ['Mod', 'Control', 'Alt', 'Shift', 'Super'].map((m) => modifierLabel(m, 'windows')),
+    ).toEqual(['Ctrl', 'Ctrl', 'Alt', 'Shift', 'Win']);
+  });
+});
+
+describe('inline shortcut labels for prose and single keycaps', () => {
+  it('runs keycaps together on macOS, exactly as the old hard-coded labels', () => {
+    expect(toInlineShortcut('Mod+K', 'macos')).toBe('⌘K');
+    expect(toInlineShortcut('Mod+S', 'macos')).toBe('⌘S');
+    expect(toInlineShortcut('Super+Shift+D', 'macos')).toBe('⌘⇧D');
+  });
+
+  it('joins named keycaps with + on Windows and Linux', () => {
+    expect(toInlineShortcut('Mod+K', 'windows')).toBe('Ctrl+K');
+    expect(toInlineShortcut('Mod+S', 'other')).toBe('Ctrl+S');
+    expect(toInlineShortcut('Super+Shift+D', 'windows')).toBe('Win+Shift+D');
+  });
+
+  it('fills the {mod} catalog token with ⌘ on macOS and Ctrl+ elsewhere', () => {
+    expect(modPrefix('macos')).toBe('⌘');
+    expect(modPrefix('windows')).toBe('Ctrl+');
+    expect(modPrefix('other')).toBe('Ctrl+');
+    const body = 'Open **Actions** with **{mod}K**.';
+    expect(fillModifierTokens(body, 'macos')).toBe('Open **Actions** with **⌘K**.');
+    expect(fillModifierTokens(body, 'windows')).toBe('Open **Actions** with **Ctrl+K**.');
   });
 });

@@ -2,7 +2,7 @@
   import { shortcutStore, type ItemShortcut } from './shortcutStore.svelte';
   import { shortcutViewState } from './shortcutViewState.svelte';
   import { shortcutService } from './shortcutService';
-  import { toDisplayKeys } from './shortcutFormatter';
+  import { toDisplayKeys, modPrefix } from './shortcutFormatter';
   import {
     SplitListDetail,
     LauncherListRow,
@@ -153,7 +153,7 @@
       {:else if shortcutStore.shortcuts.length === 0}
         <EmptyState
           message={t('features.shortcuts.no_shortcuts')}
-          description={t('features.shortcuts.no_shortcuts_description')}
+          description={t('features.shortcuts.no_shortcuts_description', { mod: modPrefix() })}
         >
           {#snippet icon()}
             <span class="text-4xl opacity-50">⌨️</span>

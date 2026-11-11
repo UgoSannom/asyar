@@ -161,7 +161,12 @@ export function isValidKey(key: string): boolean {
   return VALID_KEYS.has(key);
 }
 
-export function toDisplayString(s: string): string {
+/**
+ * A shortcut as one compact string, e.g. `⌘⇧K` on macOS. Elsewhere the
+ * modifiers are named and joined with `+` (`Ctrl+Shift+K`), the way Windows
+ * and Linux write shortcuts.
+ */
+export function toDisplayString(s: string, platform: HostPlatform = getHostPlatform()): string {
   if (!s) return '';
   const parts = s.split('+');
   if (parts.length > 1) {
@@ -169,6 +174,9 @@ export function toDisplayString(s: string): string {
     const modifiers = parts.slice(0, -1);
     if (isHyperModifier(modifiers)) {
       return `${HYPER_SYMBOL}${key}`;
+    }
+    if (platform !== 'macos') {
+      return [...modifiers.map((m) => modifierLabel(m, platform)), key].join('+');
     }
   }
   return s
@@ -185,17 +193,56 @@ const PLAIN_MODIFIER_LABEL: Record<string, string> = {
   Control: 'Ctrl',
   Alt: 'Alt',
   Shift: 'Shift',
+  Super: 'Super',
 };
 
-const PLATFORM_ADAPTIVE_ACTION_CHORDS = new Set(['Alt+Enter', 'Control+X', 'Control+Shift+X']);
+/**
+ * The keycap for one modifier on `platform`: the ⌘⌥⇧⌃ glyphs on macOS,
+ * `Ctrl`/`Alt`/`Shift` elsewhere, with the logo key named `Win` on Windows and
+ * `Super` on Linux. `Mod` is ⌘ on macOS and Ctrl elsewhere.
+ */
+export function modifierLabel(m: string, platform: HostPlatform = getHostPlatform()): string {
+  if (platform === 'macos') return m === 'Mod' ? '⌘' : (MODIFIER_SYMBOL[m] ?? m);
+  if (m === 'Super' && platform === 'windows') return 'Win';
+  return PLAIN_MODIFIER_LABEL[m] ?? m;
+}
+
+/**
+ * The primary-modifier prefix for prose (`{mod}K`, `{mod},`): `⌘` on macOS,
+ * `Ctrl+` elsewhere, so "⌘K" reads "Ctrl+K" on Windows and Linux.
+ */
+export function modPrefix(platform: HostPlatform = getHostPlatform()): string {
+  return platform === 'macos' ? '⌘' : 'Ctrl+';
+}
+
+/**
+ * Fills the `{mod}` token of text that is not passed through `t()` (a
+ * walkthrough task's Markdown body) with `modPrefix`, so "{mod}K" reads "⌘K" on
+ * macOS and "Ctrl+K" elsewhere.
+ */
+export function fillModifierTokens(
+  text: string,
+  platform: HostPlatform = getHostPlatform(),
+): string {
+  return text.replaceAll('{mod}', modPrefix(platform));
+}
+
+/**
+ * A shortcut as one inline label for running text or a single keycap: the
+ * keycaps of `toDisplayKeys` run together on macOS (`⌘K`) and joined with `+`
+ * elsewhere (`Ctrl+K`).
+ */
+export function toInlineShortcut(s: string, platform: HostPlatform = getHostPlatform()): string {
+  return toDisplayKeys(s, platform).join(platform === 'macos' ? '' : '+');
+}
 
 /**
  * Splits a `Super+Shift+K` shortcut into per-chip glyphs: `['⌘', '⇧', 'K']`.
  *
- * An action shortcut (using `Mod` or one of the canonical cross-platform action
- * chords) renders for `platform`: ⌘⌥⇧⌃ glyphs on macOS, `Ctrl`/`Alt`/`Shift`
- * keycaps elsewhere. Physical-modifier shortcuts (user-assigned global hotkeys)
- * are unaffected.
+ * Every shortcut renders for `platform`: ⌘⌥⇧⌃ glyphs on macOS, `Ctrl`/`Alt`/
+ * `Shift` (and `Win`/`Super` for the logo key) keycaps elsewhere. An action's
+ * `Mod` is ⌘ on macOS and Ctrl elsewhere; physical modifiers (user-assigned
+ * global hotkeys) keep their own key, only its name changes.
  */
 export function toDisplayKeys(s: string, platform: HostPlatform = getHostPlatform()): string[] {
   if (!s) return [];
@@ -209,14 +256,7 @@ export function toDisplayKeys(s: string, platform: HostPlatform = getHostPlatfor
   if (isHyperModifier(modifiers)) {
     return [HYPER_SYMBOL, KEY_SYMBOL[key] ?? key];
   }
-  if (modifiers.includes('Mod') || PLATFORM_ADAPTIVE_ACTION_CHORDS.has(s)) {
-    const glyphs = platform === 'macos';
-    const caps = modifiers.map((m) =>
-      glyphs ? (m === 'Mod' ? '⌘' : (MODIFIER_SYMBOL[m] ?? m)) : (PLAIN_MODIFIER_LABEL[m] ?? m),
-    );
-    return [...caps, KEY_SYMBOL[key] ?? key];
-  }
-  return s.split('+').map((part) => MODIFIER_SYMBOL[part] ?? KEY_SYMBOL[part] ?? part);
+  return [...modifiers.map((m) => modifierLabel(m, platform)), KEY_SYMBOL[key] ?? key];
 }
 
 /** The physical key of a keydown event, unaffected by Shift/Alt. */

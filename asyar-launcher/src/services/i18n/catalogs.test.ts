@@ -120,4 +120,27 @@ describe('Translation Catalog Integrity', () => {
       checkPlaceholders(en.catalog, catalog);
     });
   }
+
+  // Shortcut hints in prose say `{mod}K`, filled with ⌘ on macOS and Ctrl+
+  // elsewhere; a literal ⌘⌥⇧⌃ would show macOS keys on Windows and Linux.
+  // Only strings that are shown on macOS alone may carry a glyph.
+  const MACOS_ONLY_KEYS = new Set(['settings.general.show_dock_icon_description']);
+  for (const { name, catalog } of catalogs) {
+    it(`${name} writes no macOS modifier glyph outside macOS-only strings`, () => {
+      const offenders = [...getKeys(catalog)].filter((key) => {
+        if (MACOS_ONLY_KEYS.has(key)) return false;
+        const value = key.split('.').reduce<any>((node, part) => node?.[part], catalog);
+        return typeof value === 'string' && /[⌘⌥⇧⌃]/.test(value);
+      });
+      expect(offenders).toEqual([]);
+    });
+  }
+
+  it('renders the {mod} hints exactly as the former macOS text', () => {
+    const agents = (enCatalog as Record<string, any>).features.agents;
+    expect(agents.streaming_cancel.replaceAll('{mod}', '⌘')).toBe('Streaming… ⌘K to cancel');
+    expect((enCatalog as Record<string, any>).onboarding.theme_desc.replaceAll('{mod}', '⌘')).toBe(
+      'Switch anytime from Settings (⌘,) → Appearance. Themes change the palette, contrast, and accent highlights.',
+    );
+  });
 });

@@ -3,7 +3,6 @@ import { resumeAllShortcuts, pauseAllShortcuts } from './ipc/commands';
 import {
   MODIFIER_KEYS,
   MODIFIER_ORDER,
-  MODIFIER_SYMBOL,
   CODE_TO_KEY,
   KEY_DISPLAY,
   DOM_TO_MODIFIER,
@@ -11,6 +10,7 @@ import {
   isBareKeyAllowed,
   isHyperModifier,
   HYPER_SYMBOL,
+  modifierLabel,
 } from '../built-in-features/shortcuts/shortcutFormatter';
 
 export interface CaptureConfig {
@@ -33,8 +33,9 @@ export interface CaptureState {
   conflictInfo: string | null;
 }
 
+/** The modifier's keycap for this platform: ⌥ on macOS, Alt on Windows and Linux. */
 function modifierSymbol(mod: string): string {
-  return MODIFIER_SYMBOL[mod] ?? mod;
+  return modifierLabel(mod);
 }
 
 function displayKey(k: string): string {

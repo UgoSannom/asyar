@@ -6,6 +6,7 @@
     isHyperModifier,
     HYPER_SYMBOL,
   } from '../../built-in-features/shortcuts/shortcutFormatter';
+  import { getHostPlatform } from '../../lib/keyboard/hostPlatform';
   import { t } from '../../services/i18n';
 
   let {
@@ -89,6 +90,9 @@
     return () => capture.stopRecording({ notifyCancel: false });
   });
 
+  // The "e.g." chord: ⇧⌘ on macOS, Ctrl+Shift where the logo key belongs to the OS.
+  const exampleModifierChips = getHostPlatform() === 'macos' ? ['⇧', '⌘'] : ['Ctrl', 'Shift'];
+
   let idleChips = $derived.by(() => {
     if (key) {
       if (modifier) {
@@ -150,8 +154,9 @@
           </div>
         {:else if capture.state.rejectedKeys.length > 0}
           <div class="key-chips">
-            <span class="chip example-chip">⇧</span>
-            <span class="chip example-chip">⌘</span>
+            {#each exampleModifierChips as chip}
+              <span class="chip example-chip">{chip}</span>
+            {/each}
             <span class="chip-separator example-separator">+</span>
             {#each capture.state.rejectedKeys.filter((k) => !capture.state.invalidKeys.has(k)) as rk}
               <span class="chip recording-chip">{capture.displayKey(rk)}</span>
@@ -171,8 +176,9 @@
         {:else}
           <div class="key-chips">
             <span class="example-label">e.g.</span>
-            <span class="chip example-chip">⇧</span>
-            <span class="chip example-chip">⌘</span>
+            {#each exampleModifierChips as chip}
+              <span class="chip example-chip">{chip}</span>
+            {/each}
             <span class="chip-separator example-separator">+</span>
             <span class="chip example-chip">B</span>
           </div>

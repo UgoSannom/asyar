@@ -1,5 +1,6 @@
 <script lang="ts">
   import { t } from '../../services/i18n';
+  import { toDisplayKeys } from '../../built-in-features/shortcuts/shortcutFormatter';
   import Spinner from '../base/Spinner.svelte';
   import { feedbackService } from '../../services/feedback/feedbackService.svelte';
   import { DIAGNOSTIC_MESSAGES } from '../../services/diagnostics/messages';
@@ -62,7 +63,7 @@
     {/if}
     {#if current.retryable && current.retryActionId}
       <button type="button" class="feedback-action" onclick={onRetry}>
-        <KeyboardHint keys={['⌘', 'R']} action={t('common.retry')} />
+        <KeyboardHint keys={toDisplayKeys('Mod+R')} action={t('common.retry')} />
       </button>
     {/if}
     {#if current.severity === 'error'}

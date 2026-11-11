@@ -11,6 +11,7 @@
   import PanelIpc from './PanelIpc.svelte';
   import { inspectorStore } from '../../services/dev/inspectorStore.svelte';
   import { logService } from '../../services/log/logService';
+  import { toInlineShortcut } from '../../built-in-features/shortcuts/shortcutFormatter';
 
   // Dev-only side panel. Rendering of this component is gated in the route
   // by `{#if import.meta.env.DEV}` + dynamic import, so the module never
@@ -89,7 +90,7 @@
         type="button"
         class="close-btn"
         onclick={() => (inspectorStore.isOpen = false)}
-        title="Close (⌘⇧D)"
+        title={`Close (${toInlineShortcut('Super+Shift+D')})`}
       >
         ✕
       </button>

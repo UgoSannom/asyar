@@ -11,6 +11,7 @@
   import { ActionContext } from 'asyar-sdk/contracts';
   import { t } from '../../services/i18n';
   import { userErrorMessage } from '../../lib/userErrorMessage';
+  import { modPrefix } from '../shortcuts/shortcutFormatter';
 
   interface Props {
     store?: IStorageService;
@@ -145,7 +146,7 @@
     {#if layouts.length === 0}
       <EmptyState
         message={t('features.window_management.no_layouts')}
-        description={t('features.window_management.no_layouts_description')}
+        description={t('features.window_management.no_layouts_description', { mod: modPrefix() })}
       />
     {:else}
       <div class="section-header">{t('features.window_management.custom_layouts_header')}</div>

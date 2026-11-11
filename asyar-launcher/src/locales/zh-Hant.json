@@ -896,7 +896,7 @@
     "wayland_hint_bind_and_press": "在下方綁定 asyar-summon，然後按 {shortcut}",
     "theme_title": "讓它變成你的",
     "theme_heading": "挑一個適合你工作環境的外觀",
-    "theme_desc": "隨時可在設定（⌘,）→ 外觀中切換。主題會改變配色、對比度和高亮強調色。",
+    "theme_desc": "隨時可在設定（{mod},）→ 外觀中切換。主題會改變配色、對比度和高亮強調色。",
     "browser_title": "瀏覽器增強",
     "browser_heading": "搜尋標籤頁、歷史記錄和書籤",
     "browser_desc": "Asyar 與你的瀏覽器協同工作，可直接從搜尋欄搜尋開啟的標籤頁、最近歷史記錄和書籤。",
@@ -1216,7 +1216,7 @@
       "ui": {
         "all": "所有筆記",
         "untitled": "未命名筆記",
-        "body_placeholder": "開始書寫…按 ⌘Enter 可跳轉游標處的 [[連結]]。",
+        "body_placeholder": "開始書寫…按 {mod}Enter 可跳轉游標處的 [[連結]]。",
         "linked_mentions": "連結提及",
         "create_first": "建立你的第一則筆記",
         "words": "字數",
@@ -1261,7 +1261,7 @@
       "next_display": "下一臺顯示器",
       "previous_display": "上一臺顯示器",
       "no_layouts": "暫無自訂佈局",
-      "no_layouts_description": "把任意視窗擺放到螢幕上的位置，然後按 ⌘N（或 ⌘K → 將目前視窗儲存為佈局）來捕獲它。",
+      "no_layouts_description": "把任意視窗擺放到螢幕上的位置，然後按 {mod}N（或 {mod}K → 將目前視窗儲存為佈局）來捕獲它。",
       "custom_layouts_header": "自訂佈局",
       "save_current_layout_title": "將目前視窗儲存為佈局",
       "save_current_layout_desc": "把最前面視窗的位置和尺寸儲存為自訂佈局",
@@ -1306,7 +1306,7 @@
     "shortcuts": {
       "title": "快速鍵",
       "no_shortcuts": "尚未設定快速鍵",
-      "no_shortcuts_description": "在任意搜尋結果上按 ⌘K，然後選擇「分配快速鍵」即可新增。",
+      "no_shortcuts_description": "在任意搜尋結果上按 {mod}K，然後選擇「分配快速鍵」即可新增。",
       "no_matching_shortcuts": "沒有匹配的快速鍵",
       "action_change": "更改",
       "action_remove": "移除",
@@ -1436,10 +1436,10 @@
       "start_chatting_description": "輸入一條訊息即可開始。",
       "no_cached_responses": "暫無快取回覆",
       "no_agents": "暫無智慧代理",
-      "no_agents_description": "開啟操作面板（⌘K）並選擇「新增智慧代理」即可建立。",
+      "no_agents_description": "開啟操作面板（{mod}K）並選擇「新增智慧代理」即可建立。",
       "no_threads": "暫無會話",
       "no_threads_description": "輸入一條訊息以開始第一個會話。",
-      "streaming_cancel": "正在輸出……按 ⌘K 取消",
+      "streaming_cancel": "正在輸出……按 {mod}K 取消",
       "tools_unavailable_cli": "{engine}（CLI）無法使用這些工具：{tools}。如需使用，請在「設定 → AI」中將此提供者切換為 API 金鑰。",
       "tools_unavailable_agy": "Antigravity（CLI）無法使用工具，因此此聊天將在沒有以下工具的情況下執行：{tools}。如需使用工具，請在「設定 → AI」中將此提供者切換為 API 金鑰。",
       "you": "你",
@@ -1545,7 +1545,7 @@
       },
       "ui": {
         "ai_thread": "AI 聊天對話",
-        "ai_thread_desc": "此次執行是在 AI 對話中管理的。輸出串流與狀態直接保存在代理聊天介面中。使用指令選單（Cmd+K）可檢視對話。",
+        "ai_thread_desc": "此次執行是在 AI 對話中管理的。輸出串流與狀態直接保存在代理聊天介面中。使用指令選單（{shortcut}）可檢視對話。",
         "failed": "執行失敗",
         "failed_desc": "執行失敗或傳回了錯誤：",
         "exit_nonzero": "指令碼以非零狀態結束。",
@@ -2842,7 +2842,7 @@
         "favorite-an-item": {
           "title": "把常用項目放在手邊",
           "summary": "將常用的應用程式或指令加入我的最愛",
-          "body": "搜尋為空時，我的最愛會固定在最上方，優先於 Asyar 的自動使用排序。我的最愛可以是應用程式或指令，輸入搜尋時仍依相關性排序。\n\n## 完成任務\n\n1. 在啟動器中選取任一應用程式或指令。\n2. 按 **⌘K** 開啟 **操作**。\n3. 選擇 **加入我的最愛**。\n4. 清除搜尋，即可看到它出現在最上方。"
+          "body": "搜尋為空時，我的最愛會固定在最上方，優先於 Asyar 的自動使用排序。我的最愛可以是應用程式或指令，輸入搜尋時仍依相關性排序。\n\n## 完成任務\n\n1. 在啟動器中選取任一應用程式或指令。\n2. 按 **{mod}K** 開啟 **操作**。\n3. 選擇 **加入我的最愛**。\n4. 清除搜尋，即可看到它出現在最上方。"
         }
       }
     },

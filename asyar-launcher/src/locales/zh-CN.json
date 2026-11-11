@@ -896,7 +896,7 @@
     "wayland_hint_bind_and_press": "在下方绑定 asyar-summon，然后按 {shortcut}",
     "theme_title": "让它变成你的",
     "theme_heading": "挑一个适合你工作环境的外观",
-    "theme_desc": "随时可在设置（⌘,）→ 外观中切换。主题会改变配色、对比度和高亮强调色。",
+    "theme_desc": "随时可在设置（{mod},）→ 外观中切换。主题会改变配色、对比度和高亮强调色。",
     "browser_title": "浏览器增强",
     "browser_heading": "搜索标签页、历史记录和书签",
     "browser_desc": "Asyar 与你的浏览器协同工作，可直接从搜索栏搜索打开的标签页、最近历史记录和书签。",
@@ -1216,7 +1216,7 @@
       "ui": {
         "all": "所有笔记",
         "untitled": "无标题笔记",
-        "body_placeholder": "开始书写…按 ⌘Enter 可跳转光标处的 [[链接]]。",
+        "body_placeholder": "开始书写…按 {mod}Enter 可跳转光标处的 [[链接]]。",
         "linked_mentions": "关联提及",
         "create_first": "创建你的第一条笔记",
         "words": "字数",
@@ -1261,7 +1261,7 @@
       "next_display": "下一台显示器",
       "previous_display": "上一台显示器",
       "no_layouts": "暂无自定义布局",
-      "no_layouts_description": "把任意窗口摆放到屏幕上的位置，然后按 ⌘N（或 ⌘K → 将当前窗口保存为布局）来捕获它。",
+      "no_layouts_description": "把任意窗口摆放到屏幕上的位置，然后按 {mod}N（或 {mod}K → 将当前窗口保存为布局）来捕获它。",
       "custom_layouts_header": "自定义布局",
       "save_current_layout_title": "将当前窗口保存为布局",
       "save_current_layout_desc": "把最前面窗口的位置和尺寸保存为自定义布局",
@@ -1306,7 +1306,7 @@
     "shortcuts": {
       "title": "快捷键",
       "no_shortcuts": "尚未配置快捷键",
-      "no_shortcuts_description": "在任意搜索结果上按 ⌘K，然后选择“分配快捷键”即可添加。",
+      "no_shortcuts_description": "在任意搜索结果上按 {mod}K，然后选择“分配快捷键”即可添加。",
       "no_matching_shortcuts": "没有匹配的快捷键",
       "action_change": "更改",
       "action_remove": "移除",
@@ -1436,10 +1436,10 @@
       "start_chatting_description": "输入一条消息即可开始。",
       "no_cached_responses": "暂无缓存回复",
       "no_agents": "暂无智能体",
-      "no_agents_description": "打开操作面板（⌘K）并选择“新建智能体”即可创建。",
+      "no_agents_description": "打开操作面板（{mod}K）并选择“新建智能体”即可创建。",
       "no_threads": "暂无会话",
       "no_threads_description": "输入一条消息以开始第一个会话。",
-      "streaming_cancel": "正在输出……按 ⌘K 取消",
+      "streaming_cancel": "正在输出……按 {mod}K 取消",
       "tools_unavailable_cli": "{engine}（CLI）无法使用这些工具：{tools}。如需使用，请在“设置 → AI”中将此提供商切换为 API 密钥。",
       "tools_unavailable_agy": "Antigravity（CLI）无法使用工具，因此此聊天将在没有以下工具的情况下运行：{tools}。如需使用工具，请在“设置 → AI”中将此提供商切换为 API 密钥。",
       "you": "你",
@@ -1545,7 +1545,7 @@
       },
       "ui": {
         "ai_thread": "AI 聊天对话",
-        "ai_thread_desc": "此次运行是在 AI 对话中管理的。输出流和状态直接保存在智能体聊天界面中。使用命令菜单（Cmd+K）可查看对话。",
+        "ai_thread_desc": "此次运行是在 AI 对话中管理的。输出流和状态直接保存在智能体聊天界面中。使用命令菜单（{shortcut}）可查看对话。",
         "failed": "执行失败",
         "failed_desc": "执行失败或返回了错误：",
         "exit_nonzero": "脚本以非零状态退出。",
@@ -2842,7 +2842,7 @@
         "favorite-an-item": {
           "title": "把常用项放在手边",
           "summary": "收藏一个常用的应用或命令",
-          "body": "搜索为空时，收藏项始终排在顶部，优先于 Asyar 的自动使用排序。收藏可以是应用或命令，输入搜索时仍按相关性排序。\n\n## 完成任务\n\n1. 在启动器中选中任意应用或命令。\n2. 按 **⌘K** 打开 **操作**。\n3. 选择 **添加到收藏**。\n4. 清空搜索，即可看到它出现在顶部。"
+          "body": "搜索为空时，收藏项始终排在顶部，优先于 Asyar 的自动使用排序。收藏可以是应用或命令，输入搜索时仍按相关性排序。\n\n## 完成任务\n\n1. 在启动器中选中任意应用或命令。\n2. 按 **{mod}K** 打开 **操作**。\n3. 选择 **添加到收藏**。\n4. 清空搜索，即可看到它出现在顶部。"
         }
       }
     },

@@ -17,6 +17,7 @@
   import { noteBacklinks } from '../../lib/ipc/commands';
   import WikilinkPicker from './WikilinkPicker.svelte';
   import { t, i18nService } from '../../services/i18n';
+  import { modPrefix } from '../shortcuts/shortcutFormatter';
 
   let filteredNotes = $derived(noteViewState.getFilteredNotes());
   let selectedIndex = $derived(noteViewState.selectedIndex);
@@ -264,7 +265,7 @@
             oninput={handleBodyInput}
             onkeydown={handleBodyKeydown}
             onblur={flushSave}
-            placeholder={t('features.notes.ui.body_placeholder')}
+            placeholder={t('features.notes.ui.body_placeholder', { mod: modPrefix() })}
           ></Textarea>
           {#if wikilinkPickerOpen}
             <WikilinkPicker

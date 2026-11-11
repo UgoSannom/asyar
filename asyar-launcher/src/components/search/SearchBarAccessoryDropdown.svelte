@@ -5,6 +5,7 @@
   import KeyboardHint from '../base/KeyboardHint.svelte';
   import { searchBarAccessoryService } from '../../services/search/searchBarAccessoryService.svelte';
   import { t } from '../../services/i18n';
+  import { toDisplayKeys } from '../../built-in-features/shortcuts/shortcutFormatter';
 
   type Option = { value: string; title: string };
 
@@ -233,7 +234,7 @@
       <polyline points="2,3.5 5,6.5 8,3.5" />
     </svg>
   </button>
-  <KeyboardHint keys={['⌘', 'P']} />
+  <KeyboardHint keys={toDisplayKeys('Mod+P')} />
 
   {#if open}
     <div

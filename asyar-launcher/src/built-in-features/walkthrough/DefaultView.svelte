@@ -7,6 +7,7 @@
   import { walkthroughService } from '../../services/walkthrough/walkthroughService.svelte';
   import { walkthroughViewState } from './walkthroughViewState.svelte';
   import { t } from '../../services/i18n';
+  import { fillModifierTokens } from '../shortcuts/shortcutFormatter';
 
   const progress = $derived(walkthroughService.progress);
   const task = $derived(walkthroughViewState.openTask);
@@ -82,7 +83,7 @@
       {/if}
 
       {#if task.body}
-        <div class="detail-body">{@html renderMarkdown(task.body)}</div>
+        <div class="detail-body">{@html renderMarkdown(fillModifierTokens(task.body))}</div>
       {:else if task.summary}
         <p class="detail-body">{task.summary}</p>
       {/if}

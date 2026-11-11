@@ -16,6 +16,7 @@
   import { scrollSelectedIntoView, resetListScroll } from '../../lib/listScroll';
   import type { Run } from 'asyar-sdk/contracts';
   import { t, i18nService } from '../../services/i18n';
+  import { toInlineShortcut } from '../shortcuts/shortcutFormatter';
 
   let combinedRuns = $derived(runService.combined);
   let selectedRun = $derived(combinedRuns.find((r) => r.id === runService.selectedRunId) ?? null);
@@ -167,7 +168,7 @@
             </div>
             <div class="run-status-content">
               <div class="text-caption">
-                {t('features.runs.ui.ai_thread_desc')}
+                {t('features.runs.ui.ai_thread_desc', { shortcut: toInlineShortcut('Mod+K') })}
               </div>
             </div>
           </div>

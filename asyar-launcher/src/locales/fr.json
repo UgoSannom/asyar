@@ -896,7 +896,7 @@
     "wayland_hint_bind_and_press": "Associez asyar-summon ci-dessous, puis appuyez sur {shortcut}",
     "theme_title": "Personnalisez-le",
     "theme_heading": "Choisissez un style adapté à votre espace de travail",
-    "theme_desc": "Modifiable à tout moment dans Réglages (⌘,) → Apparence. Les thèmes changent la palette, le contraste et la couleur d'accent.",
+    "theme_desc": "Modifiable à tout moment dans Réglages ({mod},) → Apparence. Les thèmes changent la palette, le contraste et la couleur d'accent.",
     "browser_title": "Super-pouvoirs pour le navigateur",
     "browser_heading": "Rechercher dans les onglets, l'historique et les favoris",
     "browser_desc": "Asyar fonctionne avec votre navigateur pour rechercher vos onglets ouverts, votre historique récent et vos favoris directement depuis la barre de recherche.",
@@ -1216,7 +1216,7 @@
       "ui": {
         "all": "Toutes les notes",
         "untitled": "Note sans titre",
-        "body_placeholder": "Commencez à écrire… ⌘Entrée suit un [[lien]] sous le curseur.",
+        "body_placeholder": "Commencez à écrire… {mod}Entrée suit un [[lien]] sous le curseur.",
         "linked_mentions": "Mentions liées",
         "create_first": "Créez votre première note",
         "words": "Mots",
@@ -1261,7 +1261,7 @@
       "next_display": "Écran suivant",
       "previous_display": "Écran précédent",
       "no_layouts": "Aucune disposition personnalisée pour l'instant",
-      "no_layouts_description": "Placez une fenêtre à l'écran et appuyez sur ⌘N (ou ⌘K → Enregistrer la fenêtre actuelle comme disposition) pour la capturer.",
+      "no_layouts_description": "Placez une fenêtre à l'écran et appuyez sur {mod}N (ou {mod}K → Enregistrer la fenêtre actuelle comme disposition) pour la capturer.",
       "custom_layouts_header": "Dispositions personnalisées",
       "save_current_layout_title": "Enregistrer la fenêtre actuelle comme disposition",
       "save_current_layout_desc": "Capturer la position et la taille de la fenêtre au premier plan comme disposition personnalisée",
@@ -1306,7 +1306,7 @@
     "shortcuts": {
       "title": "Raccourcis",
       "no_shortcuts": "Aucun raccourci configuré pour l'instant",
-      "no_shortcuts_description": "Utilisez ⌘K sur n'importe quel résultat de recherche et choisissez « Attribuer un raccourci » pour en ajouter un.",
+      "no_shortcuts_description": "Utilisez {mod}K sur n'importe quel résultat de recherche et choisissez « Attribuer un raccourci » pour en ajouter un.",
       "no_matching_shortcuts": "Aucun raccourci correspondant",
       "action_change": "Modifier",
       "action_remove": "Supprimer",
@@ -1436,10 +1436,10 @@
       "start_chatting_description": "Tapez un message pour commencer.",
       "no_cached_responses": "Aucune réponse en cache pour l'instant",
       "no_agents": "Aucun agent pour l'instant",
-      "no_agents_description": "Ouvrez les actions (⌘K) et choisissez « Nouvel agent » pour en créer un.",
+      "no_agents_description": "Ouvrez les actions ({mod}K) et choisissez « Nouvel agent » pour en créer un.",
       "no_threads": "Aucune conversation",
       "no_threads_description": "Tapez un message pour commencer la première conversation.",
-      "streaming_cancel": "Réponse en cours… ⌘K pour annuler",
+      "streaming_cancel": "Réponse en cours… {mod}K pour annuler",
       "tools_unavailable_cli": "{engine} (CLI) ne peut pas utiliser ces outils : {tools}. Pour les utiliser, passez ce fournisseur sur une clé API dans Réglages → IA.",
       "tools_unavailable_agy": "Antigravity (CLI) ne peut pas utiliser d'outils, cette discussion se fait donc sans : {tools}. Pour utiliser des outils, passez ce fournisseur sur une clé API dans Réglages → IA.",
       "you": "Vous",
@@ -1545,7 +1545,7 @@
       },
       "ui": {
         "ai_thread": "Conversation IA",
-        "ai_thread_desc": "Cette exécution a été gérée dans une conversation IA. Les réponses et leur état sont enregistrés directement dans l'interface de discussion de l'agent. Utilisez le menu de commandes (Cmd+K) pour voir la conversation.",
+        "ai_thread_desc": "Cette exécution a été gérée dans une conversation IA. Les réponses et leur état sont enregistrés directement dans l'interface de discussion de l'agent. Utilisez le menu de commandes ({shortcut}) pour voir la conversation.",
         "failed": "Échec de l'exécution",
         "failed_desc": "L'exécution a échoué ou a renvoyé une erreur :",
         "exit_nonzero": "Le script s'est terminé avec un code d'erreur.",
@@ -2842,7 +2842,7 @@
         "favorite-an-item": {
           "title": "Gardez un favori à portée de main",
           "summary": "Ajoutez aux favoris une application ou une commande fréquente",
-          "body": "Les favoris restent en tête quand la recherche est vide, devant le classement automatique par utilisation d'Asyar. Il peut s'agir d'applications ou de commandes, et les recherches saisies restent classées par pertinence.\n\n## Pour terminer la tâche\n\n1. Sélectionnez une application ou une commande dans le lanceur.\n2. Ouvrez **Actions** avec **⌘K**.\n3. Choisissez **Ajouter aux favoris**.\n4. Effacez la recherche pour la voir en tête."
+          "body": "Les favoris restent en tête quand la recherche est vide, devant le classement automatique par utilisation d'Asyar. Il peut s'agir d'applications ou de commandes, et les recherches saisies restent classées par pertinence.\n\n## Pour terminer la tâche\n\n1. Sélectionnez une application ou une commande dans le lanceur.\n2. Ouvrez **Actions** avec **{mod}K**.\n3. Choisissez **Ajouter aux favoris**.\n4. Effacez la recherche pour la voir en tête."
         }
       }
     },

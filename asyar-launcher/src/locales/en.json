@@ -896,7 +896,7 @@
     "wayland_hint_bind_and_press": "Bind asyar-summon below, then press {shortcut}",
     "theme_title": "Make it yours",
     "theme_heading": "Pick a look that fits your workspace",
-    "theme_desc": "Switch anytime from Settings (⌘,) → Appearance. Themes change the palette, contrast, and accent highlights.",
+    "theme_desc": "Switch anytime from Settings ({mod},) → Appearance. Themes change the palette, contrast, and accent highlights.",
     "browser_title": "Browser power-ups",
     "browser_heading": "Search tabs, history, and bookmarks",
     "browser_desc": "Asyar works with your browser to search open tabs, recent history, and bookmarks directly from the search bar.",
@@ -1216,7 +1216,7 @@
       "ui": {
         "all": "All Notes",
         "untitled": "Untitled Note",
-        "body_placeholder": "Start writing… ⌘Enter follows a [[link]] under the cursor.",
+        "body_placeholder": "Start writing… {mod}Enter follows a [[link]] under the cursor.",
         "linked_mentions": "Linked Mentions",
         "create_first": "Create your first note",
         "words": "Words",
@@ -1261,7 +1261,7 @@
       "next_display": "Next Display",
       "previous_display": "Previous Display",
       "no_layouts": "No custom layouts yet",
-      "no_layouts_description": "Position any window on screen and press ⌘N (or ⌘K → Save Current Window as Layout) to capture it.",
+      "no_layouts_description": "Position any window on screen and press {mod}N (or {mod}K → Save Current Window as Layout) to capture it.",
       "custom_layouts_header": "Custom Layouts",
       "save_current_layout_title": "Save Current Window as Layout",
       "save_current_layout_desc": "Capture the frontmost window position and size as a custom layout",
@@ -1306,7 +1306,7 @@
     "shortcuts": {
       "title": "Shortcuts",
       "no_shortcuts": "No shortcuts configured yet",
-      "no_shortcuts_description": "Use ⌘K on any search result and choose \"Assign Shortcut\" to add one.",
+      "no_shortcuts_description": "Use {mod}K on any search result and choose \"Assign Shortcut\" to add one.",
       "no_matching_shortcuts": "No matching shortcuts",
       "action_change": "Change",
       "action_remove": "Remove",
@@ -1436,10 +1436,10 @@
       "start_chatting_description": "Type a message to begin.",
       "no_cached_responses": "No responses cached yet",
       "no_agents": "No agents yet",
-      "no_agents_description": "Open Actions (⌘K) and pick “New Agent” to create one.",
+      "no_agents_description": "Open Actions ({mod}K) and pick “New Agent” to create one.",
       "no_threads": "No threads",
       "no_threads_description": "Type a message to start the first thread.",
-      "streaming_cancel": "Streaming… ⌘K to cancel",
+      "streaming_cancel": "Streaming… {mod}K to cancel",
       "tools_unavailable_cli": "{engine} (CLI) can't use these tools: {tools}. To use them, switch this provider to an API key in Settings → AI.",
       "tools_unavailable_agy": "Antigravity (CLI) can't use tools, so this chat runs without: {tools}. To use tools, switch this provider to an API key in Settings → AI.",
       "you": "You",
@@ -1545,7 +1545,7 @@
       },
       "ui": {
         "ai_thread": "AI Chat Thread",
-        "ai_thread_desc": "This run was managed inside an AI conversation thread. Output response streams and state are persisted directly within the agent chat interface. Use the command menu (Cmd+K) to View Conversation.",
+        "ai_thread_desc": "This run was managed inside an AI conversation thread. Output response streams and state are persisted directly within the agent chat interface. Use the command menu ({shortcut}) to View Conversation.",
         "failed": "Execution Failed",
         "failed_desc": "The execution failed or returned an error:",
         "exit_nonzero": "Script exited with non-zero status.",
@@ -2842,7 +2842,7 @@
         "favorite-an-item": {
           "title": "Keep a favorite ready",
           "summary": "Favorite an application or command you use often",
-          "body": "Favorites stay at the top when the search is empty, ahead of Asyar's automatic usage ranking. They can be applications or commands, and typed searches still rank by relevance.\n\n## To complete the task\n\n1. Select any application or command in the launcher.\n2. Open **Actions** with **⌘K**.\n3. Choose **Add to favorites**.\n4. Clear the search to see it at the top."
+          "body": "Favorites stay at the top when the search is empty, ahead of Asyar's automatic usage ranking. They can be applications or commands, and typed searches still rank by relevance.\n\n## To complete the task\n\n1. Select any application or command in the launcher.\n2. Open **Actions** with **{mod}K**.\n3. Choose **Add to favorites**.\n4. Clear the search to see it at the top."
         }
       }
     },

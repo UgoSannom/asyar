@@ -896,7 +896,7 @@
     "wayland_hint_bind_and_press": "Vincule o asyar-summon abaixo e pressione {shortcut}",
     "theme_title": "Deixe com a sua cara",
     "theme_heading": "Escolha um visual que combine com seu espaço de trabalho",
-    "theme_desc": "Alterne a qualquer momento em Configurações (⌘,) → Aparência. Os temas alteram a paleta de cores, o contraste e os destaques.",
+    "theme_desc": "Alterne a qualquer momento em Configurações ({mod},) → Aparência. Os temas alteram a paleta de cores, o contraste e os destaques.",
     "browser_title": "Superpoderes para o navegador",
     "browser_heading": "Pesquise abas, histórico e favoritos",
     "browser_desc": "O Asyar integra-se ao seu navegador para pesquisar abas abertas, histórico recente e favoritos diretamente da barra de pesquisa.",
@@ -1216,7 +1216,7 @@
       "ui": {
         "all": "Todas as notas",
         "untitled": "Nota sem título",
-        "body_placeholder": "Comece a escrever… ⌘Enter segue um [[link]] sob o cursor.",
+        "body_placeholder": "Comece a escrever… {mod}Enter segue um [[link]] sob o cursor.",
         "linked_mentions": "Menções vinculadas",
         "create_first": "Crie sua primeira nota",
         "words": "Palavras",
@@ -1261,7 +1261,7 @@
       "next_display": "Próxima Tela",
       "previous_display": "Tela Anterior",
       "no_layouts": "Nenhum layout personalizado ainda",
-      "no_layouts_description": "Posicione qualquer janela na tela e pressione ⌘N (ou ⌘K → Salvar Janela Atual como Layout) para capturá-la.",
+      "no_layouts_description": "Posicione qualquer janela na tela e pressione {mod}N (ou {mod}K → Salvar Janela Atual como Layout) para capturá-la.",
       "custom_layouts_header": "Layouts Personalizados",
       "save_current_layout_title": "Salvar Janela Atual como Layout",
       "save_current_layout_desc": "Captura o tamanho e a posição da janela em primeiro plano como layout personalizado",
@@ -1306,7 +1306,7 @@
     "shortcuts": {
       "title": "Atalhos",
       "no_shortcuts": "Nenhum atalho configurado ainda",
-      "no_shortcuts_description": "Use ⌘K em qualquer resultado de pesquisa e escolha \"Atribuir Atalho\" para adicionar um.",
+      "no_shortcuts_description": "Use {mod}K em qualquer resultado de pesquisa e escolha \"Atribuir Atalho\" para adicionar um.",
       "no_matching_shortcuts": "Nenhum atalho correspondente",
       "action_change": "Alterar",
       "action_remove": "Remover",
@@ -1436,10 +1436,10 @@
       "start_chatting_description": "Digite uma mensagem para começar.",
       "no_cached_responses": "Nenhuma resposta em cache ainda",
       "no_agents": "Nenhum agente ainda",
-      "no_agents_description": "Abra as Ações (⌘K) e selecione “Novo Agente” para criar um.",
+      "no_agents_description": "Abra as Ações ({mod}K) e selecione “Novo Agente” para criar um.",
       "no_threads": "Nenhuma conversa",
       "no_threads_description": "Digite uma mensagem para iniciar a primeira conversa.",
-      "streaming_cancel": "Transmitindo… ⌘K para cancelar",
+      "streaming_cancel": "Transmitindo… {mod}K para cancelar",
       "tools_unavailable_cli": "{engine} (CLI) não pode usar estas ferramentas: {tools}. Para usá-las, mude este provedor para uma chave de API em Configurações → IA.",
       "tools_unavailable_agy": "O Antigravity (CLI) não pode usar ferramentas, então este chat é executado sem: {tools}. Para usar ferramentas, mude este provedor para uma chave de API em Configurações → IA.",
       "you": "Você",
@@ -1545,7 +1545,7 @@
       },
       "ui": {
         "ai_thread": "Conversa de chat com IA",
-        "ai_thread_desc": "Esta execução foi gerenciada dentro de uma conversa de IA. Os fluxos de resposta e o estado são mantidos diretamente na interface de chat do agente. Use o menu de comandos (Cmd+K) para Ver conversa.",
+        "ai_thread_desc": "Esta execução foi gerenciada dentro de uma conversa de IA. Os fluxos de resposta e o estado são mantidos diretamente na interface de chat do agente. Use o menu de comandos ({shortcut}) para Ver conversa.",
         "failed": "Falha na execução",
         "failed_desc": "A execução falhou ou retornou um erro:",
         "exit_nonzero": "O script terminou com status diferente de zero.",
@@ -2842,7 +2842,7 @@
         "favorite-an-item": {
           "title": "Deixe um favorito à mão",
           "summary": "Favorite um aplicativo ou comando que você usa com frequência",
-          "body": "Os favoritos ficam no topo quando a pesquisa está vazia, à frente da classificação automática por uso do Asyar. Podem ser aplicativos ou comandos, e as pesquisas digitadas continuam ordenadas por relevância.\n\n## Para concluir a tarefa\n\n1. Selecione qualquer aplicativo ou comando no lançador.\n2. Abra **Ações** com **⌘K**.\n3. Escolha **Adicionar aos favoritos**.\n4. Limpe a pesquisa para vê-lo no topo."
+          "body": "Os favoritos ficam no topo quando a pesquisa está vazia, à frente da classificação automática por uso do Asyar. Podem ser aplicativos ou comandos, e as pesquisas digitadas continuam ordenadas por relevância.\n\n## Para concluir a tarefa\n\n1. Selecione qualquer aplicativo ou comando no lançador.\n2. Abra **Ações** com **{mod}K**.\n3. Escolha **Adicionar aos favoritos**.\n4. Limpe a pesquisa para vê-lo no topo."
         }
       }
     },

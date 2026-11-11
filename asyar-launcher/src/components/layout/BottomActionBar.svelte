@@ -16,6 +16,7 @@
   import InformationPanel from './InformationPanel.svelte';
   import ShowMoreBarHuds from './ShowMoreBarHuds.svelte';
   import { t } from '../../services/i18n';
+  import { toDisplayKeys } from '../../built-in-features/shortcuts/shortcutFormatter';
   import { appUpdateState } from '../../services/update/appUpdateStore.svelte';
   import { appRelaunch } from '../../lib/ipc/commands';
 
@@ -186,7 +187,7 @@
 
     <BottomBarButton
       label={t('actions.title')}
-      keyHint={['⌘', 'K']}
+      keyHint={toDisplayKeys('Mod+K')}
       onclick={handleActionClick}
       ariaHaspopup="true"
       ariaExpanded={isActionListOpen}

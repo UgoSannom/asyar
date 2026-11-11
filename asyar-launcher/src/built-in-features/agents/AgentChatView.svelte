@@ -43,6 +43,7 @@
   import { actionService } from '../../services/action/actionService.svelte';
   import { ActionContext } from 'asyar-sdk/contracts';
   import { t, i18nService } from '../../services/i18n';
+  import { modPrefix } from '../shortcuts/shortcutFormatter';
   import { isAnyModalOpen } from '../../components/base/Modal.logic';
   import { userErrorMessage } from '../../lib/userErrorMessage';
 
@@ -155,7 +156,7 @@
     const providers = settingsService.currentSettings.ai.providers;
     const plugins = providerRegistry.list();
     const subtitle = sending
-      ? `${agent.name} · ${t('features.agents.streaming_cancel')}`
+      ? `${agent.name} · ${t('features.agents.streaming_cancel', { mod: modPrefix() })}`
       : chatSubtitle(
           {
             ...agent,

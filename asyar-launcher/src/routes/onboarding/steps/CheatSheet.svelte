@@ -4,6 +4,7 @@
   import { settingsService } from '../../../services/settings/settingsService.svelte';
   import { onboardingNav } from '../onboardingNav.svelte';
   import { t } from '../../../services/i18n';
+  import { toInlineShortcut } from '../../../built-in-features/shortcuts/shortcutFormatter';
 
   $effect(() => {
     onboardingNav.set({ primaryLabel: t('onboarding.open_asyar'), onPrimary: completeStep });
@@ -16,7 +17,7 @@
     { keys: `${mod}+${key}`, label: t('onboarding.shortcut_toggle') },
     { keys: 'Tab', label: t('onboarding.shortcut_ai') },
     { keys: 'Space', label: t('onboarding.cheatsheet_quick_look') },
-    { keys: '⌘K', label: t('onboarding.shortcut_action_panel') },
+    { keys: toInlineShortcut('Mod+K'), label: t('onboarding.shortcut_action_panel') },
     { keys: 'Enter', label: t('onboarding.shortcut_run') },
     { keys: 'Esc / ⌫', label: t('onboarding.shortcut_back') },
   ]);

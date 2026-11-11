@@ -1,4 +1,5 @@
 import { t } from '../../services/i18n';
+import { toDisplayKeys } from '../../built-in-features/shortcuts/shortcutFormatter';
 /**
  * Human-readable catalog of launcher-global keyboard shortcuts.
  *
@@ -14,7 +15,10 @@ import { t } from '../../services/i18n';
  * "Quit Asyar" command.
  */
 export interface ShortcutEntry {
-  /** Display tokens, rendered as individual keycaps, e.g. ['⌘', 'K']. */
+  /**
+   * Display tokens, rendered as individual keycaps, e.g. ['⌘', 'K'] on macOS
+   * and ['Ctrl', 'K'] on Windows and Linux.
+   */
   keys: string[];
   /** What the shortcut does, in plain language. */
   label: string;
@@ -24,21 +28,27 @@ export interface ShortcutEntry {
 
 export const LAUNCHER_SHORTCUTS: readonly ShortcutEntry[] = [
   {
-    keys: ['⌘', ','],
+    get keys() {
+      return toDisplayKeys('Mod+,');
+    },
     get label() {
       return t('shortcuts_help.open_settings');
     },
     scope: 'global',
   },
   {
-    keys: ['⌘', 'K'],
+    get keys() {
+      return toDisplayKeys('Mod+K');
+    },
     get label() {
       return t('shortcuts_help.toggle_actions');
     },
     scope: 'global',
   },
   {
-    keys: ['⌘', 'P'],
+    get keys() {
+      return toDisplayKeys('Mod+P');
+    },
     get label() {
       return t('shortcuts_help.toggle_dropdown');
     },

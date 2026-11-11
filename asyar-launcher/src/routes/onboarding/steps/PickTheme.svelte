@@ -11,6 +11,7 @@
   import { logService } from '../../../services/log/logService';
   import { feedbackService } from '../../../services/feedback/feedbackService.svelte';
   import { t } from '../../../services/i18n';
+  import { modPrefix } from '../../../built-in-features/shortcuts/shortcutFormatter';
   import { applyInstalledTheme, installThemeExtension } from './themeSetup';
   import { isExtensionInstalled } from '../../../lib/installedExtensions';
   import { appListen } from '../../../lib/ipc/bridgeEvents';
@@ -195,7 +196,7 @@
 
 <Card>
   <h1>{t('onboarding.theme_heading')}</h1>
-  <p>{t('onboarding.theme_desc')}</p>
+  <p>{t('onboarding.theme_desc', { mod: modPrefix() })}</p>
 
   {#if loading}
     <LoadingState message={t('common.loading')} />

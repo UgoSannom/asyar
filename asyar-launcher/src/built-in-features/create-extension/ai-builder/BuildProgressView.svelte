@@ -14,6 +14,7 @@
   import { runtimeService } from '../../../services/runtime/runtimeService.svelte';
   import { formatRuntimeDownloadStatus } from '../../../services/runtime/runtimeDownloadStatus';
   import { t } from '../../../services/i18n';
+  import { toInlineShortcut } from '../../shortcuts/shortcutFormatter';
 
   // ── local reactive state ──────────────────────────────────────────────────
   let prompt = $state('');
@@ -398,7 +399,7 @@
 
       <p class="text-caption">
         {t('features.create_extension.view.ready_pre')}
-        <KeyboardHint keys="⌘K" />
+        <KeyboardHint keys={toInlineShortcut('Mod+K')} />
         {t('features.create_extension.view.ready_post')}
       </p>
 
@@ -419,9 +420,9 @@
       {/if}
 
       <p class="text-caption">
-        {t('features.create_extension.view.failed_pre')}<KeyboardHint keys="⌘K" />{t(
-          'features.create_extension.view.failed_post',
-        )}
+        {t('features.create_extension.view.failed_pre')}<KeyboardHint
+          keys={toInlineShortcut('Mod+K')}
+        />{t('features.create_extension.view.failed_post')}
       </p>
     {/if}
   </div>
