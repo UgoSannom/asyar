@@ -56,7 +56,7 @@
       if (!picked) return;
 
       if (directories.includes(picked)) {
-        errorMessage = `${picked} is already in the list`;
+        errorMessage = t('ui_extra.common.already_in_list', { path: picked });
         return;
       }
 
@@ -64,7 +64,7 @@
       await fetchDirectories();
     } catch (err) {
       logService.warn(`Script directory picker failed: ${err}`);
-      errorMessage = 'Could not add directory';
+      errorMessage = t('ui_extra.scripts_tab.add_failed');
     } finally {
       isBrowsing = false;
     }
@@ -76,7 +76,7 @@
       await fetchDirectories();
     } catch (err) {
       logService.warn(`Failed to remove script directory: ${err}`);
-      errorMessage = 'Could not remove directory';
+      errorMessage = t('ui_extra.scripts_tab.remove_failed');
     }
   }
 </script>
@@ -109,7 +109,9 @@
     <Button onclick={handleAddDirectory} disabled={isBrowsing}>
       <span class="btn-content">
         <Icon name="plus" size={14} />
-        {isBrowsing ? 'Opening…' : t('settings.scripts.add_directory')}
+        {isBrowsing
+          ? t('settings.applications.opening_picker')
+          : t('settings.scripts.add_directory')}
       </span>
     </Button>
   </div>
@@ -132,7 +134,7 @@
             <button
               type="button"
               class="btn btn-danger remove-btn"
-              aria-label="Remove {path}"
+              aria-label={t('settings.ai.remove_named', { name: path })}
               onclick={() => handleRemoveDirectory(path)}
             >
               <Icon name="trash" size={14} />

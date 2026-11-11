@@ -102,7 +102,10 @@
           <div
             class="p-6 text-sm text-[var(--accent-danger)] bg-[var(--bg-secondary)] rounded-xl border border-[var(--separator)]"
           >
-            Failed to render {selected.title} settings: {String(error)}
+            {t('ui_extra.builtin_features.render_failed', {
+              title: selected.title,
+              error: String(error),
+            })}
           </div>
         {/snippet}
       </svelte:boundary>

@@ -76,12 +76,14 @@ pub enum OcrEvaluation {
     },
 }
 
-/// Evaluates raw OCR text: applies secret redaction and determines HUD notification copy.
-pub fn evaluate_ocr_text(raw_text: &str) -> OcrEvaluation {
+/// Evaluates raw OCR text: applies secret redaction and determines HUD notification copy
+/// (localised for `locale`).
+pub fn evaluate_ocr_text(raw_text: &str, locale: &crate::locale::ParsedLocale) -> OcrEvaluation {
+    use crate::locale::{native_format, native_text, NativeText};
     let trimmed = raw_text.trim();
     if trimmed.is_empty() {
         return OcrEvaluation::Empty {
-            hud_message: "No text found in selected area".to_string(),
+            hud_message: native_text(locale, NativeText::OcrNoText).to_string(),
         };
     }
 
@@ -89,9 +91,13 @@ pub fn evaluate_ocr_text(raw_text: &str) -> OcrEvaluation {
     let content = redaction.content;
 
     let hud_message = if !content.contains('\n') && content.chars().count() <= 30 {
-        format!("Text copied: \"{}\"", content)
+        native_format(
+            locale,
+            NativeText::OcrCopiedPreview,
+            &[("text", content.as_str())],
+        )
     } else {
-        "Text copied to clipboard".to_string()
+        native_text(locale, NativeText::OcrCopied).to_string()
     };
 
     OcrEvaluation::Success {
@@ -151,7 +157,8 @@ pub async fn capture_screen_text(
         .map_err(|e| AppError::Platform(format!("OCR task failed: {e}")))??;
 
     // 5. Evaluate text, secret redaction, clipboard write, and HUD
-    match evaluate_ocr_text(&raw_text) {
+    let locale = crate::locale::app_locale(app_handle);
+    match evaluate_ocr_text(&raw_text, &locale) {
         OcrEvaluation::Empty { hud_message } => {
             let app_clone = app_handle.clone();
             let _ = app_handle.run_on_main_thread(move || {
@@ -196,6 +203,22 @@ pub async fn capture_screen_text(
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    fn evaluate_ocr_text(raw_text: &str) -> OcrEvaluation {
+        let en = crate::locale::ParsedLocale::parse("en-US").unwrap();
+        super::evaluate_ocr_text(raw_text, &en)
+    }
+
+    #[test]
+    fn test_evaluate_localises_hud_copy() {
+        let fr = crate::locale::ParsedLocale::parse("fr-FR").unwrap();
+        match super::evaluate_ocr_text("Bonjour", &fr) {
+            OcrEvaluation::Success { hud_message, .. } => {
+                assert_eq!(hud_message, "Texte copié : « Bonjour »");
+            }
+            _ => panic!("expected Success"),
+        }
+    }
 
     #[test]
     fn test_evaluate_empty_or_whitespace_text() {

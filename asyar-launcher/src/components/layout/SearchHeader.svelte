@@ -240,7 +240,7 @@
     onkeydown?.(e);
   }
 
-  let hintLabel = $derived(contextHint?.type === 'ai' ? 'Ask AI' : 'Tab');
+  let hintLabel = $derived(contextHint?.type === 'ai' ? t('ui_extra.search_header.ask_ai') : 'Tab');
   let chipColor = $derived(activeContext?.color ?? 'var(--accent-primary)');
   let aiHintMuted = $derived(contextHint?.type === 'ai' && !looksLikeAIIntent(value));
   let isScopedCommandSearch = $derived(value.startsWith('@'));

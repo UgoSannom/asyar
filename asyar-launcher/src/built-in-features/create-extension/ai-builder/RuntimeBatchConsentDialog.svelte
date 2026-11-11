@@ -14,7 +14,8 @@
   );
 
   function formatBytes(bytes: number): string {
-    if (bytes <= 0) return 'an unknown size';
+    if (bytes <= 0) return t('features_extra.mcp.unknown_size');
+
     const mb = bytes / (1024 * 1024);
     return mb >= 1 ? `${mb.toFixed(1)} MB` : `${Math.max(1, Math.round(bytes / 1024))} KB`;
   }

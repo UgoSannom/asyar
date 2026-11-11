@@ -45,7 +45,7 @@
 
   const installLabel = $derived(
     installing
-      ? formatRuntimeDownloadStatus(runtimeService.downloadProgress, 'Installing…')
+      ? formatRuntimeDownloadStatus(runtimeService.downloadProgress, t('common.installing'))
       : t('features.mcp.install'),
   );
 
@@ -243,7 +243,7 @@
               variant="danger"
               size="sm"
               onclick={() => removeArg(i)}
-              ariaLabel="Remove argument">−</IconButton
+              ariaLabel={t('features_extra.mcp.remove_argument')}>−</IconButton
             >
           </div>
         {/each}
@@ -271,7 +271,7 @@
               textIntent="exact"
               class="field-input kv-val"
               type="text"
-              placeholder="value"
+              placeholder={t('features_extra.mcp.value_placeholder')}
               value={row.value}
               oninput={(e) => updateEnvRow(i, 'value', (e.target as HTMLInputElement).value)}
             />
@@ -279,7 +279,7 @@
               variant="danger"
               size="sm"
               onclick={() => removeEnvRow(i)}
-              ariaLabel="Remove variable">−</IconButton
+              ariaLabel={t('features_extra.mcp.remove_variable')}>−</IconButton
             >
           </div>
         {/each}
@@ -297,7 +297,7 @@
           id="srv-cwd"
           class="field-input"
           type="text"
-          placeholder="/optional/working/directory"
+          placeholder={t('features_extra.mcp.cwd_placeholder')}
           bind:value={form.cwd}
         />
       </div>
@@ -335,7 +335,7 @@
               textIntent="exact"
               class="field-input kv-val"
               type="text"
-              placeholder="value"
+              placeholder={t('features_extra.mcp.value_placeholder')}
               value={row.value}
               oninput={(e) => updateHeader(i, 'value', (e.target as HTMLInputElement).value)}
             />
@@ -343,7 +343,7 @@
               variant="danger"
               size="sm"
               onclick={() => removeHeader(i)}
-              ariaLabel="Remove header">−</IconButton
+              ariaLabel={t('features_extra.mcp.remove_header')}>−</IconButton
             >
           </div>
         {/each}
@@ -368,9 +368,9 @@
         class:test-fail={testResult.error !== null}
       >
         {#if testResult.error === null}
-          Tools found: {testResult.toolsCount}
+          {t('features_extra.mcp.tools_found', { count: testResult.toolsCount })}
         {:else}
-          Error: {testResult.error}
+          {t('features_extra.mcp.test_error', { error: testResult.error })}
         {/if}
       </div>
     {/if}

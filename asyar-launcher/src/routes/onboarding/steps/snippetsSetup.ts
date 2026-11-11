@@ -1,3 +1,4 @@
+import { t } from '../../../services/i18n';
 import { snippetStore } from '../../../built-in-features/snippets/snippetStore.svelte';
 import { snippetService } from '../../../built-in-features/snippets/snippetService';
 
@@ -9,7 +10,7 @@ export function seedSampleSnippet(): void {
     id: crypto.randomUUID(),
     keyword: SAMPLE_KEYWORD,
     expansion: 'you@example.com',
-    name: 'My email',
+    name: t('ui_extra.onboarding.sample_snippet_name'),
     createdAt: Date.now(),
   });
 }

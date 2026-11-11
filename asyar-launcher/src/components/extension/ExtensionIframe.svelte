@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '../../services/i18n';
   import { untrack } from 'svelte';
   import { logService as logger } from '../../services/log/logService';
   import { extensionIframeManager } from '../../services/extension/extensionIframeManager.svelte';
@@ -166,7 +167,7 @@
   data-role="view"
   data-mount-token={mountToken != null ? String(mountToken) : undefined}
   src={iframeSrc}
-  title="Extension Sandbox - {manifest?.name || extensionId}"
+  title={t('ui_extra.extension_iframe.title', { name: manifest?.name || extensionId })}
   class="w-full h-full border-none bg-transparent"
   sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
   onload={handleIframeLoad}

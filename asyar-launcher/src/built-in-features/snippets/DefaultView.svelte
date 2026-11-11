@@ -14,7 +14,7 @@
     Button,
   } from '../../components';
   import { actionService } from '../../services/action/actionService.svelte';
-  import { t } from '../../services/i18n';
+  import { t, i18nService } from '../../services/i18n';
 
   let permissionGranted = $state(true);
 
@@ -30,11 +30,13 @@
     untrack(() => actionService.refreshFiltered());
   });
 
-  const dateFormat = new Intl.DateTimeFormat('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  });
+  const dateFormat = $derived(
+    new Intl.DateTimeFormat(i18nService.locale, {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    }),
+  );
 
   onMount(async () => {
     const result = await snippetService.onViewOpen();
@@ -81,7 +83,7 @@
     leftWidth={260}
     minLeftWidth={200}
     maxLeftWidth={500}
-    ariaLabel="Snippets"
+    ariaLabel={t('features.snippets.title')}
     emptyMessage={t('features.snippets.no_snippets')}
   >
     {#snippet listItem(snippet, index)}
@@ -171,7 +173,9 @@
               label: t('features.snippets.ui.length'),
               value: selectedSnippet.redactedKinds?.length
                 ? null
-                : `${selectedSnippet.expansion.length} chars`,
+                : t('features_extra.clipboard.char_count', {
+                    count: selectedSnippet.expansion.length,
+                  }),
             },
             {
               label: t('features.snippets.ui.visibility'),

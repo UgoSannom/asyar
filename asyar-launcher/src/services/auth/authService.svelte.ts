@@ -1,3 +1,4 @@
+import { t } from '../i18n';
 import { openUrl } from '@tauri-apps/plugin-opener';
 import { logService } from '../log/logService';
 import * as commands from '../../lib/ipc/commands';
@@ -141,7 +142,7 @@ class AuthService {
 
       const initResult = await commands.authInitiate(provider);
       if (!initResult) {
-        throw new Error('Server did not respond');
+        throw new Error(t('services_extra.auth.server_no_response'));
       }
       const { sessionCode, authUrl } = initResult;
 
@@ -161,7 +162,7 @@ class AuthService {
           this.isLoading = true;
           await this._completePoll(sessionCode);
         } catch (err) {
-          this.loginError = `Login failed: ${err}`;
+          this.loginError = t('services_extra.auth.login_failed', { error: String(err) });
           logService.error(`Auth: OAuth completion failed: ${err}`);
         } finally {
           this.isLoading = false;
@@ -176,12 +177,12 @@ class AuthService {
       this.pollTimeout = setTimeout(() => {
         this.cancelLoginPolling();
         this.isAwaitingOAuth = false;
-        this.loginError = 'Login timed out. Please try again.';
+        this.loginError = t('services_extra.auth.login_timed_out');
       }, POLL_TIMEOUT_MS);
     } catch (err) {
       this.isLoading = false;
       this.isAwaitingOAuth = false;
-      this.loginError = `Could not start login: ${err}`;
+      this.loginError = t('services_extra.auth.login_start_failed', { error: String(err) });
       logService.error(`Auth: startLogin failed: ${err}`);
     }
   }
@@ -244,7 +245,7 @@ class AuthService {
         if (result.status === 'complete') {
           await this._applyPollResult(result);
         } else {
-          this.loginError = 'Login session expired. Please try again.';
+          this.loginError = t('services_extra.auth.login_expired');
           this.isAwaitingOAuth = false;
         }
       }

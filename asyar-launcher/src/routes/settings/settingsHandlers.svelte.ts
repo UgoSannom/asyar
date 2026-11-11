@@ -195,7 +195,7 @@ export class SettingsHandler {
 
       if (!success) {
         logService.error('Settings initialization failed');
-        this.initError = 'Settings initialization failed. Using defaults.';
+        this.initError = t('ui_extra.settings_handlers.init_failed');
       } else {
         // Get the initialized settings
         this.settings = settingsService.getSettings();
@@ -210,7 +210,7 @@ export class SettingsHandler {
       this.setupSubscription();
     } catch (error) {
       logService.error(`Failed to load settings: ${error}`);
-      this.initError = 'Failed to load settings. Using defaults.';
+      this.initError = t('ui_extra.settings_handlers.load_failed');
     } finally {
       this.isLoading = false;
       // Apply theme class to body
@@ -391,7 +391,7 @@ export class SettingsHandler {
       }
     } catch (error) {
       logService.error(`Failed to load extensions: ${error}`);
-      this.extensionError = 'Failed to load extensions information.';
+      this.extensionError = t('ui_extra.settings_handlers.extensions_load_failed');
       this.extensions = [];
     } finally {
       this.isLoadingExtensions = false;
@@ -451,7 +451,7 @@ export class SettingsHandler {
       const success = await extensionManager.toggleExtensionState(key, newState);
       if (!success) throw new Error('Failed to update extension state');
 
-      this.saveMessage = 'Extension settings updated.';
+      this.saveMessage = t('ui_extra.settings_handlers.extension_updated');
       this.saveError = false;
       setTimeout(() => {
         this.saveMessage = '';
@@ -459,7 +459,7 @@ export class SettingsHandler {
     } catch (error) {
       if (flipped) extension.enabled = !newState;
       logService.error(`Failed to toggle extension ${extension.title}: ${error}`);
-      this.saveMessage = 'Failed to update extension settings.';
+      this.saveMessage = t('ui_extra.settings_handlers.extension_update_failed');
       this.saveError = true;
 
       setTimeout(() => {
@@ -492,14 +492,14 @@ export class SettingsHandler {
 
       if (success) {
         this.extensions = this.extensions.filter((ext) => ext.title !== extensionName);
-        this.saveMessage = `Extension "${extensionName}" uninstalled successfully.`;
+        this.saveMessage = t('ui_extra.settings_handlers.uninstalled', { name: extensionName });
         this.saveError = false;
       } else {
         throw new Error('Failed to uninstall extension');
       }
     } catch (error) {
       logService.error(`Error uninstalling extension: ${error}`);
-      this.saveMessage = 'Failed to uninstall extension.';
+      this.saveMessage = t('ui_extra.settings_handlers.uninstall_failed');
       this.saveError = true;
     } finally {
       setTimeout(() => {
@@ -518,14 +518,14 @@ export class SettingsHandler {
       const success = await updateShortcut(this.selectedModifier, this.selectedKey);
 
       if (success) {
-        this.saveMessage = 'Shortcut saved successfully';
+        this.saveMessage = t('ui_extra.settings_handlers.shortcut_saved');
       } else {
         throw new Error('Failed to update shortcut');
       }
     } catch (error) {
       logService.error(`Error saving shortcut: ${error}`);
       this.saveError = true;
-      this.saveMessage = 'Failed to save shortcut';
+      this.saveMessage = t('ui_extra.settings_handlers.shortcut_save_failed');
     } finally {
       this.isSaving = false;
       setTimeout(() => {
@@ -546,7 +546,7 @@ export class SettingsHandler {
     } catch (error) {
       logService.error(`Failed to update autostart setting: ${error}`);
       this.saveError = true;
-      this.saveMessage = 'Failed to update startup setting';
+      this.saveMessage = t('ui_extra.settings_handlers.startup_failed');
 
       setTimeout(() => {
         this.saveMessage = '';
@@ -567,7 +567,7 @@ export class SettingsHandler {
     } catch (error) {
       logService.error(`Failed to update dock icon setting: ${error}`);
       this.saveError = true;
-      this.saveMessage = 'Failed to update dock icon setting';
+      this.saveMessage = t('ui_extra.settings_handlers.dock_icon_failed');
 
       setTimeout(() => {
         this.saveMessage = '';
@@ -590,7 +590,7 @@ export class SettingsHandler {
     } catch (error) {
       logService.error(`Failed to update pop-to-root delay: ${error}`);
       this.saveError = true;
-      this.saveMessage = 'Failed to update setting';
+      this.saveMessage = t('ui_extra.settings_handlers.setting_failed');
 
       setTimeout(() => {
         this.saveMessage = '';
@@ -611,7 +611,7 @@ export class SettingsHandler {
     } catch (error) {
       logService.error(`Failed to update menu bar icon setting: ${error}`);
       this.saveError = true;
-      this.saveMessage = 'Failed to update menu bar icon setting';
+      this.saveMessage = t('ui_extra.settings_handlers.menu_bar_icon_failed');
 
       setTimeout(() => {
         this.saveMessage = '';
@@ -626,8 +626,7 @@ export class SettingsHandler {
         enableExtensionSearch: !this.settings.search.enableExtensionSearch,
       });
       if (success) {
-        this.saveMessage =
-          'Search settings updated. Please restart Asyar for these changes to take effect.';
+        this.saveMessage = t('ui_extra.settings_handlers.search_updated_restart');
         this.saveError = false;
       } else {
         throw new Error('Failed to update extension search setting');
@@ -635,7 +634,7 @@ export class SettingsHandler {
     } catch (error) {
       logService.error(`Failed to update extension search setting: ${error}`);
       this.saveError = true;
-      this.saveMessage = 'Failed to update search setting';
+      this.saveMessage = t('ui_extra.settings_handlers.search_failed');
     } finally {
       setTimeout(() => {
         this.saveMessage = '';
@@ -654,7 +653,7 @@ export class SettingsHandler {
     } catch (error) {
       logService.error(`Failed to update extension auto-update setting: ${error}`);
       this.saveError = true;
-      this.saveMessage = 'Failed to update auto-update setting';
+      this.saveMessage = t('ui_extra.settings_handlers.auto_update_failed');
       setTimeout(() => {
         this.saveMessage = '';
         this.saveError = false;
@@ -674,7 +673,7 @@ export class SettingsHandler {
     } catch (error) {
       logService.error(`Failed to update escape behavior setting: ${error}`);
       this.saveError = true;
-      this.saveMessage = 'Failed to update setting';
+      this.saveMessage = t('ui_extra.settings_handlers.setting_failed');
 
       setTimeout(() => {
         this.saveMessage = '';
@@ -690,7 +689,7 @@ export class SettingsHandler {
     } catch (error) {
       logService.error(`Failed to update theme: `);
       this.saveError = true;
-      this.saveMessage = 'Failed to update theme';
+      this.saveMessage = t('ui_extra.settings_handlers.theme_failed');
 
       setTimeout(() => {
         this.saveMessage = '';
@@ -706,7 +705,7 @@ export class SettingsHandler {
     } catch (error) {
       logService.error(`Failed to update launch view: ${error}`);
       this.saveError = true;
-      this.saveMessage = 'Failed to update launch view';
+      this.saveMessage = t('ui_extra.settings_handlers.launch_view_failed');
 
       setTimeout(() => {
         this.saveMessage = '';
@@ -765,7 +764,7 @@ export class SettingsHandler {
     } catch (error) {
       logService.error(`Failed to toggle developer mode: ${error}`);
       this.saveError = true;
-      this.saveMessage = 'Failed to update developer mode';
+      this.saveMessage = t('ui_extra.settings_handlers.developer_mode_failed');
       setTimeout(() => {
         this.saveMessage = '';
         this.saveError = false;
@@ -785,7 +784,7 @@ export class SettingsHandler {
     } catch (error) {
       logService.error(`Failed to toggle developer setting ${key}: ${error}`);
       this.saveError = true;
-      this.saveMessage = 'Failed to update developer setting';
+      this.saveMessage = t('ui_extra.settings_handlers.developer_setting_failed');
       setTimeout(() => {
         this.saveMessage = '';
         this.saveError = false;

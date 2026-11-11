@@ -1,3 +1,4 @@
+import { t } from '../../../services/i18n';
 import { getVersion } from '@tauri-apps/api/app';
 import { emit } from '@tauri-apps/api/event';
 import { profileService } from '../../../services/profile/profileService';
@@ -49,6 +50,12 @@ export class BackupHandler {
   /** Export checklist rows — `displayName` is the provider's UI label. */
   get exportCategories(): { id: string; label: string }[] {
     return this.providers.map((p) => ({ id: p.id, label: p.displayName }));
+  }
+
+  /** Label for an archive category: the live provider's (localized) name,
+   *  falling back to the name stored in the archive manifest. */
+  categoryLabel(id: string, fallback: string): string {
+    return this.providers.find((p) => p.id === id)?.displayName ?? fallback;
   }
 
   get hasSensitiveData(): boolean {
@@ -141,7 +148,7 @@ export class BackupHandler {
       );
 
       this.exportStatus = 'success';
-      this.exportMessage = 'Backup saved successfully.';
+      this.exportMessage = t('ui_extra.backup.saved');
       setTimeout(() => {
         this.exportStatus = 'idle';
         this.exportMessage = '';
@@ -165,7 +172,7 @@ export class BackupHandler {
     try {
       const contents = await importProfile(filePath, null);
       if (contents === null) {
-        throw new Error('Failed to read profile archive');
+        throw new Error(t('ui_extra.backup.read_failed'));
       }
       const manifest: ArchiveManifest = JSON.parse(contents.manifest_json);
 
@@ -192,7 +199,7 @@ export class BackupHandler {
     try {
       const contents = await importProfile(this.importFile, this.importPassword);
       if (contents === null) {
-        throw new Error('Failed to read profile archive');
+        throw new Error(t('ui_extra.backup.read_failed'));
       }
       const manifest: ArchiveManifest = JSON.parse(contents.manifest_json);
       await this._populatePreview(contents, manifest);
@@ -267,7 +274,7 @@ export class BackupHandler {
 
       this.importModalOpen = false;
       this.importStatus = 'success';
-      this.importMessage = 'Backup restored successfully.';
+      this.importMessage = t('ui_extra.backup.restored');
       setTimeout(() => {
         this.importStatus = 'idle';
         this.importMessage = '';

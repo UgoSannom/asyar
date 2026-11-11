@@ -10,8 +10,10 @@
 
   let message = $derived.by(() => {
     if (!status) return '';
-    const t = DIAGNOSTIC_MESSAGES[status.kind as DiagnosticKind];
-    return t ? t(status.context ?? {}) : (status.developerDetail ?? 'Error');
+    const template = DIAGNOSTIC_MESSAGES[status.kind as DiagnosticKind];
+    return template
+      ? template(status.context ?? {})
+      : (status.developerDetail ?? t('ui_extra.feedback.error'));
   });
 
   async function onRetry() {

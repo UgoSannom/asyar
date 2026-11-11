@@ -299,7 +299,9 @@
           bind:value={filter}
           type="text"
           placeholder={t('common.search_ellipsis')}
-          aria-label="Search {arg.placeholder?.trim() || arg.name}"
+          aria-label={t('ui_extra.arg_dropdown.search_aria', {
+            name: arg.placeholder?.trim() || arg.name,
+          })}
           aria-autocomplete="list"
           autocomplete="off"
           oninput={onFilterInput}

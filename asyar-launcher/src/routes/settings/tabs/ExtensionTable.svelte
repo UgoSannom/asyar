@@ -58,14 +58,14 @@
       const filePath = await showOpenExtensionDialog();
       if (!filePath) return;
       isInstallingFromFile = true;
-      installMessage = 'Installing extension…';
+      installMessage = t('ui_extra.extension_table.installing');
       installError = false;
       await installExtensionFromFile(filePath);
-      installMessage = 'Extension installed successfully. Restart to activate.';
+      installMessage = t('ui_extra.extension_table.installed');
       if (handler.loadExtensions) await handler.loadExtensions();
     } catch (error) {
       installError = true;
-      installMessage = `Installation failed: ${error}`;
+      installMessage = t('ui_extra.extension_table.install_failed', { error: String(error) });
     } finally {
       isInstallingFromFile = false;
       setTimeout(() => {
@@ -176,7 +176,9 @@
             e.stopPropagation();
             toggleExpand(ext.id ?? ext.title);
           }}
-          aria-label={isExpanded ? 'Collapse' : 'Expand'}
+          aria-label={isExpanded
+            ? t('ui_extra.extension_table.collapse')
+            : t('ui_extra.extension_table.expand')}
           disabled={!ext.commands?.length}
         >
           <svg
@@ -218,8 +220,8 @@
                 disabled={ext.id ? extensionUpdateService.isExtensionUpdating(ext.id) : false}
               >
                 {ext.id && extensionUpdateService.isExtensionUpdating(ext.id)
-                  ? 'Updating…'
-                  : 'Update'}
+                  ? t('settings.extensions.updating')
+                  : t('common.update')}
               </button>
             {/if}
           </div>
@@ -293,7 +295,9 @@
   {#if isThirdParty && updateCount > 0}
     <div class="update-banner">
       <span class="update-banner-text">
-        {updateCount} extension{updateCount === 1 ? '' : 's'} can be updated
+        {t(`ui_extra.extension_table.updates_available_${updateCount === 1 ? 'one' : 'other'}`, {
+          count: updateCount,
+        })}
       </span>
       <button class="btn btn-primary" onclick={handleUpdateAll} disabled={isUpdatingAll}>
         {isUpdatingAll ? t('settings.extensions.updating') : t('settings.extensions.update_all')}
@@ -456,7 +460,7 @@
         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
         <polyline points="17 8 12 3 7 8" /><line x1="12" y1="3" x2="12" y2="15" />
       </svg>
-      {isInstallingFromFile ? 'Installing…' : t('settings.extensions.install_from_file')}
+      {isInstallingFromFile ? t('common.installing') : t('settings.extensions.install_from_file')}
     </button>
     <div class="dd-separator"></div>
     <div class="dd-section-label">{t('settings.extensions.section_create')}</div>

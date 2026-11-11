@@ -1,6 +1,7 @@
 import { Command } from '@tauri-apps/plugin-shell';
 import { openPath } from '@tauri-apps/plugin-opener';
 import { logService } from '../../services/log/logService';
+import { t } from '../../services/i18n';
 import {
   writeTextFileAbsolute,
   mkdirAbsolute,
@@ -98,7 +99,7 @@ export interface ScaffoldOptions {
 export async function generateExtension(options: ScaffoldOptions): Promise<void> {
   const { name, id, description, location, extensionType, onProgress } = options;
 
-  onProgress('Preparing file system...');
+  onProgress(t('features_extra.create_extension.p_preparing'));
 
   if (!(await exists(location))) {
     await mkdir(location);
@@ -106,7 +107,7 @@ export async function generateExtension(options: ScaffoldOptions): Promise<void>
 
   // ── Theme path: no JS, no build, no SDK dependency ────────────────────────
   if (extensionType === 'theme') {
-    onProgress('Writing theme files...');
+    onProgress(t('features_extra.create_extension.p_theme_files'));
     const populateBasic = (tmpl: string) =>
       tmpl
         .replaceAll('{{EXTENSION_NAME}}', name)
@@ -118,7 +119,7 @@ export async function generateExtension(options: ScaffoldOptions): Promise<void>
     await writeTextFile(`${location}/.gitignore`, '*.zip\n');
     await writeTextFile(`${location}/README.md`, populateBasic(readmeThemeTmpl));
 
-    onProgress('Opening IDE...');
+    onProgress(t('features_extra.create_extension.p_opening_ide'));
     try {
       const codeCmd = Command.create(codeCommand, ['.'], { cwd: location });
       await codeCmd.execute();
@@ -129,11 +130,11 @@ export async function generateExtension(options: ScaffoldOptions): Promise<void>
         logService.debug(`Could not open folder automatically: ${fallbackError}`);
       }
     }
-    onProgress('Done!');
+    onProgress(t('features_extra.create_extension.p_done'));
     return;
   }
 
-  onProgress('Resolving latest SDK version...');
+  onProgress(t('features_extra.create_extension.p_resolving_sdk'));
   const sdkVersion = await getLatestSdkVersion();
   const viteConfig = (await sdkExposesViteHelper()) ? viteConfigTmpl : viteConfigLegacyTmpl;
 
@@ -144,7 +145,7 @@ export async function generateExtension(options: ScaffoldOptions): Promise<void>
       .replaceAll('{{EXTENSION_DESC}}', description)
       .replaceAll('{{SDK_VERSION}}', sdkVersion);
 
-  onProgress('Writing scaffold files...');
+  onProgress(t('features_extra.create_extension.p_scaffold_files'));
 
   // ── Shared root files (all non-theme types) ───────────────────────────────
   await writeTextFile(`${location}/package.json`, populate(packageJsonTmpl));
@@ -181,7 +182,7 @@ export async function generateExtension(options: ScaffoldOptions): Promise<void>
   }
 
   // ── Install & build ───────────────────────────────────────────────────────
-  onProgress("Running 'pnpm install'... (this may take a minute)");
+  onProgress(t('features_extra.create_extension.p_pnpm_install'));
 
   try {
     let installOutput: { code: number | null };
@@ -205,7 +206,7 @@ export async function generateExtension(options: ScaffoldOptions): Promise<void>
       throw new Error(`pnpm install failed with code ${installOutput.code}`);
     }
 
-    onProgress('Building extension...');
+    onProgress(t('features_extra.create_extension.p_building'));
 
     if (isWindows) {
       const buildCmd = Command.create('cmd-exe', ['/c', 'pnpm run build'], { cwd: location });
@@ -226,20 +227,18 @@ export async function generateExtension(options: ScaffoldOptions): Promise<void>
     }
   } catch (error) {
     logService.error(`Failed to run commands automatically: ${error}`);
-    onProgress(
-      "Note: Could not build automatically. Please run 'pnpm install && pnpm run build' in the extension directory.",
-    );
+    onProgress(t('features_extra.create_extension.p_build_failed_note'));
   }
 
   // ── Register dev extension ────────────────────────────────────────────────
-  onProgress('Registering development extension...');
+  onProgress(t('features_extra.create_extension.p_registering'));
   const registered = await registerDevExtension(id, location);
   if (!registered) {
-    onProgress("Note: Failed to register for auto-loading. You may need to run 'asyar link'.");
+    onProgress(t('features_extra.create_extension.p_register_failed_note'));
   }
 
   // ── Open IDE ──────────────────────────────────────────────────────────────
-  onProgress('Opening IDE...');
+  onProgress(t('features_extra.create_extension.p_opening_ide'));
   try {
     const codeCmd = Command.create(codeCommand, ['.'], { cwd: location });
     await codeCmd.execute();
@@ -251,5 +250,5 @@ export async function generateExtension(options: ScaffoldOptions): Promise<void>
     }
   }
 
-  onProgress('Done!');
+  onProgress(t('features_extra.create_extension.p_done'));
 }

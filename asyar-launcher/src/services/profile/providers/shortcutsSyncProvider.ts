@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import {
   shortcutStore,
   type ItemShortcut,
@@ -19,7 +20,9 @@ import type {
 
 export class ShortcutsSyncProvider implements ISyncProvider {
   readonly id = 'shortcuts';
-  readonly displayName = 'Shortcuts';
+  get displayName(): string {
+    return t('features.shortcuts.title');
+  }
   readonly icon = 'keyboard';
   readonly syncTier = 'core' as const;
   readonly defaultEnabled = true;

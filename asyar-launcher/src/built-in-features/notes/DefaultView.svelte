@@ -16,7 +16,7 @@
   import { extractTags, findWikilinkAtCursor } from './noteLinks';
   import { noteBacklinks } from '../../lib/ipc/commands';
   import WikilinkPicker from './WikilinkPicker.svelte';
-  import { t } from '../../services/i18n';
+  import { t, i18nService } from '../../services/i18n';
 
   let filteredNotes = $derived(noteViewState.getFilteredNotes());
   let selectedIndex = $derived(noteViewState.selectedIndex);
@@ -164,11 +164,13 @@
     return firstLine?.trim() ?? '';
   }
 
-  const relativeFormat = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
+  const relativeFormat = $derived(
+    new Intl.RelativeTimeFormat(i18nService.locale, { numeric: 'auto' }),
+  );
   function relativeTime(ms: number): string {
     const diffSeconds = Math.round((ms - Date.now()) / 1000);
     const abs = Math.abs(diffSeconds);
-    if (abs < 60) return 'just now';
+    if (abs < 60) return t('features_extra.time.just_now');
     if (abs < 3600) return relativeFormat.format(Math.round(diffSeconds / 60), 'minute');
     if (abs < 86400) return relativeFormat.format(Math.round(diffSeconds / 3600), 'hour');
     return relativeFormat.format(Math.round(diffSeconds / 86400), 'day');
@@ -184,10 +186,10 @@
   leftWidth={280}
   minLeftWidth={220}
   maxLeftWidth={520}
-  ariaLabel="Notes"
+  ariaLabel={t('features.notes.title')}
   emptyMessage={noteViewState.indexState === 'indexing'
-    ? 'Still indexing your notes…'
-    : 'No notes found'}
+    ? t('features_extra.notes.still_indexing')
+    : t('features_extra.notes.no_notes_found')}
 >
   {#snippet listItem(note, index)}
     {#if index === 0 && noteViewState.pinnedCount > 0}
@@ -199,7 +201,7 @@
     <LauncherListRow
       data-index={index}
       selected={selectedIndex === index}
-      title={note.title || 'Untitled Note'}
+      title={note.title || t('features.notes.ui.untitled')}
       subtitle={previewOf(note.body) || undefined}
       onclick={() => noteViewState.selectItem(index)}
     >
@@ -278,7 +280,7 @@
             <div class="backlinks-header">{t('features.notes.ui.linked_mentions')}</div>
             {#each backlinks as n (n.id)}
               <button class="backlink-item" onclick={() => jumpToNote(n.id)}>
-                {n.title || 'Untitled Note'}
+                {n.title || t('features.notes.ui.untitled')}
               </button>
             {/each}
           </div>
@@ -289,16 +291,16 @@
         items={[
           {
             label: t('features.notes.ui.words'),
-            value: wordCount.toLocaleString(),
+            value: wordCount.toLocaleString(i18nService.locale),
           },
           {
             label: t('features.notes.ui.characters'),
-            value: charCount.toLocaleString(),
+            value: charCount.toLocaleString(i18nService.locale),
           },
           {
             label: t('features.notes.ui.modified'),
             value: relativeTime(selectedNote.updatedAt),
-            title: new Date(selectedNote.updatedAt).toLocaleString(),
+            title: new Date(selectedNote.updatedAt).toLocaleString(i18nService.locale),
           },
           {
             label: t('features.notes.ui.mentions'),

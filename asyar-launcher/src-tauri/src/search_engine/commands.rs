@@ -444,6 +444,28 @@ pub fn sync_command_index_internal_with_aliases(
         }
     }
 
+    // 4b. Refresh the text of commands that were already indexed. Built-in
+    // command names are localized on the frontend, so a locale change (or a
+    // renamed manifest command) must reach search without losing usage stats.
+    if !current_commands.is_empty() {
+        let mut items = search_state
+            .items
+            .write()
+            .map_err(|_| crate::error::AppError::Lock)?;
+        for item in items.iter_mut() {
+            if let SearchableItem::Command(cmd) = item {
+                if let Some(input) = current_commands.get(&cmd.id) {
+                    if cmd.name != input.name {
+                        cmd.name = input.name.clone();
+                    }
+                    if cmd.trigger != input.trigger {
+                        cmd.trigger = input.trigger.clone();
+                    }
+                }
+            }
+        }
+    }
+
     // 5. Persist
     search_state
         .save_items_to_db()
@@ -746,6 +768,40 @@ mod tests {
         assert!(ids.contains(&"cmd_scripts_dyn_abcdef0123456789"));
         assert!(ids.contains(&"cmd_window-management_layout_123"));
         assert!(ids.contains(&"cmd_static_one"));
+    }
+
+    #[tokio::test]
+    async fn sync_refreshes_name_and_trigger_of_indexed_commands() {
+        // Built-in names are localized on the frontend: a locale change must
+        // rename the already-indexed row while keeping its usage count.
+        let state = make_test_state();
+        state
+            .index_one(make_cmd("cmd_notes_open", "Notes", 7))
+            .unwrap();
+
+        let input = vec![CommandSyncInput {
+            id: "cmd_notes_open".to_string(),
+            name: "Notizen".to_string(),
+            extension: "notes".to_string(),
+            extension_name: None,
+            trigger: "Notes".to_string(),
+            command_type: "command".to_string(),
+            icon: None,
+        }];
+
+        let result = sync_command_index_internal(input, &state).unwrap();
+        assert_eq!(result.added, 0);
+        assert_eq!(result.removed, 0);
+
+        let items = state.items.read().unwrap();
+        assert_eq!(items[0].get_name(), "Notizen");
+        assert_eq!(items[0].usage_count(), 7);
+        match &items[0] {
+            crate::search_engine::models::SearchableItem::Command(cmd) => {
+                assert_eq!(cmd.trigger, "Notes")
+            }
+            _ => panic!("expected a command"),
+        }
     }
 
     #[test]

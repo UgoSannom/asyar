@@ -176,7 +176,13 @@ pub async fn show_save_profile_dialog(
         .dialog()
         .file()
         .set_file_name(&default_filename)
-        .add_filter("Asyar Profile", &["asyar"])
+        .add_filter(
+            crate::locale::app_native_text(
+                &app_handle,
+                crate::locale::NativeText::DialogFilterProfile,
+            ),
+            &["asyar"],
+        )
         .save_file(move |file_path| {
             let _ = tx.send(file_path);
         });
@@ -191,7 +197,13 @@ pub async fn show_open_profile_dialog(app_handle: AppHandle) -> Result<Option<St
     app_handle
         .dialog()
         .file()
-        .add_filter("Asyar Profile", &["asyar"])
+        .add_filter(
+            crate::locale::app_native_text(
+                &app_handle,
+                crate::locale::NativeText::DialogFilterProfile,
+            ),
+            &["asyar"],
+        )
         .pick_file(move |file_path| {
             let _ = tx.send(file_path);
         });

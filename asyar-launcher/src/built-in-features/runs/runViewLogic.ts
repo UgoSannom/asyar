@@ -1,5 +1,6 @@
 import type { Run } from 'asyar-sdk/contracts';
 import { formatElapsed } from '../../components/run/runningSectionLogic';
+import { t } from '../../services/i18n';
 
 const ERROR_MESSAGE_MAX = 60;
 
@@ -15,19 +16,21 @@ export function formatRunSubtitle(run: Run): string {
     case 'running':
     case 'pending': {
       const elapsed = formatElapsed(Date.now() - run.startedAt);
-      return `Running · ${elapsed}`;
+      return t('features_extra.runs.running', { elapsed });
     }
     case 'succeeded': {
       const duration = run.endedAt ? formatElapsed(run.endedAt - run.startedAt) : '';
-      return duration ? `Succeeded · ${duration}` : 'Succeeded';
+      return duration
+        ? t('features_extra.runs.succeeded_after', { duration })
+        : t('features_extra.runs.succeeded');
     }
     case 'failed': {
-      const msg = run.errorMessage ?? 'unknown error';
+      const msg = run.errorMessage ?? t('features_extra.runs.unknown_error');
       const truncated =
         msg.length > ERROR_MESSAGE_MAX ? `${msg.slice(0, ERROR_MESSAGE_MAX - 3)}...` : msg;
-      return `Failed · ${truncated}`;
+      return t('features_extra.runs.failed', { error: truncated });
     }
     case 'cancelled':
-      return 'Cancelled';
+      return t('features_extra.runs.cancelled');
   }
 }

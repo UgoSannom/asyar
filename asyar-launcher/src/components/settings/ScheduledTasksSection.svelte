@@ -11,10 +11,12 @@
   let isLoading = $state(true);
 
   function formatInterval(seconds: number): string {
-    if (seconds < 120) return `every ${seconds} seconds`;
-    if (seconds < 7200) return `every ${Math.round(seconds / 60)} minutes`;
-    if (seconds < 172800) return `every ${Math.round(seconds / 3600)} hours`;
-    return `every ${Math.round(seconds / 86400)} days`;
+    if (seconds < 120) return t('ui_extra.scheduled_tasks.every_seconds', { count: seconds });
+    if (seconds < 7200)
+      return t('ui_extra.scheduled_tasks.every_minutes', { count: Math.round(seconds / 60) });
+    if (seconds < 172800)
+      return t('ui_extra.scheduled_tasks.every_hours', { count: Math.round(seconds / 3600) });
+    return t('ui_extra.scheduled_tasks.every_days', { count: Math.round(seconds / 86400) });
   }
 
   async function loadTasks() {

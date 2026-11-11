@@ -1,13 +1,15 @@
+import { t } from '../../services/i18n';
+
 export function formatRelativeTime(timestampMillis: number, now: number = Date.now()): string {
   const diffMs = now - timestampMillis;
   const diffSec = Math.floor(diffMs / 1000);
-  if (diffSec < 60) return 'just now';
+  if (diffSec < 60) return t('features_extra.time.just_now');
   const diffMin = Math.floor(diffMs / 60_000);
-  if (diffMin < 60) return `${diffMin}m ago`;
+  if (diffMin < 60) return t('features_extra.time.m_ago_short', { count: diffMin });
   const diffHr = Math.floor(diffMs / 3_600_000);
-  if (diffHr < 24) return `${diffHr}h ago`;
+  if (diffHr < 24) return t('features_extra.time.h_ago_short', { count: diffHr });
   const diffDay = Math.floor(diffMs / 86_400_000);
-  return `${diffDay}d ago`;
+  return t('features_extra.time.d_ago_short', { count: diffDay });
 }
 
 export function statusBadgeColor(status: 'starting' | 'connected' | 'failed' | 'disabled'): string {

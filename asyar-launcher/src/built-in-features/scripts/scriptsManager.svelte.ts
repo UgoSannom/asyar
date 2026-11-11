@@ -15,6 +15,7 @@ import { feedbackService } from '../../services/feedback/feedbackService.svelte'
 import { bridgeListen } from '../../lib/ipc/bridgeEvents';
 import type { ScannedScript, ScriptScanIssue } from './types';
 import type { DynamicCommandRegistration } from 'asyar-sdk/contracts';
+import { t } from '../../services/i18n';
 
 const SCRIPTS_EXTENSION_ID = 'scripts';
 
@@ -222,7 +223,7 @@ export class ScriptsManager {
           context: {
             script: name,
             path: s.absolutePath,
-            message: `Inline script ${name} requested a refreshTime below 10s. Raised to 10s (Asyar minimum).`,
+            message: t('features_extra.scripts.inline_clamped', { name }),
           },
         });
       }
@@ -257,7 +258,7 @@ export class ScriptsManager {
         severity: 'warning',
         retryable: false,
         context: {
-          message: `Inline scripts cap reached (10 max). These scripts will not auto-refresh: ${cappedScripts.join(', ')}. They can still be run manually by selecting them.`,
+          message: t('features_extra.scripts.inline_capped', { scripts: cappedScripts.join(', ') }),
           scripts: cappedScripts.join(', '),
         },
       });
@@ -282,7 +283,10 @@ export class ScriptsManager {
   /** Pure helper: route a tick payload into commandService.liveSubtitles. */
   private applyInlineTick(payload: InlineTickPayload): void {
     const objectId = SCRIPT_COMMAND_OBJECT_PREFIX + payload.dynamicId;
-    const subtitle = payload.error ? `error: ${payload.error}` : (payload.subtitle ?? null);
+    const subtitle = payload.error
+      ? t('features_extra.scripts.inline_error', { error: payload.error })
+      : (payload.subtitle ?? null);
+
     commandService.liveSubtitles = {
       ...commandService.liveSubtitles,
       [objectId]: subtitle,

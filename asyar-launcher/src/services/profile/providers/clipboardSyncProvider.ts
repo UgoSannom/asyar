@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import {
   clipboardExportForSync,
   clipboardCount,
@@ -39,7 +40,9 @@ async function collectAllItems(): Promise<StoredClipboardItem[]> {
 
 export class ClipboardSyncProvider implements ISyncProvider {
   readonly id = 'clipboard';
-  readonly displayName = 'Clipboard History';
+  get displayName(): string {
+    return t('features.clipboard.title');
+  }
   readonly icon = 'clipboard';
   readonly syncTier = 'core' as const;
   readonly defaultEnabled = true;

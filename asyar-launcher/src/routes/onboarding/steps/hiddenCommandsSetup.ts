@@ -1,3 +1,4 @@
+import { t } from '../../../services/i18n';
 import { agentService } from '../../../built-in-features/agents/agentService.svelte';
 import { shortcutService } from '../../../built-in-features/shortcuts/shortcutService';
 
@@ -6,8 +7,7 @@ export async function setUpHiddenCommand(
   key: string,
 ): Promise<{ ok: boolean; error?: string }> {
   const def = agentService.getDefaultAgent();
-  if (!def)
-    return { ok: false, error: 'No AI provider is connected yet — go back and connect one.' };
+  if (!def) return { ok: false, error: t('ui_extra.onboarding.no_ai_provider') };
   try {
     const agent = await agentService.seedGrammarFixAgent(def.providerId, def.modelId);
     const res = await shortcutService.register(
@@ -19,10 +19,12 @@ export async function setUpHiddenCommand(
       'icon:sparkles',
     );
     if (!res.ok) {
-      const who = res.conflict ? ` It's already used by "${res.conflict.itemName}".` : '';
+      const shortcut = `${modifier}+${key}`;
       return {
         ok: false,
-        error: `Couldn't bind ${modifier}+${key}.${who} Try a different hotkey.`,
+        error: res.conflict
+          ? t('ui_extra.onboarding.bind_conflict', { shortcut, name: res.conflict.itemName })
+          : t('ui_extra.onboarding.bind_failed', { shortcut }),
       };
     }
     return { ok: true };

@@ -29,24 +29,28 @@
   import { searchBarAccessoryService } from '../../services/search/searchBarAccessoryService.svelte';
   import { feedbackService } from '../../services/feedback/feedbackService.svelte';
   import { logService } from '../../services/log/logService';
-  import { t } from '../../services/i18n';
+  import { t, i18nService } from '../../services/i18n';
   import { appListen } from '../../lib/ipc/bridgeEvents';
 
-  const detailDateFormat = new Intl.DateTimeFormat(undefined, {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-    hour: 'numeric',
-    minute: '2-digit',
-    second: '2-digit',
-  });
+  const detailDateFormat = $derived(
+    new Intl.DateTimeFormat(i18nService.locale, {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+      second: '2-digit',
+    }),
+  );
 
-  const relativeTimeFormat = new Intl.RelativeTimeFormat(undefined, { numeric: 'auto' });
+  const relativeTimeFormat = $derived(
+    new Intl.RelativeTimeFormat(i18nService.locale, { numeric: 'auto' }),
+  );
 
   function formatRelativeTime(ms: number): string {
     const diffSeconds = Math.round((ms - Date.now()) / 1000);
     const abs = Math.abs(diffSeconds);
-    if (abs < 60) return 'just now';
+    if (abs < 60) return t('features_extra.time.just_now');
     if (abs < 3600) return relativeTimeFormat.format(Math.round(diffSeconds / 60), 'minute');
     if (abs < 86400) return relativeTimeFormat.format(Math.round(diffSeconds / 3600), 'hour');
     return relativeTimeFormat.format(Math.round(diffSeconds / 86400), 'day');
@@ -395,8 +399,15 @@
   function getItemTitle(item: { type: string; preview?: string }) {
     const preview = item.preview ?? '';
     if (!preview)
-      return item.type === 'image' ? 'Image' : item.type === 'files' ? 'Files' : 'Empty';
-    return preview.substring(0, 200).replace(/\n/g, ' ').trim() || 'Empty';
+      return item.type === 'image'
+        ? t('features_extra.clipboard.title_image')
+        : item.type === 'files'
+          ? t('features_extra.clipboard.title_files')
+          : t('features_extra.clipboard.title_empty');
+    return (
+      preview.substring(0, 200).replace(/\n/g, ' ').trim() ||
+      t('features_extra.clipboard.title_empty')
+    );
   }
 
   function sanitizeHtml(html: string): string {
@@ -586,16 +597,30 @@
     }
     if (item.type === 'files' && meta?.fileCount) {
       const count = meta.fileCount as number;
-      const parts = [`${count} file${count !== 1 ? 's' : ''}`];
+      const parts = [
+        t(
+          count !== 1
+            ? 'features_extra.clipboard.file_count_other'
+            : 'features_extra.clipboard.file_count_one',
+          { count },
+        ),
+      ];
       if (meta.sizeBytes) parts.push(formatBytes(meta.sizeBytes as number));
       return parts.join(' · ');
     }
     if (item.content && ['text', 'html', 'rtf'].includes(item.type)) {
       const words = getWordCount(item);
-      return `${words} word${words !== 1 ? 's' : ''} \u00b7 ${item.content.length} chars`;
+      const wordText = t(
+        words !== 1
+          ? 'features_extra.clipboard.word_count_other'
+          : 'features_extra.clipboard.word_count_one',
+        { count: words },
+      );
+      const charText = t('features_extra.clipboard.char_count', { count: item.content.length });
+      return `${wordText} \u00b7 ${charText}`;
     }
     if (item.content) {
-      return `${item.content.length} chars`;
+      return t('features_extra.clipboard.char_count', { count: item.content.length });
     }
     return '';
   }
@@ -786,8 +811,10 @@
                   <pre class="source-preview">{getSourcePreview(selectedFullItem.content)}</pre>
                   {#if isContentTruncated(selectedFullItem.content)}
                     <div class="truncation-notice">
-                      Showing first {MAX_PREVIEW_CHARS.toLocaleString()} of {selectedFullItem.content.length.toLocaleString()}
-                      characters
+                      {t('features_extra.clipboard.truncated', {
+                        shown: MAX_PREVIEW_CHARS.toLocaleString(i18nService.locale),
+                        total: selectedFullItem.content.length.toLocaleString(i18nService.locale),
+                      })}
                     </div>
                   {/if}
                 {/if}
@@ -799,8 +826,10 @@
                 {/if}
                 {#if isContentTruncated(selectedFullItem.content)}
                   <div class="truncation-notice">
-                    Showing first {MAX_PREVIEW_CHARS.toLocaleString()} of {selectedFullItem.content.length.toLocaleString()}
-                    characters
+                    {t('features_extra.clipboard.truncated', {
+                      shown: MAX_PREVIEW_CHARS.toLocaleString(i18nService.locale),
+                      total: selectedFullItem.content.length.toLocaleString(i18nService.locale),
+                    })}
                   </div>
                 {/if}
               {:else if selectedFullItem.type === 'files'}
@@ -818,7 +847,9 @@
                         src={soloThumb}
                         class="max-w-full object-contain rounded-md shadow-sm border file-solo-thumb"
                         style="border-color: var(--border-color);"
-                        alt="Preview of {fileNameOf(filePaths[0])}"
+                        alt={t('features_extra.clipboard.preview_of', {
+                          name: fileNameOf(filePaths[0]),
+                        })}
                       />
                     </div>
                   {/if}
@@ -925,16 +956,20 @@
                   </div>
                   {#if isContentTruncated(selectedFullItem.content)}
                     <div class="truncation-notice">
-                      Showing first {MAX_PREVIEW_CHARS.toLocaleString()} of {selectedFullItem.content.length.toLocaleString()}
-                      characters
+                      {t('features_extra.clipboard.truncated', {
+                        shown: MAX_PREVIEW_CHARS.toLocaleString(i18nService.locale),
+                        total: selectedFullItem.content.length.toLocaleString(i18nService.locale),
+                      })}
                     </div>
                   {/if}
                 {:else}
                   <pre class="source-preview">{getSourcePreview(selectedFullItem.content)}</pre>
                   {#if isContentTruncated(selectedFullItem.content)}
                     <div class="truncation-notice">
-                      Showing first {MAX_PREVIEW_CHARS.toLocaleString()} of {selectedFullItem.content.length.toLocaleString()}
-                      characters
+                      {t('features_extra.clipboard.truncated', {
+                        shown: MAX_PREVIEW_CHARS.toLocaleString(i18nService.locale),
+                        total: selectedFullItem.content.length.toLocaleString(i18nService.locale),
+                      })}
                     </div>
                   {/if}
                 {/if}
@@ -944,7 +979,9 @@
 
           {#if clipboardViewState.selectedIds.length > 1}
             <div class="p-4 text-caption text-center" style="color: var(--text-secondary)">
-              {clipboardViewState.selectedIds.length} items selected · Enter to merge &amp; paste
+              {t('features_extra.clipboard.multi_selected', {
+                count: clipboardViewState.selectedIds.length,
+              })}
             </div>
           {:else if selectedFullItem}
             <MetadataList
@@ -980,7 +1017,7 @@
                   value:
                     selectedFullItem.content &&
                     ['text', 'html', 'rtf'].includes(selectedFullItem.type)
-                      ? selectedFullItem.content.length.toLocaleString()
+                      ? selectedFullItem.content.length.toLocaleString(i18nService.locale)
                       : null,
                 },
                 {
@@ -988,7 +1025,7 @@
                   value:
                     selectedFullItem.content &&
                     ['text', 'html', 'rtf'].includes(selectedFullItem.type)
-                      ? getWordCount(selectedFullItem).toLocaleString()
+                      ? getWordCount(selectedFullItem).toLocaleString(i18nService.locale)
                       : null,
                 },
                 {

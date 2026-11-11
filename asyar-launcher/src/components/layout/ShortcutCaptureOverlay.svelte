@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '../../services/i18n';
   import ShortcutCapture from '../../built-in-features/shortcuts/ShortcutCapture.svelte';
   import { shortcutService } from '../../built-in-features/shortcuts/shortcutService';
   import type { SearchResult } from '../../services/search/interfaces/SearchResult';
@@ -28,8 +29,8 @@
     );
 
     if (!result.ok) {
-      const reason = result.conflict?.itemName ?? 'Unsupported key or OS error';
-      return `Could not assign: ${reason}`;
+      const reason = result.conflict?.itemName ?? t('ui_extra.common.unsupported_key');
+      return t('ui_extra.common.could_not_assign', { reason });
     }
 
     return true;

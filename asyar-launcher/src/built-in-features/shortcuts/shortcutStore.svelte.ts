@@ -3,6 +3,13 @@ import { shortcutUpsert, shortcutGetAll, shortcutRemove } from '../../lib/ipc/co
 import { logService } from '../../services/log/logService';
 import { feedbackService } from '../../services/feedback/feedbackService.svelte';
 import { appListen } from '../../lib/ipc/bridgeEvents';
+import { t } from '../../services/i18n';
+
+const PERSISTENCE_FAILURE_MESSAGES: Record<string, () => string> = {
+  'Failed to save': () => t('features_extra.shortcuts.persist.save'),
+  'Failed to update': () => t('features_extra.shortcuts.persist.update'),
+  'Failed to delete': () => t('features_extra.shortcuts.persist.delete'),
+};
 
 function reportPersistenceFailure(action: string, err: unknown): void {
   logService.error(`[ShortcutStore] ${action}: ${err}`);
@@ -11,7 +18,11 @@ function reportPersistenceFailure(action: string, err: unknown): void {
     kind: 'manual',
     severity: 'warning',
     retryable: false,
-    context: { message: `Shortcut ${action.toLowerCase()} — change may not survive restart` },
+    context: {
+      message:
+        PERSISTENCE_FAILURE_MESSAGES[action]?.() ??
+        `Shortcut ${action.toLowerCase()} — change may not survive restart`,
+    },
   });
 }
 

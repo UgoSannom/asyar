@@ -207,14 +207,19 @@ fn truncate(text: &str, max: usize) -> String {
     }
 }
 
-pub fn build_run_notification(run: &Run) -> Option<NotificationRequest> {
+pub fn build_run_notification(
+    run: &Run,
+    locale: &crate::locale::ParsedLocale,
+) -> Option<NotificationRequest> {
+    use crate::locale::{native_text, NativeText};
+    let no_output = native_text(locale, NativeText::RunNoOutput);
     match run.status {
         RunStatus::Failed => {
             let body_source = run
                 .tail_output
                 .as_deref()
                 .or(run.error_message.as_deref())
-                .unwrap_or("(no output)");
+                .unwrap_or(no_output);
             let body = truncate(body_source, 120);
             let args_json = serde_json::json!({
                 "arguments": {
@@ -224,11 +229,11 @@ pub fn build_run_notification(run: &Run) -> Option<NotificationRequest> {
             .to_string();
             Some(NotificationRequest {
                 notification_id: format!("notif_{}", uuid::Uuid::new_v4()),
-                title: "Run failed".to_string(),
+                title: native_text(locale, NativeText::RunFailedTitle).to_string(),
                 body,
                 actions: vec![BackendAction {
                     id: "open".to_string(),
-                    title: "Open".to_string(),
+                    title: native_text(locale, NativeText::RunActionOpen).to_string(),
                     command_id: "open-runs".to_string(),
                     args_json: Some(args_json),
                 }],
@@ -236,7 +241,7 @@ pub fn build_run_notification(run: &Run) -> Option<NotificationRequest> {
             })
         }
         RunStatus::Succeeded if run.kind == RunKind::ShellScript && !run.quiet_success => {
-            let tail = run.tail_output.as_deref().unwrap_or("(no output)");
+            let tail = run.tail_output.as_deref().unwrap_or(no_output);
             let body_source = format!("{}\n{}", run.label, tail);
             let body = truncate(&body_source, 120);
             let args_json = serde_json::json!({
@@ -247,11 +252,11 @@ pub fn build_run_notification(run: &Run) -> Option<NotificationRequest> {
             .to_string();
             Some(NotificationRequest {
                 notification_id: format!("notif_{}", uuid::Uuid::new_v4()),
-                title: "Script finished".to_string(),
+                title: native_text(locale, NativeText::ScriptFinishedTitle).to_string(),
                 body,
                 actions: vec![BackendAction {
                     id: "view-output".to_string(),
-                    title: "View output".to_string(),
+                    title: native_text(locale, NativeText::RunActionViewOutput).to_string(),
                     command_id: "open-runs".to_string(),
                     args_json: Some(args_json),
                 }],
@@ -266,8 +271,9 @@ pub fn maybe_send_run_notification(
     registry: &NotificationActionRegistry,
     backend: &dyn NotificationBackend,
     run: &Run,
+    locale: &crate::locale::ParsedLocale,
 ) -> Result<(), AppError> {
-    if let Some(request) = build_run_notification(run) {
+    if let Some(request) = build_run_notification(run, locale) {
         populate_registry_and_send(registry, backend, request)?;
     }
     Ok(())
@@ -357,7 +363,13 @@ pub async fn runs_done(
     // such gate so failures always notify.
     if read_notify_on_script_success(&app) {
         if let Some(run) = run_registry.get(&id) {
-            let _ = maybe_send_run_notification(registry.inner(), backend.inner().as_ref(), &run);
+            let locale = crate::locale::app_locale(&app);
+            let _ = maybe_send_run_notification(
+                registry.inner(),
+                backend.inner().as_ref(),
+                &run,
+                &locale,
+            );
         }
     }
     Ok(())
@@ -379,7 +391,9 @@ pub async fn runs_fail(
     runs_fail_impl(run_registry, buffer, &emit, &conn, id.clone(), error)?;
 
     if let Some(run) = run_registry.get(&id) {
-        let _ = maybe_send_run_notification(registry.inner(), backend.inner().as_ref(), &run);
+        let locale = crate::locale::app_locale(&app);
+        let _ =
+            maybe_send_run_notification(registry.inner(), backend.inner().as_ref(), &run, &locale);
     }
     Ok(())
 }
@@ -463,6 +477,10 @@ pub async fn runs_upsert_bucket(
 mod tests {
     use super::*;
     use std::sync::{Arc, Mutex};
+
+    fn en_locale() -> crate::locale::ParsedLocale {
+        crate::locale::ParsedLocale::parse("en-US").unwrap()
+    }
 
     #[test]
     fn parse_notify_on_script_success_reads_true() {
@@ -1870,7 +1888,8 @@ mod tests {
         };
 
         // Failed status
-        let req = build_run_notification(&run).expect("should build notification for failed run");
+        let req = build_run_notification(&run, &en_locale())
+            .expect("should build notification for failed run");
         assert_eq!(req.title, "Run failed");
         assert_eq!(req.body, "something went wrong");
         assert_eq!(req.extension_id, "runs");
@@ -1884,7 +1903,7 @@ mod tests {
 
         // Failed status preferring tail_output
         run.tail_output = Some("captured tail".to_string());
-        let req2 = build_run_notification(&run).expect("should build notification");
+        let req2 = build_run_notification(&run, &en_locale()).expect("should build notification");
         assert_eq!(req2.body, "captured tail");
 
         // ShellScript Succeeded status
@@ -1892,8 +1911,8 @@ mod tests {
         run.kind = RunKind::ShellScript;
         run.label = "Script Run".to_string();
         run.tail_output = Some("script tail output".to_string());
-        let req3 =
-            build_run_notification(&run).expect("should build notification for succeeded script");
+        let req3 = build_run_notification(&run, &en_locale())
+            .expect("should build notification for succeeded script");
         assert_eq!(req3.title, "Script finished");
         assert_eq!(req3.body, "Script Run\nscript tail output");
         assert_eq!(req3.actions.len(), 1);
@@ -1906,15 +1925,15 @@ mod tests {
 
         // Agent Succeeded status -> None
         run.kind = RunKind::Agent;
-        assert!(build_run_notification(&run).is_none());
+        assert!(build_run_notification(&run, &en_locale()).is_none());
 
         // Cancelled -> None
         run.status = RunStatus::Cancelled;
-        assert!(build_run_notification(&run).is_none());
+        assert!(build_run_notification(&run, &en_locale()).is_none());
 
         // Running -> None
         run.status = RunStatus::Running;
-        assert!(build_run_notification(&run).is_none());
+        assert!(build_run_notification(&run, &en_locale()).is_none());
     }
 
     #[test]
@@ -1940,7 +1959,7 @@ mod tests {
         };
 
         // Failed status should send and register the action
-        maybe_send_run_notification(&registry, &backend, &run).unwrap();
+        maybe_send_run_notification(&registry, &backend, &run, &en_locale()).unwrap();
 
         let sent = backend.sent.lock().unwrap();
         assert_eq!(sent.len(), 1);
@@ -1961,12 +1980,12 @@ mod tests {
         run.status = RunStatus::Succeeded;
         drop(sent);
         backend.sent.lock().unwrap().clear();
-        maybe_send_run_notification(&registry, &backend, &run).unwrap();
+        maybe_send_run_notification(&registry, &backend, &run, &en_locale()).unwrap();
         assert_eq!(backend.sent.lock().unwrap().len(), 0);
 
         // Cancelled run should not send anything
         run.status = RunStatus::Cancelled;
-        maybe_send_run_notification(&registry, &backend, &run).unwrap();
+        maybe_send_run_notification(&registry, &backend, &run, &en_locale()).unwrap();
         assert_eq!(backend.sent.lock().unwrap().len(), 0);
     }
 
@@ -1987,17 +2006,17 @@ mod tests {
             quiet_success: true,
         };
         assert!(
-            build_run_notification(&run).is_none(),
+            build_run_notification(&run, &en_locale()).is_none(),
             "quiet successful run must not notify"
         );
 
         run.status = RunStatus::Failed;
         run.error_message = Some("boom".to_string());
-        let req = build_run_notification(&run).expect("failures always notify");
+        let req = build_run_notification(&run, &en_locale()).expect("failures always notify");
         assert_eq!(req.title, "Run failed");
 
         run.quiet_success = false;
         run.status = RunStatus::Succeeded;
-        assert!(build_run_notification(&run).is_some());
+        assert!(build_run_notification(&run, &en_locale()).is_some());
     }
 }

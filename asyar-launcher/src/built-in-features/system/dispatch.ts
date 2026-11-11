@@ -5,6 +5,7 @@ import { feedbackService } from '../../services/feedback/feedbackService.svelte'
 import { logService } from '../../services/log/logService';
 import type { BuiltinDispatchResult } from '../../services/extension/builtinDynamicDispatchers';
 import { systemActionSpecs } from './actions';
+import { t } from '../../services/i18n';
 
 /**
  * Executes a system dynamic command. Destructive actions (log out,
@@ -30,7 +31,8 @@ export async function dispatchSystemCommand(
         title: spec.confirm.title,
         message: spec.confirm.message,
         confirmText: spec.confirm.confirmText,
-        cancelText: 'Cancel',
+        cancelText: t('common.cancel'),
+
         variant: 'danger',
       });
       if (!confirmed) {

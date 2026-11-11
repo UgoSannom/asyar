@@ -24,7 +24,8 @@ export async function presentQuestion(q: PendingQuestion): Promise<void> {
     actions: [
       {
         id: 'open-builder',
-        title: 'Answer',
+        title: t('features_extra.ai_builder.answer'),
+
         commandId: 'build-with-ai',
         args: { buildId: 'current' },
       },

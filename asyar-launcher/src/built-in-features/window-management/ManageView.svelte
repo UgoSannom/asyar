@@ -32,7 +32,7 @@
       const name = `${Math.round(bounds.width)}x${Math.round(bounds.height)}`;
       const created = await windowManagementState.addCustomLayout(name, bounds, store);
       await syncLayoutToIndex(created, store);
-      await feedbackService.showHUD(`Saved "${name}"`);
+      await feedbackService.showHUD(t('features_extra.window_management.saved', { name }));
     } catch (err: any) {
       await feedbackService.report({
         source: 'frontend',
@@ -60,7 +60,7 @@
     if (!layout) return;
     const name = layout.name;
     await deleteLayout(id, store);
-    await feedbackService.showHUD(`Deleted "${name}"`);
+    await feedbackService.showHUD(t('features_extra.window_management.deleted', { name }));
   }
 
   $effect(() => {
@@ -151,7 +151,12 @@
       {#each layouts as layout, index (layout.id)}
         <ListItem
           title={layout.name}
-          subtitle={`${Math.round(layout.bounds.width)}×${Math.round(layout.bounds.height)} at (${Math.round(layout.bounds.x)}, ${Math.round(layout.bounds.y)})`}
+          subtitle={t('features_extra.window_management.layout_subtitle', {
+            width: Math.round(layout.bounds.width),
+            height: Math.round(layout.bounds.height),
+            x: Math.round(layout.bounds.x),
+            y: Math.round(layout.bounds.y),
+          })}
           selected={selectedIndex === index}
           onclick={() => {
             windowManagementState.setIndex(index);

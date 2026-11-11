@@ -1,3 +1,4 @@
+import { t } from '../../services/i18n';
 import type { McpServerInstallInput, McpServerSummary } from './types';
 
 export interface ImportOutcome {
@@ -28,7 +29,7 @@ export async function importServers(
         id: input.id,
         displayName: input.displayName,
         ok: false,
-        error: getLastError() ?? 'Import failed.',
+        error: getLastError() ?? t('features_extra.mcp.import_failed'),
       });
     }
   }

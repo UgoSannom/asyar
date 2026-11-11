@@ -96,7 +96,7 @@
       </div>
       {#if newPass.length > 0}
         <p class="text-caption" class:error={!strength.accepted}>
-          Strength {strength.score}/4{#if strength.reason}
+          {t('settings.e2ee.strength', { score: strength.score })}{#if strength.reason}
             — {strength.reason}{/if}
         </p>
       {/if}

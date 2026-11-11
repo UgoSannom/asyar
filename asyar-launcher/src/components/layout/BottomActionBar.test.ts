@@ -13,8 +13,11 @@ vi.mock('../../lib/ipc/commands', () => ({
 }));
 
 vi.mock('../../services/i18n', () => ({
-  t: (key: string) => {
+  t: (key: string, params?: Record<string, string | number>) => {
     if (key === 'settings.about.restart_now') return 'Restart Now';
+    if (key === 'ui_extra.about.update_ready') return `Update ${params?.version} ready`;
+    if (key === 'ui_extra.bottom_bar.update_ready_restart')
+      return `Update ${params?.version} ready. Click to restart.`;
     if (key === 'actions.title') return 'Actions';
     if (key === 'common.show_more') return 'Show More';
     return key;

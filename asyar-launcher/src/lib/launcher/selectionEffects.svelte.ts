@@ -370,11 +370,13 @@ export function setupSelectionEffects(state: LauncherState) {
       const isScript = matchingRun?.kind === 'shell-script';
       actionService.registerAction({
         id: 'runs:dismiss',
-        label: isScript ? 'Dismiss Result' : 'Dismiss Thread',
+        label: isScript
+          ? t('services_extra.launcher.dismiss_result')
+          : t('services_extra.launcher.dismiss_thread'),
         icon: 'icon:trash',
         description: isScript
-          ? 'Remove this script result row and free its output (history record is kept)'
-          : 'Remove this completed thread from the launcher list (still kept in history)',
+          ? t('services_extra.launcher.dismiss_result_desc')
+          : t('services_extra.launcher.dismiss_thread_desc'),
         category: t('categories.runs'),
         extensionId: 'runs',
         context: ActionContext.CORE,

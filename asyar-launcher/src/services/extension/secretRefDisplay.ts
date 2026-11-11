@@ -1,3 +1,8 @@
+import { t } from '../i18n';
+
+const k = (key: string, params?: Record<string, string>) =>
+  t(`services_extra.secret_refs.${key}`, params);
+
 function record(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
@@ -15,34 +20,42 @@ export function describeSecretRefs(args: unknown): string[] {
     return args.flatMap((ref): string[] => {
       if (!record(ref) || !Array.isArray(ref.sources) || typeof ref.header !== 'string') return [];
       const hosts = strings(ref.hosts);
-      const sources = ref.sources.flatMap((source): string[] => {
+      // Each source has a `lead` form (first in the sentence, "in the Keychain
+      // item …") and an `alt` form (inside "(or …)").
+      const sources = ref.sources.flatMap((source): { lead: string; alt: string }[] => {
         if (!record(source) || typeof source.pointer !== 'string') return [];
         if (source.type === 'jsonFile' && typeof source.path === 'string') {
-          return [`at \`${source.pointer}\` in \`${source.path}\``];
+          const text = k('json', { pointer: source.pointer, path: source.path });
+          return [{ lead: text, alt: text }];
         }
         if (source.type === 'keychain' && typeof source.service === 'string') {
-          const account =
-            typeof source.account === 'string' ? ` (account “${source.account}”)` : '';
-          return [`the Keychain item “${source.service}”${account} at \`${source.pointer}\``];
+          const params: Record<string, string> = {
+            service: source.service,
+            pointer: source.pointer,
+          };
+          const hasAccount = typeof source.account === 'string';
+          if (hasAccount) params.account = source.account as string;
+          const key = hasAccount ? 'keychain_account' : 'keychain';
+          return [{ lead: k(`${key}_lead`, params), alt: k(key, params) }];
         }
         return [];
       });
       if (!sources.length || !hosts.length) return [];
       const methods = ref.methods === undefined ? ['GET'] : strings(ref.methods);
       const paths = strings(ref.pathPrefixes);
-      const firstSource = sources[0].startsWith('the Keychain item')
-        ? `in ${sources[0]}`
-        : sources[0];
-      const sourceText =
-        firstSource +
-        sources
-          .slice(1)
-          .map((source) => ` (or ${source})`)
-          .join('');
+      const sourceText = [
+        sources[0].lead,
+        ...sources.slice(1).map((source) => k('or_source', { source: source.alt })),
+      ].join(' ');
       const keychain = ref.sources.some((source) => record(source) && source.type === 'keychain');
-      return [
-        `Sends the secret ${sourceText} to ${hosts.join(', ')} — ${methods.join(', ')} ${paths.length ? paths.join(', ') : '(all paths)'} — as the ${ref.header} header.${keychain ? ' macOS may ask you to allow Asyar to read this Keychain item.' : ''}`,
-      ];
+      const sentence = k('sentence', {
+        source: sourceText,
+        hosts: hosts.join(', '),
+        methods: methods.join(', '),
+        paths: paths.length ? paths.join(', ') : k('all_paths'),
+        header: ref.header,
+      });
+      return [keychain ? `${sentence} ${k('keychain_note')}` : sentence];
     });
   } catch {
     return [];

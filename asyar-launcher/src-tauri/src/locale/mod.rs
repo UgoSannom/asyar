@@ -10,7 +10,7 @@ pub mod number_format;
 pub mod service;
 
 pub use bcp47::ParsedLocale;
-pub use native::{app_native_text, native_text, NativeText};
+pub use native::{app_locale, app_native_text, native_format, native_text, NativeText};
 pub use number_format::NumberFormat;
 pub use service::LocaleService;
 

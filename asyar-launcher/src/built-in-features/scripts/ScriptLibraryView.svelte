@@ -57,26 +57,26 @@
   // What Enter does for the current selection — null when it does nothing.
   const primaryActionLabel = $derived(
     selectedScript
-      ? 'Run Script'
+      ? t('features.scripts.act.run')
       : selectedIssue?.fix === 'makeExecutable'
-        ? 'Make Executable'
+        ? t('features.scripts.act.make_exec')
         : null,
   );
 
   function issueLabel(reason: ScriptScanIssueReason): string {
     switch (reason) {
       case 'directoryUnreadable':
-        return 'Directory unavailable';
+        return t('features_extra.scripts.issue_dir_unavailable');
       case 'metadataUnreadable':
-        return 'Metadata unavailable';
+        return t('features_extra.scripts.issue_metadata_unavailable');
       case 'pathUnavailable':
-        return 'Path unavailable';
+        return t('features_extra.scripts.issue_path_unavailable');
       case 'notExecutable':
-        return 'Not executable';
+        return t('features_extra.scripts.issue_not_executable');
       case 'contentUnreadable':
-        return 'Unreadable';
+        return t('features_extra.scripts.issue_unreadable');
       case 'invalidHeader':
-        return 'Invalid header';
+        return t('features_extra.scripts.issue_invalid_header');
     }
   }
 
@@ -175,7 +175,7 @@
               icon="icon:info"
               title={issue.fileName}
               subtitle={issue.message}
-              typeLabel="Issue"
+              typeLabel={t('features_extra.scripts.issue')}
               selected={scriptsManager.selectedEntryId === `issue:${issue.absolutePath}`}
               onclick={() => scriptsManager.selectEntry(`issue:${issue.absolutePath}`)}
             />
@@ -221,7 +221,7 @@
               </dt>
               <dd class="text-[var(--text-primary)]">
                 {#if selectedScript.header.arguments.length === 0}
-                  None
+                  {t('features_extra.scripts.none')}
                 {:else}
                   <div class="flex flex-wrap gap-2">
                     {#each selectedScript.header.arguments as argument (argument.name)}
@@ -235,7 +235,7 @@
                 <dd class="text-[var(--text-primary)]">
                   {selectedScript.header.refreshTimeSeconds
                     ? `${selectedScript.header.refreshTimeSeconds}s`
-                    : 'Manual'}
+                    : t('features.scripts.ui.manual')}
                 </dd>
               {/if}
             </dl>

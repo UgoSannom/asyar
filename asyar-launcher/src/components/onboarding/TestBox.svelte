@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '../../services/i18n';
   import { Input, Textarea } from '..';
   let {
     label,
@@ -6,7 +7,7 @@
     prefill = '',
     multiline = false,
     enabled = false,
-    disabledHint = 'Finish setup above to try it here',
+    disabledHint = t('ui_extra.onboarding.test_box_disabled'),
     enabledHint = '',
   }: {
     label: string;

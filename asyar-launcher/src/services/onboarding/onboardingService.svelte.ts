@@ -1,3 +1,4 @@
+import { t } from '../i18n';
 import {
   onboardingCommands,
   completeAiOnboarding,
@@ -97,7 +98,7 @@ class OnboardingServiceClass {
         kind: 'manual',
         severity: 'warning',
         retryable: true,
-        context: { message: 'Could not check AI setup status.' },
+        context: { message: t('services_extra.onboarding.ai_status_failed') },
       });
     }
   }
@@ -113,7 +114,7 @@ class OnboardingServiceClass {
         kind: 'manual',
         severity: 'error',
         retryable: true,
-        context: { message: 'Could not skip AI setup. Please try again.' },
+        context: { message: t('services_extra.onboarding.ai_skip_failed') },
       });
     }
   }
@@ -129,7 +130,7 @@ class OnboardingServiceClass {
         kind: 'manual',
         severity: 'error',
         retryable: true,
-        context: { message: 'Could not save AI setup. Please try again.' },
+        context: { message: t('services_extra.onboarding.ai_save_failed') },
       });
       throw err;
     }

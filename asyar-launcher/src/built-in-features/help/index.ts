@@ -44,7 +44,8 @@ class HelpExtension implements Extension {
     if (this.isViewActive) return;
     this.isViewActive = true;
     window.addEventListener('keydown', this.handleKeydownBound);
-    this.extensionManager?.setActiveViewActionLabel('Open Guide');
+    this.extensionManager?.setActiveViewActionLabel(t('features_extra.help.open_guide'));
+
     this.registerViewActions();
   }
 

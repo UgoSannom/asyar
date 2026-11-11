@@ -6,284 +6,113 @@
  * strings not in the catalog (a newer launcher's permission, or a typo in a
  * manifest) render with the raw string and `known: false` so the UI can show a
  * caution note instead of silently pretending to understand them.
+ *
+ * The copy itself lives in the locale catalogs (`src/locales/*.json`) under
+ * `permissions_catalog.entries.<key>.{title,description}`. Because permission
+ * ids contain `:` and `.` (and `t()` splits keys on `.`), the catalog key is
+ * derived with {@link permissionCatalogKey}: every `:`, `.` and `-` becomes `_`
+ * (`browser:tabs.read` -> `browser_tabs_read`, `clipboard-history:read` ->
+ * `clipboard_history_read`). Titles and
+ * descriptions are resolved through `t()` on every property read rather than
+ * at module load, because the locale is set asynchronously at startup.
+ *
+ * To add a permission: add its id to PERMISSION_IDS and its title/description
+ * to every locale catalog under the derived key.
  */
+import { t } from '../i18n';
 
 export interface PermissionInfo {
   title: string;
   description: string;
 }
 
-export const PERMISSION_CATALOG: Record<string, PermissionInfo> = {
-  network: {
-    title: 'Network access',
-    description: 'Make outbound HTTP requests.',
-  },
-  'network:lan': {
-    title: 'Local network access',
-    description:
-      'Connect to local-network devices you approve in Settings. ' +
-      'Loopback, link-local, and cloud metadata addresses are always blocked.',
-  },
-  'network:secrets': {
-    title: 'Send secret references',
-    description:
-      'Send login secrets from declared sources to declared HTTPS hosts without exposing the token to the extension. Requires network access. Only approve hosts you trust.',
-  },
-  'notifications:send': {
-    title: 'Send notifications',
-    description: 'Post notifications to the system notification center.',
-  },
-  'clipboard:read': {
-    title: 'Read clipboard',
-    description: 'Read the current system clipboard content.',
-  },
-  'clipboard:write': {
-    title: 'Write clipboard',
-    description: 'Write or paste content to the system clipboard.',
-  },
-  'clipboard-history:read': {
-    title: 'Read clipboard history',
-    description: 'Query and search stored clipboard history records.',
-  },
-  'clipboard-history:capture': {
-    title: 'Capture clipboard history',
-    description: 'Subscribe to background clipboard changes to record history.',
-  },
-  'clipboard-history:manage': {
-    title: 'Manage clipboard history',
-    description: 'Delete records, toggle favorites, or clear stored clipboard history.',
-  },
-  'storage:read': {
-    title: 'Read extension storage',
-    description: "Read from the extension's own key-value store.",
-  },
-  'storage:write': {
-    title: 'Write extension storage',
-    description: "Write to the extension's own key-value store.",
-  },
-  'store:read': {
-    title: 'Read extension store data',
-    description: "Read from the extension's data store.",
-  },
-  'store:write': {
-    title: 'Write extension store data',
-    description: "Write to the extension's data store.",
-  },
-  'cache:read': {
-    title: 'Read extension cache',
-    description: "Read from the extension's cache.",
-  },
-  'cache:write': {
-    title: 'Write extension cache',
-    description: "Write to the extension's cache.",
-  },
-  'fs:read': {
-    title: 'Reveal files',
-    description: 'Show files in the system file manager.',
-  },
-  'fs:write': {
-    title: 'Move files to trash',
-    description: 'Move files to the system trash.',
-  },
-  'fs:watch': {
-    title: 'Watch files',
-    description: 'Observe filesystem changes under the declared glob patterns.',
-  },
-  'files:search': {
-    title: 'Search local files',
-    description: 'Search the local file index (file names and metadata, not file contents).',
-  },
-  'files:read': {
-    title: 'Read file contents',
-    description:
-      'Read the text contents, list the file names, and render thumbnails of files matching the declared path patterns. Credential stores and OS locations are always excluded.',
-  },
-  'files:search-provider': {
-    title: 'Contribute remote file search',
-    description: 'Provide search results for remote and cloud files.',
-  },
-  'notes:read': {
-    title: 'Search and read your notes',
-    description: 'Search your Notes and read the full content of any note.',
-  },
-  'notes:write': {
-    title: 'Create and append to notes',
-    description:
-      "Create new notes and add text to the end of existing ones. Cannot overwrite or delete a note's existing content.",
-  },
-  'shell:spawn': {
-    title: 'Run programs',
-    description: 'Spawn OS processes and read their output. Grants broad system access.',
-  },
-  'shell:open-url': {
-    title: 'Open URLs',
-    description:
-      'Open web links (http, https, mailto, tel) in the default browser — plus any additional URL schemes the extension declares, which can launch the apps registered for them.',
-  },
-  'shell:open-path': {
-    title: 'Open files and folders',
-    description:
-      'Open local files, folders, and workspaces with default or specified applications.',
-  },
-  'entitlements:read': {
-    title: 'Read subscription status',
-    description: "Read the user's active subscription entitlements.",
-  },
-  'selection:read': {
-    title: 'Read selection',
-    description:
-      'Read the currently selected text or file-manager items from the frontmost application.',
-  },
-  'oauth:use': {
-    title: 'Sign in to services',
-    description: 'Run OAuth authorization flows with third-party providers.',
-  },
-  'extension:invoke': {
-    title: 'Invoke other extensions',
-    description: 'Launch commands in other installed extensions.',
-  },
-  'application:read': {
-    title: 'Read installed apps',
-    description: 'List installed applications and query the frontmost or running apps.',
-  },
-  'window:manage': {
-    title: 'Manage windows',
-    description:
-      'Read and change the position, size, and fullscreen state of the frontmost window.',
-  },
-  'screen:pick-color': {
-    title: 'Pick colors from the screen',
-    description: 'Show the OS eyedropper and read the color of a screen pixel the user picks.',
-  },
-  'screen:capture': {
-    title: 'Capture screen text',
-    description:
-      'Capture screen regions and extract text via on-device optical character recognition (OCR).',
-  },
-  'calculator:evaluate': {
-    title: 'Evaluate math and conversions',
-    description: 'Evaluate mathematical expressions, unit conversions, and currency calculations.',
-  },
-  'power:inhibit': {
-    title: 'Keep system awake',
-    description: 'Prevent the OS from sleeping while extension logic is running.',
-  },
-  'media:control': {
-    title: 'Control media playback',
-    description:
-      'Read what is playing in media players and apps (such as Music, TV, Spotify, VLC, or a browser) and send play, pause, and skip commands.',
-  },
-  'calendar:read': {
-    title: 'Read calendars and events',
-    description: 'List your calendars and read the events in them.',
-  },
-  'calendar:write': {
-    title: 'Create calendar events',
-    description: 'Add new events to your calendars.',
-  },
-  'reminders:read': {
-    title: 'Read reminders',
-    description: 'List your reminder lists and the reminders in them.',
-  },
-  'reminders:write': {
-    title: 'Create and complete reminders',
-    description: 'Add new reminders and mark existing ones as done or not done.',
-  },
-  'shortcuts:read': {
-    title: 'List Apple Shortcuts',
-    description: 'See the names of the shortcuts in your Apple Shortcuts library.',
-  },
-  'shortcuts:run': {
-    title: 'Run Apple Shortcuts',
-    description:
-      'Run any of your Apple Shortcuts, optionally passing it text. A shortcut can do anything it is built to do.',
-  },
-  'process:read': {
-    title: 'List processes',
-    description: 'List running processes with CPU and memory usage.',
-  },
-  'process:kill': {
-    title: 'Terminate processes',
-    description: 'Terminate or force-kill running processes.',
-  },
-  'systemEvents:read': {
-    title: 'Observe system events',
-    description: 'Subscribe to OS sleep, wake, lid, battery, and power-source events.',
-  },
-  'app:frontmost-watch': {
-    title: 'Observe app activity',
-    description: 'Subscribe to application launched, terminated, and frontmost-changed events.',
-  },
-  'timers:schedule': {
-    title: 'Schedule timers',
-    description: 'Schedule persistent one-shot timers that fire even after relaunch.',
-  },
-  'timers:cancel': {
-    title: 'Cancel timers',
-    description: 'Cancel previously scheduled timers.',
-  },
-  'timers:list': {
-    title: 'List timers',
-    description: 'List scheduled timers.',
-  },
-  'preferences:read': {
-    title: 'Read preferences',
-    description: "Read the extension's own preference values.",
-  },
-  'preferences:write': {
-    title: 'Write preferences',
-    description: "Change the extension's own preference values.",
-  },
-  'feedback:announce': {
-    title: 'Show rare announcements',
-    description: "Request a host-controlled announcement such as What's New.",
-  },
-  'tools:register': {
-    title: 'Register agent tools',
-    description: 'Expose tools to the agent runtime for use during tool-calling.',
-  },
-  'snippets:contribute': {
-    title: 'Contribute snippets',
-    description:
-      'Contribute shortcode expansions to the global keystroke matcher, replacing typed shortcodes in any app.',
-  },
-  'runs:track': {
-    title: 'Track background runs',
-    description: "Start and manage long-running work shown in the launcher's runs UI.",
-  },
-  'browser:tabs.read': {
-    title: 'Read browser tabs',
-    description: 'List and inspect tabs in the paired browser.',
-  },
-  'browser:tabs.write': {
-    title: 'Control browser tabs',
-    description: 'Open, activate, and close tabs in the paired browser.',
-  },
-  'browser:bookmarks.read': {
-    title: 'Read bookmarks',
-    description: "Read the paired browser's bookmarks.",
-  },
-  'browser:history.read': {
-    title: 'Read browsing history',
-    description: "Search the paired browser's history.",
-  },
-  'browser:page.read': {
-    title: 'Read page content',
-    description: 'Read the content of the current page in the paired browser.',
-  },
-  'browser:page.write': {
-    title: 'Act on pages',
-    description: 'Interact with page content in the paired browser.',
-  },
-  mcp: {
-    title: 'Model Context Protocol (MCP)',
-    description: 'Discover configured MCP servers and invoke external tools.',
-  },
-  ai: {
-    title: 'Prompt AI model',
-    description: "Prompt the host's configured AI model for completions and streaming responses.",
-  },
-};
+const PERMISSION_IDS = [
+  'network',
+  'network:lan',
+  'network:secrets',
+  'notifications:send',
+  'clipboard:read',
+  'clipboard:write',
+  'clipboard-history:read',
+  'clipboard-history:capture',
+  'clipboard-history:manage',
+  'storage:read',
+  'storage:write',
+  'store:read',
+  'store:write',
+  'cache:read',
+  'cache:write',
+  'fs:read',
+  'fs:write',
+  'fs:watch',
+  'files:search',
+  'files:read',
+  'files:search-provider',
+  'notes:read',
+  'notes:write',
+  'shell:spawn',
+  'shell:open-url',
+  'shell:open-path',
+  'entitlements:read',
+  'selection:read',
+  'oauth:use',
+  'extension:invoke',
+  'application:read',
+  'window:manage',
+  'screen:pick-color',
+  'screen:capture',
+  'calculator:evaluate',
+  'power:inhibit',
+  'media:control',
+  'calendar:read',
+  'calendar:write',
+  'reminders:read',
+  'reminders:write',
+  'shortcuts:read',
+  'shortcuts:run',
+  'process:read',
+  'process:kill',
+  'systemEvents:read',
+  'app:frontmost-watch',
+  'timers:schedule',
+  'timers:cancel',
+  'timers:list',
+  'preferences:read',
+  'preferences:write',
+  'feedback:announce',
+  'tools:register',
+  'snippets:contribute',
+  'runs:track',
+  'browser:tabs.read',
+  'browser:tabs.write',
+  'browser:bookmarks.read',
+  'browser:history.read',
+  'browser:page.read',
+  'browser:page.write',
+  'mcp',
+  'ai',
+] as const;
+
+/** Locale-catalog key segment for a permission id (`:` `.` `-` -> `_`). */
+export function permissionCatalogKey(permission: string): string {
+  return permission.replace(/[:.-]/g, '_');
+}
+
+function localizedEntry(permission: string): PermissionInfo {
+  const base = `permissions_catalog.entries.${permissionCatalogKey(permission)}`;
+  return {
+    get title() {
+      return t(`${base}.title`);
+    },
+    get description() {
+      return t(`${base}.description`);
+    },
+  };
+}
+
+export const PERMISSION_CATALOG: Record<string, PermissionInfo> = Object.fromEntries(
+  PERMISSION_IDS.map((permission) => [permission, localizedEntry(permission)]),
+);
 
 export interface PermissionDisplay extends PermissionInfo {
   /** False when the permission string is not in the catalog. */
@@ -291,13 +120,15 @@ export interface PermissionDisplay extends PermissionInfo {
 }
 
 export function describePermission(permission: string): PermissionDisplay {
-  const info = PERMISSION_CATALOG[permission];
+  const info = Object.hasOwn(PERMISSION_CATALOG, permission)
+    ? PERMISSION_CATALOG[permission]
+    : undefined;
   if (info) {
-    return { ...info, known: true };
+    return { title: info.title, description: info.description, known: true };
   }
   return {
     title: permission,
-    description: 'Not recognized by this version of Asyar.',
+    description: t('permissions_catalog.not_recognized'),
     known: false,
   };
 }

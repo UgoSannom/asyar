@@ -8,6 +8,14 @@ import {
 } from '../../lib/ipc/commands';
 import { logService } from '../../services/log/logService';
 import { feedbackService } from '../../services/feedback/feedbackService.svelte';
+import { t } from '../../services/i18n';
+
+const PERSISTENCE_FAILURE_MESSAGES: Record<string, () => string> = {
+  'Failed to save': () => t('features_extra.notes.persist.save'),
+  'Failed to update': () => t('features_extra.notes.persist.update'),
+  'Failed to delete': () => t('features_extra.notes.persist.delete'),
+  'Failed to toggle pin': () => t('features_extra.notes.persist.toggle_pin'),
+};
 
 function reportPersistenceFailure(action: string, err: unknown): void {
   logService.error(`[NoteStore] ${action}: ${err}`);
@@ -16,7 +24,11 @@ function reportPersistenceFailure(action: string, err: unknown): void {
     kind: 'manual',
     severity: 'warning',
     retryable: false,
-    context: { message: `Note ${action.toLowerCase()} — change may not survive restart` },
+    context: {
+      message:
+        PERSISTENCE_FAILURE_MESSAGES[action]?.() ??
+        `Note ${action.toLowerCase()} — change may not survive restart`,
+    },
   });
 }
 

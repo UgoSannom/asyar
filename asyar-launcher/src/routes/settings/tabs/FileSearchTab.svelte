@@ -54,7 +54,8 @@
             list.push({
               ...p,
               extensionId: ext.id,
-              extensionName: (ext as any).title ?? (ext as any).name ?? ext.id ?? 'Unknown',
+              extensionName:
+                (ext as any).title ?? (ext as any).name ?? ext.id ?? t('ui_extra.common.unknown'),
             });
           }
         }
@@ -100,13 +101,18 @@
   let status = $state<IndexStatus | null>(null);
   let rebuilding = $state(false);
 
-  const STATE_LABELS: Record<string, string> = {
-    disabled: 'Disabled',
-    building: 'Building…',
-    ready: 'Ready',
-    rescanning: 'Rescanning…',
-    'cap-reached': 'Index cap reached',
+  const STATE_LABEL_KEYS: Record<string, string> = {
+    disabled: 'ui_extra.file_search_tab.state_disabled',
+    building: 'ui_extra.file_search_tab.state_building',
+    ready: 'ui_extra.file_search_tab.state_ready',
+    rescanning: 'ui_extra.file_search_tab.state_rescanning',
+    'cap-reached': 'ui_extra.file_search_tab.state_cap_reached',
   };
+
+  function stateLabel(state: string): string {
+    const key = STATE_LABEL_KEYS[state];
+    return key ? t(key) : state;
+  }
 
   async function refreshStatus() {
     try {
@@ -146,7 +152,7 @@
   ) {
     const ok = await settingsService.updateSettings('fileSearch', patch);
     if (!ok) {
-      errorMessage = 'Failed to save file search settings';
+      errorMessage = t('ui_extra.file_search_tab.save_failed');
       return;
     }
     errorMessage = null;
@@ -173,13 +179,13 @@
       });
       if (!picked || typeof picked !== 'string') return;
       if (!canAddRoot(picked, roots)) {
-        errorMessage = `${picked} is already in the list`;
+        errorMessage = t('ui_extra.common.already_in_list', { path: picked });
         return;
       }
       await persistFileSearch({ includeRoots: [...roots, picked] });
     } catch (err) {
       logService.warn(`Directory picker failed: ${err}`);
-      errorMessage = 'Could not open directory picker';
+      errorMessage = t('ui_extra.common.could_not_open_picker');
     } finally {
       await setFocusLock(false);
       isBrowsing = false;
@@ -193,7 +199,7 @@
   async function handleAddExcludePattern() {
     const pattern = newExcludePattern.trim();
     if (!canAddExcludePattern(pattern, excludePatterns)) {
-      errorMessage = pattern ? `"${pattern}" is already excluded` : null;
+      errorMessage = pattern ? t('ui_extra.file_search_tab.already_excluded', { pattern }) : null;
       return;
     }
     errorMessage = null;
@@ -208,7 +214,7 @@
   async function handleAddRecentIgnorePattern() {
     const pattern = newRecentIgnorePattern.trim();
     if (!canAddExcludePattern(pattern, recentIgnorePatterns)) {
-      errorMessage = pattern ? `"${pattern}" is already ignored` : null;
+      errorMessage = pattern ? t('ui_extra.file_search_tab.already_ignored', { pattern }) : null;
       return;
     }
     errorMessage = null;
@@ -251,7 +257,7 @@
             <button
               type="button"
               class="btn btn-danger remove-btn"
-              aria-label="Remove {pattern}"
+              aria-label={t('settings.ai.remove_named', { name: pattern })}
               onclick={() => onRemove(pattern)}
             >
               <Icon name="trash" size={14} />
@@ -282,16 +288,24 @@
 
   {#if status}
     <div class="index-status">
-      <Badge text={STATE_LABELS[status.state] ?? status.state} variant="default" />
-      <span class="text-caption">{(status.entryCount ?? 0).toLocaleString()} files indexed</span>
+      <Badge text={stateLabel(status.state)} variant="default" />
+      <span class="text-caption"
+        >{t('ui_extra.file_search_tab.files_indexed', {
+          count: (status.entryCount ?? 0).toLocaleString(),
+        })}</span
+      >
       {#if status.lastScanMs > 0}
-        <span class="text-caption opacity-70">last scan {status.lastScanMs}ms</span>
+        <span class="text-caption opacity-70"
+          >{t('ui_extra.file_search_tab.last_scan', { ms: status.lastScanMs })}</span
+        >
       {/if}
       {#if status.snapshotLoaded}
         <span class="text-caption opacity-70">{t('settings.file_search.restored_snapshot')}</span>
       {/if}
       <Button onclick={handleRebuild} disabled={isRebuilding}>
-        {isRebuilding ? 'Rebuilding…' : 'Rebuild Index'}
+        {isRebuilding
+          ? t('ui_extra.file_search_tab.rebuilding')
+          : t('ui_extra.file_search_tab.rebuild_index')}
       </Button>
     </div>
     {#if status.capReached}
@@ -337,7 +351,9 @@
     <Button onclick={handleAddRoot} disabled={isBrowsing}>
       <span class="btn-content">
         <Icon name="plus" size={14} />
-        {isBrowsing ? 'Opening…' : 'Add Root'}
+        {isBrowsing
+          ? t('settings.applications.opening_picker')
+          : t('ui_extra.file_search_tab.add_root')}
       </span>
     </Button>
   </div>
@@ -356,7 +372,7 @@
             <button
               type="button"
               class="btn btn-danger remove-btn"
-              aria-label="Remove {path}"
+              aria-label={t('settings.ai.remove_named', { name: path })}
               onclick={() => handleRemoveRoot(path)}
             >
               <Icon name="trash" size={14} />

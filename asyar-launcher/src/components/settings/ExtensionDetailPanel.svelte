@@ -306,13 +306,28 @@
           <Badge text="v{extension.version}" variant="default" mono />
         {/if}
         {#if extension.compatibility?.status === 'sdkMismatch'}
-          <Badge text="Requires SDK {extension.compatibility.required}" variant="danger" />
+          <Badge
+            text={t('ui_extra.extension_detail.requires_sdk', {
+              version: String(extension.compatibility.required),
+            })}
+            variant="danger"
+          />
         {/if}
         {#if extension.compatibility?.status === 'appVersionTooOld'}
-          <Badge text="Requires app v{extension.compatibility.required}+" variant="danger" />
+          <Badge
+            text={t('ui_extra.extension_detail.requires_app', {
+              version: String(extension.compatibility.required),
+            })}
+            variant="danger"
+          />
         {/if}
         {#if extension.compatibility?.status === 'platformNotSupported'}
-          <Badge text="{extension.compatibility.platform} not supported" variant="danger" />
+          <Badge
+            text={t('ui_extra.extension_detail.platform_unsupported', {
+              platform: String(extension.compatibility.platform),
+            })}
+            variant="danger"
+          />
         {/if}
         {#if needsPermissionReview}
           <Badge text={t('settings.extensions.permissions_need_review')} variant="danger" />

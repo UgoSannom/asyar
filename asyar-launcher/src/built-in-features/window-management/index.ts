@@ -85,7 +85,9 @@ class WindowManagementExtension implements Extension {
     const rawId = typeof args?.id === 'string' ? args.id.trim() : undefined;
 
     if (!rawName && !rawId) {
-      await feedbackService.showHUD('No layout name or ID provided', { severity: 'warning' });
+      await feedbackService.showHUD(t('features_extra.window_management.no_layout_arg'), {
+        severity: 'warning',
+      });
       await feedbackService.report({
         source: 'frontend',
         kind: 'manual',
@@ -105,7 +107,10 @@ class WindowManagementExtension implements Extension {
       await applyCustomLayout(layout, this.store);
     } else {
       const missing = rawName || rawId || 'unknown';
-      await feedbackService.showHUD(`Layout "${missing}" not found`, { severity: 'warning' });
+      await feedbackService.showHUD(
+        t('features_extra.window_management.layout_not_found', { name: missing }),
+        { severity: 'warning' },
+      );
       await feedbackService.report({
         source: 'frontend',
         kind: 'manual',
@@ -160,7 +165,7 @@ class WindowManagementExtension implements Extension {
     }
     try {
       await windowManagementService.setWindowBounds(prev);
-      await feedbackService.showHUD('Restored');
+      await feedbackService.showHUD(t('features_extra.window_management.restored'));
     } catch (err: any) {
       await feedbackService.report({
         source: 'frontend',
@@ -214,7 +219,7 @@ class WindowManagementExtension implements Extension {
         window.addEventListener('keydown', this.handleKeydownBound);
       }
       this.registerManageActions();
-      this.extensionManager?.setActiveViewActionLabel('Apply');
+      this.extensionManager?.setActiveViewActionLabel(t('common.apply'));
     } else {
       this.inView = false;
     }
@@ -277,7 +282,7 @@ class WindowManagementExtension implements Extension {
       if (created) {
         await syncLayoutToIndex(created, this.store);
       }
-      await feedbackService.showHUD(`Saved "${name}"`);
+      await feedbackService.showHUD(t('features_extra.window_management.saved', { name }));
     } catch (err: any) {
       await feedbackService.report({
         source: 'frontend',

@@ -20,7 +20,9 @@
   const agentLabel = $derived.by(() => {
     const agent = agentService.getById(agentId);
     if (agent?.name) return agent.name;
-    return agentId ? `agent ${agentId.slice(0, 8)}` : 'an agent';
+    return agentId
+      ? t('features_extra.mcp.agent_short', { id: agentId.slice(0, 8) })
+      : t('features_extra.mcp.an_agent');
   });
 
   // Pull a tool description from the registered tool descriptor, falling

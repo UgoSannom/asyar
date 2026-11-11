@@ -1,3 +1,4 @@
+import { t } from '../i18n';
 import { authService } from './authService.svelte';
 import { settingsService } from '../settings/settingsService.svelte';
 import type { Ability } from '../../lib/ipc/commands';
@@ -39,13 +40,12 @@ class GateService {
       case 'cloud-sync-egress':
       case 'sync.egress': {
         if (!authService.isLoggedIn) {
-          return { allowed: false, reason: 'Cloud sync requires a signed-in account.' };
+          return { allowed: false, reason: t('services_extra.gate.sync_sign_in') };
         }
         if (!authService.entitlements?.includes('sync:settings')) {
           return {
             allowed: false,
-            reason:
-              'Cloud sync requires an active subscription with the sync:settings entitlement.',
+            reason: t('services_extra.gate.sync_entitlement'),
           };
         }
         const syncEnabled = settingsService.getSettings().user?.syncEnabled ?? true;
@@ -58,7 +58,7 @@ class GateService {
       case 'ai-cloud-models':
       case 'ai.cloud-models': {
         if (!authService.isLoggedIn) {
-          return { allowed: false, reason: 'Cloud AI models require a signed-in account.' };
+          return { allowed: false, reason: t('services_extra.gate.ai_sign_in') };
         }
         const hasEntitlement =
           (authService.entitlements?.includes('ai:advanced-models') ?? false) ||
@@ -66,7 +66,7 @@ class GateService {
         if (!hasEntitlement) {
           return {
             allowed: false,
-            reason: 'This AI model requires an active Pro subscription.',
+            reason: t('services_extra.gate.ai_pro'),
           };
         }
         return { allowed: true };
@@ -75,12 +75,12 @@ class GateService {
       case 'ai-conversation-sync':
       case 'sync.ai-conversations': {
         if (!authService.isLoggedIn) {
-          return { allowed: false, reason: 'AI history sync requires a signed-in account.' };
+          return { allowed: false, reason: t('services_extra.gate.ai_history_sign_in') };
         }
         if (!authService.entitlements?.includes('sync:ai-conversations')) {
           return {
             allowed: false,
-            reason: 'AI history sync requires the sync:ai-conversations entitlement.',
+            reason: t('services_extra.gate.ai_history_entitlement'),
           };
         }
         const syncEnabled = settingsService.getSettings().user?.syncEnabled ?? true;
@@ -94,7 +94,7 @@ class GateService {
       case 'telemetry.crash-report': {
         const mode = settingsService.getSettings().privacy.crashReportMode;
         if (mode === 'off') {
-          return { allowed: false, reason: 'Crash reporting is disabled in settings.' };
+          return { allowed: false, reason: t('services_extra.gate.crash_disabled') };
         }
         return { allowed: true };
       }
@@ -103,7 +103,7 @@ class GateService {
       case 'telemetry.usage-metrics': {
         const mode = settingsService.getSettings().privacy.usageShareMode;
         if (mode === 'off') {
-          return { allowed: false, reason: 'Anonymous usage metrics sharing is disabled.' };
+          return { allowed: false, reason: t('services_extra.gate.usage_disabled') };
         }
         return { allowed: true };
       }
@@ -112,14 +112,14 @@ class GateService {
         // Support direct entitlement checks (e.g. 'sync:settings', 'ai:chat') with strict fail-closed
         if (typeof ability === 'string' && ability.includes(':')) {
           if (!authService.isLoggedIn) {
-            return { allowed: false, reason: 'This feature requires a signed-in account.' };
+            return { allowed: false, reason: t('services_extra.gate.feature_sign_in') };
           }
           if (authService.entitlements?.includes(ability)) {
             return { allowed: true };
           }
           return {
             allowed: false,
-            reason: `This feature requires the '${ability}' subscription entitlement.`,
+            reason: t('services_extra.gate.feature_entitlement', { ability }),
           };
         }
         // Fail-closed for unknown abilities

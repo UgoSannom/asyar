@@ -30,8 +30,11 @@
 
   const importLabel = $derived(
     importing
-      ? formatRuntimeDownloadStatus(runtimeService.downloadProgress, 'Importing…')
-      : 'Import Selected',
+      ? formatRuntimeDownloadStatus(
+          runtimeService.downloadProgress,
+          t('features.raycast_import.ui.importing'),
+        )
+      : t('features_extra.mcp.import_selected'),
   );
 
   // Selections: map from id → boolean
@@ -53,7 +56,7 @@
       parsedSelected = {};
     } catch {
       if (generation !== parseGeneration || raw !== pasteJson) return;
-      parseError = 'Failed to parse the JSON. Check the format and try again.';
+      parseError = t('features_extra.mcp.parse_failed');
       parsedServers = [];
     }
   }
@@ -244,7 +247,10 @@
 
         {#if parsedServers.length > 0}
           <div class="parsed-results">
-            <p class="parsed-count">{parsedServers.length} server(s) found:</p>
+            <p class="parsed-count">
+              {t('features_extra.mcp.servers_found', { count: parsedServers.length })}
+            </p>
+
             {#each parsedServers as srv (srv.id)}
               <label class="server-checkbox">
                 <Checkbox

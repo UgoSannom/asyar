@@ -87,7 +87,10 @@
     description={t('settings.privacy.this_session_desc')}
   >
     {#snippet children()}
-      <Badge text={`${totalRedacted} redacted`} variant="info" />
+      <Badge
+        text={t('ui_extra.secret_redaction.redacted', { count: totalRedacted })}
+        variant="info"
+      />
     {/snippet}
   </SettingsRow>
 

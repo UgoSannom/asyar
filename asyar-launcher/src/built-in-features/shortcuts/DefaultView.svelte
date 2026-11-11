@@ -100,7 +100,7 @@
     leftWidth={260}
     minLeftWidth={200}
     maxLeftWidth={500}
-    ariaLabel="Shortcuts"
+    ariaLabel={t('features.shortcuts.title')}
     emptyMessage={t('features.shortcuts.no_shortcuts')}
   >
     {#snippet listItem(s, index)}

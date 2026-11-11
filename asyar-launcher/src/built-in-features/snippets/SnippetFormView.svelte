@@ -121,22 +121,22 @@
   async function handleSave() {
     if (saving || !ownsForm()) return;
     if (!formName.trim()) {
-      formError = 'Name is required.';
+      formError = t('features_extra.snippets.err_name_required');
       return;
     }
     if (!formExpansion.trim()) {
-      formError = 'Expansion is required.';
+      formError = t('features_extra.snippets.err_expansion_required');
       return;
     }
     if (formKeyword.trim() && /[A-Z]/.test(formKeyword)) {
-      formError = 'Keyword must be lowercase.';
+      formError = t('features_extra.snippets.err_keyword_lowercase');
       return;
     }
     const isDuplicate =
       formKeyword.trim() &&
       snippetStore.getAll().some((s) => s.keyword === formKeyword.trim() && s.id !== formId);
     if (isDuplicate) {
-      formError = 'Keyword is already in use.';
+      formError = t('features_extra.snippets.err_keyword_in_use');
       return;
     }
 
@@ -196,7 +196,7 @@
 >
   {#snippet header()}
     <h2 class="form-title">
-      {isEdit ? 'Edit Snippet' : 'New Snippet'}
+      {isEdit ? t('features.snippets.act.edit') : t('features_extra.snippets.new_snippet')}
     </h2>
   {/snippet}
 
@@ -225,7 +225,7 @@
       type="text"
       autocomplete="off"
       bind:value={formKeyword}
-      placeholder="e.g. ;email"
+      placeholder={t('features_extra.snippets.keyword_placeholder')}
     />
   </FormField>
   <FormField label={t('features.snippets.ui.expansion')} id="form-expansion">
@@ -240,7 +240,7 @@
           bind:value={formExpansion}
           bind:ref={formExpansionEl}
           oninput={handleExpansionInput}
-          placeholder="e.g. hello@example.com"
+          placeholder={t('features_extra.snippets.expansion_placeholder')}
           rows="5"
         ></Textarea>
         <Button
@@ -255,8 +255,9 @@
       {/if}
     </div>
     <p class="text-caption mt-2">
-      Supported: {`{Selected Text}, {Clipboard Text}, {UUID}, {Date}, {Time}, {Weekday}`}. Custom
-      format supported e.g.
+      {t('features_extra.snippets.supported_prefix')}
+      {`{Selected Text}, {Clipboard Text}, {UUID}, {Date}, {Time}, {Weekday}`}.
+      {t('features_extra.snippets.custom_format_pre')}
       <code class="code-inline">{'{Date format="YYYY-MM-DD"}'}</code>.<br />
       {t('features.snippets.ui.browse_pre')} <code class="code-inline">{'{'}</code>
       {t('features.snippets.ui.browse_post')}

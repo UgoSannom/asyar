@@ -104,15 +104,17 @@
             type="text"
             value={values[pref.name] ?? ''}
             placeholder={pref.type === 'appPicker'
-              ? 'Application path'
+              ? t('ui_extra.preferences_form.app_path')
               : pref.type === 'directory'
-                ? 'Directory path'
-                : 'File path'}
+                ? t('ui_extra.preferences_form.dir_path')
+                : t('ui_extra.preferences_form.file_path')}
             {disabled}
             oninput={(e: Event) => handleText(pref, e)}
           />
         {:else}
-          <div class="error-inline">Unknown type: {pref.type}</div>
+          <div class="error-inline">
+            {t('ui_extra.preferences_form.unknown_type', { type: String(pref.type) })}
+          </div>
         {/if}
 
         {#if errors[pref.name]}

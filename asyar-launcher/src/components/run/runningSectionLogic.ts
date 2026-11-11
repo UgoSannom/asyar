@@ -1,3 +1,4 @@
+import { t } from '../../services/i18n';
 // Pure helpers for the inline "Running" section displayed above search results
 // when at least one Run is active. Kept free of Svelte runes and Tauri imports
 // so they are trivially unit-testable — the stateful wiring lives in
@@ -24,9 +25,9 @@ export function groupRunsByKind(runs: Run[]): RunGroup[] {
   const other = runs.filter((r) => OTHER_KINDS.includes(r.kind));
 
   const groups: RunGroup[] = [];
-  if (scripts.length) groups.push({ title: 'Scripts', runs: scripts });
-  if (agents.length) groups.push({ title: 'Agents', runs: agents });
-  if (other.length) groups.push({ title: 'Other', runs: other });
+  if (scripts.length) groups.push({ title: t('categories.scripts'), runs: scripts });
+  if (agents.length) groups.push({ title: t('categories.agents'), runs: agents });
+  if (other.length) groups.push({ title: t('ui_extra.sections.other'), runs: other });
   return groups;
 }
 

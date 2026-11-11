@@ -1,3 +1,4 @@
+import { t } from '../i18n';
 import { getVersion } from '@tauri-apps/api/app';
 import { openUrl } from '@tauri-apps/plugin-opener';
 import { appUpdaterShouldShowWhatsNew } from '../../lib/ipc/applicationCommands';
@@ -32,8 +33,8 @@ export async function checkAndNotifyWhatsNew(): Promise<void> {
     const releaseNotesUrl = `https://github.com/Xoshbin/asyar/releases/tag/v${currentVersion}`;
     await feedbackService.announceFromHost({
       id: `whats-new-${currentVersion}`,
-      title: `Updated to v${currentVersion}`,
-      message: 'Click to see what changed',
+      title: t('services_extra.whats_new.title', { version: currentVersion }),
+      message: t('services_extra.whats_new.message'),
       onClick: async () => {
         await openUrl(releaseNotesUrl);
         await markSeen(currentVersion);

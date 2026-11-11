@@ -2206,5 +2206,1438 @@
     "direct_subtitle": "{extensionName} está solicitando acesso a {host}:{port}",
     "scanning": "Buscando na rede local…",
     "no_devices": "Nenhum dispositivo encontrado na rede local."
+  },
+  "features_extra": {
+    "time": {
+      "just_now": "agora mesmo",
+      "min_ago": "há {count} min",
+      "h_ago": "há {count} h",
+      "d_ago": "há {count} d",
+      "mo_ago": "há {count} meses",
+      "y_ago": "há {count} ano(s)",
+      "m_ago_short": "há {count} min",
+      "h_ago_short": "há {count} h",
+      "d_ago_short": "há {count} d"
+    },
+    "clipboard": {
+      "title_image": "Imagem",
+      "title_files": "Arquivos",
+      "title_empty": "Vazio",
+      "file_count_one": "{count} arquivo",
+      "file_count_other": "{count} arquivos",
+      "word_count_one": "{count} palavra",
+      "word_count_other": "{count} palavras",
+      "char_count": "{count} caract.",
+      "truncated": "Mostrando os primeiros {shown} de {total} caracteres",
+      "preview_of": "Pré-visualização de {name}",
+      "multi_selected": "{count} itens selecionados · Enter para mesclar e colar",
+      "type_image": "Imagem",
+      "type_file": "Arquivo",
+      "paste": "Colar"
+    },
+    "notes": {
+      "still_indexing": "Ainda indexando suas notas…",
+      "no_notes_found": "Nenhuma nota encontrada",
+      "toast_saved": "Nota salva",
+      "toast_added_today": "Adicionado à nota de hoje",
+      "toast_unstuck": "Removida da área de trabalho",
+      "toast_stuck": "Fixada na área de trabalho",
+      "toast_exported": "Nota exportada",
+      "persist": {
+        "save": "Falha ao salvar a nota — a alteração pode não ser mantida após reiniciar",
+        "update": "Falha ao atualizar a nota — a alteração pode não ser mantida após reiniciar",
+        "delete": "Falha ao excluir a nota — a alteração pode não ser mantida após reiniciar",
+        "toggle_pin": "Falha ao fixar/desafixar a nota — a alteração pode não ser mantida após reiniciar"
+      }
+    },
+    "common": {
+      "name_copy": "{name} (cópia)"
+    },
+    "shortcuts": {
+      "persist": {
+        "save": "Falha ao salvar o atalho — a alteração pode não ser mantida após reiniciar",
+        "update": "Falha ao atualizar o atalho — a alteração pode não ser mantida após reiniciar",
+        "delete": "Falha ao excluir o atalho — a alteração pode não ser mantida após reiniciar"
+      },
+      "register_failed": "Falha ao registrar o atalho",
+      "launcher_toggle": "Alternar Launcher",
+      "no_item_selected": "Nenhum item selecionado",
+      "unsupported_key": "Tecla não suportada ou erro do sistema",
+      "assign_failed": "Não foi possível atribuir: {reason}",
+      "press_combination": "Pressione a combinação que deseja usar para {name}."
+    },
+    "snippets": {
+      "persist": {
+        "save": "Falha ao salvar o snippet — a alteração pode não ser mantida após reiniciar",
+        "update": "Falha ao atualizar o snippet — a alteração pode não ser mantida após reiniciar",
+        "delete": "Falha ao excluir o snippet — a alteração pode não ser mantida após reiniciar",
+        "toggle_pin": "Falha ao fixar/desafixar o snippet — a alteração pode não ser mantida após reiniciar",
+        "toggle_private": "Falha ao alternar privacidade do snippet — a alteração pode não ser mantida após reiniciar",
+        "clear_all": "Falha ao limpar tudo (snippets) — a alteração pode não ser mantida após reiniciar"
+      },
+      "err_name_required": "O nome é obrigatório.",
+      "err_expansion_required": "A expansão é obrigatória.",
+      "err_keyword_lowercase": "A palavra-chave deve estar em minúsculas.",
+      "err_keyword_in_use": "A palavra-chave já está em uso.",
+      "new_snippet": "Novo Snippet",
+      "keyword_placeholder": "ex.: ;email",
+      "expansion_placeholder": "ex.: ola@exemplo.com",
+      "supported_prefix": "Suportados:",
+      "custom_format_pre": "Formato personalizado suportado, ex.:"
+    },
+    "store": {
+      "download_url_missing": "A URL de download da extensão não está disponível. Tente novamente.",
+      "install_info_failed": "Falha ao obter informações de instalação: {status} {detail}",
+      "p_installed": "{name} instalado",
+      "p_install_failed": "Falha ao instalar {name}",
+      "p_uninstalled": "{name} desinstalado",
+      "p_uninstall_failed": "Falha ao desinstalar {name}",
+      "p_updated": "{name} atualizado para v{version}",
+      "p_update_failed": "Falha ao atualizar {name}",
+      "load_failed": "Falha ao carregar extensões: {error}",
+      "show_details": "Mostrar Detalhes",
+      "details_load_failed": "Falha ao carregar detalhes: {error}",
+      "err_install": "Falha na instalação: {error}",
+      "err_uninstall": "Falha ao desinstalar: {error}",
+      "err_update": "Falha na atualização: {error}",
+      "unknown": "Desconhecido",
+      "installs_count": "{count} instalações",
+      "update_to": "Atualizar para v{version}",
+      "requires_sdk_tooltip": "Esta extensão requer o SDK do Asyar {sdk}. Atualize o Asyar para instalar.",
+      "incompatible": "Incompatível (Requer SDK {sdk})",
+      "install_theme": "Instalar Tema",
+      "requires_newer": "Esta extensão requer uma versão mais recente do Asyar (SDK {sdk})",
+      "no_description": "Nenhuma descrição fornecida.",
+      "command_count_one": "{count} comando",
+      "command_count_other": "{count} comandos",
+      "mode_view": "Visualização",
+      "mode_background": "Segundo plano",
+      "aria_list": "Extensões da Loja",
+      "by_author": "Por {name}"
+    },
+    "scripts": {
+      "issue_dir_unavailable": "Diretório indisponível",
+      "issue_metadata_unavailable": "Metadados indisponíveis",
+      "issue_path_unavailable": "Caminho indisponível",
+      "issue_not_executable": "Não executável",
+      "issue_unreadable": "Ilegível",
+      "issue_invalid_header": "Cabeçalho inválido",
+      "issue": "Problema",
+      "none": "Nenhum",
+      "inline_clamped": "O script inline {name} solicitou um refreshTime abaixo de 10s. Aumentado para 10s (mínimo do Asyar).",
+      "inline_capped": "Limite de scripts inline atingido (máx. 10). Estes scripts não serão atualizados automaticamente: {scripts}. Eles ainda podem ser executados manualmente ao selecioná-los.",
+      "inline_error": "erro: {error}"
+    },
+    "agents": {
+      "silent_running": "✨ {name}…",
+      "silent_empty_hud": "⚠️ Resposta vazia",
+      "silent_empty_detail": "O agente retornou uma resposta vazia",
+      "ai_command": "Comando de IA",
+      "silent_failed": "⚠️ {name} falhou",
+      "no_selection": "Nenhuma seleção",
+      "read_selection_failed": "Não foi possível ler a seleção",
+      "clipboard_empty": "A área de transferência está vazia",
+      "read_clipboard_failed": "Não foi possível ler a área de transferência",
+      "copied_hud": "✓ Copiado",
+      "agent_not_found": "Agente '{id}' não encontrado",
+      "promoted": "✓ Promovido a snippet",
+      "promote_failed": "Falha ao promover",
+      "delete_failed": "Falha ao excluir",
+      "clear_failed": "Falha ao limpar",
+      "edit_heading": "Editar agente",
+      "new_heading": "Novo agente",
+      "shortcode_placeholder": "ex.: : ou ;",
+      "new_thread": "Nova conversa",
+      "threads": "Conversas"
+    },
+    "window_management": {
+      "saved": "\"{name}\" salvo",
+      "renamed": "Renomeado para \"{name}\"",
+      "deleted": "\"{name}\" excluído",
+      "layout_subtitle": "{width}×{height} em ({x}, {y})",
+      "no_layout_arg": "Nenhum nome ou ID de layout informado",
+      "layout_not_found": "Layout \"{name}\" não encontrado",
+      "restored": "Restaurado"
+    },
+    "file_search": {
+      "aria_files": "Arquivos",
+      "folder_path": "Pasta — {path}"
+    },
+    "mcp": {
+      "download_failed_install": "Falha ao baixar {name}. Tente novamente pelo formulário de instalação.",
+      "install_failed": "Não foi possível instalar este servidor MCP — verifique o comando/argumentos e tente novamente.",
+      "download_failed_here": "Falha ao baixar {name}. Tente novamente por aqui.",
+      "enable_failed": "Não foi possível ativar este servidor MCP — verifique a configuração e tente novamente.",
+      "err_id_required": "O ID é obrigatório.",
+      "err_display_name_required": "O nome de exibição é obrigatório.",
+      "err_command_required": "O comando é obrigatório para o transporte stdio.",
+      "err_url_required": "É necessária uma URL válida começando com http:// ou https://.",
+      "import_failed": "Falha na importação.",
+      "import_selected": "Importar Selecionados",
+      "parse_failed": "Falha ao analisar o JSON. Verifique o formato e tente novamente.",
+      "servers_found": "{count} servidor(es) encontrado(s):",
+      "remove_argument": "Remover argumento",
+      "remove_variable": "Remover variável",
+      "remove_header": "Remover cabeçalho",
+      "tools_found": "Ferramentas encontradas: {count}",
+      "test_error": "Erro: {error}",
+      "unknown_size": "um tamanho desconhecido",
+      "transport_label": "Transporte: {transport}",
+      "tools_count": "{count} ferramentas",
+      "enabled": "Ativado",
+      "disabled": "Desativado",
+      "agent_short": "agente {id}",
+      "an_agent": "um agente",
+      "value_placeholder": "valor",
+      "cwd_placeholder": "/diretorio/de/trabalho/opcional"
+    },
+    "portals": {
+      "placeholder_count_one": "{count} marcador",
+      "placeholder_count_other": "{count} marcadores",
+      "edit_portal": "Editar portal"
+    },
+    "runs": {
+      "running": "Em execução · {elapsed}",
+      "succeeded_after": "Concluído · {duration}",
+      "succeeded": "Concluído",
+      "unknown_error": "erro desconhecido",
+      "failed": "Falhou · {error}",
+      "cancelled": "Cancelado"
+    },
+    "walkthrough": {
+      "req_manual": "Marque quando concluir",
+      "req_days": "Use em {count} dias diferentes",
+      "req_times": "Use {count} vezes",
+      "req_auto": "Concluída conforme você usa",
+      "marked_done": "Marcado como concluído",
+      "progress_of": "{current} de {target}",
+      "progress_days": "{current} de {target} dias",
+      "progress_times": "{current} de {target} vezes",
+      "open_task": "Abrir Tarefa"
+    },
+    "raycast_import": {
+      "password_prompt": "Digite a senha definida no Raycast ao exportar.",
+      "password_prompt_file": "Digite a senha definida no Raycast ao exportar “{file}”.",
+      "found_in": "Encontrado em {name}",
+      "export_fallback": "exportação",
+      "not_importable": "Não importável:",
+      "skipped_hotkeys_one": "{count} atalho vinculado a comandos do Raycast ou apps ausentes",
+      "skipped_hotkeys_other": "{count} atalhos vinculados a comandos do Raycast ou apps ausentes",
+      "skipped_aliases_one": "{count} apelido vinculado a comandos do Raycast, apps ausentes ou com caracteres que o Asyar não aceita",
+      "skipped_aliases_other": "{count} apelidos vinculados a comandos do Raycast, apps ausentes ou com caracteres que o Asyar não aceita",
+      "summary_snippets": "Snippets: {added} adicionados, {skipped} ignorados",
+      "summary_portals": "Portais: {added} adicionados, {skipped} ignorados",
+      "summary_shortcuts": "Atalhos: {added} adicionados, {skipped} ignorados",
+      "summary_aliases": "Apelidos: {added} adicionados, {skipped} ignorados"
+    },
+    "aliases": {
+      "reassign_message": "'{name}' já usa '{alias}'. Reatribuir?"
+    },
+    "calculator": {
+      "copied_value": "Copiado: {value}"
+    },
+    "create_extension": {
+      "p_preparing": "Preparando o sistema de arquivos...",
+      "p_theme_files": "Gravando arquivos do tema...",
+      "p_opening_ide": "Abrindo IDE...",
+      "p_done": "Concluído!",
+      "p_resolving_sdk": "Obtendo a versão mais recente do SDK...",
+      "p_scaffold_files": "Gravando arquivos do projeto...",
+      "p_pnpm_install": "Executando 'pnpm install'... (isso pode levar um minuto)",
+      "p_building": "Compilando a extensão...",
+      "p_build_failed_note": "Observação: não foi possível compilar automaticamente. Execute 'pnpm install && pnpm run build' no diretório da extensão.",
+      "p_registering": "Registrando a extensão de desenvolvimento...",
+      "p_register_failed_note": "Observação: falha ao registrar para carregamento automático. Talvez seja necessário executar 'asyar link'."
+    },
+    "ai_builder": {
+      "secret_refused": "Recusado: segredo fixo no código encontrado em {path}",
+      "download_declined": "Download recusado.",
+      "download_failed": "Falha ao baixar {name}. Tente novamente pelo Criador de Extensões com IA.",
+      "cred_check_failed": "Falha ao verificar o status das credenciais de IA. Verifique Configurações → IA.",
+      "needs_anthropic_key": "Este recurso precisa de uma chave de API da Anthropic. Adicione uma em Configurações → IA → Anthropic.",
+      "start_failed": "Falha ao iniciar a criação. Tente novamente.",
+      "runtime_unavailable": "Um runtime necessário ficou indisponível. Tente novamente.",
+      "starting": "Iniciando…",
+      "could_not_start": "Não foi possível iniciar a criação.",
+      "steps_completed_one": "{count} etapa concluída",
+      "steps_completed_other": "{count} etapas concluídas",
+      "answer": "Responder"
+    },
+    "usage_stats": {
+      "launch_one": "Abertura",
+      "launch_other": "Aberturas",
+      "active_day_one": "Dia ativo",
+      "active_day_other": "Dias ativos"
+    },
+    "help": {
+      "open_guide": "Abrir Guia"
+    }
+  },
+  "builtin": {
+    "agents": {
+      "name": "Agentes",
+      "description": "Execute agentes de IA com acesso a ferramentas",
+      "commands": {
+        "manage-agents": {
+          "name": "Gerenciar Agentes",
+          "description": "Abrir o gerenciador de agentes"
+        },
+        "ask": {
+          "name": "Perguntar à IA",
+          "description": "Faça uma pergunta a um agente de IA"
+        }
+      },
+      "walkthrough": {
+        "ask-ai": {
+          "title": "Pergunte à IA sem trocar de app",
+          "summary": "Faça uma pergunta direto na barra de pesquisa",
+          "body": "Faça uma pergunta pela barra de pesquisa e receba a resposta ali mesmo — sem aba do navegador, sem trocar de app, sem perder o que você estava fazendo.\n\nOs agentes também podem usar ferramentas, então conseguem agir no seu computador em vez de apenas responder.\n\n## Para concluir a tarefa\n\nExecute **Perguntar à IA** e faça uma pergunta de verdade."
+        }
+      }
+    },
+    "calculator": {
+      "name": "Calculadora",
+      "description": "Calculadora em linguagem natural: contas, conversão de unidades e moedas, porcentagens e gorjetas, datas (\"days until christmas\"), fusos horários (\"5pm ldn in sf\"), bases numéricas, proporções e conversão de cores — direto na barra de pesquisa.",
+      "preferences": {
+        "refreshInterval": {
+          "title": "Intervalo de atualização de moedas",
+          "description": "Com que frequência atualizar as taxas de câmbio em segundo plano, em horas (1–24)."
+        },
+        "numberFormat": {
+          "title": "Formato de número",
+          "description": "Como você escreve decimais. \"Automático\" segue a configuração de região do sistema.",
+          "options": {
+            "auto": "Automático (região do sistema)",
+            "point": "1,234.56 — ponto decimal",
+            "comma": "1.234,56 — vírgula decimal"
+          }
+        },
+        "preferredCurrency": {
+          "title": "Moeda preferida",
+          "description": "Código de 3 letras (ex.: USD, EUR, IQD) usado quando você digita um valor como \"50 usd\" sem moeda de destino."
+        }
+      },
+      "walkthrough": {
+        "calculate": {
+          "title": "Uma calculadora que você nunca precisa abrir",
+          "summary": "Digite um cálculo direto na barra de pesquisa",
+          "body": "Digite uma soma, uma conversão de unidades, uma conversão de moedas ou uma diferença entre datas direto na barra de pesquisa e a resposta aparece enquanto você digita. Nenhum app para abrir, nenhum modo para ativar.\n\nExperimente:\n\n- `1234 * 56`\n- `120 usd in eur`\n- `18% of 240`\n- `days until dec 25`\n\n## Para concluir a tarefa\n\nFaça um cálculo na barra de pesquisa e marque esta tarefa como concluída."
+        }
+      }
+    },
+    "clipboard-history": {
+      "name": "Histórico da Área de Transferência",
+      "description": "Gerencie e acesse o histórico da área de transferência",
+      "commands": {
+        "show-clipboard": {
+          "name": "Histórico da Área de Transferência",
+          "description": "Ver e gerenciar o histórico da área de transferência",
+          "accessory": {
+            "all": "Todos os Tipos",
+            "text": "Texto",
+            "images": "Imagens",
+            "files": "Arquivos"
+          }
+        }
+      },
+      "walkthrough": {
+        "clipboard-habit": {
+          "title": "Nunca mais perca o que você copiou",
+          "summary": "Abra o histórico da área de transferência em três dias diferentes",
+          "body": "Tudo o que você copia fica guardado, pesquisável e a uma tecla de distância. Chega de copiar algo e perder o que estava lá antes, chega de procurar o mesmo link duas vezes.\n\nO histórico da área de transferência é o recurso que as pessoas dizem ter mudado a forma como trabalham — mas só depois de salvá-las algumas vezes. Por isso esta tarefa pede três dias em vez de uma única visita.\n\n## Para concluir a tarefa\n\n1. Copie algumas coisas como faria normalmente.\n2. Abra **Histórico da Área de Transferência** e cole algo mais antigo.\n3. Repita em três dias diferentes."
+        }
+      }
+    },
+    "create-extension": {
+      "name": "Ferramentas de Desenvolvedor",
+      "description": "Crie a estrutura de novas extensões do Asyar",
+      "commands": {
+        "open": {
+          "name": "Criar Extensão",
+          "description": "Crie a estrutura de uma nova extensão do Asyar para desenvolvimento"
+        },
+        "build-with-ai": {
+          "name": "Criar Extensão com IA",
+          "description": "Descreva uma extensão em palavras e deixe a IA criá-la"
+        },
+        "my-extensions": {
+          "name": "Minhas Extensões",
+          "description": "Veja as extensões que você criou e publique-as"
+        }
+      },
+      "walkthrough": {
+        "build-an-extension": {
+          "title": "Crie sua primeira extensão",
+          "summary": "Crie uma extensão e deixe o Asyar do seu jeito",
+          "body": "Cada recurso integrado que você usou neste passo a passo é uma extensão que usa a mesma API pública que você recebe. Se falta algo de que você precisa no Asyar, essa lacuna é questão de algumas horas de trabalho, não de um pedido de recurso.\n\n## Para concluir a tarefa\n\nExecute **Ferramentas de Desenvolvedor** e crie a estrutura da sua primeira extensão."
+        }
+      }
+    },
+    "feedback": {
+      "name": "Feedback",
+      "description": "Envie feedback, ideias de recursos ou relate um problema à equipe do Asyar",
+      "commands": {
+        "send-feedback": {
+          "name": "Enviar Feedback",
+          "description": "Compartilhe uma ideia, um elogio ou um relato de bug"
+        }
+      }
+    },
+    "file-search": {
+      "name": "Busca de Arquivos",
+      "description": "Pesquise arquivos em toda a sua pasta pessoal",
+      "commands": {
+        "show-files": {
+          "name": "Buscar Arquivos",
+          "description": "Pesquisar arquivos pelo nome",
+          "accessory": {
+            "all": "Todos os Arquivos",
+            "document": "Documentos",
+            "image": "Imagens",
+            "code": "Código",
+            "audio-video": "Áudio e Vídeo",
+            "archive": "Arquivos Compactados",
+            "folder": "Pastas"
+          }
+        }
+      },
+      "walkthrough": {
+        "find-a-file": {
+          "title": "Encontre um arquivo sem abrir nenhuma janela",
+          "summary": "Pesquise seus arquivos direto do lançador",
+          "body": "A busca de arquivos indexa seus arquivos localmente e os encontra por nome aproximado — sem navegar por pastas, sem esperar um gerenciador de arquivos abrir. Os resultados podem ser abertos, mostrados no gerenciador de arquivos ou fixados para sempre aparecerem primeiro.\n\n## Para concluir a tarefa\n\nExecute **Busca de Arquivos** e abra um arquivo dos resultados."
+        }
+      }
+    },
+    "help": {
+      "name": "Ajuda",
+      "description": "Atalhos de teclado, guias de recursos e o manual do usuário do Asyar",
+      "commands": {
+        "show-help": {
+          "name": "Ajuda",
+          "description": "Ver atalhos de teclado e abrir o guia do usuário"
+        }
+      }
+    },
+    "mcp": {
+      "name": "Servidores MCP",
+      "description": "Gerencie servidores Model Context Protocol (MCP)",
+      "commands": {
+        "manage": {
+          "name": "Gerenciar Servidores MCP",
+          "description": "Abrir o gerenciador de servidores MCP"
+        }
+      }
+    },
+    "notes": {
+      "name": "Notas",
+      "description": "Escreva e organize notas em Markdown sem tirar as mãos do teclado",
+      "commands": {
+        "open-notes": {
+          "name": "Notas",
+          "description": "Navegue, pesquise e escreva notas"
+        },
+        "quick-note": {
+          "name": "Nota Rápida",
+          "description": "Registre uma nota na hora sem abrir o editor",
+          "arguments": {
+            "text": {
+              "placeholder": "No que você está pensando?"
+            }
+          }
+        },
+        "new-sticky": {
+          "name": "Novo Lembrete",
+          "description": "Crie uma nota em branco fixada na sua área de trabalho"
+        },
+        "append-today": {
+          "name": "Adicionar a Hoje",
+          "description": "Acrescente uma linha à nota diária de hoje (criada se necessário)",
+          "arguments": {
+            "text": {
+              "placeholder": "O que aconteceu?"
+            }
+          }
+        }
+      },
+      "walkthrough": {
+        "first-note": {
+          "title": "Anote a ideia antes que ela escape",
+          "summary": "Registre uma nota sem largar o que estava fazendo",
+          "body": "As notas são para a ideia que chega enquanto você está ocupado com outra coisa — um lembrete, uma anotação de reunião, um trecho de conversa. Elas abrem sobre o que você estiver fazendo e saem do caminho logo depois.\n\nDica: associe um atalho à **Nota Rápida** para anotar com uma única tecla.\n\n## Para concluir a tarefa\n\nExecute **Notas** ou **Nota Rápida** e escreva algo."
+        }
+      }
+    },
+    "portals": {
+      "name": "Portais",
+      "description": "Salve URLs como atalhos nomeados e pesquisáveis",
+      "commands": {
+        "open-portals": {
+          "name": "Portais",
+          "description": "Gerencie seus portais salvos"
+        }
+      },
+      "walkthrough": {
+        "first-portal": {
+          "title": "Vá direto aos links que você mais usa",
+          "summary": "Salve uma URL como um portal nomeado e pesquisável",
+          "body": "Um portal transforma uma URL em algo que você chama pelo nome — um painel, um repositório, um quadro de tickets, uma playlist. Portais também aceitam uma consulta, então um único portal vira uma caixa de pesquisa para qualquer site que você usa.\n\n## Para concluir a tarefa\n\n1. Execute **Portais**.\n2. Adicione um link que você abre quase todo dia.\n3. Chame-o pelo nome na barra de pesquisa."
+        }
+      }
+    },
+    "quit": {
+      "name": "Asyar",
+      "description": "Sair do aplicativo Asyar",
+      "commands": {
+        "quit-asyar": {
+          "name": "Sair do Asyar",
+          "description": "Sair do aplicativo Asyar"
+        }
+      }
+    },
+    "raycast-import": {
+      "name": "Importação do Raycast",
+      "description": "Traga seus snippets, links rápidos e atalhos de apps do Raycast para o Asyar",
+      "commands": {
+        "import-raycast": {
+          "name": "Importar do Raycast",
+          "description": "Importe snippets, portais e atalhos de um arquivo de exportação do Raycast"
+        }
+      }
+    },
+    "runs": {
+      "name": "Execuções",
+      "description": "Veja e gerencie execuções ativas e recentes",
+      "commands": {
+        "open-runs": {
+          "name": "Execuções",
+          "description": "Abrir a visualização de execuções"
+        }
+      }
+    },
+    "screen-ocr": {
+      "name": "OCR de Tela",
+      "description": "Extraia e copie texto de qualquer região da tela",
+      "commands": {
+        "capture-text": {
+          "name": "Capturar Texto da Tela",
+          "description": "Selecione uma área da tela para reconhecer e copiar o texto"
+        }
+      }
+    },
+    "scripts": {
+      "name": "Scripts",
+      "description": "Execute e gerencie scripts de pastas monitoradas",
+      "commands": {
+        "script-library": {
+          "name": "Biblioteca de Scripts",
+          "description": "Inspecione, execute e solucione problemas de scripts"
+        }
+      }
+    },
+    "settings": {
+      "name": "Configurações",
+      "description": "Abrir as configurações do aplicativo",
+      "commands": {
+        "open-settings": {
+          "name": "Configurações",
+          "description": "Abrir as configurações do aplicativo"
+        }
+      }
+    },
+    "shortcuts": {
+      "name": "Atalhos",
+      "description": "Atalhos globais para aplicativos e comandos",
+      "commands": {
+        "open-shortcuts": {
+          "name": "Atalhos",
+          "description": "Gerencie os atalhos globais atribuídos"
+        }
+      },
+      "walkthrough": {
+        "first-hotkey": {
+          "title": "Abra qualquer coisa com uma tecla",
+          "summary": "Associe um atalho global a um comando que você usa o tempo todo",
+          "body": "Um atalho global abre um comando específico de qualquer lugar da área de trabalho, sem passar antes pela barra de pesquisa. Os comandos que você executa dez vezes por dia nunca deveriam custar uma pesquisa.\n\n## Para concluir a tarefa\n\n1. Execute **Atalhos**.\n2. Associe um atalho ao comando que você mais executa.\n3. Use-o a partir de outro app."
+        },
+        "first-alias": {
+          "title": "Dê aos seus favoritos um nome de duas letras",
+          "summary": "Defina um apelido para que um comando sempre vença a pesquisa",
+          "body": "Um apelido é uma palavra curta que leva direto a um item — digite-a e esse item é selecionado, sempre, não importa o que mais corresponda.\n\nApelidos são para as coisas que você se recusa a procurar: `f` para a busca de arquivos, `cb` para o histórico da área de transferência, `dw` para definir uma palavra.\n\n## Para concluir a tarefa\n\nSelecione qualquer item nos resultados da pesquisa, abra o painel de ações e dê a ele um apelido."
+        }
+      }
+    },
+    "snippets": {
+      "name": "Snippets",
+      "description": "Expansão de texto — digite uma palavra-chave, receba o texto completo",
+      "commands": {
+        "open-snippets": {
+          "name": "Snippets",
+          "description": "Gerencie snippets de expansão de texto"
+        }
+      },
+      "walkthrough": {
+        "first-snippet": {
+          "title": "Pare de digitar a mesma coisa duas vezes",
+          "summary": "Crie um snippet que se expande a partir de uma palavra-chave",
+          "body": "Um snippet é um bloco de texto que você digita o tempo todo — seu e-mail, uma resposta pronta, um bloco de código, seus dados bancários — salvo uma vez e expandido por uma palavra-chave curta, em qualquer app.\n\nUm bom primeiro snippet é o seu e-mail com a palavra-chave `@@`.\n\n## Para concluir a tarefa\n\n1. Execute **Snippets** e crie o primeiro.\n2. Dê a ele uma palavra-chave que você nunca digitaria por acidente.\n3. Teste a palavra-chave em outro app."
+        }
+      }
+    },
+    "store": {
+      "name": "Loja",
+      "description": "Navegue e instale extensões do Asyar.",
+      "commands": {
+        "browse": {
+          "name": "Explorar a Loja de Extensões",
+          "description": "Encontre e instale novas extensões"
+        }
+      },
+      "walkthrough": {
+        "install-an-extension": {
+          "title": "Adicione algo que o Asyar ainda não faz",
+          "summary": "Instale sua primeira extensão pela Loja",
+          "body": "As extensões usam a mesma API dos recursos integrados, então tudo na Loja se comporta como se viesse com o app — mesma pesquisa, mesmas ações, mesmas regras de teclado.\n\n## Para concluir a tarefa\n\nAbra a **Loja**, encontre algo que você realmente usaria e instale."
+        }
+      }
+    },
+    "system-settings": {
+      "name": "Ajustes do Sistema",
+      "description": "Pesquise e abra painéis dos Ajustes do Sistema do macOS (Som, Telas, Wi-Fi…)"
+    },
+    "system": {
+      "name": "Sistema",
+      "description": "Comandos do sistema: repouso, bloquear tela, reiniciar, desligar"
+    },
+    "url-opener": {
+      "name": "Abridor de URL",
+      "description": "Digite ou cole um endereço da web na barra de pesquisa e abra-o no navegador."
+    },
+    "usage-stats": {
+      "name": "Estatísticas de Uso",
+      "description": "Veja um painel apenas local de quantas vezes você abre o Asyar e quais comandos mais executa",
+      "commands": {
+        "open-usage-stats": {
+          "name": "Estatísticas de Uso",
+          "description": "Ver seu painel de uso local"
+        }
+      }
+    },
+    "walkthrough": {
+      "name": "Passo a Passo",
+      "description": "Tarefas curtas que transformam os recursos do Asyar em hábitos, marcadas conforme você realmente os usa",
+      "commands": {
+        "show-walkthrough": {
+          "name": "Passo a Passo",
+          "description": "Aprenda o Asyar uma tarefa por vez"
+        }
+      },
+      "walkthrough": {
+        "start": {
+          "title": "Comece a jornada para virar especialista",
+          "summary": "Você já está aqui — a primeira tarefa está feita",
+          "body": "Cada tarefa desta lista ensina algo que o Asyar faz e que a maioria das pessoas nunca descobre.\n\nVocê não marca as tarefas manualmente. Cada uma observa como você realmente usa o Asyar e se conclui sozinha assim que você faz aquilo de verdade. Tarefas que você já faz há semanas já vêm marcadas — a lista só mostra o que realmente falta.\n\n## Para concluir a tarefa\n\nAbra o Passo a Passo. Pronto."
+        },
+        "favorite-an-item": {
+          "title": "Deixe um favorito à mão",
+          "summary": "Favorite um aplicativo ou comando que você usa com frequência",
+          "body": "Os favoritos ficam no topo quando a pesquisa está vazia, à frente da classificação automática por uso do Asyar. Podem ser aplicativos ou comandos, e as pesquisas digitadas continuam ordenadas por relevância.\n\n## Para concluir a tarefa\n\n1. Selecione qualquer aplicativo ou comando no lançador.\n2. Abra **Ações** com **⌘K**.\n3. Escolha **Adicionar aos favoritos**.\n4. Limpe a pesquisa para vê-lo no topo."
+        }
+      }
+    },
+    "window-management": {
+      "name": "Gerenciamento de Janelas",
+      "description": "Redimensione e reposicione a janela em primeiro plano com layouts predefinidos",
+      "commands": {
+        "left-half": {
+          "name": "Metade Esquerda",
+          "description": "50% esquerdos da tela"
+        },
+        "right-half": {
+          "name": "Metade Direita",
+          "description": "50% direitos da tela"
+        },
+        "top-half": {
+          "name": "Metade Superior",
+          "description": "50% superiores da tela"
+        },
+        "bottom-half": {
+          "name": "Metade Inferior",
+          "description": "50% inferiores da tela"
+        },
+        "top-left-quarter": {
+          "name": "Quarto Superior Esquerdo",
+          "description": "25% superior esquerdo da tela"
+        },
+        "top-right-quarter": {
+          "name": "Quarto Superior Direito",
+          "description": "25% superior direito da tela"
+        },
+        "bottom-left-quarter": {
+          "name": "Quarto Inferior Esquerdo",
+          "description": "25% inferior esquerdo da tela"
+        },
+        "bottom-right-quarter": {
+          "name": "Quarto Inferior Direito",
+          "description": "25% inferior direito da tela"
+        },
+        "left-third": {
+          "name": "Terço Esquerdo",
+          "description": "33% esquerdos da tela"
+        },
+        "center-third": {
+          "name": "Terço Central",
+          "description": "33% centrais da tela"
+        },
+        "right-third": {
+          "name": "Terço Direito",
+          "description": "33% direitos da tela"
+        },
+        "left-two-thirds": {
+          "name": "Dois Terços à Esquerda",
+          "description": "66% esquerdos da tela"
+        },
+        "right-two-thirds": {
+          "name": "Dois Terços à Direita",
+          "description": "66% direitos da tela"
+        },
+        "first-fourth": {
+          "name": "Primeiro Quarto",
+          "description": "Primeiros 25% da tela"
+        },
+        "second-fourth": {
+          "name": "Segundo Quarto",
+          "description": "Segundos 25% da tela"
+        },
+        "third-fourth": {
+          "name": "Terceiro Quarto",
+          "description": "Terceiros 25% da tela"
+        },
+        "last-fourth": {
+          "name": "Último Quarto",
+          "description": "Últimos 25% da tela"
+        },
+        "center": {
+          "name": "Centralizar",
+          "description": "Centralizada, 80% × 80% da tela"
+        },
+        "almost-maximize": {
+          "name": "Quase Maximizar",
+          "description": "Centralizada, 90% × 90% da tela"
+        },
+        "maximize": {
+          "name": "Maximizar",
+          "description": "Preencher a tela inteira (tela cheia)"
+        },
+        "restore": {
+          "name": "Restaurar Posição Anterior",
+          "description": "Desfazer o último layout de janela aplicado"
+        },
+        "manage-layouts": {
+          "name": "Gerenciar Layouts de Janela",
+          "description": "Veja, adicione e exclua layouts de janela personalizados"
+        },
+        "switch-windows": {
+          "name": "Alternar Janelas",
+          "description": "Alternar para uma janela de aplicativo ativa"
+        },
+        "save-current-layout": {
+          "name": "Salvar Janela Atual como Layout",
+          "description": "Salve a posição e o tamanho da janela em primeiro plano como um layout personalizado"
+        },
+        "previous-display": {
+          "name": "Tela Anterior",
+          "description": "Mover a janela em primeiro plano para a tela anterior"
+        },
+        "next-display": {
+          "name": "Próxima Tela",
+          "description": "Mover a janela em primeiro plano para a próxima tela"
+        },
+        "apply-layout": {
+          "name": "Aplicar Layout",
+          "description": "Aplique um layout de janela personalizado pelo nome ou ID",
+          "arguments": {
+            "name": {
+              "placeholder": "Nome do Layout"
+            },
+            "id": {
+              "placeholder": "ID do Layout"
+            }
+          }
+        }
+      },
+      "walkthrough": {
+        "tile-a-window": {
+          "title": "Organize janelas sem tocar no mouse",
+          "summary": "Mova uma janela com um comando em vez de arrastar",
+          "body": "Metades, terços, quartos, centro, maximizar, restaurar — todo layout de janela que você faz arrastando é um comando que pode ser executado ou associado a um atalho.\n\nA recompensa vem quando eles estão em atalhos: duas teclas para colocar dois apps lado a lado.\n\n## Para concluir a tarefa\n\n1. Pesquise `metade esquerda` ou `maximizar` e execute.\n2. Associe seus dois favoritos a atalhos."
+        }
+      }
+    }
+  },
+  "permissions_catalog": {
+    "not_recognized": "Não reconhecida por esta versão do Asyar.",
+    "entries": {
+      "network": {
+        "title": "Acesso à rede",
+        "description": "Fazer solicitações HTTP de saída."
+      },
+      "network_lan": {
+        "title": "Acesso à rede local",
+        "description": "Conectar-se a dispositivos da rede local que você aprovar nas Configurações. Endereços de loopback, link-local e de metadados de nuvem são sempre bloqueados."
+      },
+      "network_secrets": {
+        "title": "Enviar referências secretas",
+        "description": "Enviar segredos de login de fontes declaradas para hosts HTTPS declarados sem expor o token à extensão. Requer acesso à rede. Aprove apenas hosts em que você confia."
+      },
+      "notifications_send": {
+        "title": "Enviar notificações",
+        "description": "Publicar notificações na central de notificações do sistema."
+      },
+      "clipboard_read": {
+        "title": "Ler a área de transferência",
+        "description": "Ler o conteúdo atual da área de transferência do sistema."
+      },
+      "clipboard_write": {
+        "title": "Gravar na área de transferência",
+        "description": "Gravar ou colar conteúdo na área de transferência do sistema."
+      },
+      "clipboard_history_read": {
+        "title": "Ler o histórico da área de transferência",
+        "description": "Consultar e pesquisar os registros salvos do histórico da área de transferência."
+      },
+      "clipboard_history_capture": {
+        "title": "Capturar o histórico da área de transferência",
+        "description": "Acompanhar em segundo plano as alterações da área de transferência para registrar o histórico."
+      },
+      "clipboard_history_manage": {
+        "title": "Gerenciar o histórico da área de transferência",
+        "description": "Excluir registros, marcar favoritos ou limpar o histórico salvo da área de transferência."
+      },
+      "storage_read": {
+        "title": "Ler o armazenamento da extensão",
+        "description": "Ler do armazenamento chave-valor da própria extensão."
+      },
+      "storage_write": {
+        "title": "Gravar no armazenamento da extensão",
+        "description": "Gravar no armazenamento chave-valor da própria extensão."
+      },
+      "store_read": {
+        "title": "Ler dados da extensão",
+        "description": "Ler do repositório de dados da extensão."
+      },
+      "store_write": {
+        "title": "Gravar dados da extensão",
+        "description": "Gravar no repositório de dados da extensão."
+      },
+      "cache_read": {
+        "title": "Ler o cache da extensão",
+        "description": "Ler do cache da extensão."
+      },
+      "cache_write": {
+        "title": "Gravar no cache da extensão",
+        "description": "Gravar no cache da extensão."
+      },
+      "fs_read": {
+        "title": "Revelar arquivos",
+        "description": "Mostrar arquivos no gerenciador de arquivos do sistema."
+      },
+      "fs_write": {
+        "title": "Mover arquivos para a lixeira",
+        "description": "Mover arquivos para a lixeira do sistema."
+      },
+      "fs_watch": {
+        "title": "Observar arquivos",
+        "description": "Observar alterações no sistema de arquivos nos padrões glob declarados."
+      },
+      "files_search": {
+        "title": "Pesquisar arquivos locais",
+        "description": "Pesquisar no índice de arquivos locais (nomes e metadados, não o conteúdo dos arquivos)."
+      },
+      "files_read": {
+        "title": "Ler o conteúdo de arquivos",
+        "description": "Ler o conteúdo de texto, listar os nomes e gerar miniaturas dos arquivos que correspondem aos padrões de caminho declarados. Repositórios de credenciais e locais do sistema operacional são sempre excluídos."
+      },
+      "files_search_provider": {
+        "title": "Contribuir com pesquisa de arquivos remotos",
+        "description": "Fornecer resultados de pesquisa para arquivos remotos e na nuvem."
+      },
+      "notes_read": {
+        "title": "Pesquisar e ler suas notas",
+        "description": "Pesquisar suas Notas e ler o conteúdo completo de qualquer nota."
+      },
+      "notes_write": {
+        "title": "Criar e acrescentar em notas",
+        "description": "Criar novas notas e adicionar texto ao final das existentes. Não pode sobrescrever nem excluir o conteúdo existente de uma nota."
+      },
+      "shell_spawn": {
+        "title": "Executar programas",
+        "description": "Iniciar processos do sistema operacional e ler sua saída. Concede amplo acesso ao sistema."
+      },
+      "shell_open_url": {
+        "title": "Abrir URLs",
+        "description": "Abrir links da web (http, https, mailto, tel) no navegador padrão, além de quaisquer esquemas de URL adicionais declarados pela extensão, que podem abrir os aplicativos registrados para eles."
+      },
+      "shell_open_path": {
+        "title": "Abrir arquivos e pastas",
+        "description": "Abrir arquivos, pastas e espaços de trabalho locais com os aplicativos padrão ou especificados."
+      },
+      "entitlements_read": {
+        "title": "Ler status da assinatura",
+        "description": "Ler os direitos de assinatura ativos do usuário."
+      },
+      "selection_read": {
+        "title": "Ler a seleção",
+        "description": "Ler o texto selecionado ou os itens do gerenciador de arquivos selecionados no aplicativo em primeiro plano."
+      },
+      "oauth_use": {
+        "title": "Entrar em serviços",
+        "description": "Executar fluxos de autorização OAuth com provedores de terceiros."
+      },
+      "extension_invoke": {
+        "title": "Invocar outras extensões",
+        "description": "Executar comandos de outras extensões instaladas."
+      },
+      "application_read": {
+        "title": "Ler aplicativos instalados",
+        "description": "Listar os aplicativos instalados e consultar o aplicativo em primeiro plano ou os que estão em execução."
+      },
+      "window_manage": {
+        "title": "Gerenciar janelas",
+        "description": "Ler e alterar a posição, o tamanho e o estado de tela cheia da janela em primeiro plano."
+      },
+      "screen_pick_color": {
+        "title": "Capturar cores da tela",
+        "description": "Mostrar o conta-gotas do sistema e ler a cor do pixel da tela escolhido pelo usuário."
+      },
+      "screen_capture": {
+        "title": "Capturar texto da tela",
+        "description": "Capturar regiões da tela e extrair texto por reconhecimento óptico de caracteres (OCR) no próprio dispositivo."
+      },
+      "calculator_evaluate": {
+        "title": "Calcular e converter",
+        "description": "Avaliar expressões matemáticas, conversões de unidades e cálculos de moedas."
+      },
+      "power_inhibit": {
+        "title": "Manter o sistema ativo",
+        "description": "Impedir que o sistema entre em repouso enquanto a lógica da extensão estiver em execução."
+      },
+      "media_control": {
+        "title": "Controlar a reprodução de mídia",
+        "description": "Ver o que está tocando em players e aplicativos de mídia (como Música, TV, Spotify, VLC ou um navegador) e enviar comandos de reproduzir, pausar e pular."
+      },
+      "calendar_read": {
+        "title": "Ler calendários e eventos",
+        "description": "Listar seus calendários e ler os eventos neles."
+      },
+      "calendar_write": {
+        "title": "Criar eventos no calendário",
+        "description": "Adicionar novos eventos aos seus calendários."
+      },
+      "reminders_read": {
+        "title": "Ler lembretes",
+        "description": "Listar suas listas de lembretes e os lembretes nelas."
+      },
+      "reminders_write": {
+        "title": "Criar e concluir lembretes",
+        "description": "Adicionar novos lembretes e marcar os existentes como concluídos ou não concluídos."
+      },
+      "shortcuts_read": {
+        "title": "Listar Atalhos da Apple",
+        "description": "Ver os nomes dos atalhos na sua biblioteca do Atalhos da Apple."
+      },
+      "shortcuts_run": {
+        "title": "Executar Atalhos da Apple",
+        "description": "Executar qualquer um dos seus Atalhos da Apple, opcionalmente passando texto. Um atalho pode fazer tudo aquilo para o que foi criado."
+      },
+      "process_read": {
+        "title": "Listar processos",
+        "description": "Listar os processos em execução com uso de CPU e memória."
+      },
+      "process_kill": {
+        "title": "Encerrar processos",
+        "description": "Encerrar ou forçar o encerramento de processos em execução."
+      },
+      "systemEvents_read": {
+        "title": "Observar eventos do sistema",
+        "description": "Assinar eventos de repouso, despertar, tampa, bateria e fonte de energia do sistema."
+      },
+      "app_frontmost_watch": {
+        "title": "Observar atividade de aplicativos",
+        "description": "Assinar eventos de aplicativo aberto, encerrado e de mudança do aplicativo em primeiro plano."
+      },
+      "timers_schedule": {
+        "title": "Agendar temporizadores",
+        "description": "Agendar temporizadores únicos persistentes que disparam mesmo após reiniciar."
+      },
+      "timers_cancel": {
+        "title": "Cancelar temporizadores",
+        "description": "Cancelar temporizadores agendados anteriormente."
+      },
+      "timers_list": {
+        "title": "Listar temporizadores",
+        "description": "Listar os temporizadores agendados."
+      },
+      "preferences_read": {
+        "title": "Ler preferências",
+        "description": "Ler os valores das preferências da própria extensão."
+      },
+      "preferences_write": {
+        "title": "Alterar preferências",
+        "description": "Alterar os valores das preferências da própria extensão."
+      },
+      "feedback_announce": {
+        "title": "Mostrar anúncios ocasionais",
+        "description": "Solicitar um anúncio controlado pelo host, como Novidades."
+      },
+      "tools_register": {
+        "title": "Registrar ferramentas de agente",
+        "description": "Expor ferramentas ao runtime do agente para uso durante chamadas de ferramentas."
+      },
+      "snippets_contribute": {
+        "title": "Contribuir com snippets",
+        "description": "Adicionar expansões de atalhos ao detector global de digitação, substituindo atalhos digitados em qualquer aplicativo."
+      },
+      "runs_track": {
+        "title": "Acompanhar execuções em segundo plano",
+        "description": "Iniciar e gerenciar tarefas longas exibidas na interface de execuções do launcher."
+      },
+      "browser_tabs_read": {
+        "title": "Ler abas do navegador",
+        "description": "Listar e inspecionar abas no navegador pareado."
+      },
+      "browser_tabs_write": {
+        "title": "Controlar abas do navegador",
+        "description": "Abrir, ativar e fechar abas no navegador pareado."
+      },
+      "browser_bookmarks_read": {
+        "title": "Ler favoritos",
+        "description": "Ler os favoritos do navegador pareado."
+      },
+      "browser_history_read": {
+        "title": "Ler histórico de navegação",
+        "description": "Pesquisar no histórico do navegador pareado."
+      },
+      "browser_page_read": {
+        "title": "Ler conteúdo da página",
+        "description": "Ler o conteúdo da página atual no navegador pareado."
+      },
+      "browser_page_write": {
+        "title": "Agir nas páginas",
+        "description": "Interagir com o conteúdo das páginas no navegador pareado."
+      },
+      "mcp": {
+        "title": "Model Context Protocol (MCP)",
+        "description": "Descobrir servidores MCP configurados e invocar ferramentas externas."
+      },
+      "ai": {
+        "title": "Enviar prompts ao modelo de IA",
+        "description": "Enviar prompts ao modelo de IA configurado no host para obter respostas completas e em streaming."
+      }
+    }
+  },
+  "diagnostics_messages": {
+    "permission_denied": "Acesso a {permission} negado",
+    "permission_denied_generic": "Acesso a um recurso negado",
+    "policy_denied": "Ação negada: {policyError}",
+    "policy_denied_generic": "Ação negada pela política",
+    "network_failure": "Erro de rede",
+    "lock_poisoned": "Bloqueio interno corrompido; reinicie o Asyar",
+    "database_failure": "Erro no banco de dados",
+    "not_found": "Não foi possível encontrar {target}",
+    "not_found_generic": "Item não encontrado",
+    "extension_failure": "Erro de extensão: {extension}",
+    "extension_failure_generic": "Erro de extensão: desconhecido",
+    "shortcut_failure": "Erro de atalho: {shortcut}",
+    "shortcut_failure_generic": "Erro de atalho: desconhecido",
+    "platform_failure": "Erro de plataforma: {platform}",
+    "platform_failure_generic": "Erro de plataforma: desconhecido",
+    "validation_failure": "Entrada inválida: {field}",
+    "validation_failure_generic": "Entrada inválida: valor",
+    "encryption_failure": "Erro de criptografia",
+    "auth_failure": "Falha na autenticação ({provider})",
+    "auth_failure_generic": "Falha na autenticação",
+    "oauth_failure": "Erro de OAuth ({provider})",
+    "oauth_failure_generic": "Erro de OAuth",
+    "power_failure": "Erro de gerenciamento de energia",
+    "run_failed": "Falha na execução: {message}",
+    "run_failed_id": "A execução {id} falhou",
+    "run_failed_id_generic": "Uma execução desconhecida falhou",
+    "sync_entitlement_required": "A sincronização na nuvem requer um plano ativo",
+    "sync_quota_exceeded": "Cota de armazenamento da sincronização na nuvem excedida ({usedBytes} / {limitBytes} bytes)",
+    "sync_quota_exceeded_generic": "Cota de armazenamento da sincronização na nuvem excedida",
+    "sync_rate_limited": "A sincronização na nuvem está limitada. Tentando novamente em {retryAfter}s",
+    "sync_server_unavailable": "O servidor de sincronização na nuvem está temporariamente indisponível: {detail}",
+    "sync_server_unavailable_generic": "O servidor de sincronização na nuvem está temporariamente indisponível",
+    "sync_e2ee_locked": "A sincronização na nuvem está bloqueada neste dispositivo. Digite sua frase de recuperação ou aprove em outro dispositivo.",
+    "sync_e2ee_not_enrolled": "A criptografia de ponta a ponta não está ativada para esta conta",
+    "sync_e2ee_already_enrolled": "A criptografia de ponta a ponta já está ativada para esta conta",
+    "sync_e2ee_wrong_mode": "Operação não suportada para este modo de criptografia",
+    "sync_finalize_behind": "A finalização da sincronização na nuvem foi adiada até o estado local se atualizar",
+    "sync_pairing_not_found": "Solicitação de pareamento de dispositivo não encontrada ou expirada",
+    "sync_pairing_not_pending": "A solicitação de pareamento de dispositivo não está mais pendente",
+    "sync_pairing_fingerprint_mismatch": "Impressão digital do pareamento não confere: as palavras de verificação não correspondem ao dispositivo solicitante.",
+    "sync_pairing_too_many": "Muitas solicitações de pareamento ativas; tente novamente mais tarde",
+    "io_failure": "Erro de E/S",
+    "json_failure": "Erro de formato de dados",
+    "unexpected_error": "Erro inesperado",
+    "search_lock_poisoned": "Bloqueio do índice de pesquisa corrompido",
+    "search_json_failure": "Erro de formato dos dados de pesquisa",
+    "search_io_failure": "Erro de E/S da pesquisa",
+    "search_not_found": "A pesquisa não encontrou {target}",
+    "search_not_found_generic": "A pesquisa não encontrou o item",
+    "search_other": "Erro de pesquisa: {detail}",
+    "search_other_generic": "Erro de pesquisa",
+    "render_error": "Falha ao renderizar uma visualização",
+    "invoke_unknown": "Falha no comando: {command}",
+    "invoke_unknown_generic": "Falha no comando",
+    "extension_proxy_error": "Falha na chamada da extensão ({method})",
+    "extension_proxy_error_generic": "Falha na chamada da extensão",
+    "extension_crash": "{extensionId} ({role}) parou de responder",
+    "extension_crash_generic": "A extensão ({role}) parou de responder",
+    "iframe_uncaught": "{extensionId} encontrou um erro inesperado",
+    "iframe_uncaught_generic": "A extensão encontrou um erro inesperado",
+    "iframe_unhandled_rejection": "Uma promise de {extensionId} foi rejeitada",
+    "iframe_unhandled_rejection_generic": "Uma promise da extensão foi rejeitada",
+    "rpc_timeout": "{method} excedeu o tempo limite",
+    "rpc_timeout_generic": "A operação excedeu o tempo limite",
+    "panic": "O Asyar encontrou um erro fatal",
+    "error": "Erro",
+    "action_failed": "Falha na ação",
+    "mcp_permission_required": "Permissão necessária para usar {tool}",
+    "mcp_permission_required_generic": "Permissão necessária para usar esta ferramenta MCP",
+    "e2ee_enrollment_failed": "Não foi possível ativar a sincronização criptografada. Verifique sua conexão e tente novamente.",
+    "e2ee_passphrase_required": "A sincronização criptografada precisa da sua frase secreta para continuar.",
+    "e2ee_key_derivation_failed": "Não foi possível derivar sua chave de sincronização. Feche outros aplicativos e tente novamente.",
+    "e2ee_decrypt_failed": "Falha ao descriptografar um item — seus dados podem estar corrompidos ou a frase secreta foi alterada.",
+    "e2ee_key_version_mismatch": "Sua sincronização criptografada precisa ser atualizada. Buscando as mais recentes…"
+  },
+  "services_extra": {
+    "runtime": {
+      "status_checking": "Verificando atualizações…",
+      "status_downloading_progress": "Baixando… {done} / {total}",
+      "status_verifying": "Verificando download…",
+      "status_finishing": "Concluindo configuração…",
+      "status_failed": "Falha no download",
+      "unknown_size": "um tamanho desconhecido",
+      "size_mb": "{value} MB",
+      "size_kb": "{value} KB",
+      "confirm_title_one": "Baixar o runtime necessário?",
+      "confirm_title_other": "Baixar os runtimes necessários?",
+      "confirm_message": "Isto requer {names}, totalizando {total}. O Asyar baixa uma vez e reutiliza onde for necessário.",
+      "removal_warning_one": "Este runtime ainda é necessário para 1 consumidor ({list}). Remover mesmo assim?",
+      "removal_warning_other": "Este runtime ainda é necessário para {count} consumidores ({list}). Remover mesmo assim?"
+    },
+    "gate": {
+      "sync_sign_in": "A sincronização na nuvem requer uma conta conectada.",
+      "sync_entitlement": "A sincronização na nuvem requer uma assinatura ativa com o direito sync:settings.",
+      "sync_disabled": "A sincronização na nuvem está desativada nas configurações.",
+      "ai_sign_in": "Os modelos de IA na nuvem requerem uma conta conectada.",
+      "ai_pro": "Este modelo de IA requer uma assinatura Pro ativa.",
+      "ai_history_sign_in": "A sincronização do histórico de IA requer uma conta conectada.",
+      "ai_history_entitlement": "A sincronização do histórico de IA requer o direito sync:ai-conversations.",
+      "crash_disabled": "O relatório de falhas está desativado nas configurações.",
+      "usage_disabled": "O compartilhamento anônimo de métricas de uso está desativado.",
+      "feature_sign_in": "Este recurso requer uma conta conectada.",
+      "feature_entitlement": "Este recurso requer o direito de assinatura '{ability}'."
+    },
+    "auth": {
+      "server_no_response": "O servidor não respondeu",
+      "login_failed": "Falha no login: {error}",
+      "login_timed_out": "O login expirou. Tente novamente.",
+      "login_start_failed": "Não foi possível iniciar o login: {error}",
+      "login_expired": "A sessão de login expirou. Tente novamente."
+    },
+    "profile": {
+      "settings": "Configurações do aplicativo",
+      "ai_settings": "Configurações de IA",
+      "extension_preferences": "Preferências das extensões"
+    },
+    "clipboard": {
+      "image_preview": "Imagem: {width}×{height}",
+      "files_preview_one": "{count} arquivo: {names}",
+      "files_preview_other": "{count} arquivos: {names}",
+      "encrypted_secret": "[Segredo criptografado]",
+      "accessibility_paste": "O Asyar precisa da permissão de Acessibilidade do macOS para colar. Ative o Asyar em Ajustes do Sistema → Privacidade e Segurança → Acessibilidade e tente novamente."
+    },
+    "whats_new": {
+      "title": "Atualizado para v{version}",
+      "message": "Clique para ver o que mudou"
+    },
+    "command_args": {
+      "fill_required": "Preencha os campos obrigatórios",
+      "required": "Obrigatório",
+      "either_two": "{first} ou {second}",
+      "either_many": "{list} ou {last}"
+    },
+    "onboarding": {
+      "ai_status_failed": "Não foi possível verificar a configuração da IA.",
+      "ai_skip_failed": "Não foi possível pular a configuração da IA. Tente novamente.",
+      "ai_save_failed": "Não foi possível salvar a configuração da IA. Tente novamente."
+    },
+    "extension_loader": {
+      "permission_review": "{name} precisa de uma revisão de permissões nas Configurações"
+    },
+    "ai_providers": {
+      "ollama": "Ollama (local)",
+      "custom": "Personalizado (compatível com OpenAI)"
+    },
+    "secret_refs": {
+      "json": "em `{pointer}` no arquivo `{path}`",
+      "keychain": "o item “{service}” do chaveiro em `{pointer}`",
+      "keychain_account": "o item “{service}” do chaveiro (conta “{account}”) em `{pointer}`",
+      "keychain_lead": "no item “{service}” do chaveiro em `{pointer}`",
+      "keychain_account_lead": "no item “{service}” do chaveiro (conta “{account}”) em `{pointer}`",
+      "or_source": "(ou {source})",
+      "all_paths": "(todos os caminhos)",
+      "sentence": "Envia o segredo {source} para {hosts} — {methods} {paths} — no cabeçalho {header}.",
+      "keychain_note": "O macOS pode pedir que você permita ao Asyar ler este item do chaveiro."
+    },
+    "launcher": {
+      "unknown_item": "Item desconhecido",
+      "action_failed": "A ação falhou para {name}",
+      "command_failed": "Falha ao executar o comando {name}",
+      "action_invalid": "Ação inválida para {name}",
+      "open_failed": "Falha ao abrir {name}",
+      "no_action": "Nenhuma ação para {name}",
+      "run_kind_agent": "Agente",
+      "run_kind_script": "Script",
+      "run_failed": "Falhou · {output}",
+      "run_done": "Concluído · {output}",
+      "no_output": "(sem saída)",
+      "running": "Em execução",
+      "dismiss_result": "Dispensar resultado",
+      "dismiss_thread": "Dispensar conversa",
+      "dismiss_result_desc": "Remove esta linha de resultado do script e libera sua saída (o histórico é mantido)",
+      "dismiss_thread_desc": "Remove esta conversa concluída da lista do launcher (continua no histórico)",
+      "dev_build": "Build de desenvolvimento",
+      "shortcut_save_failed": "Falha ao salvar o atalho"
+    }
+  },
+  "ui_extra": {
+    "about": {
+      "available": "A atualização {version} está disponível. Iniciando download...",
+      "check_failed": "Falha ao verificar atualizações: {error}",
+      "checking": "Verificando atualizações...",
+      "downloading": "Baixando e instalando a atualização {version}...",
+      "installed": "Atualização {version} instalada. Reinicie o Asyar para aplicar.",
+      "up_to_date": "Você está usando a versão mais recente.",
+      "update_ready": "Atualização {version} pronta",
+      "version": "Versão {version}"
+    },
+    "account": {
+      "days_ago_one": "Há {count} dia",
+      "days_ago_other": "Há {count} dias",
+      "ent_advanced_models": "Modelos de IA avançados",
+      "ent_ai_chat": "Chat de IA",
+      "ent_ai_history_sync": "Sincronização do histórico de conversas de IA",
+      "ent_premium_extensions": "Extensões premium",
+      "ent_settings_sync": "Sincronização de configurações",
+      "hours_ago_one": "Há {count} hora",
+      "hours_ago_other": "Há {count} horas",
+      "just_now": "Agora mesmo",
+      "minutes_ago_one": "Há {count} minuto",
+      "minutes_ago_other": "Há {count} minutos",
+      "signing_out": "Saindo…"
+    },
+    "ai_tab": {
+      "engine_unavailable": "O mecanismo de busca \"{name}\" está indisponível ou obsoleto. Selecione um mecanismo disponível acima.",
+      "get_api_key": "Obter chave de API",
+      "legacy_unavailable": "Legado / indisponível",
+      "name_api_key": "Chave de API {name}",
+      "name_base_url": "URL base {name}",
+      "name_unavailable": "{name} (indisponível)",
+      "reader_unavailable": "O leitor \"{name}\" está indisponível ou obsoleto. Selecione um leitor disponível acima."
+    },
+    "applications": {
+      "load_failed": "Falha ao carregar aplicativos. Tente atualizar.",
+      "no_app_selected": "Nenhum aplicativo selecionado"
+    },
+    "arg_dropdown": {
+      "search_aria": "Buscar {name}"
+    },
+    "backup": {
+      "conflicts_one": "{count} conflito",
+      "conflicts_other": "{count} conflitos",
+      "preview_counts": "Local: {local} → Recebido: {incoming}",
+      "read_failed": "Falha ao ler o arquivo do perfil",
+      "restored": "Backup restaurado com sucesso.",
+      "saved": "Backup salvo com sucesso."
+    },
+    "bottom_bar": {
+      "update_ready": "Atualização pronta",
+      "update_ready_restart": "Atualização {version} pronta. Clique para reiniciar.",
+      "update_ready_restart_generic": "Atualização pronta. Clique para reiniciar."
+    },
+    "builtin_features": {
+      "render_failed": "Falha ao renderizar as configurações de {title}: {error}"
+    },
+    "clipboard_privacy": {
+      "skipped": "{count} ignorados"
+    },
+    "common": {
+      "already_in_list": "{path} já está na lista",
+      "could_not_assign": "Não foi possível atribuir: {reason}",
+      "could_not_open_picker": "Não foi possível abrir o seletor de pastas",
+      "remove_alias_for": "Remover alias de {name}",
+      "remove_hotkey_for": "Remover atalho de {name}",
+      "unknown": "Desconhecido",
+      "unsupported_key": "Tecla não suportada ou erro do sistema"
+    },
+    "encryption": {
+      "intro": "Itens da área de transferência, expansões de snippets, conversas de IA e preferências criptografadas de extensões são armazenados criptografados no disco."
+    },
+    "entitlement": {
+      "upgrade_required_aria": "{feature} — upgrade necessário"
+    },
+    "extension_commands": {
+      "no_command_selected": "Nenhum comando selecionado"
+    },
+    "extension_detail": {
+      "platform_unsupported": "{platform} não suportado",
+      "requires_app": "Requer o app v{version}+",
+      "requires_sdk": "Requer SDK {version}"
+    },
+    "extension_iframe": {
+      "title": "Sandbox da extensão - {name}"
+    },
+    "extension_table": {
+      "collapse": "Recolher",
+      "expand": "Expandir",
+      "install_failed": "Falha na instalação: {error}",
+      "installed": "Extensão instalada com sucesso. Reinicie para ativar.",
+      "installing": "Instalando extensão…",
+      "updates_available_one": "{count} extensão pode ser atualizada",
+      "updates_available_other": "{count} extensões podem ser atualizadas"
+    },
+    "extension_view": {
+      "missing_export": "Erro: o recurso integrado {id} não tem exportação correspondente a '{view}'"
+    },
+    "feedback": {
+      "error": "Erro",
+      "feedback": "Mensagem",
+      "unknown_error": "Erro desconhecido"
+    },
+    "file_search_tab": {
+      "add_root": "Adicionar raiz",
+      "already_excluded": "\"{pattern}\" já está excluído",
+      "already_ignored": "\"{pattern}\" já está ignorado",
+      "files_indexed": "{count} arquivos indexados",
+      "last_scan": "última varredura {ms} ms",
+      "rebuild_index": "Reconstruir índice",
+      "rebuilding": "Reconstruindo…",
+      "save_failed": "Falha ao salvar as configurações de busca de arquivos",
+      "state_building": "Indexando…",
+      "state_cap_reached": "Limite do índice atingido",
+      "state_disabled": "Desativado",
+      "state_ready": "Pronto",
+      "state_rescanning": "Reescaneando…"
+    },
+    "general_tab": {
+      "shortcut_reserved": "Não foi possível salvar: o atalho pode estar reservado pelo sistema ou por outro app",
+      "theme_apply_failed": "Não foi possível aplicar o tema \"{id}\""
+    },
+    "lan_picker": {
+      "allow_failed": "Falha ao permitir o dispositivo.",
+      "endpoint_not_allowed": "Este endpoint não é permitido."
+    },
+    "launcher": {
+      "search_placeholder": "Pesquise ou digite um comando...",
+      "search_view_placeholder": "Pesquisar..."
+    },
+    "onboarding": {
+      "bind_conflict": "Não foi possível atribuir {shortcut}. Ele já é usado por \"{name}\". Tente outro atalho.",
+      "bind_failed": "Não foi possível atribuir {shortcut}. Tente outro atalho.",
+      "no_ai_provider": "Nenhum provedor de IA conectado ainda — volte e conecte um.",
+      "sample_snippet_name": "Meu e-mail",
+      "shortcut_set_failed": "Não foi possível definir esse atalho",
+      "step_of": "Etapa {position} de {total}",
+      "test_box_disabled": "Conclua a configuração acima para testar aqui"
+    },
+    "permission_consent": {
+      "enable": "Ativá-la concede as seguintes permissões:",
+      "install": "Instalá-la concede as seguintes permissões:",
+      "review": "As permissões solicitadas mudaram e precisam da sua revisão:",
+      "title": "{name} solicita permissões",
+      "update": "Uma atualização alterou as permissões solicitadas:"
+    },
+    "preferences_form": {
+      "app_path": "Caminho do aplicativo",
+      "dir_path": "Caminho da pasta",
+      "file_path": "Caminho do arquivo",
+      "unknown_type": "Tipo desconhecido: {type}"
+    },
+    "recorder": {
+      "already_assigned": "Já atribuído a '{name}'",
+      "invalid_key": "Tecla inválida",
+      "invalid_keys": "Teclas inválidas"
+    },
+    "required_prefs": {
+      "save_continue": "Salvar e continuar"
+    },
+    "runtime_downloads": {
+      "unknown_size": "tamanho desconhecido"
+    },
+    "scheduled_tasks": {
+      "every_days": "a cada {count} dias",
+      "every_hours": "a cada {count} horas",
+      "every_minutes": "a cada {count} minutos",
+      "every_seconds": "a cada {count} segundos"
+    },
+    "scripts_tab": {
+      "add_failed": "Não foi possível adicionar a pasta",
+      "remove_failed": "Não foi possível remover a pasta"
+    },
+    "search_header": {
+      "ask_ai": "Perguntar à IA"
+    },
+    "secret_redaction": {
+      "redacted": "{count} ocultados"
+    },
+    "sections": {
+      "favorites": "Favoritos",
+      "other": "Outros"
+    },
+    "settings_handlers": {
+      "auto_update_failed": "Falha ao atualizar a configuração de atualização automática",
+      "developer_mode_failed": "Falha ao atualizar o modo de desenvolvedor",
+      "developer_setting_failed": "Falha ao atualizar a configuração de desenvolvedor",
+      "dock_icon_failed": "Falha ao atualizar a configuração do ícone do Dock",
+      "extension_update_failed": "Falha ao atualizar as configurações da extensão.",
+      "extension_updated": "Configurações da extensão atualizadas.",
+      "extensions_load_failed": "Falha ao carregar as informações das extensões.",
+      "init_failed": "Falha ao inicializar as configurações. Usando os padrões.",
+      "launch_view_failed": "Falha ao atualizar a visualização inicial",
+      "load_failed": "Falha ao carregar as configurações. Usando os padrões.",
+      "menu_bar_icon_failed": "Falha ao atualizar a configuração do ícone da barra de menus",
+      "search_failed": "Falha ao atualizar a configuração de busca",
+      "search_updated_restart": "Configurações de busca atualizadas. Reinicie o Asyar para que as alterações tenham efeito.",
+      "setting_failed": "Falha ao atualizar a configuração",
+      "shortcut_save_failed": "Falha ao salvar o atalho",
+      "shortcut_saved": "Atalho salvo com sucesso",
+      "startup_failed": "Falha ao atualizar a configuração de inicialização",
+      "theme_failed": "Falha ao atualizar o tema",
+      "uninstall_failed": "Falha ao desinstalar a extensão.",
+      "uninstalled": "Extensão \"{name}\" desinstalada com sucesso."
+    },
+    "shell_trust": {
+      "trusted_days_ago": "Confiável há {count} dias",
+      "trusted_today": "Confiável desde hoje",
+      "trusted_yesterday": "Confiável desde ontem"
+    },
+    "show_more": {
+      "active": "{count} ativos",
+      "done": "{count} concluídos",
+      "idle": "{count} ociosos"
+    },
+    "snippets_card": {
+      "toggle_failed": "Falha ao atualizar o estado dos snippets"
+    },
+    "split_list": {
+      "items": "Itens"
+    },
+    "window_mode": {
+      "aria": "Modo de janela {mode}"
+    }
   }
 }

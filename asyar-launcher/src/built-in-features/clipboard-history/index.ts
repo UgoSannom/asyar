@@ -54,7 +54,10 @@ async function assertTextSendable(actionTitle: string): Promise<string | null> {
   if (!item) return null;
 
   if (item.type === ClipboardItemType.Image || item.type === ClipboardItemType.Files) {
-    const typeName = item.type === ClipboardItemType.Image ? 'Image' : 'File';
+    const typeName =
+      item.type === ClipboardItemType.Image
+        ? t('features_extra.clipboard.type_image')
+        : t('features_extra.clipboard.type_file');
     await feedbackService.report({
       source: 'frontend',
       kind: 'manual',
@@ -163,7 +166,7 @@ class ClipboardHistoryExtension implements Extension {
     window.addEventListener('keydown', this.handleKeydownBound);
 
     // Set the primary action label via the manager
-    this.extensionManager?.setActiveViewActionLabel('Paste');
+    this.extensionManager?.setActiveViewActionLabel(t('features_extra.clipboard.paste'));
   }
 
   private handleKeydownBound = (event: KeyboardEvent) => this.handleKeydown(event);
@@ -378,7 +381,7 @@ class ClipboardHistoryExtension implements Extension {
 
     actionService.registerAction({
       id: 'clipboard-history:delete',
-      title: 'Delete',
+      title: t('common.delete'),
       description: t('features.clipboard.act.delete_desc'),
       icon: 'icon:trash',
       shortcut: 'Control+X',
@@ -419,7 +422,8 @@ class ClipboardHistoryExtension implements Extension {
       extensionId: 'clipboard-history',
       context: ActionContext.EXTENSION_VIEW,
       execute: async () => {
-        const text = await assertTextSendable('Ask AI about this');
+        const text = await assertTextSendable(t('features.clipboard.act.ask_ai'));
+
         if (!text) return;
 
         // Pop the clipboard view synchronously so its keydown listener + registered

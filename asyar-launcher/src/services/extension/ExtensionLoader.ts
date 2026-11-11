@@ -14,6 +14,8 @@ import { permissionConsentService } from './permissionConsentService.svelte';
 import { feedbackService } from '../feedback/feedbackService.svelte';
 import { actionService } from '../action/actionService.svelte';
 import { searchStores } from '../search/stores/search.svelte';
+import { getSourceCommandName } from '../i18n/builtInManifestI18n';
+import { t } from '../i18n';
 
 /**
  * A loaded extension module: either a direct Extension instance
@@ -171,7 +173,9 @@ export class ExtensionLoader {
                 severity: 'warning',
                 retryable: false,
                 context: {
-                  permission: `${extensionName} needs a permission review in Settings`,
+                  permission: t('services_extra.extension_loader.permission_review', {
+                    name: extensionName,
+                  }),
                 },
                 developerDetail: `Review ${extensionId} in Settings > Extensions.`,
               });
@@ -503,7 +507,9 @@ export class ExtensionLoader {
           name: cmd.name,
           extension: manifest.id,
           extensionName: manifest.name,
-          trigger: cmd.trigger || cmd.name,
+          // `name` is localized for built-ins; the English manifest name stays
+          // the fallback keyword so it keeps ranking as before.
+          trigger: cmd.trigger || getSourceCommandName(cmd),
           // Rust search index reads this as the command's execution style.
           // After the schema change, `cmd.mode` is the authoritative field;
           // fall back to manifest.type (which is `"extension"` or `"theme"`).

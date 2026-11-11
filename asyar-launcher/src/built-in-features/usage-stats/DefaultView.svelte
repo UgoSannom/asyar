@@ -25,13 +25,21 @@
         <div class="usage-hero">
           <StatTile
             value={stats.totalLaunches}
-            label={plural(stats.totalLaunches, 'Launch', 'Launches')}
+            label={plural(
+              stats.totalLaunches,
+              t('features_extra.usage_stats.launch_one'),
+              t('features_extra.usage_stats.launch_other'),
+            )}
             icon="activity"
             accent
           />
           <StatTile
             value={stats.activeDays}
-            label={plural(stats.activeDays, 'Active day', 'Active days')}
+            label={plural(
+              stats.activeDays,
+              t('features_extra.usage_stats.active_day_one'),
+              t('features_extra.usage_stats.active_day_other'),
+            )}
             icon="history"
             divided
           />

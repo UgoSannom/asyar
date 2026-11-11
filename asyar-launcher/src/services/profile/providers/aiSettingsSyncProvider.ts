@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import { settingsService } from '../../../services/settings/settingsService.svelte';
 import { aiSaveCredential } from '../../../lib/ipc/commands';
 import { logService } from '../../../services/log/logService';
@@ -16,7 +17,9 @@ import type {
 
 export class AISettingsSyncProvider implements ISyncProvider {
   readonly id = 'ai-settings';
-  readonly displayName = 'AI Settings';
+  get displayName(): string {
+    return t('services_extra.profile.ai_settings');
+  }
   readonly icon = 'settings';
   readonly syncTier = 'core' as const;
   readonly defaultEnabled = true;

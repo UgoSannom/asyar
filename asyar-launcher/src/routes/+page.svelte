@@ -46,7 +46,7 @@
   import { authService } from '../services/auth/authService.svelte';
   import { runWhenIdle } from '../lib/idle';
   import { prewarmEmojiFont } from '../lib/emojiPrewarm';
-  import { i18nService } from '../services/i18n';
+  import { i18nService, t } from '../services/i18n';
   import '../resources/styles/style.css';
   import { appListen } from '../lib/ipc/bridgeEvents';
   import RequiredPreferencesView from '../components/settings/RequiredPreferencesView.svelte';
@@ -507,12 +507,12 @@
       preferencesPromptStore.active
     )}
     placeholder={preferencesPromptStore.active
-      ? 'Press Escape to go back'
+      ? t('search_header.go_back_title')
       : controller.activeViewVal
         ? controller.activeViewSearchableVal
-          ? 'Search...'
-          : 'Press Escape to go back'
-        : 'Search or type a command...'}
+          ? t('ui_extra.launcher.search_view_placeholder')
+          : t('search_header.go_back_title')
+        : t('ui_extra.launcher.search_placeholder')}
     activeContext={preferencesPromptStore.active ? null : controller.activeContextChip}
     activeViewId={controller.activeViewVal}
     bind:contextQuery={controller.contextQuery}

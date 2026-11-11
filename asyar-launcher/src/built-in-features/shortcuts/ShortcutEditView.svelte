@@ -40,7 +40,7 @@
   }
 
   async function handleSave(detail: { modifier: string; key: string }): Promise<string | true> {
-    if (!targetShortcut) return 'No item selected';
+    if (!targetShortcut) return t('features_extra.shortcuts.no_item_selected');
     const shortcut = `${detail.modifier}+${detail.key}`;
     const result = await shortcutService.register(
       targetShortcut.objectId,
@@ -51,8 +51,8 @@
       targetShortcut.itemIcon,
     );
     if (!result.ok) {
-      const reason = result.conflict?.itemName ?? 'Unsupported key or OS error';
-      return `Could not assign: ${reason}`;
+      const reason = result.conflict?.itemName ?? t('features_extra.shortcuts.unsupported_key');
+      return t('features_extra.shortcuts.assign_failed', { reason });
     }
     return true;
   }
@@ -73,7 +73,7 @@
       <h2 class="edit-title">{t('features.shortcuts.ui.assign')}</h2>
       {#if targetShortcut}
         <p class="edit-subtitle">
-          Press the combination you want to use for {targetShortcut.itemName}.
+          {t('features_extra.shortcuts.press_combination', { name: targetShortcut.itemName })}
         </p>
       {/if}
     </div>

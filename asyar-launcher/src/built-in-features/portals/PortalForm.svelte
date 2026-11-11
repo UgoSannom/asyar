@@ -177,7 +177,7 @@
 
 <FormView
   actionId="portals:save"
-  submitLabel={resolvedIsEditing ? t('common.update') || 'Update' : t('common.save')}
+  submitLabel={resolvedIsEditing ? t('common.update') : t('common.save')}
   extensionId="portals"
   category={t('categories.portals')}
   submitDisabled={!name.trim() || !url.trim()}
@@ -186,7 +186,9 @@
   oncancel={handleCancel}
 >
   {#snippet header()}
-    <h2 class="form-title">{resolvedIsEditing ? 'Edit Portal' : 'New Portal'}</h2>
+    <h2 class="form-title">{resolvedIsEditing
+        ? t('features_extra.portals.edit_portal')
+        : t('features.portals.act.new')}</h2>
   {/snippet}
 
   <FormField label={t('common.name')} id="portal-name">

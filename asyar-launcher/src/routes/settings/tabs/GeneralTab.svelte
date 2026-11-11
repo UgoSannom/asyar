@@ -131,10 +131,10 @@
       const success = await updateShortcut(detail.modifier, detail.key);
       handler.isSaving = false;
       if (success) return true;
-      return 'Cannot save, shortcut may be reserved by the OS or another app';
+      return t('ui_extra.general_tab.shortcut_reserved');
     } catch (e) {
       handler.isSaving = false;
-      return 'Cannot save, shortcut may be reserved by the OS or another app';
+      return t('ui_extra.general_tab.shortcut_reserved');
     }
   }
 
@@ -245,7 +245,7 @@
         retryable: false,
         context: {
           message: themeId
-            ? `Could not apply theme "${themeId}"`
+            ? t('ui_extra.general_tab.theme_apply_failed', { id: themeId })
             : t('settings.general.error_remove_active_theme'),
         },
       });

@@ -62,7 +62,8 @@ class CreateExtension implements Extension {
     if (viewId.endsWith('CreatedExtensionsView')) {
       window.addEventListener('keydown', this.myExtKeydownBound);
       await createdExtensionsViewState.load();
-      this.extensionManager?.setActiveViewActionLabel('Open');
+      this.extensionManager?.setActiveViewActionLabel(t('actions.open'));
+
       actionService.registerAction({
         id: 'ai-builder:open-created',
         label: t('features.create_extension.act.open_editor'),

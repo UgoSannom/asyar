@@ -42,7 +42,7 @@
   import { feedbackService } from '../../services/feedback/feedbackService.svelte';
   import { actionService } from '../../services/action/actionService.svelte';
   import { ActionContext } from 'asyar-sdk/contracts';
-  import { t } from '../../services/i18n';
+  import { t, i18nService } from '../../services/i18n';
   import { isAnyModalOpen } from '../../components/base/Modal.logic';
 
   // The ⌘P agent switcher is owned by the Ask AI command's view.
@@ -175,8 +175,8 @@
   function threadLabel(thread: ThreadDef): string {
     const title = thread.title?.trim();
     if (title) return title;
-    if (thread.createdAt) return new Date(thread.createdAt).toLocaleString();
-    return 'New thread';
+    if (thread.createdAt) return new Date(thread.createdAt).toLocaleString(i18nService.locale);
+    return t('features_extra.agents.new_thread');
   }
 
   // Ignore loads superseded by an agent, thread, or send-state change.
@@ -412,7 +412,7 @@
       maxLeftWidth={420}
       isLoading={!threadsKnown}
       emptyMessage={t('features.agents.no_threads')}
-      ariaLabel="Threads"
+      ariaLabel={t('features_extra.agents.threads')}
     >
       {#snippet listItem(thread, index)}
         <LauncherListRow

@@ -51,7 +51,7 @@ export async function handleEvent(ev: SidecarEvent): Promise<void> {
         if (scan.leaked) {
           buildJobStore.finishFailed({
             step: 'secret-guard',
-            error: `Refused: hardcoded secret found in ${scan.path}`,
+            error: t('features_extra.ai_builder.secret_refused', { path: scan.path }),
             log: `Secret found at ${scan.path}`,
           });
           await feedbackService.sendBackgroundForSource(CALLER_EXT_ID, {
@@ -133,7 +133,7 @@ async function ensureRuntimesReady(): Promise<{ ok: true } | { ok: false; reason
   if (!missing || missing.length === 0) return { ok: true };
 
   const approved = await extBuilderRuntimeConsentStore.request(missing);
-  if (!approved) return { ok: false, reason: 'Download declined.' };
+  if (!approved) return { ok: false, reason: t('features_extra.ai_builder.download_declined') };
 
   for (const r of missing) {
     const ok = await runtimeService.download(r.name);
@@ -148,7 +148,7 @@ async function ensureRuntimesReady(): Promise<{ ok: true } | { ok: false; reason
       });
       return {
         ok: false,
-        reason: `Failed to download ${r.name}. Try again from the AI Extension Builder.`,
+        reason: t('features_extra.ai_builder.download_failed', { name: r.name }),
       };
     }
   }
@@ -162,13 +162,13 @@ export async function startBuild(prompt: string): Promise<StartResult> {
   } catch {
     return {
       ok: false,
-      reason: 'Failed to verify AI credential status. Please check Settings → AI.',
+      reason: t('features_extra.ai_builder.cred_check_failed'),
     };
   }
   if (credStatus.providers['anthropic'] !== 'configured') {
     return {
       ok: false,
-      reason: 'This feature needs an Anthropic API key. Add one in Settings → AI → Anthropic.',
+      reason: t('features_extra.ai_builder.needs_anthropic_key'),
     };
   }
 
@@ -191,20 +191,20 @@ export async function startBuild(prompt: string): Promise<StartResult> {
   } catch (error) {
     buildJobStore.finishFailed({
       step: 'spawn',
-      error: 'Failed to start the build. Please try again.',
+      error: t('features_extra.ai_builder.start_failed'),
       log: `ext_builder_start invoke rejected: ${String(error)}`,
     });
-    return { ok: false, reason: 'Failed to start the build. Please try again.' };
+    return { ok: false, reason: t('features_extra.ai_builder.start_failed') };
   }
   if (result.status === 'needsRuntimes') {
     // Defensive: ensureRuntimesReady() already confirmed both runtimes
     // above; only reachable if one vanished between that check and spawn.
     buildJobStore.finishFailed({
       step: 'runtime-check',
-      error: 'A required runtime became unavailable. Please try again.',
+      error: t('features_extra.ai_builder.runtime_unavailable'),
       log: JSON.stringify(result.runtimes),
     });
-    return { ok: false, reason: 'A required runtime became unavailable. Please try again.' };
+    return { ok: false, reason: t('features_extra.ai_builder.runtime_unavailable') };
   }
   return { ok: true };
 }

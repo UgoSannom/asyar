@@ -11,7 +11,9 @@
     const c = feedbackService.current;
     if (!c) return '';
     const msgFn = DIAGNOSTIC_MESSAGES[c.kind as DiagnosticKind];
-    return msgFn ? msgFn(c.context ?? {}) : (c.developerDetail ?? 'Unknown error');
+    return msgFn
+      ? msgFn(c.context ?? {})
+      : (c.developerDetail ?? t('ui_extra.feedback.unknown_error'));
   });
 
   function onClose() {

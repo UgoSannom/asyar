@@ -149,9 +149,10 @@ class StoreExtension implements Extension {
       );
       if (!installInfoResponse.ok) {
         throw new Error(
-          `Failed to get install info: ${
-            installInfoResponse.status
-          } ${await installInfoResponse.text()}`,
+          t('features_extra.store.install_info_failed', {
+            status: installInfoResponse.status,
+            detail: await installInfoResponse.text(),
+          }),
         );
       }
       const installInfo: InstallInfo = await installInfoResponse.json();
@@ -160,7 +161,7 @@ class StoreExtension implements Extension {
       );
 
       if (!installInfo.downloadUrl) {
-        throw new Error('Extension download URL is not available. Please try again.');
+        throw new Error(t('features_extra.store.download_url_missing'));
       }
 
       // Persist the pre-install acceptance under the real manifest id before
@@ -239,11 +240,14 @@ class StoreExtension implements Extension {
           detail: { slug, id: installInfo.extensionId },
         }),
       );
-      await installProgress?.succeed(`${displayName} installed`);
+      await installProgress?.succeed(t('features_extra.store.p_installed', { name: displayName }));
     } catch (e: any) {
       const errorMessage = typeof e === 'string' ? e : e?.message || String(e);
       this.logService?.error(`Installation failed for ${displayName}: ${errorMessage}`);
-      await installProgress?.fail(`Failed to install ${displayName}`, errorMessage);
+      await installProgress?.fail(
+        t('features_extra.store.p_install_failed', { name: displayName }),
+        errorMessage,
+      );
       this.sendNotification({
         title: t('features.store.t_installation_failed'),
         body: t('features.store.t_installation_failed_body', {
@@ -259,7 +263,9 @@ class StoreExtension implements Extension {
         this.registerDetailViewActions();
       } else if (this.currentView === `${EXTENSION_ID}/DefaultView`) {
         const selectedItem = store?.selectedItem || null;
-        this.extensionManager?.setActiveViewActionLabel(selectedItem ? 'Show Details' : null);
+        this.extensionManager?.setActiveViewActionLabel(
+          selectedItem ? t('features_extra.store.show_details') : null,
+        );
       }
     }
   }
@@ -297,11 +303,16 @@ class StoreExtension implements Extension {
       window.dispatchEvent(
         new CustomEvent('store-extension-uninstalled', { detail: { slug, id: extensionId } }),
       );
-      await uninstallProgress?.succeed(`${displayName} uninstalled`);
+      await uninstallProgress?.succeed(
+        t('features_extra.store.p_uninstalled', { name: displayName }),
+      );
     } catch (e: any) {
       const errorMessage = typeof e === 'string' ? e : e?.message || String(e);
       this.logService?.error(`Uninstall failed for ${displayName}: ${errorMessage}`);
-      await uninstallProgress?.fail(`Failed to uninstall ${displayName}`, errorMessage);
+      await uninstallProgress?.fail(
+        t('features_extra.store.p_uninstall_failed', { name: displayName }),
+        errorMessage,
+      );
       this.sendNotification({
         title: t('features.store.t_uninstall_failed'),
         body: t('features.store.t_uninstall_failed_body', {
@@ -317,7 +328,9 @@ class StoreExtension implements Extension {
         this.registerDetailViewActions();
       } else if (this.currentView === `${EXTENSION_ID}/DefaultView`) {
         const selectedItem = store?.selectedItem || null;
-        this.extensionManager?.setActiveViewActionLabel(selectedItem ? 'Show Details' : null);
+        this.extensionManager?.setActiveViewActionLabel(
+          selectedItem ? t('features_extra.store.show_details') : null,
+        );
       }
     }
   }
@@ -353,14 +366,24 @@ class StoreExtension implements Extension {
             version: update.latestVersion,
           }),
         });
-        await updateProgress?.succeed(`${displayName} updated to v${update.latestVersion}`);
+        await updateProgress?.succeed(
+          t('features_extra.store.p_updated', {
+            name: displayName,
+            version: update.latestVersion,
+          }),
+        );
       } else {
-        await updateProgress?.fail(`Failed to update ${displayName}`);
+        await updateProgress?.fail(
+          t('features_extra.store.p_update_failed', { name: displayName }),
+        );
       }
     } catch (e: any) {
       const errorMessage = typeof e === 'string' ? e : e?.message || String(e);
       this.logService?.error(`Update failed for ${displayName}: ${errorMessage}`);
-      await updateProgress?.fail(`Failed to update ${displayName}`, errorMessage);
+      await updateProgress?.fail(
+        t('features_extra.store.p_update_failed', { name: displayName }),
+        errorMessage,
+      );
     } finally {
       if (this.currentView === `${EXTENSION_ID}/DetailView`) {
         this.unregisterDetailViewActions();
@@ -447,7 +470,7 @@ class StoreExtension implements Extension {
       }
     } catch (e: any) {
       this.logService?.error(`Failed to fetch extensions: ${e.message}`);
-      storeViewState.setError(`Failed to load extensions: ${e.message}`);
+      storeViewState.setError(t('features_extra.store.load_failed', { error: e.message }));
     }
   }
 
@@ -579,7 +602,8 @@ class StoreExtension implements Extension {
         // Only register if an item is actually selected
         if (selectedItem) {
           // Set the primary action label for the list view using the manager
-          this.extensionManager?.setActiveViewActionLabel('Show Details');
+          this.extensionManager?.setActiveViewActionLabel(t('features_extra.store.show_details'));
+
           actionService.registerAction(
             this.buildOpenWebAction(
               ACTION_ID_OPEN_WEB_SELECTED,

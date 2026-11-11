@@ -9,7 +9,7 @@
     MetadataList,
   } from '../../components';
   import { nameToGradient, storeIconSrc } from '../../lib/extensionAvatar';
-  import { t } from '../../services/i18n';
+  import { t, i18nService } from '../../services/i18n';
 
   let isLoading = $derived(store.isLoading);
   let error = $derived(store.loadError ? store.errorMessage : null);
@@ -42,7 +42,7 @@
   leftWidth={320}
   minLeftWidth={250}
   maxLeftWidth={500}
-  ariaLabel="Store Extensions"
+  ariaLabel={t('features_extra.store.aria_list')}
   emptyMessage={t('features.store.no_extensions_found')}
 >
   {#snippet listItem(item, index)}
@@ -52,7 +52,7 @@
       onclick={() => selectItem(index)}
       ondblclick={() => handleDoubleClick(item.slug)}
       title={item.name}
-      subtitle={`By ${item.author.name}`}
+      subtitle={t('features_extra.store.by_author', { name: item.author.name })}
     >
       {#snippet leading()}
         <ExtensionAvatar
@@ -113,7 +113,9 @@
                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
               /></svg
             >
-            {getInstallCount(selectedItem).toLocaleString()} Installs
+            {t('features_extra.store.installs_count', {
+              count: getInstallCount(selectedItem).toLocaleString(i18nService.locale),
+            })}
           </span>
         </div>
 
@@ -161,7 +163,7 @@
             label: t('features.store.ui.installs'),
             value:
               getInstallCount(selectedItem) > 0
-                ? getInstallCount(selectedItem).toLocaleString()
+                ? getInstallCount(selectedItem).toLocaleString(i18nService.locale)
                 : null,
             mono: true,
           },
@@ -178,7 +180,7 @@
               (selectedItem.created_at ?? (selectedItem as any).createdAt)
                 ? new Date(
                     selectedItem.created_at ?? (selectedItem as any).createdAt,
-                  ).toLocaleDateString(undefined, {
+                  ).toLocaleDateString(i18nService.locale, {
                     year: 'numeric',
                     month: 'short',
                     day: 'numeric',
@@ -191,7 +193,7 @@
               (selectedItem.updated_at ?? (selectedItem as any).updatedAt)
                 ? new Date(
                     selectedItem.updated_at ?? (selectedItem as any).updatedAt,
-                  ).toLocaleDateString(undefined, {
+                  ).toLocaleDateString(i18nService.locale, {
                     year: 'numeric',
                     month: 'short',
                     day: 'numeric',

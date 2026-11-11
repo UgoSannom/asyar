@@ -93,7 +93,7 @@ class NotesExtension implements Extension {
       const text = String(args?.arguments?.text ?? '').trim();
       if (text) {
         quickCaptureNote(text);
-        toastSaved('Note saved');
+        toastSaved(t('features_extra.notes.toast_saved'));
       }
       return { type: 'no-view' };
     }
@@ -107,7 +107,7 @@ class NotesExtension implements Extension {
       const text = String(args?.arguments?.text ?? '').trim();
       if (text) {
         noteStore.appendToToday(text);
-        toastSaved('Added to today');
+        toastSaved(t('features_extra.notes.toast_added_today'));
       }
       return { type: 'no-view' };
     }
@@ -173,7 +173,7 @@ class NotesExtension implements Extension {
         const now = Date.now();
         const dup = {
           id: crypto.randomUUID(),
-          title: n.title ? `${n.title} Copy` : '',
+          title: n.title ? t('features_extra.common.name_copy', { name: n.title }) : '',
           body: n.body,
           createdAt: now,
           updatedAt: now,
@@ -211,10 +211,10 @@ class NotesExtension implements Extension {
         // One toggle: unstick if it's already on the desktop.
         if (await stickyIsStuck(n.id)) {
           await stickyClose(n.id);
-          toastSaved('Unstuck from desktop');
+          toastSaved(t('features_extra.notes.toast_unstuck'));
         } else {
           await stickyOpen(n.id);
-          toastSaved('Stuck to desktop');
+          toastSaved(t('features_extra.notes.toast_stuck'));
         }
       },
     });
@@ -230,7 +230,7 @@ class NotesExtension implements Extension {
         const n = noteViewState.selectedNote;
         if (!n) return;
         const path = await noteExportMarkdown(n.id);
-        if (path) toastSaved('Note exported');
+        if (path) toastSaved(t('features_extra.notes.toast_exported'));
       },
     });
     actionService.registerAction({

@@ -53,7 +53,7 @@
         (action.extensionId
           ? (extensionManager.getManifestById(action.extensionId)?.name ?? action.extensionId)
           : null) ??
-        'Actions',
+        t('actions.title'),
     })),
   );
 
@@ -137,7 +137,8 @@
         {#if argumentValidationError.startsWith('Required  ')}
           <!-- Prefix matches missingArgumentNotice exactly; change together. -->
           <span class="arg-validation-text"
-            ><strong>Required</strong>{argumentValidationError.slice('Required'.length)}</span
+            ><strong>{t('services_extra.command_args.required')}</strong
+            >{argumentValidationError.slice('Required'.length)}</span
           >
         {:else}
           <span class="arg-validation-text">{argumentValidationError}</span>
@@ -158,12 +159,14 @@
         onclick={handleRestart}
         title={t('settings.about.restart_now')}
         aria-label={readyVersion
-          ? `Update ${readyVersion} ready. Click to restart.`
-          : 'Update ready. Click to restart.'}
+          ? t('ui_extra.bottom_bar.update_ready_restart', { version: readyVersion })
+          : t('ui_extra.bottom_bar.update_ready_restart_generic')}
       >
         <StatusDot color="info" size={6} />
         <span class="update-ready-text"
-          >{readyVersion ? `Update ${readyVersion} ready` : 'Update ready'}</span
+          >{readyVersion
+            ? t('ui_extra.about.update_ready', { version: readyVersion })
+            : t('ui_extra.bottom_bar.update_ready')}</span
         >
       </button>
       <span aria-hidden="true" class="bottom-bar-separator"></span>
@@ -213,12 +216,14 @@
         onclick={handleRestart}
         title={t('settings.about.restart_now')}
         aria-label={readyVersion
-          ? `Update ${readyVersion} ready. Click to restart.`
-          : 'Update ready. Click to restart.'}
+          ? t('ui_extra.bottom_bar.update_ready_restart', { version: readyVersion })
+          : t('ui_extra.bottom_bar.update_ready_restart_generic')}
       >
         <StatusDot color="info" size={6} />
         <span class="update-ready-text"
-          >{readyVersion ? `Update ${readyVersion} ready` : 'Update ready'}</span
+          >{readyVersion
+            ? t('ui_extra.about.update_ready', { version: readyVersion })
+            : t('ui_extra.bottom_bar.update_ready')}</span
         >
       </button>
       <span aria-hidden="true" class="bottom-bar-separator"></span>

@@ -1,3 +1,4 @@
+import { t } from '../../services/i18n';
 import type { MappedSearchItem } from '../../services/search/types/MappedSearchItem';
 
 export type SectionKey = 'favorites' | 'scripts' | 'agents' | 'commands';
@@ -26,11 +27,11 @@ export function categorizeItem(item: MappedSearchItem): SectionKey {
 
 const SECTION_ORDER: SectionKey[] = ['favorites', 'scripts', 'agents', 'commands'];
 
-const SECTION_TITLES: Record<SectionKey, string> = {
-  favorites: 'Favorites',
-  scripts: 'Scripts',
-  agents: 'Agents',
-  commands: 'Commands',
+const SECTION_TITLE_KEYS: Record<SectionKey, string> = {
+  favorites: 'ui_extra.sections.favorites',
+  scripts: 'categories.scripts',
+  agents: 'categories.agents',
+  commands: 'settings.extensions.section_commands',
 };
 
 export function buildSectionedView(items: MappedSearchItem[]): SectionedRow[] {
@@ -52,7 +53,7 @@ export function buildSectionedView(items: MappedSearchItem[]): SectionedRow[] {
     const bucket = buckets[section];
     if (bucket.length === 0) continue;
 
-    rows.push({ kind: 'header', title: SECTION_TITLES[section], section });
+    rows.push({ kind: 'header', title: t(SECTION_TITLE_KEYS[section]), section });
     for (const entry of bucket) {
       rows.push({ kind: 'item', item: entry.item, originalIndex: entry.originalIndex });
     }

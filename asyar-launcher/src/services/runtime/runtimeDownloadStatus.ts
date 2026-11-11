@@ -1,13 +1,16 @@
 import type { RuntimeDownloadProgress, RuntimeDownload } from '../../lib/ipc/runtimeCommands';
+import { t } from '../i18n';
 
 // Local copy, not imported from actionService.svelte.ts: that module
 // instantiates a heavy singleton on load, which drags in Tauri/window
 // dependencies this pure formatter shouldn't need — RuntimeBatchConsentDialog
 // keeps its own copy for the same reason.
 function formatBytes(bytes: number): string {
-  if (bytes <= 0) return 'an unknown size';
+  if (bytes <= 0) return t('services_extra.runtime.unknown_size');
   const mb = bytes / (1024 * 1024);
-  return mb >= 1 ? `${mb.toFixed(1)} MB` : `${Math.max(1, Math.round(bytes / 1024))} KB`;
+  return mb >= 1
+    ? t('services_extra.runtime.size_mb', { value: mb.toFixed(1) })
+    : t('services_extra.runtime.size_kb', { value: Math.max(1, Math.round(bytes / 1024)) });
 }
 
 /** Human-readable label for the live runtime-download status shown while a
@@ -22,21 +25,24 @@ export function formatRuntimeDownloadStatus(
   if (!progress) return fallback;
   switch (progress.status) {
     case 'resolving':
-      return 'Checking for updates…';
+      return t('services_extra.runtime.status_checking');
     case 'downloading': {
-      if (progress.totalBytes <= 0) return 'Downloading…';
-      return `Downloading… ${formatBytes(progress.bytesDownloaded)} / ${formatBytes(progress.totalBytes)}`;
+      if (progress.totalBytes <= 0) return t('common.downloading');
+      return t('services_extra.runtime.status_downloading_progress', {
+        done: formatBytes(progress.bytesDownloaded),
+        total: formatBytes(progress.totalBytes),
+      });
     }
     case 'verifying':
-      return 'Verifying download…';
+      return t('services_extra.runtime.status_verifying');
     case 'extracting':
-      return 'Installing…';
+      return t('common.installing');
     case 'signing':
-      return 'Finishing setup…';
+      return t('services_extra.runtime.status_finishing');
     case 'ready':
       return fallback;
     case 'failed':
-      return 'Download failed';
+      return t('services_extra.runtime.status_failed');
   }
 }
 
@@ -50,7 +56,13 @@ export function describeMissingRuntimesForConfirm(missing: RuntimeDownload[]): {
   const totalBytes = missing.reduce((sum, r) => sum + r.sizeBytes, 0);
   const names = missing.map((r) => `${r.name} (${formatBytes(r.sizeBytes)})`).join(', ');
   return {
-    title: missing.length > 1 ? 'Download required runtimes?' : 'Download required runtime?',
-    message: `This needs ${names}, totaling ${formatBytes(totalBytes)}. Asyar downloads it once and reuses it everywhere it's needed.`,
+    title:
+      missing.length > 1
+        ? t('services_extra.runtime.confirm_title_other')
+        : t('services_extra.runtime.confirm_title_one'),
+    message: t('services_extra.runtime.confirm_message', {
+      names,
+      total: formatBytes(totalBytes),
+    }),
   };
 }

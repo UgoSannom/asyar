@@ -1,4 +1,5 @@
 import type { TaskProgress } from '../../lib/ipc/walkthroughCommands';
+import { t } from '../../services/i18n';
 
 /**
  * Null when a label would say nothing the tick mark doesn't: a manual task,
@@ -10,11 +11,11 @@ export function taskProgressLabel(progress: TaskProgress | null | undefined): st
   const { current, target, unit } = progress;
   switch (unit) {
     case 'days':
-      return `${current} of ${target} days`;
+      return t('features_extra.walkthrough.progress_days', { current, target });
     case 'launches':
-      return `${current} of ${target} times`;
+      return t('features_extra.walkthrough.progress_times', { current, target });
     default:
-      return `${current} of ${target}`;
+      return t('features_extra.walkthrough.progress_of', { current, target });
   }
 }
 

@@ -43,22 +43,24 @@ pub async fn ext_builder_start(
     let db = app.state::<crate::storage::DataStore>();
     let ks = app.state::<crate::crypto::keystore::KeystoreState>();
     let conn = db.conn().map_err(|e| e.to_string())?;
-    let resolved_key = match crate::storage::ai_credentials::get(
-        &conn,
-        "provider:anthropic",
-        ks.master_key(),
-    ) {
-        Ok(Some(k)) => k,
-        Ok(None) => {
-            return Err(
-                "Anthropic API key is not configured. Please set your API key in Settings → AI."
-                    .to_string(),
-            );
-        }
-        Err(_) => {
-            return Err("API key for Anthropic cannot be decrypted (keychain master key changed). Please re-enter your key in Settings → AI.".to_string());
-        }
-    };
+    let resolved_key =
+        match crate::storage::ai_credentials::get(&conn, "provider:anthropic", ks.master_key()) {
+            Ok(Some(k)) => k,
+            Ok(None) => {
+                return Err(crate::locale::app_native_text(
+                    &app,
+                    crate::locale::NativeText::ExtBuilderApiKeyMissing,
+                )
+                .to_string());
+            }
+            Err(_) => {
+                return Err(crate::locale::app_native_text(
+                    &app,
+                    crate::locale::NativeText::ExtBuilderApiKeyUndecryptable,
+                )
+                .to_string());
+            }
+        };
 
     let current = state.current.clone();
     let outcome = super::process::start_checking_runtimes_ensuring(

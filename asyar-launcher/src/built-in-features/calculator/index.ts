@@ -133,7 +133,9 @@ class CalculatorExtension implements Extension {
     if (typeof copyValue !== 'string') return;
     try {
       await writeText(copyValue);
-      await this.feedbackService?.showHUD(`Copied: ${copyValue}`);
+      await this.feedbackService?.showHUD(
+        t('features_extra.calculator.copied_value', { value: copyValue }),
+      );
     } catch (e) {
       this.logService?.error('Copy failed: ' + e);
     }

@@ -20,6 +20,7 @@ import {
   type ReadClipboard,
 } from 'tauri-plugin-clipboard-x-api';
 import { platform } from '@tauri-apps/plugin-os';
+import { t } from '../i18n';
 import { listen, type UnlistenFn } from '@tauri-apps/api/event';
 import { clipboardAdoptImage, clipboardForgetImage } from '../../lib/ipc/clipboardCacheCommands';
 import * as commands from '../../lib/ipc/commands';
@@ -333,7 +334,7 @@ export class ClipboardHistoryService implements IClipboardHistoryService {
         type: ClipboardItemType.Text,
         content: text,
         preview: this.createPreview(
-          redactedKinds ? '[Encrypted secret]' : text,
+          redactedKinds ? t('services_extra.clipboard.encrypted_secret') : text,
           ClipboardItemType.Text,
         ),
         createdAt: Date.now(),
@@ -365,7 +366,7 @@ export class ClipboardHistoryService implements IClipboardHistoryService {
         type: ClipboardItemType.Html,
         content: html,
         preview: this.createPreview(
-          redactedKinds ? '[Encrypted secret]' : html,
+          redactedKinds ? t('services_extra.clipboard.encrypted_secret') : html,
           ClipboardItemType.Html,
         ),
         createdAt: Date.now(),
@@ -401,7 +402,10 @@ export class ClipboardHistoryService implements IClipboardHistoryService {
         id: imageId,
         type: ClipboardItemType.Image,
         content: storedPath,
-        preview: `Image: ${imageData.width}×${imageData.height}`,
+        preview: t('services_extra.clipboard.image_preview', {
+          width: imageData.width,
+          height: imageData.height,
+        }),
         createdAt: Date.now(),
         favorite: false,
         metadata: {
@@ -433,7 +437,9 @@ export class ClipboardHistoryService implements IClipboardHistoryService {
         id: uuidv4(),
         type: ClipboardItemType.Rtf,
         content: rtf,
-        preview: this.truncateText(redactedKinds ? '[Encrypted secret]' : stripRtf(rtf)),
+        preview: this.truncateText(
+          redactedKinds ? t('services_extra.clipboard.encrypted_secret') : stripRtf(rtf),
+        ),
         createdAt: Date.now(),
         favorite: false,
         sourceApp,
@@ -474,7 +480,12 @@ export class ClipboardHistoryService implements IClipboardHistoryService {
         id: uuidv4(),
         type: ClipboardItemType.Files,
         content: contentStr,
-        preview: `${fileCount} file${fileCount !== 1 ? 's' : ''}: ${fileNames.join(', ')}`,
+        preview: t(
+          fileCount === 1
+            ? 'services_extra.clipboard.files_preview_one'
+            : 'services_extra.clipboard.files_preview_other',
+          { count: fileCount, names: fileNames.join(', ') },
+        ),
         createdAt: Date.now(),
         favorite: false,
         metadata: {
@@ -495,7 +506,7 @@ export class ClipboardHistoryService implements IClipboardHistoryService {
    * Create a preview of clipboard content
    */
   private createPreview(content: string, type: ClipboardItemType): string {
-    if (!content) return 'No preview available';
+    if (!content) return t('features.clipboard.ui.no_preview');
 
     if (type === ClipboardItemType.Html) {
       const div = document.createElement('div');
@@ -506,7 +517,7 @@ export class ClipboardHistoryService implements IClipboardHistoryService {
       return this.truncateText(content);
     }
 
-    return 'No preview available';
+    return t('features.clipboard.ui.no_preview');
   }
 
   /**
@@ -554,9 +565,7 @@ export class ClipboardHistoryService implements IClipboardHistoryService {
           severity: 'warning',
           retryable: false,
           context: {
-            message:
-              'Asyar needs macOS Accessibility permission to paste. Enable Asyar under ' +
-              'System Settings → Privacy & Security → Accessibility, then try again.',
+            message: t('services_extra.clipboard.accessibility_paste'),
           },
         });
         return;

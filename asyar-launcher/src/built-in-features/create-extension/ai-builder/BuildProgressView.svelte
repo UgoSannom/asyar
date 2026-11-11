@@ -28,7 +28,10 @@
   // window before `job` exists yet (runtime download happens ahead of the
   // actual build spawn in `orchestrator.ts`'s `ensureRuntimesReady`).
   const startingLabel = $derived(
-    formatRuntimeDownloadStatus(runtimeService.downloadProgress, 'Starting…'),
+    formatRuntimeDownloadStatus(
+      runtimeService.downloadProgress,
+      t('features_extra.ai_builder.starting'),
+    ),
   );
 
   // ── deep-link handshake ───────────────────────────────────────────────────
@@ -229,7 +232,7 @@
     try {
       const result = await startBuild(trimmed);
       if (!result.ok) {
-        startError = result.reason ?? 'Build could not start.';
+        startError = result.reason ?? t('features_extra.ai_builder.could_not_start');
       }
     } finally {
       isStarting = false;
@@ -320,8 +323,12 @@
           {/each}
         </ol>
         <p class="text-caption">
-          {job.steps.length}
-          {job.steps.length === 1 ? 'step' : 'steps'} completed
+          {t(
+            job.steps.length === 1
+              ? 'features_extra.ai_builder.steps_completed_one'
+              : 'features_extra.ai_builder.steps_completed_other',
+            { count: job.steps.length },
+          )}
         </p>
       {:else}
         <p class="text-caption">{t('features.create_extension.view.starting')}</p>

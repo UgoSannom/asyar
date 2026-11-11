@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import { type UnlistenFn } from '@tauri-apps/api/event';
 import {
   noteGetAllForService,
@@ -21,7 +22,9 @@ import { appListen } from '../../../lib/ipc/bridgeEvents';
 
 export class NotesSyncProvider implements ISyncProvider {
   readonly id = 'notes';
-  readonly displayName = 'Notes';
+  get displayName(): string {
+    return t('features.notes.title');
+  }
   readonly icon = 'icon:type';
   // 'core' matches every other registered provider — 'extended' has no
   // current user, so there's no precedent for placing a new feature there.

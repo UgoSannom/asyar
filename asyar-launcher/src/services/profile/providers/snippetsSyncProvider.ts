@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import {
   snippetStore,
   type Snippet,
@@ -16,7 +17,9 @@ import type {
 
 export class SnippetsSyncProvider implements ISyncProvider {
   readonly id = 'snippets';
-  readonly displayName = 'Snippets';
+  get displayName(): string {
+    return t('features.snippets.title');
+  }
   readonly icon = 'text-expand';
   readonly syncTier = 'core' as const;
   readonly defaultEnabled = true;

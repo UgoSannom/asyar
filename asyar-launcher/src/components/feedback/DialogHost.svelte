@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '../../services/i18n';
   import { feedbackService } from '../../services/feedback/feedbackService.svelte';
   import { permissionConsentService } from '../../services/extension/permissionConsentService.svelte';
   import ConfirmDialog from '../base/ConfirmDialog.svelte';
@@ -29,8 +30,8 @@
     isOpen={true}
     title={dialog.title}
     message={dialog.message}
-    confirmButtonText={dialog.confirmText ?? 'Confirm'}
-    cancelButtonText={dialog.cancelText ?? 'Cancel'}
+    confirmButtonText={dialog.confirmText ?? t('common.confirm')}
+    cancelButtonText={dialog.cancelText ?? t('common.cancel')}
     variant={dialog.variant ?? 'default'}
     onconfirm={() => feedbackService.onDialogConfirmed()}
     oncancel={() => feedbackService.onDialogCancelled()}

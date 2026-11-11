@@ -33,13 +33,17 @@
       {#if counts.scripts.active > 0}
         <span class="hud-pair">
           <StatusDot color="info" pulse size={6} />
-          <span class="hud-text">{counts.scripts.active} Active</span>
+          <span class="hud-text"
+            >{t('ui_extra.show_more.active', { count: counts.scripts.active })}</span
+          >
         </span>
       {/if}
       {#if counts.scripts.done > 0}
         <span class="hud-pair">
           <StatusDot color="success" size={6} />
-          <span class="hud-text">{counts.scripts.done} Done</span>
+          <span class="hud-text"
+            >{t('ui_extra.show_more.done', { count: counts.scripts.done })}</span
+          >
         </span>
       {/if}
     </div>
@@ -51,13 +55,16 @@
       {#if counts.agents.active > 0}
         <span class="hud-pair">
           <StatusDot color="info" pulse size={6} />
-          <span class="hud-text">{counts.agents.active} Active</span>
+          <span class="hud-text"
+            >{t('ui_extra.show_more.active', { count: counts.agents.active })}</span
+          >
         </span>
       {/if}
       {#if counts.agents.done > 0}
         <span class="hud-pair">
           <StatusDot color="success" size={6} />
-          <span class="hud-text">{counts.agents.done} Idle</span>
+          <span class="hud-text">{t('ui_extra.show_more.idle', { count: counts.agents.done })}</span
+          >
         </span>
       {/if}
     </div>

@@ -80,7 +80,7 @@
       const added = await lanHostsAdd(request.extensionId, device.host, device.port, device.name);
       onPicked({ host: added.host, port: added.port, label: added.label });
     } catch (cause) {
-      generalError = cause instanceof Error ? cause.message : 'Failed to allow device.';
+      generalError = cause instanceof Error ? cause.message : t('ui_extra.lan_picker.allow_failed');
     } finally {
       busy = false;
     }
@@ -100,7 +100,8 @@
       const added = await lanHostsAdd(request.extensionId, h, p, manualLabel.trim() || h);
       onPicked({ host: added.host, port: added.port, label: added.label });
     } catch (cause) {
-      generalError = cause instanceof Error ? cause.message : 'This endpoint is not allowed.';
+      generalError =
+        cause instanceof Error ? cause.message : t('ui_extra.lan_picker.endpoint_not_allowed');
     } finally {
       busy = false;
     }
@@ -119,7 +120,7 @@
       );
       onPicked({ host: added.host, port: added.port, label: added.label });
     } catch (cause) {
-      generalError = cause instanceof Error ? cause.message : 'Failed to allow device.';
+      generalError = cause instanceof Error ? cause.message : t('ui_extra.lan_picker.allow_failed');
     } finally {
       busy = false;
     }

@@ -79,7 +79,10 @@
     description={t('settings.privacy.clipboard_session_desc')}
   >
     {#snippet children()}
-      <Badge text={`${totalSkipped} skipped`} variant="info" />
+      <Badge
+        text={t('ui_extra.clipboard_privacy.skipped', { count: totalSkipped })}
+        variant="info"
+      />
     {/snippet}
   </SettingsRow>
 

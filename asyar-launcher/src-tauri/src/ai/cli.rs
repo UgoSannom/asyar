@@ -153,8 +153,13 @@ pub fn resolve_cli_binary(engine: &str, custom_path: Option<&str>) -> Option<Pat
 }
 
 /// Checks whether the CLI tool for the given engine is installed and queries its version.
-pub async fn check_cli_status(engine: &str, custom_path: Option<&str>) -> CliStatus {
-    check_cli_status_in(engine, custom_path, resolve_home_dir().as_deref()).await
+/// The not-installed error message is localised for `locale`.
+pub async fn check_cli_status(
+    engine: &str,
+    custom_path: Option<&str>,
+    locale: &crate::locale::ParsedLocale,
+) -> CliStatus {
+    check_cli_status_in(engine, custom_path, resolve_home_dir().as_deref(), locale).await
 }
 
 /// Parameterized status check that accepts an optional home directory override,
@@ -163,6 +168,7 @@ pub async fn check_cli_status_in(
     engine: &str,
     custom_path: Option<&str>,
     home: Option<&Path>,
+    locale: &crate::locale::ParsedLocale,
 ) -> CliStatus {
     let resolved = resolve_cli_binary(engine, custom_path);
 
@@ -177,7 +183,11 @@ pub async fn check_cli_status_in(
             installed: false,
             path: None,
             version: None,
-            error: Some(format!("{name} CLI binary not found on this machine.")),
+            error: Some(crate::locale::native_format(
+                locale,
+                crate::locale::NativeText::CliBinaryNotFound,
+                &[("name", name)],
+            )),
             account: None,
         };
     };
@@ -1599,12 +1609,16 @@ mod tests {
             "nonexistent_engine_test",
             Some("/path/that/does/not/exist/bin"),
             Some(temp_dir.path()),
+            &crate::locale::ParsedLocale::parse("en-US").unwrap(),
         )
         .await;
 
         assert!(!status.installed);
         assert!(status.version.is_none());
-        assert!(status.error.is_some());
+        assert_eq!(
+            status.error.as_deref(),
+            Some("nonexistent_engine_test CLI binary not found on this machine.")
+        );
         assert!(status.account.is_none());
     }
 }

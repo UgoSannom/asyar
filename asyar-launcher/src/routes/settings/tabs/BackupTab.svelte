@@ -192,12 +192,22 @@
                 }}
               />
               <div class="import-preview-copy">
-                <div class="import-preview-title">{cat.displayName}</div>
+                <div class="import-preview-title">
+                  {backup.categoryLabel(cat.id, cat.displayName)}
+                </div>
                 {#if preview}
                   <div class="import-preview-meta">
-                    Local: {preview.localCount} → Incoming: {preview.incomingCount}
+                    {t('ui_extra.backup.preview_counts', {
+                      local: preview.localCount,
+                      incoming: preview.incomingCount,
+                    })}
                     {#if preview.conflicts > 0}
-                      <span class="conflict-text"> · {preview.conflicts} conflicts</span>
+                      <span class="conflict-text">
+                        · {t(
+                          `ui_extra.backup.conflicts_${preview.conflicts === 1 ? 'one' : 'other'}`,
+                          { count: preview.conflicts },
+                        )}</span
+                      >
                     {/if}
                   </div>
                 {/if}

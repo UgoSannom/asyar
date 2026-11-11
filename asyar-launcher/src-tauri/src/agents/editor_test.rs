@@ -33,6 +33,10 @@ impl BuiltinTool for TestBuiltin {
     }
 }
 
+fn en_locale() -> crate::locale::ParsedLocale {
+    crate::locale::ParsedLocale::parse("en-US").unwrap()
+}
+
 fn provider(id: &str, requires_api_key: bool, requires_base_url: bool) -> AgentProviderDescriptor {
     AgentProviderDescriptor {
         id: id.into(),
@@ -509,7 +513,13 @@ fn editor_catalog_and_stranded_check_rely_strictly_on_stored_credentials() {
 fn provider_removal_blocked_message_is_none_when_nothing_is_stranded() {
     let providers = vec![provider("anthropic", true, false)];
 
-    let message = provider_removal_blocked_message("anthropic", &providers, &HashMap::new(), &[]);
+    let message = provider_removal_blocked_message(
+        "anthropic",
+        &providers,
+        &HashMap::new(),
+        &[],
+        &en_locale(),
+    );
 
     assert_eq!(message, None);
 }
@@ -524,12 +534,45 @@ fn provider_removal_blocked_message_uses_the_providers_display_name() {
     }];
     let stranded = vec![agent("agent-1", "anthropic", "claude-sonnet-5")];
 
-    let message =
-        provider_removal_blocked_message("anthropic", &providers, &HashMap::new(), &stranded)
-            .expect("should be blocked");
+    let message = provider_removal_blocked_message(
+        "anthropic",
+        &providers,
+        &HashMap::new(),
+        &stranded,
+        &en_locale(),
+    )
+    .expect("should be blocked");
 
     assert!(message.contains("Anthropic"));
     assert!(message.contains("Asyar Assistant"));
+}
+
+#[test]
+fn provider_removal_blocked_message_is_localised() {
+    let providers = vec![AgentProviderDescriptor {
+        name: "Anthropic".to_string(),
+        ..provider("anthropic", true, false)
+    }];
+    let stranded = vec![agent("a1", "anthropic", "m")];
+    let fr = crate::locale::ParsedLocale::parse("fr-FR").unwrap();
+    let message =
+        provider_removal_blocked_message("anthropic", &providers, &HashMap::new(), &stranded, &fr)
+            .expect("should be blocked");
+    assert!(message.starts_with("Impossible de supprimer Anthropic"));
+
+    let english = provider_removal_blocked_message(
+        "anthropic",
+        &providers,
+        &HashMap::new(),
+        &stranded,
+        &en_locale(),
+    )
+    .expect("should be blocked");
+    assert_eq!(
+        english,
+        "Can't remove Anthropic — it's the last configured provider and these agents still use \
+         it: Asyar Assistant. Reassign or delete them first."
+    );
 }
 
 #[test]
@@ -547,8 +590,14 @@ fn provider_removal_blocked_message_uses_custom_connection_name_when_available()
     let configs = HashMap::from([("custom_123".into(), custom_cfg)]);
     let stranded = vec![agent("agent-1", "custom_123", "llama3.2")];
 
-    let message = provider_removal_blocked_message("custom_123", &providers, &configs, &stranded)
-        .expect("should be blocked");
+    let message = provider_removal_blocked_message(
+        "custom_123",
+        &providers,
+        &configs,
+        &stranded,
+        &en_locale(),
+    )
+    .expect("should be blocked");
 
     assert!(message.contains("Local Ollama"));
     assert!(message.contains("Asyar Assistant"));
@@ -598,8 +647,14 @@ fn editor_catalog_lists_multiple_named_provider_instances() {
 fn provider_removal_blocked_message_falls_back_to_the_raw_id_when_the_provider_is_unknown() {
     let stranded = vec![agent("agent-1", "openrouter", "openrouter/free")];
 
-    let message = provider_removal_blocked_message("openrouter", &[], &HashMap::new(), &stranded)
-        .expect("should be blocked");
+    let message = provider_removal_blocked_message(
+        "openrouter",
+        &[],
+        &HashMap::new(),
+        &stranded,
+        &en_locale(),
+    )
+    .expect("should be blocked");
 
     assert!(message.contains("openrouter"));
 }

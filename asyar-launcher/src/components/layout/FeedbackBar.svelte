@@ -29,7 +29,7 @@
     const template = DIAGNOSTIC_MESSAGES[current.kind as DiagnosticKind];
     return template
       ? template(current.context ?? {})
-      : (current.context.message ?? current.developerDetail ?? 'Feedback');
+      : (current.context.message ?? current.developerDetail ?? t('ui_extra.feedback.feedback'));
   });
   let showDetails = $derived(current?.severity !== 'progress');
 

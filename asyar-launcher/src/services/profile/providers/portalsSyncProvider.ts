@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import { portalStore, type Portal } from '../../../built-in-features/portals/portalStore.svelte';
 import { deletePortal } from '../../../built-in-features/portals/portalLifecycle';
 import type {
@@ -14,7 +15,9 @@ import type {
 
 export class PortalsSyncProvider implements ISyncProvider {
   readonly id = 'portals';
-  readonly displayName = 'Portals';
+  get displayName(): string {
+    return t('features.portals.title');
+  }
   readonly icon = 'globe';
   readonly syncTier = 'core' as const;
   readonly defaultEnabled = true;

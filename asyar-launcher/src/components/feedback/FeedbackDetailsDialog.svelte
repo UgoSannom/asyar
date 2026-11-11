@@ -16,7 +16,7 @@
     const template = DIAGNOSTIC_MESSAGES[feedback.kind as DiagnosticKind];
     return template
       ? template(feedback.context ?? {})
-      : (feedback.context.message ?? feedback.developerDetail ?? 'Feedback');
+      : (feedback.context.message ?? feedback.developerDetail ?? t('ui_extra.feedback.feedback'));
   });
   let contextEntries = $derived(Object.entries(feedback.context ?? {}));
 

@@ -5,7 +5,7 @@
   let { runtimes }: { runtimes: RuntimeDownload[] } = $props();
 
   function formatBytes(bytes: number): string {
-    if (bytes <= 0) return 'an unknown size';
+    if (bytes <= 0) return t('ui_extra.runtime_downloads.unknown_size');
     const mb = bytes / (1024 * 1024);
     return mb >= 1 ? `${mb.toFixed(1)} MB` : `${Math.max(1, Math.round(bytes / 1024))} KB`;
   }

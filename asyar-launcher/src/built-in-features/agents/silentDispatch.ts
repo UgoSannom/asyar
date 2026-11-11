@@ -26,6 +26,7 @@ import { windowService } from '../../services/window/windowService';
 import { agentService } from './agentService.svelte';
 import { createAgentStreamChannel } from './agentStreamBridge';
 import type { AgentDef, SilentInputSource, SilentOutputAction } from './types';
+import { t } from '../../services/i18n';
 
 const CLIPBOARD_RESTORE_DELAY_MS = 200;
 
@@ -88,7 +89,9 @@ async function runSilentAgentCommand(input: SilentDispatchInput): Promise<void> 
     const agent = await loadAgent(input.agentId);
     resolvedAgent = agent;
 
-    spinner = feedbackService.showHUDSpinning(`✨ ${agent.name}…`);
+    spinner = feedbackService.showHUDSpinning(
+      t('features_extra.agents.silent_running', { name: agent.name }),
+    );
     const userText = await captureInput(agent.inputSource, input.userText);
     if (userText === null) {
       // The capture warning replaces the spinner HUD.
@@ -142,9 +145,12 @@ async function runSilentAgentCommand(input: SilentDispatchInput): Promise<void> 
         await callFinalText(input, '');
         return;
       }
-      await spinner.replace('⚠️ Empty response', { spinning: false, severity: 'warning' });
+      await spinner.replace(t('features_extra.agents.silent_empty_hud'), {
+        spinning: false,
+        severity: 'warning',
+      });
       spinner = null;
-      await reportFailure(agent, 'Agent returned empty response');
+      await reportFailure(agent, t('features_extra.agents.silent_empty_detail'));
       return;
     }
 
@@ -169,9 +175,9 @@ async function runSilentAgentCommand(input: SilentDispatchInput): Promise<void> 
     logService.warn(`[silent-agents] dispatch failed: ${detail}`);
     const errorTarget: Pick<AgentDef, 'id' | 'name'> = resolvedAgent
       ? { id: resolvedAgent.id, name: resolvedAgent.name }
-      : { id: input.agentId, name: 'AI command' };
+      : { id: input.agentId, name: t('features_extra.agents.ai_command') };
     if (spinner) {
-      await spinner.replace(`⚠️ ${errorTarget.name} failed`, {
+      await spinner.replace(t('features_extra.agents.silent_failed', { name: errorTarget.name }), {
         spinning: false,
         severity: 'error',
       });
@@ -214,26 +220,34 @@ async function captureInput(
       try {
         const text = await selectionService.getSelectedText();
         if (!text || text.trim().length === 0) {
-          await feedbackService.showHUD('No selection', { severity: 'warning' });
+          await feedbackService.showHUD(t('features_extra.agents.no_selection'), {
+            severity: 'warning',
+          });
           return null;
         }
         return text;
       } catch (cause) {
         logService.warn(`[silent-agents] selection capture failed: ${cause}`);
-        await feedbackService.showHUD('Could not read selection', { severity: 'error' });
+        await feedbackService.showHUD(t('features_extra.agents.read_selection_failed'), {
+          severity: 'error',
+        });
         return null;
       }
     case 'clipboard':
       try {
         const text = await readText();
         if (!text || text.trim().length === 0) {
-          await feedbackService.showHUD('Clipboard is empty', { severity: 'warning' });
+          await feedbackService.showHUD(t('features_extra.agents.clipboard_empty'), {
+            severity: 'warning',
+          });
           return null;
         }
         return text;
       } catch (cause) {
         logService.warn(`[silent-agents] clipboard capture failed: ${cause}`);
-        await feedbackService.showHUD('Could not read clipboard', { severity: 'error' });
+        await feedbackService.showHUD(t('features_extra.agents.read_clipboard_failed'), {
+          severity: 'error',
+        });
         return null;
       }
     case 'argument':
@@ -271,7 +285,10 @@ async function applyOutputAction(
       return;
     case 'copy':
       await writeText(result);
-      await spinner.replace('✓ Copied', { spinning: false, durationMs: 1500 });
+      await spinner.replace(t('features_extra.agents.copied_hud'), {
+        spinning: false,
+        durationMs: 1500,
+      });
       return;
     case 'hud':
       await spinner.replace(lastNonEmptyLine(result), { spinning: false });
@@ -314,7 +331,8 @@ async function loadAgent(agentId: string): Promise<AgentDef> {
   const cached = agentService.getById(agentId);
   if (cached) return cached;
   const fetched = await agentsGet(agentId);
-  if (!fetched) throw new Error(`Agent '${agentId}' not found`);
+  if (!fetched) throw new Error(t('features_extra.agents.agent_not_found', { id: agentId }));
+
   return fetched;
 }
 

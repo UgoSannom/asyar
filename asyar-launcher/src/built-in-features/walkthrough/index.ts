@@ -91,7 +91,8 @@ class WalkthroughExtension implements Extension {
       window.removeEventListener('keydown', this.handleKeydownBound);
       window.addEventListener('keydown', this.handleKeydownBound);
     }
-    this.extensionManager?.setActiveViewActionLabel('Open Task');
+    this.extensionManager?.setActiveViewActionLabel(t('features_extra.walkthrough.open_task'));
+
     this.registerViewActions();
   }
 

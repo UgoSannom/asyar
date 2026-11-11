@@ -68,7 +68,11 @@ impl NotificationBackend for MacOsBackend {
             let label_to_id = build_label_to_id_map(&actions);
 
             let mut n = mac_notification_sys::Notification::new();
-            n.title(&title).message(&body).close_button("Close");
+            let close_label = crate::locale::native_text(
+                &crate::locale::detect(),
+                crate::locale::NativeText::NotificationClose,
+            );
+            n.title(&title).message(&body).close_button(close_label);
 
             // Label borrows must live through send() so we build them in
             // this scope, not inside a helper.

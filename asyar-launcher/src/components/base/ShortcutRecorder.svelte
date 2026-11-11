@@ -231,11 +231,13 @@
       <div class="success-message">{t('recorder.saved')}</div>
     {:else if capture.state.errorType === 'invalid-key'}
       <div class="error-message">
-        Invalid {capture.state.invalidKeys.size > 1 ? 'keys' : 'key'}
+        {capture.state.invalidKeys.size > 1
+          ? t('ui_extra.recorder.invalid_keys')
+          : t('ui_extra.recorder.invalid_key')}
       </div>
     {:else if capture.state.errorType === 'conflict'}
       <div class="error-message">
-        Already assigned to '{capture.state.conflictInfo}'
+        {t('ui_extra.recorder.already_assigned', { name: capture.state.conflictInfo ?? '' })}
       </div>
     {:else if capture.state.errorType === 'generic'}
       <div class="error-message">{capture.state.errorMessage}</div>

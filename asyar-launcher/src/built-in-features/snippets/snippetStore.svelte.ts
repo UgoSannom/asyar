@@ -8,6 +8,16 @@ import {
 } from '../../lib/ipc/commands';
 import { logService } from '../../services/log/logService';
 import { feedbackService } from '../../services/feedback/feedbackService.svelte';
+import { t } from '../../services/i18n';
+
+const PERSISTENCE_FAILURE_MESSAGES: Record<string, () => string> = {
+  'Failed to save': () => t('features_extra.snippets.persist.save'),
+  'Failed to update': () => t('features_extra.snippets.persist.update'),
+  'Failed to delete': () => t('features_extra.snippets.persist.delete'),
+  'Failed to toggle pin': () => t('features_extra.snippets.persist.toggle_pin'),
+  'Failed to toggle private': () => t('features_extra.snippets.persist.toggle_private'),
+  'Failed to clear all': () => t('features_extra.snippets.persist.clear_all'),
+};
 
 function reportPersistenceFailure(action: string, err: unknown): void {
   logService.error(`[SnippetStore] ${action}: ${err}`);
@@ -16,7 +26,11 @@ function reportPersistenceFailure(action: string, err: unknown): void {
     kind: 'manual',
     severity: 'warning',
     retryable: false,
-    context: { message: `Snippet ${action.toLowerCase()} — change may not survive restart` },
+    context: {
+      message:
+        PERSISTENCE_FAILURE_MESSAGES[action]?.() ??
+        `Snippet ${action.toLowerCase()} — change may not survive restart`,
+    },
   });
 }
 

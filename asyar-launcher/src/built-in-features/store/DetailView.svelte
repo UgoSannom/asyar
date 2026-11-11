@@ -23,7 +23,7 @@
   import PermissionList from '../../components/settings/PermissionList.svelte';
   import { renderMarkdown, handleMarkdownCopyClick } from '../../utils/markdown';
   import type { ManifestCommand, ManifestPreference } from './state.svelte';
-  import { t } from '../../services/i18n';
+  import { t, i18nService } from '../../services/i18n';
   import { isSdkCompatible } from './sdkCompatibility';
 
   // Define structure for detailed API response
@@ -118,7 +118,7 @@
       fetchExtensionDetails(currentSlug);
     } else {
       extensionDetail = null;
-      error = 'No extension selected.';
+      error = t('features.store.t_no_selection');
       isLoading = false;
     }
   });
@@ -222,7 +222,7 @@
       if (slug !== currentSlug) return;
       logService.error(`[DetailView] Fetch error: ${e}`); // Log fetch errors
       logService?.error(`Failed to fetch extension details: ${e.message}`);
-      error = `Failed to load details: ${e.message}`;
+      error = t('features_extra.store.details_load_failed', { error: e.message });
     } finally {
       if (slug !== currentSlug) return;
       isLoading = false;
@@ -254,7 +254,7 @@
       if (extensionDetail?.id) await checkIsInstalled(extensionDetail.id);
     } catch (e: any) {
       const errorMessage = typeof e === 'string' ? e : e?.message || String(e);
-      error = `Installation failed: ${errorMessage}`;
+      error = t('features_extra.store.err_install', { error: errorMessage });
     }
   }
 
@@ -279,7 +279,7 @@
       if (extensionDetail?.id) await checkIsInstalled(extensionDetail.id);
     } catch (e: any) {
       const errorMessage = typeof e === 'string' ? e : e?.message || String(e);
-      error = `Uninstall failed: ${errorMessage}`;
+      error = t('features_extra.store.err_uninstall', { error: errorMessage });
     }
   }
 
@@ -291,7 +291,7 @@
       if (extensionDetail?.id) await checkIsInstalled(extensionDetail.id);
     } catch (e: any) {
       const errorMessage = typeof e === 'string' ? e : e?.message || String(e);
-      error = `Update failed: ${errorMessage}`;
+      error = t('features_extra.store.err_update', { error: errorMessage });
     }
   }
 
@@ -493,7 +493,7 @@
                   class="w-5 h-5 rounded-full bg-[var(--bg-tertiary)] flex items-center justify-center"
                   style="font-size: var(--font-size-2xs);">👤</span
                 >
-                {extensionDetail?.author?.name || 'Unknown'}
+                {extensionDetail?.author?.name || t('features_extra.store.unknown')}
               </span>
               <span class="w-1.5 h-1.5 rounded-full bg-[var(--separator)]"></span>
               <Badge text={extensionDetail.category} variant="default" mono />
@@ -507,7 +507,9 @@
                     d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
                   /></svg
                 >
-                {getInstallCount(extensionDetail).toLocaleString()} Installs
+                {t('features_extra.store.installs_count', {
+                  count: getInstallCount(extensionDetail).toLocaleString(i18nService.locale),
+                })}
               </span>
             </div>
 
@@ -537,7 +539,9 @@
                 <WarningBanner>
                   {#snippet children()}
                     <p class="text-caption">
-                      This extension requires a newer version of Asyar (SDK {extensionDetail?.asyarSdk})
+                      {t('features_extra.store.requires_newer', {
+                        sdk: extensionDetail?.asyarSdk ?? '',
+                      })}
                     </p>
                   {/snippet}
                 </WarningBanner>
@@ -573,7 +577,7 @@
             <section>
               <h3 class="text-section mb-3">{t('features.store.ui.about')}</h3>
               <div class="prose max-w-none text-body">
-                <p>{extensionDetail?.description || 'No description provided.'}</p>
+                <p>{extensionDetail?.description || t('features_extra.store.no_description')}</p>
               </div>
             </section>
 
@@ -582,8 +586,12 @@
                 <div class="flex items-center justify-between mb-4">
                   <h3 class="text-section">{t('features.store.ui.commands_actions')}</h3>
                   <span class="text-caption text-[var(--text-tertiary)]">
-                    {declaredCommands.length}
-                    {declaredCommands.length === 1 ? 'command' : 'commands'}
+                    {t(
+                      declaredCommands.length === 1
+                        ? 'features_extra.store.command_count_one'
+                        : 'features_extra.store.command_count_other',
+                      { count: declaredCommands.length },
+                    )}
                   </span>
                 </div>
 
@@ -603,9 +611,9 @@
                               {#if cmd.mode}
                                 <Badge
                                   text={cmd.mode === 'view'
-                                    ? 'View'
+                                    ? t('features_extra.store.mode_view')
                                     : cmd.mode === 'background'
-                                      ? 'Background'
+                                      ? t('features_extra.store.mode_background')
                                       : cmd.mode}
                                   variant={cmd.mode === 'view' ? 'info' : 'default'}
                                   mono
@@ -724,12 +732,12 @@
                   </dt>
                   <dd class="font-semibold text-[var(--text-primary)]">
                     {extensionDetail?.updatedAt
-                      ? new Date(extensionDetail.updatedAt).toLocaleDateString(undefined, {
+                      ? new Date(extensionDetail.updatedAt).toLocaleDateString(i18nService.locale, {
                           year: 'numeric',
                           month: 'short',
                           day: 'numeric',
                         })
-                      : 'Unknown'}
+                      : t('features_extra.store.unknown')}
                   </dd>
                 </div>
                 <div
@@ -752,12 +760,12 @@
                   </dt>
                   <dd class="font-semibold text-[var(--text-primary)]">
                     {extensionDetail?.createdAt
-                      ? new Date(extensionDetail.createdAt).toLocaleDateString(undefined, {
+                      ? new Date(extensionDetail.createdAt).toLocaleDateString(i18nService.locale, {
                           year: 'numeric',
                           month: 'short',
                           day: 'numeric',
                         })
-                      : 'Unknown'}
+                      : t('features_extra.store.unknown')}
                   </dd>
                 </div>
               </dl>

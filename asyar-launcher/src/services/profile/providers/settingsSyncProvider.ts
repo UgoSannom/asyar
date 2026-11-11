@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import { settingsService } from '../../../services/settings/settingsService.svelte';
 import type { AppSettings } from '../../../services/settings/types/AppSettingsType';
 import type {
@@ -14,7 +15,9 @@ import type {
 
 export class SettingsSyncProvider implements ISyncProvider {
   readonly id = 'settings';
-  readonly displayName = 'Application Settings';
+  get displayName(): string {
+    return t('services_extra.profile.settings');
+  }
   readonly icon = 'settings';
   readonly syncTier = 'core' as const;
   readonly defaultEnabled = true;

@@ -99,7 +99,8 @@
         logService.error(`Failed to trigger reload: ${err}`);
       }
     } catch (e: any) {
-      generateStatus = `Error: ${e.message || String(e)}`;
+      generateStatus = t('features_extra.mcp.test_error', { error: e.message || String(e) });
+
       isGenerating = false;
     }
   }

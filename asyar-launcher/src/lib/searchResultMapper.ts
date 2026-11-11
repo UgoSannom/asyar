@@ -142,6 +142,19 @@ function runKindLabel(kind: Run['kind']): string {
   }
 }
 
+/** Localized row label. `runKindLabel` stays English: it is the internal
+ * grouping key compared against 'Script' / 'Agent' by the section logic. */
+function runKindDisplayLabel(kind: Run['kind']): string {
+  switch (kind) {
+    case 'shell-script':
+      return t('services_extra.launcher.run_kind_script');
+    case 'custom':
+      return t('common.run');
+    default:
+      return t('services_extra.launcher.run_kind_agent');
+  }
+}
+
 function runKindIcon(kind: Run['kind']): string {
   // 'ai-chat' is a legacy run kind preserved for historical row deserialization.
   switch (kind) {
@@ -185,17 +198,21 @@ function buildRunMappedItem(run: Run): MappedSearchItem {
   const isKeptDone = run.status === 'succeeded';
   const type = isFailed ? 'run-failed' : isKeptDone ? 'run-done' : 'run';
   const subtitle = isFailed
-    ? `Failed · ${run.tailOutput ?? run.errorMessage ?? '(no output)'}`
+    ? t('services_extra.launcher.run_failed', {
+        output: run.tailOutput ?? run.errorMessage ?? t('services_extra.launcher.no_output'),
+      })
     : isKeptDone
-      ? `Done · ${run.tailOutput ?? '(no output)'}`
-      : 'Running';
+      ? t('services_extra.launcher.run_done', {
+          output: run.tailOutput ?? t('services_extra.launcher.no_output'),
+        })
+      : t('services_extra.launcher.running');
   return {
     object_id: `run_${run.id}`,
     title: run.label,
     subtitle,
     type,
     typeLabel: runKindLabel(run.kind),
-    kindLabel: runKindLabel(run.kind),
+    kindLabel: runKindDisplayLabel(run.kind),
     icon: runKindIcon(run.kind),
     score: 1.0,
     action: buildRunAction(run.id, run.kind),
@@ -280,7 +297,7 @@ export function buildMappedItems({
       (id) => extensionManager.getManifestById?.(id) ?? null,
     );
 
-    const name = result.name || 'Unknown Item';
+    const name = result.name || t('services_extra.launcher.unknown_item');
     const type = result.type || 'unknown';
     const score = result.score || 0;
     const path = result.path ?? undefined;
@@ -321,7 +338,7 @@ export function buildMappedItems({
             return;
           } catch (err) {
             logService.error(`Direct extension action failed: ${err}`);
-            onError(`Action failed for ${name}`);
+            onError(t('services_extra.launcher.action_failed', { name }));
             throw err;
           }
         }
@@ -336,7 +353,7 @@ export function buildMappedItems({
             throw err;
           }
           logService.error(`extensionManager.handleCommandAction failed: ${err}`);
-          onError(`Failed to run command ${name}`);
+          onError(t('services_extra.launcher.command_failed', { name }));
           throw err;
         }
       };
@@ -349,11 +366,11 @@ export function buildMappedItems({
             await Promise.resolve(originalExtAction());
           } else {
             logService.error(`originalExtAction is not a function for ${name}`);
-            onError(`Action is invalid for ${name}`);
+            onError(t('services_extra.launcher.action_invalid', { name }));
           }
         } catch (err) {
           logService.error(`Direct extension action failed: ${err}`);
-          onError(`Action failed for ${name}`);
+          onError(t('services_extra.launcher.action_failed', { name }));
           throw err;
         }
       };
@@ -366,7 +383,7 @@ export function buildMappedItems({
           await applicationService.open({ objectId, name, path, score, type, tier: result.tier });
         } catch (err) {
           logService.error(`applicationService.open failed: ${err}`);
-          onError(`Failed to open ${name}`);
+          onError(t('services_extra.launcher.open_failed', { name }));
           throw err;
         }
       };
@@ -383,7 +400,7 @@ export function buildMappedItems({
           } catch (err) {
             logService.error(`openerService.openPath failed: ${err}`);
             if (!result.url) {
-              onError(`Failed to open ${name}`);
+              onError(t('services_extra.launcher.open_failed', { name }));
               throw err;
             }
           }
@@ -393,7 +410,7 @@ export function buildMappedItems({
             await openerService.open(null, result.url);
           } catch (err) {
             logService.error(`openerService.open failed: ${err}`);
-            onError(`Failed to open ${name}`);
+            onError(t('services_extra.launcher.open_failed', { name }));
             throw err;
           }
         }
@@ -401,7 +418,7 @@ export function buildMappedItems({
     } else {
       actionFunction = async () => {
         logService.debug(`No valid action for item: ${name} (${type})`);
-        onError(`No action for ${name}`);
+        onError(t('services_extra.launcher.no_action', { name }));
         return Promise.resolve();
       };
     }

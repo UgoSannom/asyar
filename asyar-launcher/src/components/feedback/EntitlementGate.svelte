@@ -29,7 +29,7 @@
     class="relative rounded-lg overflow-hidden"
     style="border: 1px solid var(--separator); background: var(--bg-secondary);"
     role="region"
-    aria-label="{featureName} — upgrade required"
+    aria-label={t('ui_extra.entitlement.upgrade_required_aria', { feature: featureName })}
   >
     <!-- Blurred placeholder slot -->
     <div class="pointer-events-none select-none opacity-30 blur-sm" aria-hidden="true">

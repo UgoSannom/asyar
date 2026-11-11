@@ -253,12 +253,13 @@ pub fn agents_stranded_by_provider_removal(
 /// User-facing explanation for a blocked provider removal, or `None` when
 /// removal is safe. Owns the wording so Settings stays pure display —
 /// `stranded` is expected to be the output of
-/// `agents_stranded_by_provider_removal`.
+/// `agents_stranded_by_provider_removal`. The text is localised for `locale`.
 pub fn provider_removal_blocked_message(
     provider_id: &str,
     providers: &[AgentProviderDescriptor],
     configs: &HashMap<String, ProviderConfig>,
     stranded: &[AgentRow],
+    locale: &crate::locale::ParsedLocale,
 ) -> Option<String> {
     if stranded.is_empty() {
         return None;
@@ -283,9 +284,13 @@ pub fn provider_removal_blocked_message(
         .map(|agent| agent.name.as_str())
         .collect::<Vec<_>>()
         .join(", ");
-    Some(format!(
-        "Can't remove {provider_name} — it's the last configured provider and these agents \
-         still use it: {agent_names}. Reassign or delete them first."
+    Some(crate::locale::native_format(
+        locale,
+        crate::locale::NativeText::ProviderRemovalBlocked,
+        &[
+            ("provider_name", provider_name),
+            ("agent_names", agent_names.as_str()),
+        ],
     ))
 }
 
@@ -466,6 +471,7 @@ pub fn agents_editor_load(
 pub fn agents_provider_removal_blockers(
     db: tauri::State<'_, DataStore>,
     keystore: tauri::State<'_, crate::crypto::keystore::KeystoreState>,
+    locale: tauri::State<'_, crate::locale::LocaleService>,
     provider_id: String,
     providers: Vec<AgentProviderDescriptor>,
     configs: HashMap<String, ProviderConfig>,
@@ -486,6 +492,7 @@ pub fn agents_provider_removal_blockers(
         &providers,
         &configs,
         &stranded,
+        &locale.current_locale(),
     ))
 }
 

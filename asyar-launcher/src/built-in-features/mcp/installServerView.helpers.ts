@@ -1,3 +1,4 @@
+import { t } from '../../services/i18n';
 import type { McpServerInstallInput } from './types';
 
 export interface EnvRow {
@@ -22,18 +23,18 @@ export type ValidationResult = { ok: true } | { ok: false; error: string };
 
 export function validateInstallForm(state: InstallFormState): ValidationResult {
   if (!state.id.trim()) {
-    return { ok: false, error: 'ID is required.' };
+    return { ok: false, error: t('features_extra.mcp.err_id_required') };
   }
   if (!state.displayName.trim()) {
-    return { ok: false, error: 'Display name is required.' };
+    return { ok: false, error: t('features_extra.mcp.err_display_name_required') };
   }
   if (state.transportKind === 'stdio') {
     if (!state.command.trim()) {
-      return { ok: false, error: 'Command is required for stdio transport.' };
+      return { ok: false, error: t('features_extra.mcp.err_command_required') };
     }
   } else {
     if (!/^https?:\/\/.+/.test(state.url)) {
-      return { ok: false, error: 'A valid URL starting with http:// or https:// is required.' };
+      return { ok: false, error: t('features_extra.mcp.err_url_required') };
     }
   }
   return { ok: true };

@@ -16,7 +16,7 @@
   import { actionService } from '../../services/action/actionService.svelte';
   import { viewManager } from '../../services/extension/viewManager.svelte';
   import { ActionContext } from 'asyar-sdk/contracts';
-  import { t } from '../../services/i18n';
+  import { t, i18nService } from '../../services/i18n';
 
   let portals = $derived(portalStore.portals);
   let selectedIndex = $derived(portalsUiState.selectedIndex);
@@ -106,11 +106,13 @@
     };
   });
 
-  const dateFormat = new Intl.DateTimeFormat('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  });
+  const dateFormat = $derived(
+    new Intl.DateTimeFormat(i18nService.locale, {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    }),
+  );
 
   function startCreate() {
     portalsUiState.startCreate();
@@ -147,7 +149,7 @@
     const dup: Portal = {
       ...portal,
       id: crypto.randomUUID(),
-      name: portal.name + ' Copy',
+      name: t('features_extra.common.name_copy', { name: portal.name }),
       createdAt: Date.now(),
     };
     portalStore.add(dup);
@@ -175,7 +177,7 @@
     leftWidth={260}
     minLeftWidth={200}
     maxLeftWidth={500}
-    ariaLabel="Portals"
+    ariaLabel={t('features.portals.title')}
     emptyMessage={t('features.portals.no_portals')}
   >
     {#snippet listItem(portal, index)}
@@ -237,7 +239,12 @@
             },
             {
               label: t('features.portals.ui.placeholders'),
-              value: `${tokens.length} placeholder${tokens.length === 1 ? '' : 's'}`,
+              value: t(
+                tokens.length === 1
+                  ? 'features_extra.portals.placeholder_count_one'
+                  : 'features_extra.portals.placeholder_count_other',
+                { count: tokens.length },
+              ),
             },
             {
               label: t('features.portals.ui.created'),

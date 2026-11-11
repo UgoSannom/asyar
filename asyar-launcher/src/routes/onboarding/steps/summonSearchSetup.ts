@@ -1,3 +1,4 @@
+import { t } from '../../../services/i18n';
 import {
   getShortcutBackendInfo,
   type ShortcutBackendInfo,
@@ -17,7 +18,7 @@ export async function saveHotkey(detail: {
   key: string;
 }): Promise<string | true> {
   const success = await updateShortcut(detail.modifier, detail.key);
-  return success ? true : 'Could not set that shortcut';
+  return success ? true : t('ui_extra.onboarding.shortcut_set_failed');
 }
 
 export async function fetchShortcutBackendInfo(): Promise<ShortcutBackendInfo> {

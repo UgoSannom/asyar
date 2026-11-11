@@ -16,7 +16,7 @@
       await snippetService.setEnabled(next);
       snippetsEnabled = next;
     } catch (e) {
-      snippetsToggleError = (e as Error).message || 'Failed to update snippets state';
+      snippetsToggleError = (e as Error).message || t('ui_extra.snippets_card.toggle_failed');
     }
   }
 </script>

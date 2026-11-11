@@ -181,10 +181,12 @@
     if (!editAgentId) return;
     try {
       await agentsPromoteCached(editAgentId, input);
-      await feedbackService.showHUD('✓ Promoted to snippet');
+      await feedbackService.showHUD(t('features_extra.agents.promoted'));
       await loadCache();
     } catch {
-      await feedbackService.showHUD('Failed to promote', { severity: 'error' });
+      await feedbackService.showHUD(t('features_extra.agents.promote_failed'), {
+        severity: 'error',
+      });
     }
   }
 
@@ -194,7 +196,9 @@
       await agentsForgetCached(editAgentId, input);
       await loadCache();
     } catch {
-      await feedbackService.showHUD('Failed to delete', { severity: 'error' });
+      await feedbackService.showHUD(t('features_extra.agents.delete_failed'), {
+        severity: 'error',
+      });
     }
   }
 
@@ -204,7 +208,9 @@
       await agentsClearCached(editAgentId);
       await loadCache();
     } catch {
-      await feedbackService.showHUD('Failed to clear', { severity: 'error' });
+      await feedbackService.showHUD(t('features_extra.agents.clear_failed'), {
+        severity: 'error',
+      });
     }
   }
 
@@ -353,7 +359,9 @@
   onsubmit={onSave}
 >
   {#snippet header()}
-    <h2 class="agent-edit-heading">{editAgentId ? 'Edit agent' : 'New agent'}</h2>
+    <h2 class="agent-edit-heading">{editAgentId
+        ? t('features_extra.agents.edit_heading')
+        : t('features_extra.agents.new_heading')}</h2>
   {/snippet}
 
   {#if form}
@@ -518,7 +526,7 @@
             textIntent="natural"
             id="agent-shortcode-trigger"
             bind:value={activeForm.shortcodeTrigger}
-            placeholder="e.g. : or ;"
+            placeholder={t('features_extra.agents.shortcode_placeholder')}
           />
           <p class="field-hint">
             {t('features.agents.edit.shortcode_hint')}

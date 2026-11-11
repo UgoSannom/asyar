@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import type {
   ISyncProvider,
   SyncProviderData,
@@ -26,7 +27,9 @@ import { appListen } from '../../../lib/ipc/bridgeEvents';
  */
 export class ExtensionPreferencesSyncProvider implements ISyncProvider {
   readonly id = 'extension-preferences';
-  readonly displayName = 'Extension Preferences';
+  get displayName(): string {
+    return t('services_extra.profile.extension_preferences');
+  }
   readonly icon = 'sliders';
   readonly syncTier = 'core' as const;
   readonly defaultEnabled = true;

@@ -114,16 +114,17 @@
     }
   }
 
-  const ENTITLEMENT_LABELS: Record<string, string> = {
-    'sync:settings': 'Settings Sync',
-    'sync:ai-conversations': 'AI Conversation History Sync',
-    'ai:chat': 'AI Chat',
-    'ai:advanced-models': 'Advanced AI Models',
-    'extensions:premium': 'Premium Extensions',
+  const ENTITLEMENT_LABEL_KEYS: Record<string, string> = {
+    'sync:settings': 'ui_extra.account.ent_settings_sync',
+    'sync:ai-conversations': 'ui_extra.account.ent_ai_history_sync',
+    'ai:chat': 'ui_extra.account.ent_ai_chat',
+    'ai:advanced-models': 'ui_extra.account.ent_advanced_models',
+    'extensions:premium': 'ui_extra.account.ent_premium_extensions',
   };
 
   function labelFor(entitlement: string): string {
-    return ENTITLEMENT_LABELS[entitlement] ?? entitlement;
+    const key = ENTITLEMENT_LABEL_KEYS[entitlement];
+    return key ? t(key) : entitlement;
   }
 
   async function handleSignIn(provider: string) {
@@ -139,15 +140,19 @@
   }
 
   function formatRelativeTime(date: Date | null): string {
-    if (!date) return 'Never';
+    if (!date) return t('common.never');
     const diff = Date.now() - date.getTime();
     const minutes = Math.floor(diff / 60000);
-    if (minutes < 1) return 'Just now';
-    if (minutes < 60) return `${minutes} minute${minutes === 1 ? '' : 's'} ago`;
+    if (minutes < 1) return t('ui_extra.account.just_now');
+    if (minutes < 60)
+      return t(`ui_extra.account.minutes_ago_${minutes === 1 ? 'one' : 'other'}`, {
+        count: minutes,
+      });
     const hours = Math.floor(minutes / 60);
-    if (hours < 24) return `${hours} hour${hours === 1 ? '' : 's'} ago`;
+    if (hours < 24)
+      return t(`ui_extra.account.hours_ago_${hours === 1 ? 'one' : 'other'}`, { count: hours });
     const days = Math.floor(hours / 24);
-    return `${days} day${days === 1 ? '' : 's'} ago`;
+    return t(`ui_extra.account.days_ago_${days === 1 ? 'one' : 'other'}`, { count: days });
   }
 </script>
 
@@ -263,11 +268,15 @@
             </div>
           {/if}
           <div class="profile-info">
-            <span class="profile-name">{authService.user?.name ?? 'Unknown'}</span>
+            <span class="profile-name"
+              >{authService.user?.name ?? t('ui_extra.common.unknown')}</span
+            >
             <span class="profile-email">{authService.user?.email ?? ''}</span>
           </div>
           <Button onclick={handleSignOut} disabled={authService.isLoading}>
-            {authService.isLoading ? 'Signing out…' : t('settings.account.sign_out')}
+            {authService.isLoading
+              ? t('ui_extra.account.signing_out')
+              : t('settings.account.sign_out')}
           </Button>
         </div>
       </SettingsRow>

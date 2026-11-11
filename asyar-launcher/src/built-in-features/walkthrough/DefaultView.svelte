@@ -41,14 +41,14 @@
 
   /** Habit tasks say how many days they want, so the ask is never a surprise. */
   function requirement(completion: { type: string; distinctDays?: number; times?: number }) {
-    if (completion.type === 'manual') return 'Tick when done';
+    if (completion.type === 'manual') return t('features_extra.walkthrough.req_manual');
     if (completion.type === 'count' && completion.distinctDays && completion.distinctDays > 1) {
-      return `Use on ${completion.distinctDays} separate days`;
+      return t('features_extra.walkthrough.req_days', { count: completion.distinctDays });
     }
     if (completion.type === 'count' && completion.times && completion.times > 1) {
-      return `Use ${completion.times} times`;
+      return t('features_extra.walkthrough.req_times', { count: completion.times });
     }
-    return 'Completes as you use it';
+    return t('features_extra.walkthrough.req_auto');
   }
 </script>
 
@@ -59,7 +59,12 @@
         <AppIcon icon={task.icon} size={24} />
         <h1 class="detail-title">{task.title}</h1>
         {#if task.completed}
-          <Badge text={task.source === 'manual' ? 'Marked done' : 'Done'} variant="success" />
+          <Badge
+            text={task.source === 'manual'
+              ? t('features_extra.walkthrough.marked_done')
+              : t('common.done')}
+            variant="success"
+          />
         {:else}
           <Badge text={requirement(task.completion)} variant="info" />
         {/if}
@@ -86,7 +91,12 @@
     <header class="head">
       <div class="head-row">
         <span class="head-title">{t('features.walkthrough.ui.beyond')}</span>
-        <span class="head-count">{progress.completed} of {progress.total}</span>
+        <span class="head-count">
+          {t('features_extra.walkthrough.progress_of', {
+            current: progress.completed,
+            target: progress.total,
+          })}
+        </span>
       </div>
       <MeterBar value={progress.total === 0 ? 0 : progress.completed / progress.total} />
     </header>

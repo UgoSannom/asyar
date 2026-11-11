@@ -1,3 +1,4 @@
+import { t } from '../services/i18n';
 import { resumeAllShortcuts, pauseAllShortcuts } from './ipc/commands';
 import {
   MODIFIER_KEYS,
@@ -128,7 +129,7 @@ export function useShortcutCapture(config: CaptureConfig) {
           ? [HYPER_SYMBOL, displayKey(capturedKey)]
           : [...capturedModifier.split('+').map((m) => modifierSymbol(m)), displayKey(capturedKey)]
         : [displayKey(capturedKey)];
-      errorMessage = result || 'Failed to save shortcut';
+      errorMessage = result || t('services_extra.launcher.shortcut_save_failed');
       savedModifier = '';
       savedKey = '';
       completionTimer = setTimeout(() => {

@@ -13,7 +13,7 @@
   import { getFileIcon, getFileThumbnail } from '../../lib/ipc/thumbnailCommands';
   import { getHostPlatform } from '../../lib/keyboard/hostPlatform';
   import { feedbackService } from '../../services/feedback/feedbackService.svelte';
-  import { t } from '../../services/i18n';
+  import { t, i18nService } from '../../services/i18n';
   import { logService } from '../../services/log/logService';
   import { openerService } from '../../services/opener/openerService';
   import { searchBarAccessoryService } from '../../services/search/searchBarAccessoryService.svelte';
@@ -45,17 +45,17 @@
 
   function formatRelativeTime(modifiedAt: number): string {
     const ageSec = Math.floor(Date.now() / 1000) - modifiedAt;
-    if (ageSec < 60) return 'just now';
-    if (ageSec < 3600) return `${Math.floor(ageSec / 60)} min ago`;
-    if (ageSec < 86400) return `${Math.floor(ageSec / 3600)} h ago`;
+    if (ageSec < 60) return t('features_extra.time.just_now');
+    if (ageSec < 3600) return t('features_extra.time.min_ago', { count: Math.floor(ageSec / 60) });
+    if (ageSec < 86400) return t('features_extra.time.h_ago', { count: Math.floor(ageSec / 3600) });
     const days = Math.floor(ageSec / 86400);
-    if (days < 30) return `${days} d ago`;
-    if (days < 365) return `${Math.floor(days / 30)} mo ago`;
-    return `${Math.floor(days / 365)} y ago`;
+    if (days < 30) return t('features_extra.time.d_ago', { count: days });
+    if (days < 365) return t('features_extra.time.mo_ago', { count: Math.floor(days / 30) });
+    return t('features_extra.time.y_ago', { count: Math.floor(days / 365) });
   }
 
   function formatDate(d: Date): string {
-    return d.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
+    return d.toLocaleString(i18nService.locale, { dateStyle: 'medium', timeStyle: 'short' });
   }
 
   // "Where" shows the parent folder with $HOME collapsed to `~`.
@@ -278,9 +278,9 @@
     leftWidth={320}
     minLeftWidth={240}
     maxLeftWidth={600}
-    ariaLabel="Files"
+    ariaLabel={t('features_extra.file_search.aria_files')}
     emptyMessage={fileSearchViewState.searchQuery
-      ? 'No matches'
+      ? t('search.no_matches')
       : t('features.file_search.ui.no_recent')}
   >
     {#snippet listItem(item: FileHit, index: number)}
@@ -375,7 +375,9 @@
       {#if selected}
         <div class="preview-pane custom-scrollbar">
           {#if selected.isDir}
-            <div class="text-caption opacity-70 p-4">Folder — {selected.path}</div>
+            <div class="text-caption opacity-70 p-4">
+              {t('features_extra.file_search.folder_path', { path: selected.path })}
+            </div>
           {:else if previewLoading}
             <div class="text-caption opacity-50">
               {t('features.file_search.ui.loading_preview')}

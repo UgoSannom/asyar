@@ -2206,5 +2206,1438 @@
     "direct_subtitle": "{extensionName} 请求访问 {host}:{port}",
     "scanning": "正在扫描局域网…",
     "no_devices": "未在局域网上发现任何设备。"
+  },
+  "features_extra": {
+    "time": {
+      "just_now": "刚刚",
+      "min_ago": "{count} 分钟前",
+      "h_ago": "{count} 小时前",
+      "d_ago": "{count} 天前",
+      "mo_ago": "{count} 个月前",
+      "y_ago": "{count} 年前",
+      "m_ago_short": "{count} 分钟前",
+      "h_ago_short": "{count} 小时前",
+      "d_ago_short": "{count} 天前"
+    },
+    "clipboard": {
+      "title_image": "图片",
+      "title_files": "文件",
+      "title_empty": "空",
+      "file_count_one": "{count} 个文件",
+      "file_count_other": "{count} 个文件",
+      "word_count_one": "{count} 个词",
+      "word_count_other": "{count} 个词",
+      "char_count": "{count} 个字符",
+      "truncated": "显示前 {shown} 个字符（共 {total} 个）",
+      "preview_of": "{name} 的预览",
+      "multi_selected": "已选择 {count} 项 · 按 Enter 合并并粘贴",
+      "type_image": "图片",
+      "type_file": "文件",
+      "paste": "粘贴"
+    },
+    "notes": {
+      "still_indexing": "仍在为你的笔记建立索引…",
+      "no_notes_found": "未找到笔记",
+      "toast_saved": "笔记已保存",
+      "toast_added_today": "已添加到今日笔记",
+      "toast_unstuck": "已从桌面取下",
+      "toast_stuck": "已贴到桌面",
+      "toast_exported": "笔记已导出",
+      "persist": {
+        "save": "笔记保存失败——更改可能在重启后丢失",
+        "update": "笔记更新失败——更改可能在重启后丢失",
+        "delete": "笔记删除失败——更改可能在重启后丢失",
+        "toggle_pin": "笔记固定/取消固定失败——更改可能在重启后丢失"
+      }
+    },
+    "common": {
+      "name_copy": "{name} 副本"
+    },
+    "shortcuts": {
+      "persist": {
+        "save": "快捷键保存失败——更改可能在重启后丢失",
+        "update": "快捷键更新失败——更改可能在重启后丢失",
+        "delete": "快捷键删除失败——更改可能在重启后丢失"
+      },
+      "register_failed": "注册快捷键失败",
+      "launcher_toggle": "启动器开关",
+      "no_item_selected": "未选择项目",
+      "unsupported_key": "不支持的按键或系统错误",
+      "assign_failed": "无法分配：{reason}",
+      "press_combination": "按下要用于 {name} 的组合键。"
+    },
+    "snippets": {
+      "persist": {
+        "save": "片段保存失败——更改可能在重启后丢失",
+        "update": "片段更新失败——更改可能在重启后丢失",
+        "delete": "片段删除失败——更改可能在重启后丢失",
+        "toggle_pin": "片段固定/取消固定失败——更改可能在重启后丢失",
+        "toggle_private": "片段切换私密状态失败——更改可能在重启后丢失",
+        "clear_all": "清除全部片段失败——更改可能在重启后丢失"
+      },
+      "err_name_required": "名称为必填项。",
+      "err_expansion_required": "展开内容为必填项。",
+      "err_keyword_lowercase": "关键词必须为小写。",
+      "err_keyword_in_use": "该关键词已被使用。",
+      "new_snippet": "新建片段",
+      "keyword_placeholder": "例如 ;email",
+      "expansion_placeholder": "例如 hello@example.com",
+      "supported_prefix": "支持：",
+      "custom_format_pre": "支持自定义格式，例如"
+    },
+    "store": {
+      "download_url_missing": "扩展下载地址不可用，请重试。",
+      "install_info_failed": "获取安装信息失败：{status} {detail}",
+      "p_installed": "{name} 已安装",
+      "p_install_failed": "安装 {name} 失败",
+      "p_uninstalled": "{name} 已卸载",
+      "p_uninstall_failed": "卸载 {name} 失败",
+      "p_updated": "{name} 已更新至 v{version}",
+      "p_update_failed": "更新 {name} 失败",
+      "load_failed": "加载扩展失败：{error}",
+      "show_details": "显示详情",
+      "details_load_failed": "加载详情失败：{error}",
+      "err_install": "安装失败：{error}",
+      "err_uninstall": "卸载失败：{error}",
+      "err_update": "更新失败：{error}",
+      "unknown": "未知",
+      "installs_count": "{count} 次安装",
+      "update_to": "更新至 v{version}",
+      "requires_sdk_tooltip": "此扩展需要 Asyar SDK {sdk}。请更新 Asyar 后再安装。",
+      "incompatible": "不兼容（需要 SDK {sdk}）",
+      "install_theme": "安装主题",
+      "requires_newer": "此扩展需要更新版本的 Asyar（SDK {sdk}）",
+      "no_description": "未提供描述。",
+      "command_count_one": "{count} 个命令",
+      "command_count_other": "{count} 个命令",
+      "mode_view": "视图",
+      "mode_background": "后台",
+      "aria_list": "商店扩展",
+      "by_author": "作者：{name}"
+    },
+    "scripts": {
+      "issue_dir_unavailable": "目录不可用",
+      "issue_metadata_unavailable": "元数据不可用",
+      "issue_path_unavailable": "路径不可用",
+      "issue_not_executable": "不可执行",
+      "issue_unreadable": "无法读取",
+      "issue_invalid_header": "标头无效",
+      "issue": "问题",
+      "none": "无",
+      "inline_clamped": "内联脚本 {name} 请求的 refreshTime 低于 10 秒，已提高到 10 秒（Asyar 最小值）。",
+      "inline_capped": "已达到内联脚本上限（最多 10 个）。以下脚本将不会自动刷新：{scripts}。仍可通过选中它们手动运行。",
+      "inline_error": "错误：{error}"
+    },
+    "agents": {
+      "silent_running": "✨ {name}…",
+      "silent_empty_hud": "⚠️ 响应为空",
+      "silent_empty_detail": "智能体返回了空响应",
+      "ai_command": "AI 命令",
+      "silent_failed": "⚠️ {name} 失败",
+      "no_selection": "未选择内容",
+      "read_selection_failed": "无法读取所选内容",
+      "clipboard_empty": "剪贴板为空",
+      "read_clipboard_failed": "无法读取剪贴板",
+      "copied_hud": "✓ 已复制",
+      "agent_not_found": "未找到智能体“{id}”",
+      "promoted": "✓ 已转为片段",
+      "promote_failed": "转换失败",
+      "delete_failed": "删除失败",
+      "clear_failed": "清除失败",
+      "edit_heading": "编辑智能体",
+      "new_heading": "新建智能体",
+      "shortcode_placeholder": "例如 : 或 ;",
+      "new_thread": "新建对话",
+      "threads": "会话"
+    },
+    "window_management": {
+      "saved": "已保存“{name}”",
+      "renamed": "已重命名为“{name}”",
+      "deleted": "已删除“{name}”",
+      "layout_subtitle": "{width}×{height}，位于 ({x}, {y})",
+      "no_layout_arg": "未提供布局名称或 ID",
+      "layout_not_found": "未找到布局“{name}”",
+      "restored": "已恢复"
+    },
+    "file_search": {
+      "aria_files": "文件",
+      "folder_path": "文件夹 — {path}"
+    },
+    "mcp": {
+      "download_failed_install": "下载 {name} 失败。请在安装表单中重试。",
+      "install_failed": "无法安装此 MCP 服务器——请检查其命令/参数后重试。",
+      "download_failed_here": "下载 {name} 失败。请在此处重试。",
+      "enable_failed": "无法启用此 MCP 服务器——请检查其配置后重试。",
+      "err_id_required": "ID 为必填项。",
+      "err_display_name_required": "显示名称为必填项。",
+      "err_command_required": "stdio 传输方式需要填写命令。",
+      "err_url_required": "需要以 http:// 或 https:// 开头的有效 URL。",
+      "import_failed": "导入失败。",
+      "import_selected": "导入所选",
+      "parse_failed": "JSON 解析失败。请检查格式后重试。",
+      "servers_found": "找到 {count} 个服务器：",
+      "remove_argument": "移除参数",
+      "remove_variable": "移除变量",
+      "remove_header": "移除标头",
+      "tools_found": "找到的工具：{count}",
+      "test_error": "错误：{error}",
+      "unknown_size": "未知大小",
+      "transport_label": "传输方式：{transport}",
+      "tools_count": "{count} 个工具",
+      "enabled": "已启用",
+      "disabled": "已停用",
+      "agent_short": "智能体 {id}",
+      "an_agent": "某个智能体",
+      "value_placeholder": "值",
+      "cwd_placeholder": "/可选/工作/目录"
+    },
+    "portals": {
+      "placeholder_count_one": "{count} 个占位符",
+      "placeholder_count_other": "{count} 个占位符",
+      "edit_portal": "编辑门户"
+    },
+    "runs": {
+      "running": "运行中 · {elapsed}",
+      "succeeded_after": "成功 · {duration}",
+      "succeeded": "成功",
+      "unknown_error": "未知错误",
+      "failed": "失败 · {error}",
+      "cancelled": "已取消"
+    },
+    "walkthrough": {
+      "req_manual": "完成后勾选",
+      "req_days": "在 {count} 个不同的日子使用",
+      "req_times": "使用 {count} 次",
+      "req_auto": "使用时自动完成",
+      "marked_done": "已标记为完成",
+      "progress_of": "{current}/{target}",
+      "progress_days": "{current}/{target} 天",
+      "progress_times": "{current}/{target} 次",
+      "open_task": "打开任务"
+    },
+    "raycast_import": {
+      "password_prompt": "请输入在 Raycast 中导出时设置的密码。",
+      "password_prompt_file": "请输入在 Raycast 中导出“{file}”时设置的密码。",
+      "found_in": "在 {name} 中找到",
+      "export_fallback": "导出文件",
+      "not_importable": "无法导入：",
+      "skipped_hotkeys_one": "{count} 个快捷键绑定到 Raycast 命令或缺失的应用",
+      "skipped_hotkeys_other": "{count} 个快捷键绑定到 Raycast 命令或缺失的应用",
+      "skipped_aliases_one": "{count} 个别名绑定到 Raycast 命令、缺失的应用，或包含 Asyar 无法使用的字符",
+      "skipped_aliases_other": "{count} 个别名绑定到 Raycast 命令、缺失的应用，或包含 Asyar 无法使用的字符",
+      "summary_snippets": "片段：已添加 {added} 个，跳过 {skipped} 个",
+      "summary_portals": "门户：已添加 {added} 个，跳过 {skipped} 个",
+      "summary_shortcuts": "快捷键：已添加 {added} 个，跳过 {skipped} 个",
+      "summary_aliases": "别名：已添加 {added} 个，跳过 {skipped} 个"
+    },
+    "aliases": {
+      "reassign_message": "“{name}”已在使用“{alias}”。要重新分配吗？"
+    },
+    "calculator": {
+      "copied_value": "已复制：{value}"
+    },
+    "create_extension": {
+      "p_preparing": "正在准备文件系统…",
+      "p_theme_files": "正在写入主题文件…",
+      "p_opening_ide": "正在打开 IDE…",
+      "p_done": "完成！",
+      "p_resolving_sdk": "正在获取最新 SDK 版本…",
+      "p_scaffold_files": "正在写入脚手架文件…",
+      "p_pnpm_install": "正在运行“pnpm install”…（可能需要一分钟）",
+      "p_building": "正在构建扩展…",
+      "p_build_failed_note": "注意：无法自动构建。请在扩展目录中运行“pnpm install && pnpm run build”。",
+      "p_registering": "正在注册开发扩展…",
+      "p_register_failed_note": "注意：注册自动加载失败。你可能需要运行“asyar link”。"
+    },
+    "ai_builder": {
+      "secret_refused": "已拒绝：在 {path} 中发现硬编码的密钥",
+      "download_declined": "已拒绝下载。",
+      "download_failed": "下载 {name} 失败。请在 AI 扩展构建器中重试。",
+      "cred_check_failed": "无法验证 AI 凭据状态。请检查“设置 → AI”。",
+      "needs_anthropic_key": "此功能需要 Anthropic API 密钥。请在“设置 → AI → Anthropic”中添加。",
+      "start_failed": "无法开始构建。请重试。",
+      "runtime_unavailable": "所需的运行时已不可用。请重试。",
+      "starting": "正在启动…",
+      "could_not_start": "构建无法启动。",
+      "steps_completed_one": "已完成 {count} 个步骤",
+      "steps_completed_other": "已完成 {count} 个步骤",
+      "answer": "回答"
+    },
+    "usage_stats": {
+      "launch_one": "次启动",
+      "launch_other": "次启动",
+      "active_day_one": "活跃天数",
+      "active_day_other": "活跃天数"
+    },
+    "help": {
+      "open_guide": "打开指南"
+    }
+  },
+  "builtin": {
+    "agents": {
+      "name": "智能体",
+      "description": "运行可使用工具的 AI 智能体",
+      "commands": {
+        "manage-agents": {
+          "name": "管理智能体",
+          "description": "打开智能体管理器"
+        },
+        "ask": {
+          "name": "询问 AI",
+          "description": "向 AI 智能体提问"
+        }
+      },
+      "walkthrough": {
+        "ask-ai": {
+          "title": "无需切换应用即可询问 AI",
+          "summary": "直接在搜索栏中提出问题",
+          "body": "在搜索栏中提问，就地获得答案——无需打开浏览器标签页，无需切换应用，也不会打断手头的工作。\n\n智能体还能使用工具，因此不只是回答问题，还能在你的电脑上执行操作。\n\n## 完成任务\n\n运行 **询问 AI**，向它提一个真正的问题。"
+        }
+      }
+    },
+    "calculator": {
+      "name": "计算器",
+      "description": "自然语言计算器：数学运算、单位和货币换算、百分比和小费、日期（\"days until christmas\"）、世界时钟（\"5pm ldn in sf\"）、进制转换、比例以及颜色转换——直接在搜索栏中完成。",
+      "preferences": {
+        "refreshInterval": {
+          "title": "汇率刷新间隔",
+          "description": "在后台刷新汇率的频率，单位为小时（1–24）。"
+        },
+        "numberFormat": {
+          "title": "数字格式",
+          "description": "你书写小数的方式。“自动”跟随系统的地区设置。",
+          "options": {
+            "auto": "自动（系统地区）",
+            "point": "1,234.56 — 小数点",
+            "comma": "1.234,56 — 小数逗号"
+          }
+        },
+        "preferredCurrency": {
+          "title": "首选货币",
+          "description": "3 个字母的代码（如 USD、EUR、IQD），在你输入“50 usd”这类未指定目标货币的金额时使用。"
+        }
+      },
+      "walkthrough": {
+        "calculate": {
+          "title": "一个永远不用打开的计算器",
+          "summary": "直接在搜索栏中输入算式",
+          "body": "直接在搜索栏中输入算式、单位换算、货币换算或日期差，边输入边显示答案。无需打开应用，也无需切换模式。\n\n试试这些：\n\n- `1234 * 56`\n- `120 usd in eur`\n- `18% of 240`\n- `days until dec 25`\n\n## 完成任务\n\n在搜索栏中完成一次计算，然后将此任务标记为完成。"
+        }
+      }
+    },
+    "clipboard-history": {
+      "name": "剪贴板历史",
+      "description": "管理和访问剪贴板历史",
+      "commands": {
+        "show-clipboard": {
+          "name": "剪贴板历史",
+          "description": "查看和管理剪贴板历史",
+          "accessory": {
+            "all": "所有类型",
+            "text": "文本",
+            "images": "图片",
+            "files": "文件"
+          }
+        }
+      },
+      "walkthrough": {
+        "clipboard-habit": {
+          "title": "再也不会丢失复制的内容",
+          "summary": "在三个不同的日子打开剪贴板历史",
+          "body": "你复制的所有内容都会被保留、可搜索，一键即可取用。不会再因为复制新内容而丢掉之前的内容，也不用再把同一个链接找两遍。\n\n剪贴板历史是大家公认改变了工作方式的功能——但前提是它已经帮过你几次。所以这项任务要求三天，而不是只打开一次。\n\n## 完成任务\n\n1. 像平常一样复制一些内容。\n2. 打开 **剪贴板历史**，粘贴一条较早的内容。\n3. 在三个不同的日子重复这样做。"
+        }
+      }
+    },
+    "create-extension": {
+      "name": "开发者工具",
+      "description": "创建新的 Asyar 扩展脚手架",
+      "commands": {
+        "open": {
+          "name": "创建扩展",
+          "description": "创建一个用于开发的新 Asyar 扩展脚手架"
+        },
+        "build-with-ai": {
+          "name": "用 AI 构建扩展",
+          "description": "用文字描述扩展，让 AI 来构建"
+        },
+        "my-extensions": {
+          "name": "我的扩展",
+          "description": "浏览你构建的扩展并发布它们"
+        }
+      },
+      "walkthrough": {
+        "build-an-extension": {
+          "title": "构建你的第一个扩展",
+          "summary": "创建扩展脚手架，让 Asyar 为你所用",
+          "body": "你在本指引中用过的每个内置功能，都是基于你同样可以使用的公开 API 构建的扩展。如果 Asyar 缺少你需要的功能，弥补它只需几个小时，而不必提交功能请求。\n\n## 完成任务\n\n运行 **开发者工具**，创建你的第一个扩展脚手架。"
+        }
+      }
+    },
+    "feedback": {
+      "name": "反馈",
+      "description": "向 Asyar 团队发送反馈、功能建议或报告问题",
+      "commands": {
+        "send-feedback": {
+          "name": "发送反馈",
+          "description": "分享想法、称赞或错误报告"
+        }
+      }
+    },
+    "file-search": {
+      "name": "文件搜索",
+      "description": "在你的主文件夹中搜索文件",
+      "commands": {
+        "show-files": {
+          "name": "搜索文件",
+          "description": "按名称搜索文件",
+          "accessory": {
+            "all": "所有文件",
+            "document": "文档",
+            "image": "图片",
+            "code": "代码",
+            "audio-video": "音频和视频",
+            "archive": "压缩包",
+            "folder": "文件夹"
+          }
+        }
+      },
+      "walkthrough": {
+        "find-a-file": {
+          "title": "无需打开窗口即可找到文件",
+          "summary": "直接从启动器搜索文件",
+          "body": "文件搜索在本地为你的文件建立索引，并按模糊名称查找——无需逐层浏览文件夹，也无需等待文件管理器打开。结果可以直接打开、在文件管理器中显示，或固定以始终排在最前。\n\n## 完成任务\n\n运行 **文件搜索**，从结果中打开一个文件。"
+        }
+      }
+    },
+    "help": {
+      "name": "帮助",
+      "description": "键盘快捷键、功能指南和 Asyar 用户手册",
+      "commands": {
+        "show-help": {
+          "name": "帮助",
+          "description": "查看键盘快捷键并打开用户指南"
+        }
+      }
+    },
+    "mcp": {
+      "name": "MCP 服务器",
+      "description": "管理 Model Context Protocol（MCP）服务器",
+      "commands": {
+        "manage": {
+          "name": "管理 MCP 服务器",
+          "description": "打开 MCP 服务器管理器"
+        }
+      }
+    },
+    "notes": {
+      "name": "笔记",
+      "description": "无需离开键盘即可编写和整理 Markdown 笔记",
+      "commands": {
+        "open-notes": {
+          "name": "笔记",
+          "description": "浏览、搜索和编写笔记"
+        },
+        "quick-note": {
+          "name": "快速笔记",
+          "description": "无需打开编辑器即可立即记下笔记",
+          "arguments": {
+            "text": {
+              "placeholder": "在想什么？"
+            }
+          }
+        },
+        "new-sticky": {
+          "name": "新建便签",
+          "description": "创建一张固定在桌面上的空白便签"
+        },
+        "append-today": {
+          "name": "添加到今天",
+          "description": "在今天的每日笔记中追加一行（如不存在则创建）",
+          "arguments": {
+            "text": {
+              "placeholder": "发生了什么？"
+            }
+          }
+        }
+      },
+      "walkthrough": {
+        "first-note": {
+          "title": "在想法溜走前记下来",
+          "summary": "不中断手头工作即可记笔记",
+          "body": "笔记用来记下你忙于别的事时冒出的想法——一个提醒、一条会议记录、一段对话的片段。它会在你当前的工作之上打开，用完即走。\n\n小技巧：为 **快速笔记** 绑定一个快捷键，一次按键就能记录。\n\n## 完成任务\n\n运行 **笔记** 或 **快速笔记**，写点什么。"
+        }
+      }
+    },
+    "portals": {
+      "name": "门户",
+      "description": "将 URL 保存为可命名、可搜索的快捷方式",
+      "commands": {
+        "open-portals": {
+          "name": "门户",
+          "description": "管理已保存的门户"
+        }
+      },
+      "walkthrough": {
+        "first-portal": {
+          "title": "直达你常用的链接",
+          "summary": "将 URL 保存为可命名、可搜索的门户",
+          "body": "门户可以把一个 URL 变成按名称就能调出的东西——仪表盘、代码仓库、工单看板、播放列表。门户还可以接受查询参数，让一个门户成为你常用网站的搜索框。\n\n## 完成任务\n\n1. 运行 **门户**。\n2. 添加一个你几乎每天都会打开的链接。\n3. 在搜索栏中按名称调出它。"
+        }
+      }
+    },
+    "quit": {
+      "name": "Asyar",
+      "description": "退出 Asyar 应用",
+      "commands": {
+        "quit-asyar": {
+          "name": "退出 Asyar",
+          "description": "退出 Asyar 应用"
+        }
+      }
+    },
+    "raycast-import": {
+      "name": "Raycast 导入",
+      "description": "将 Raycast 的片段、快速链接和应用快捷键导入 Asyar",
+      "commands": {
+        "import-raycast": {
+          "name": "从 Raycast 导入",
+          "description": "从 Raycast 导出文件导入片段、门户和快捷键"
+        }
+      }
+    },
+    "runs": {
+      "name": "运行",
+      "description": "查看和管理正在进行及最近的运行",
+      "commands": {
+        "open-runs": {
+          "name": "运行",
+          "description": "打开运行视图"
+        }
+      }
+    },
+    "screen-ocr": {
+      "name": "屏幕 OCR",
+      "description": "从屏幕任意区域提取并复制文字",
+      "commands": {
+        "capture-text": {
+          "name": "从屏幕捕获文字",
+          "description": "选择屏幕区域以识别并复制文字"
+        }
+      }
+    },
+    "scripts": {
+      "name": "脚本",
+      "description": "运行和管理监视目录中的脚本",
+      "commands": {
+        "script-library": {
+          "name": "脚本库",
+          "description": "检查、运行和排查脚本"
+        }
+      }
+    },
+    "settings": {
+      "name": "设置",
+      "description": "打开应用设置",
+      "commands": {
+        "open-settings": {
+          "name": "设置",
+          "description": "打开应用设置"
+        }
+      }
+    },
+    "shortcuts": {
+      "name": "快捷键",
+      "description": "用于应用和命令的全局用户快捷键",
+      "commands": {
+        "open-shortcuts": {
+          "name": "快捷键",
+          "description": "管理已分配的全局快捷键"
+        }
+      },
+      "walkthrough": {
+        "first-hotkey": {
+          "title": "一键打开任何东西",
+          "summary": "为常用命令绑定全局快捷键",
+          "body": "全局快捷键可以在桌面上的任何地方直接打开指定命令，无需先经过搜索栏。一天运行十次的命令，不应该每次都要搜索。\n\n## 完成任务\n\n1. 运行 **快捷键**。\n2. 为你最常运行的命令绑定一个快捷键。\n3. 在其他应用中使用它。"
+        },
+        "first-alias": {
+          "title": "给你的常用项起个两个字母的名字",
+          "summary": "设置别名，让某个命令在搜索中始终排第一",
+          "body": "别名是直达某一项的短词——输入它，该项每次都会被选中，无论还有什么其他匹配。\n\n别名适合那些你不想每次都去找的东西：`f` 对应文件搜索，`cb` 对应剪贴板历史，`dw` 对应查词。\n\n## 完成任务\n\n在搜索结果中选中任意一项，打开操作面板，为它设置一个别名。"
+        }
+      }
+    },
+    "snippets": {
+      "name": "片段",
+      "description": "文本扩展——输入关键词，得到完整文本",
+      "commands": {
+        "open-snippets": {
+          "name": "片段",
+          "description": "管理文本扩展片段"
+        }
+      },
+      "walkthrough": {
+        "first-snippet": {
+          "title": "同样的内容不必再打两遍",
+          "summary": "创建一个由关键词展开的片段",
+          "body": "片段是你经常输入的一段文字——你的邮箱地址、常用回复、代码块、银行信息——只需保存一次，就能在任何应用中通过短关键词展开。\n\n不错的第一个片段：你的邮箱，关键词设为 `@@`。\n\n## 完成任务\n\n1. 运行 **片段** 并创建第一个片段。\n2. 给它设置一个你绝不会误打的关键词。\n3. 在其他应用中试试这个关键词。"
+        }
+      }
+    },
+    "store": {
+      "name": "商店",
+      "description": "浏览并安装 Asyar 扩展。",
+      "commands": {
+        "browse": {
+          "name": "浏览扩展商店",
+          "description": "查找并安装新扩展"
+        }
+      },
+      "walkthrough": {
+        "install-an-extension": {
+          "title": "添加 Asyar 还不具备的功能",
+          "summary": "从商店安装你的第一个扩展",
+          "body": "扩展与内置功能基于同一套 API 构建，因此商店里的任何扩展用起来都像是应用自带的——同样的搜索、同样的操作、同样的键盘规则。\n\n## 完成任务\n\n打开 **商店**，找到你真正会用的扩展并安装它。"
+        }
+      }
+    },
+    "system-settings": {
+      "name": "系统设置",
+      "description": "搜索并打开 macOS 系统设置面板（声音、显示器、Wi-Fi…）"
+    },
+    "system": {
+      "name": "系统",
+      "description": "系统命令：睡眠、锁定屏幕、重新启动、关机"
+    },
+    "url-opener": {
+      "name": "URL 打开器",
+      "description": "在搜索栏中输入或粘贴网址，即可在浏览器中打开。"
+    },
+    "usage-stats": {
+      "name": "使用统计",
+      "description": "查看仅存于本地的仪表盘，了解你启动的频率以及最常运行的命令",
+      "commands": {
+        "open-usage-stats": {
+          "name": "使用统计",
+          "description": "查看本地使用仪表盘"
+        }
+      }
+    },
+    "walkthrough": {
+      "name": "操作指引",
+      "description": "将 Asyar 功能变成习惯的小任务，在你实际使用时自动勾选",
+      "commands": {
+        "show-walkthrough": {
+          "name": "操作指引",
+          "description": "一次一个任务，逐步学习 Asyar"
+        }
+      },
+      "walkthrough": {
+        "start": {
+          "title": "开启成为高手之旅",
+          "summary": "你已经来到这里——第一个任务已完成",
+          "body": "列表中的每项任务都会教你一件 Asyar 能做、但大多数人从未发现的事。\n\n你无需手动勾选。每项任务都会观察你实际如何使用 Asyar，在你真正做到的那一刻自动完成。你已经做了好几周的任务会直接显示为已完成——列表只显示真正剩下的内容。\n\n## 完成任务\n\n打开操作指引。完成。"
+        },
+        "favorite-an-item": {
+          "title": "把常用项放在手边",
+          "summary": "收藏一个常用的应用或命令",
+          "body": "搜索为空时，收藏项始终排在顶部，优先于 Asyar 的自动使用排序。收藏可以是应用或命令，输入搜索时仍按相关性排序。\n\n## 完成任务\n\n1. 在启动器中选中任意应用或命令。\n2. 按 **⌘K** 打开 **操作**。\n3. 选择 **添加到收藏**。\n4. 清空搜索，即可看到它出现在顶部。"
+        }
+      }
+    },
+    "window-management": {
+      "name": "窗口管理",
+      "description": "使用布局预设调整最前方窗口的大小和位置",
+      "commands": {
+        "left-half": {
+          "name": "左半屏",
+          "description": "屏幕左侧 50%"
+        },
+        "right-half": {
+          "name": "右半屏",
+          "description": "屏幕右侧 50%"
+        },
+        "top-half": {
+          "name": "上半屏",
+          "description": "屏幕上方 50%"
+        },
+        "bottom-half": {
+          "name": "下半屏",
+          "description": "屏幕下方 50%"
+        },
+        "top-left-quarter": {
+          "name": "左上四分之一",
+          "description": "屏幕左上 25%"
+        },
+        "top-right-quarter": {
+          "name": "右上四分之一",
+          "description": "屏幕右上 25%"
+        },
+        "bottom-left-quarter": {
+          "name": "左下四分之一",
+          "description": "屏幕左下 25%"
+        },
+        "bottom-right-quarter": {
+          "name": "右下四分之一",
+          "description": "屏幕右下 25%"
+        },
+        "left-third": {
+          "name": "左三分之一",
+          "description": "屏幕左侧 33%"
+        },
+        "center-third": {
+          "name": "中间三分之一",
+          "description": "屏幕中间 33%"
+        },
+        "right-third": {
+          "name": "右三分之一",
+          "description": "屏幕右侧 33%"
+        },
+        "left-two-thirds": {
+          "name": "左三分之二",
+          "description": "屏幕左侧 66%"
+        },
+        "right-two-thirds": {
+          "name": "右三分之二",
+          "description": "屏幕右侧 66%"
+        },
+        "first-fourth": {
+          "name": "第一个四分之一",
+          "description": "屏幕第一个 25%"
+        },
+        "second-fourth": {
+          "name": "第二个四分之一",
+          "description": "屏幕第二个 25%"
+        },
+        "third-fourth": {
+          "name": "第三个四分之一",
+          "description": "屏幕第三个 25%"
+        },
+        "last-fourth": {
+          "name": "最后一个四分之一",
+          "description": "屏幕最后一个 25%"
+        },
+        "center": {
+          "name": "居中",
+          "description": "居中，占屏幕 80% × 80%"
+        },
+        "almost-maximize": {
+          "name": "接近最大化",
+          "description": "居中，占屏幕 90% × 90%"
+        },
+        "maximize": {
+          "name": "最大化",
+          "description": "填满整个屏幕（全屏）"
+        },
+        "restore": {
+          "name": "恢复之前的位置",
+          "description": "撤销上一次应用的窗口布局"
+        },
+        "manage-layouts": {
+          "name": "管理窗口布局",
+          "description": "查看、添加和删除自定义窗口布局"
+        },
+        "switch-windows": {
+          "name": "切换窗口",
+          "description": "切换到某个正在运行的应用窗口"
+        },
+        "save-current-layout": {
+          "name": "将当前窗口保存为布局",
+          "description": "将最前方窗口的位置和大小保存为自定义布局"
+        },
+        "previous-display": {
+          "name": "上一台显示器",
+          "description": "将最前方窗口移到上一台显示器"
+        },
+        "next-display": {
+          "name": "下一台显示器",
+          "description": "将最前方窗口移到下一台显示器"
+        },
+        "apply-layout": {
+          "name": "应用布局",
+          "description": "按名称或 ID 应用自定义窗口布局",
+          "arguments": {
+            "name": {
+              "placeholder": "布局名称"
+            },
+            "id": {
+              "placeholder": "布局 ID"
+            }
+          }
+        }
+      },
+      "walkthrough": {
+        "tile-a-window": {
+          "title": "不碰鼠标也能排列窗口",
+          "summary": "用命令代替拖动来移动窗口",
+          "body": "半屏、三分之一、四分之一、居中、最大化、恢复——你需要拖动才能实现的每种窗口布局，都是一个可以运行或绑定快捷键的命令。\n\n绑定快捷键后收益最大：按两次键就能让两个应用并排显示。\n\n## 完成任务\n\n1. 搜索 `左半屏` 或 `最大化` 并运行。\n2. 为你最常用的两个布局绑定快捷键。"
+        }
+      }
+    }
+  },
+  "permissions_catalog": {
+    "not_recognized": "此版本的 Asyar 无法识别。",
+    "entries": {
+      "network": {
+        "title": "网络访问",
+        "description": "发起出站 HTTP 请求。"
+      },
+      "network_lan": {
+        "title": "局域网访问",
+        "description": "连接你在设置中批准的局域网设备。环回、链路本地和云元数据地址始终被阻止。"
+      },
+      "network_secrets": {
+        "title": "发送密钥引用",
+        "description": "将来自已声明来源的登录密钥发送到已声明的 HTTPS 主机，且不向扩展暴露令牌。需要网络访问权限。请只批准你信任的主机。"
+      },
+      "notifications_send": {
+        "title": "发送通知",
+        "description": "向系统通知中心发布通知。"
+      },
+      "clipboard_read": {
+        "title": "读取剪贴板",
+        "description": "读取系统剪贴板的当前内容。"
+      },
+      "clipboard_write": {
+        "title": "写入剪贴板",
+        "description": "向系统剪贴板写入或粘贴内容。"
+      },
+      "clipboard_history_read": {
+        "title": "读取剪贴板历史",
+        "description": "查询和搜索已保存的剪贴板历史记录。"
+      },
+      "clipboard_history_capture": {
+        "title": "捕获剪贴板历史",
+        "description": "在后台订阅剪贴板变化以记录历史。"
+      },
+      "clipboard_history_manage": {
+        "title": "管理剪贴板历史",
+        "description": "删除记录、切换收藏或清除已保存的剪贴板历史。"
+      },
+      "storage_read": {
+        "title": "读取扩展存储",
+        "description": "读取扩展自身的键值存储。"
+      },
+      "storage_write": {
+        "title": "写入扩展存储",
+        "description": "写入扩展自身的键值存储。"
+      },
+      "store_read": {
+        "title": "读取扩展数据",
+        "description": "读取扩展的数据存储区。"
+      },
+      "store_write": {
+        "title": "写入扩展数据",
+        "description": "写入扩展的数据存储区。"
+      },
+      "cache_read": {
+        "title": "读取扩展缓存",
+        "description": "读取扩展的缓存。"
+      },
+      "cache_write": {
+        "title": "写入扩展缓存",
+        "description": "写入扩展的缓存。"
+      },
+      "fs_read": {
+        "title": "显示文件",
+        "description": "在系统文件管理器中显示文件。"
+      },
+      "fs_write": {
+        "title": "将文件移到废纸篓",
+        "description": "将文件移到系统废纸篓。"
+      },
+      "fs_watch": {
+        "title": "监视文件",
+        "description": "监视已声明 glob 模式下的文件系统变化。"
+      },
+      "files_search": {
+        "title": "搜索本地文件",
+        "description": "搜索本地文件索引（文件名和元数据，不含文件内容）。"
+      },
+      "files_read": {
+        "title": "读取文件内容",
+        "description": "读取与已声明路径模式匹配的文件的文本内容、列出文件名并渲染缩略图。凭据存储和系统位置始终排除在外。"
+      },
+      "files_search_provider": {
+        "title": "提供远程文件搜索",
+        "description": "为远程和云端文件提供搜索结果。"
+      },
+      "notes_read": {
+        "title": "搜索和读取你的笔记",
+        "description": "搜索你的笔记并读取任意笔记的完整内容。"
+      },
+      "notes_write": {
+        "title": "创建和追加笔记",
+        "description": "创建新笔记并在现有笔记末尾添加文本。无法覆盖或删除笔记的现有内容。"
+      },
+      "shell_spawn": {
+        "title": "运行程序",
+        "description": "启动系统进程并读取其输出。这将授予广泛的系统访问权限。"
+      },
+      "shell_open_url": {
+        "title": "打开 URL",
+        "description": "在默认浏览器中打开网页链接（http、https、mailto、tel），以及扩展声明的其他 URL 协议，这些协议可能会启动为其注册的应用。"
+      },
+      "shell_open_path": {
+        "title": "打开文件和文件夹",
+        "description": "使用默认或指定的应用打开本地文件、文件夹和工作区。"
+      },
+      "entitlements_read": {
+        "title": "读取订阅状态",
+        "description": "读取用户当前有效的订阅权益。"
+      },
+      "selection_read": {
+        "title": "读取所选内容",
+        "description": "读取最前端应用中当前选中的文本或文件管理器项目。"
+      },
+      "oauth_use": {
+        "title": "登录服务",
+        "description": "与第三方提供商执行 OAuth 授权流程。"
+      },
+      "extension_invoke": {
+        "title": "调用其他扩展",
+        "description": "启动其他已安装扩展中的命令。"
+      },
+      "application_read": {
+        "title": "读取已安装的应用",
+        "description": "列出已安装的应用，并查询最前端或正在运行的应用。"
+      },
+      "window_manage": {
+        "title": "管理窗口",
+        "description": "读取并更改最前端窗口的位置、大小和全屏状态。"
+      },
+      "screen_pick_color": {
+        "title": "从屏幕取色",
+        "description": "显示系统取色器，并读取用户所选屏幕像素的颜色。"
+      },
+      "screen_capture": {
+        "title": "捕获屏幕文字",
+        "description": "截取屏幕区域，并通过设备端光学字符识别 (OCR) 提取文字。"
+      },
+      "calculator_evaluate": {
+        "title": "数学计算与换算",
+        "description": "计算数学表达式、单位换算和货币换算。"
+      },
+      "power_inhibit": {
+        "title": "保持系统唤醒",
+        "description": "在扩展逻辑运行期间阻止系统进入睡眠。"
+      },
+      "media_control": {
+        "title": "控制媒体播放",
+        "description": "读取媒体播放器和应用（如音乐、TV、Spotify、VLC 或浏览器）中正在播放的内容，并发送播放、暂停和跳过命令。"
+      },
+      "calendar_read": {
+        "title": "读取日历和事件",
+        "description": "列出你的日历并读取其中的事件。"
+      },
+      "calendar_write": {
+        "title": "创建日历事件",
+        "description": "向你的日历添加新事件。"
+      },
+      "reminders_read": {
+        "title": "读取提醒事项",
+        "description": "列出你的提醒事项列表及其中的提醒事项。"
+      },
+      "reminders_write": {
+        "title": "创建和完成提醒事项",
+        "description": "添加新的提醒事项，并将现有提醒事项标记为已完成或未完成。"
+      },
+      "shortcuts_read": {
+        "title": "列出 Apple 快捷指令",
+        "description": "查看你的 Apple 快捷指令库中快捷指令的名称。"
+      },
+      "shortcuts_run": {
+        "title": "运行 Apple 快捷指令",
+        "description": "运行你的任意 Apple 快捷指令，并可选择传入文本。快捷指令可以执行其设计的任何操作。"
+      },
+      "process_read": {
+        "title": "列出进程",
+        "description": "列出正在运行的进程及其 CPU 和内存占用。"
+      },
+      "process_kill": {
+        "title": "终止进程",
+        "description": "终止或强制结束正在运行的进程。"
+      },
+      "systemEvents_read": {
+        "title": "观察系统事件",
+        "description": "订阅系统的睡眠、唤醒、合盖、电池和电源事件。"
+      },
+      "app_frontmost_watch": {
+        "title": "观察应用活动",
+        "description": "订阅应用启动、终止和最前端应用变更事件。"
+      },
+      "timers_schedule": {
+        "title": "安排计时器",
+        "description": "安排持久的一次性计时器，即使重新启动后也会触发。"
+      },
+      "timers_cancel": {
+        "title": "取消计时器",
+        "description": "取消之前安排的计时器。"
+      },
+      "timers_list": {
+        "title": "列出计时器",
+        "description": "列出已安排的计时器。"
+      },
+      "preferences_read": {
+        "title": "读取偏好设置",
+        "description": "读取扩展自身的偏好设置值。"
+      },
+      "preferences_write": {
+        "title": "写入偏好设置",
+        "description": "更改扩展自身的偏好设置值。"
+      },
+      "feedback_announce": {
+        "title": "显示少量公告",
+        "description": "请求由宿主控制的公告，例如“新功能”。"
+      },
+      "tools_register": {
+        "title": "注册智能体工具",
+        "description": "向智能体运行时公开工具，以便在工具调用期间使用。"
+      },
+      "snippets_contribute": {
+        "title": "提供片段",
+        "description": "向全局按键匹配器提供短代码展开，在任何应用中替换输入的短代码。"
+      },
+      "runs_track": {
+        "title": "跟踪后台运行",
+        "description": "启动并管理在启动器运行界面中显示的长时间任务。"
+      },
+      "browser_tabs_read": {
+        "title": "读取浏览器标签页",
+        "description": "列出并检查已配对浏览器中的标签页。"
+      },
+      "browser_tabs_write": {
+        "title": "控制浏览器标签页",
+        "description": "在已配对浏览器中打开、激活和关闭标签页。"
+      },
+      "browser_bookmarks_read": {
+        "title": "读取书签",
+        "description": "读取已配对浏览器的书签。"
+      },
+      "browser_history_read": {
+        "title": "读取浏览历史",
+        "description": "搜索已配对浏览器的历史记录。"
+      },
+      "browser_page_read": {
+        "title": "读取页面内容",
+        "description": "读取已配对浏览器中当前页面的内容。"
+      },
+      "browser_page_write": {
+        "title": "操作页面",
+        "description": "与已配对浏览器中的页面内容交互。"
+      },
+      "mcp": {
+        "title": "Model Context Protocol (MCP)",
+        "description": "发现已配置的 MCP 服务器并调用外部工具。"
+      },
+      "ai": {
+        "title": "向 AI 模型发送提示",
+        "description": "向宿主配置的 AI 模型发送提示，以获取补全和流式响应。"
+      }
+    }
+  },
+  "diagnostics_messages": {
+    "permission_denied": "对 {permission} 的访问被拒绝",
+    "permission_denied_generic": "对某项资源的访问被拒绝",
+    "policy_denied": "操作被拒绝：{policyError}",
+    "policy_denied_generic": "操作被策略拒绝",
+    "network_failure": "网络错误",
+    "lock_poisoned": "内部锁已损坏，请重新启动 Asyar",
+    "database_failure": "数据库错误",
+    "not_found": "找不到 {target}",
+    "not_found_generic": "找不到项目",
+    "extension_failure": "扩展错误：{extension}",
+    "extension_failure_generic": "扩展错误：未知",
+    "shortcut_failure": "快捷键错误：{shortcut}",
+    "shortcut_failure_generic": "快捷键错误：未知",
+    "platform_failure": "平台错误：{platform}",
+    "platform_failure_generic": "平台错误：未知",
+    "validation_failure": "输入无效：{field}",
+    "validation_failure_generic": "输入无效：值",
+    "encryption_failure": "加密错误",
+    "auth_failure": "身份验证失败（{provider}）",
+    "auth_failure_generic": "身份验证失败",
+    "oauth_failure": "OAuth 错误（{provider}）",
+    "oauth_failure_generic": "OAuth 错误",
+    "power_failure": "电源管理错误",
+    "run_failed": "运行失败：{message}",
+    "run_failed_id": "运行 {id} 失败",
+    "run_failed_id_generic": "未知运行失败",
+    "sync_entitlement_required": "云端同步需要有效的套餐",
+    "sync_quota_exceeded": "云端同步存储配额已超出（{usedBytes} / {limitBytes} 字节）",
+    "sync_quota_exceeded_generic": "云端同步存储配额已超出",
+    "sync_rate_limited": "云端同步请求过于频繁，将在 {retryAfter} 秒后重试",
+    "sync_server_unavailable": "云端同步服务器暂时不可用：{detail}",
+    "sync_server_unavailable_generic": "云端同步服务器暂时不可用",
+    "sync_e2ee_locked": "此设备上的云端同步已锁定。请输入恢复短语或在其他设备上批准。",
+    "sync_e2ee_not_enrolled": "此账户未启用端到端加密",
+    "sync_e2ee_already_enrolled": "此账户已启用端到端加密",
+    "sync_e2ee_wrong_mode": "此加密模式不支持该操作",
+    "sync_finalize_behind": "云端同步的最终处理已推迟，等待本地状态赶上",
+    "sync_pairing_not_found": "未找到设备配对请求或请求已过期",
+    "sync_pairing_not_pending": "设备配对请求已不再处于待处理状态",
+    "sync_pairing_fingerprint_mismatch": "设备配对指纹不匹配：验证词与发起请求的设备不一致。",
+    "sync_pairing_too_many": "活动的配对请求过多，请稍后再试",
+    "io_failure": "I/O 错误",
+    "json_failure": "数据格式错误",
+    "unexpected_error": "意外错误",
+    "search_lock_poisoned": "搜索索引锁已损坏",
+    "search_json_failure": "搜索数据格式错误",
+    "search_io_failure": "搜索 I/O 错误",
+    "search_not_found": "搜索未找到 {target}",
+    "search_not_found_generic": "搜索未找到项目",
+    "search_other": "搜索错误：{detail}",
+    "search_other_generic": "搜索错误",
+    "render_error": "视图渲染失败",
+    "invoke_unknown": "命令失败：{command}",
+    "invoke_unknown_generic": "命令失败",
+    "extension_proxy_error": "扩展调用失败（{method}）",
+    "extension_proxy_error_generic": "扩展调用失败",
+    "extension_crash": "{extensionId}（{role}）已停止响应",
+    "extension_crash_generic": "扩展（{role}）已停止响应",
+    "iframe_uncaught": "{extensionId} 遇到意外错误",
+    "iframe_uncaught_generic": "扩展遇到意外错误",
+    "iframe_unhandled_rejection": "{extensionId} 的 Promise 被拒绝",
+    "iframe_unhandled_rejection_generic": "扩展的 Promise 被拒绝",
+    "rpc_timeout": "{method} 超时",
+    "rpc_timeout_generic": "操作超时",
+    "panic": "Asyar 遇到致命错误",
+    "error": "错误",
+    "action_failed": "操作失败",
+    "mcp_permission_required": "需要权限才能使用 {tool}",
+    "mcp_permission_required_generic": "需要权限才能使用此 MCP 工具",
+    "e2ee_enrollment_failed": "无法启用加密同步。请检查网络连接后重试。",
+    "e2ee_passphrase_required": "加密同步需要你的口令才能继续。",
+    "e2ee_key_derivation_failed": "无法派生你的同步密钥。请关闭其他应用后重试。",
+    "e2ee_decrypt_failed": "某个项目解密失败——你的数据可能已损坏，或口令已更改。",
+    "e2ee_key_version_mismatch": "你的加密同步需要刷新。正在拉取最新数据…"
+  },
+  "services_extra": {
+    "runtime": {
+      "status_checking": "正在检查更新…",
+      "status_downloading_progress": "下载中… {done} / {total}",
+      "status_verifying": "正在验证下载…",
+      "status_finishing": "正在完成设置…",
+      "status_failed": "下载失败",
+      "unknown_size": "未知大小",
+      "size_mb": "{value} MB",
+      "size_kb": "{value} KB",
+      "confirm_title_one": "下载所需的运行时？",
+      "confirm_title_other": "下载所需的运行时？",
+      "confirm_message": "需要 {names}，共 {total}。Asyar 只下载一次，并在所有需要的地方复用。",
+      "removal_warning_one": "此运行时仍被 1 个使用方需要（{list}）。仍要移除吗？",
+      "removal_warning_other": "此运行时仍被 {count} 个使用方需要（{list}）。仍要移除吗？"
+    },
+    "gate": {
+      "sync_sign_in": "云同步需要登录账户。",
+      "sync_entitlement": "云同步需要包含 sync:settings 权益的有效订阅。",
+      "sync_disabled": "云同步已在设置中停用。",
+      "ai_sign_in": "云端 AI 模型需要登录账户。",
+      "ai_pro": "此 AI 模型需要有效的 Pro 订阅。",
+      "ai_history_sign_in": "AI 历史同步需要登录账户。",
+      "ai_history_entitlement": "AI 历史同步需要 sync:ai-conversations 权益。",
+      "crash_disabled": "崩溃报告已在设置中停用。",
+      "usage_disabled": "匿名使用统计共享已停用。",
+      "feature_sign_in": "此功能需要登录账户。",
+      "feature_entitlement": "此功能需要“{ability}”订阅权益。"
+    },
+    "auth": {
+      "server_no_response": "服务器未响应",
+      "login_failed": "登录失败：{error}",
+      "login_timed_out": "登录超时，请重试。",
+      "login_start_failed": "无法开始登录：{error}",
+      "login_expired": "登录会话已过期，请重试。"
+    },
+    "profile": {
+      "settings": "应用设置",
+      "ai_settings": "AI 设置",
+      "extension_preferences": "扩展偏好设置"
+    },
+    "clipboard": {
+      "image_preview": "图片：{width}×{height}",
+      "files_preview_one": "{count} 个文件：{names}",
+      "files_preview_other": "{count} 个文件：{names}",
+      "encrypted_secret": "[已加密的密钥]",
+      "accessibility_paste": "Asyar 需要 macOS 辅助功能权限才能粘贴。请在“系统设置 → 隐私与安全性 → 辅助功能”中启用 Asyar，然后重试。"
+    },
+    "whats_new": {
+      "title": "已更新到 v{version}",
+      "message": "点击查看更新内容"
+    },
+    "command_args": {
+      "fill_required": "请填写必填字段",
+      "required": "必填",
+      "either_two": "{first}或{second}",
+      "either_many": "{list}或{last}"
+    },
+    "onboarding": {
+      "ai_status_failed": "无法检查 AI 设置状态。",
+      "ai_skip_failed": "无法跳过 AI 设置，请重试。",
+      "ai_save_failed": "无法保存 AI 设置，请重试。"
+    },
+    "extension_loader": {
+      "permission_review": "{name} 需要在设置中审核权限"
+    },
+    "ai_providers": {
+      "ollama": "Ollama（本地）",
+      "custom": "自定义（兼容 OpenAI）"
+    },
+    "secret_refs": {
+      "json": "位于 `{path}` 中的 `{pointer}`",
+      "keychain": "钥匙串项目“{service}”中的 `{pointer}`",
+      "keychain_account": "钥匙串项目“{service}”（账户“{account}”）中的 `{pointer}`",
+      "keychain_lead": "钥匙串项目“{service}”中的 `{pointer}`",
+      "keychain_account_lead": "钥匙串项目“{service}”（账户“{account}”）中的 `{pointer}`",
+      "or_source": "（或{source}）",
+      "all_paths": "（所有路径）",
+      "sentence": "将{source}的密钥作为 {header} 标头发送到 {hosts} — {methods} {paths}。",
+      "keychain_note": "macOS 可能会请求你允许 Asyar 读取此钥匙串项目。"
+    },
+    "launcher": {
+      "unknown_item": "未知项目",
+      "action_failed": "{name} 的操作失败",
+      "command_failed": "无法运行命令 {name}",
+      "action_invalid": "{name} 的操作无效",
+      "open_failed": "无法打开 {name}",
+      "no_action": "{name} 没有可用操作",
+      "run_kind_agent": "智能体",
+      "run_kind_script": "脚本",
+      "run_failed": "失败 · {output}",
+      "run_done": "完成 · {output}",
+      "no_output": "（无输出）",
+      "running": "运行中",
+      "dismiss_result": "忽略结果",
+      "dismiss_thread": "忽略对话",
+      "dismiss_result_desc": "移除此脚本结果行并释放其输出（保留历史记录）",
+      "dismiss_thread_desc": "从启动器列表中移除此已完成的对话（仍保留在历史记录中）",
+      "dev_build": "开发版本",
+      "shortcut_save_failed": "无法保存快捷键"
+    }
+  },
+  "ui_extra": {
+    "about": {
+      "available": "更新 {version} 可用，正在开始下载...",
+      "check_failed": "检查更新失败：{error}",
+      "checking": "正在检查更新...",
+      "downloading": "正在下载并安装更新 {version}...",
+      "installed": "更新 {version} 已安装。重启 Asyar 以应用。",
+      "up_to_date": "您正在使用最新版本。",
+      "update_ready": "更新 {version} 已就绪",
+      "version": "版本 {version}"
+    },
+    "account": {
+      "days_ago_one": "{count} 天前",
+      "days_ago_other": "{count} 天前",
+      "ent_advanced_models": "高级 AI 模型",
+      "ent_ai_chat": "AI 聊天",
+      "ent_ai_history_sync": "AI 对话历史同步",
+      "ent_premium_extensions": "高级扩展",
+      "ent_settings_sync": "设置同步",
+      "hours_ago_one": "{count} 小时前",
+      "hours_ago_other": "{count} 小时前",
+      "just_now": "刚刚",
+      "minutes_ago_one": "{count} 分钟前",
+      "minutes_ago_other": "{count} 分钟前",
+      "signing_out": "正在退出…"
+    },
+    "ai_tab": {
+      "engine_unavailable": "搜索引擎“{name}”不可用或已弃用。请在上方选择可用的引擎。",
+      "get_api_key": "获取 API 密钥",
+      "legacy_unavailable": "旧版 / 不可用",
+      "name_api_key": "{name} API 密钥",
+      "name_base_url": "{name} 基础 URL",
+      "name_unavailable": "{name}（不可用）",
+      "reader_unavailable": "阅读器“{name}”不可用或已弃用。请在上方选择可用的阅读器。"
+    },
+    "applications": {
+      "load_failed": "加载应用程序失败。您可以尝试刷新。",
+      "no_app_selected": "未选择应用程序"
+    },
+    "arg_dropdown": {
+      "search_aria": "搜索 {name}"
+    },
+    "backup": {
+      "conflicts_one": "{count} 个冲突",
+      "conflicts_other": "{count} 个冲突",
+      "preview_counts": "本地：{local} → 导入：{incoming}",
+      "read_failed": "读取配置文件归档失败",
+      "restored": "备份已成功恢复。",
+      "saved": "备份已成功保存。"
+    },
+    "bottom_bar": {
+      "update_ready": "更新已就绪",
+      "update_ready_restart": "更新 {version} 已就绪。点击重启。",
+      "update_ready_restart_generic": "更新已就绪。点击重启。"
+    },
+    "builtin_features": {
+      "render_failed": "无法渲染 {title} 设置：{error}"
+    },
+    "clipboard_privacy": {
+      "skipped": "已跳过 {count} 项"
+    },
+    "common": {
+      "already_in_list": "{path} 已在列表中",
+      "could_not_assign": "无法分配：{reason}",
+      "could_not_open_picker": "无法打开文件夹选择器",
+      "remove_alias_for": "移除 {name} 的别名",
+      "remove_hotkey_for": "移除 {name} 的快捷键",
+      "unknown": "未知",
+      "unsupported_key": "不支持的按键或系统错误"
+    },
+    "encryption": {
+      "intro": "剪贴板项目、片段展开、AI 对话和加密的扩展偏好设置均以密文形式存储在磁盘上。"
+    },
+    "entitlement": {
+      "upgrade_required_aria": "{feature} — 需要升级"
+    },
+    "extension_commands": {
+      "no_command_selected": "未选择命令"
+    },
+    "extension_detail": {
+      "platform_unsupported": "不支持 {platform}",
+      "requires_app": "需要应用 v{version}+",
+      "requires_sdk": "需要 SDK {version}"
+    },
+    "extension_iframe": {
+      "title": "扩展沙盒 - {name}"
+    },
+    "extension_table": {
+      "collapse": "折叠",
+      "expand": "展开",
+      "install_failed": "安装失败：{error}",
+      "installed": "扩展安装成功。重启以启用。",
+      "installing": "正在安装扩展…",
+      "updates_available_one": "{count} 个扩展可更新",
+      "updates_available_other": "{count} 个扩展可更新"
+    },
+    "extension_view": {
+      "missing_export": "错误：内置功能 {id} 没有与“{view}”匹配的导出"
+    },
+    "feedback": {
+      "error": "错误",
+      "feedback": "消息",
+      "unknown_error": "未知错误"
+    },
+    "file_search_tab": {
+      "add_root": "添加根目录",
+      "already_excluded": "“{pattern}”已被排除",
+      "already_ignored": "“{pattern}”已被忽略",
+      "files_indexed": "已索引 {count} 个文件",
+      "last_scan": "上次扫描 {ms} 毫秒",
+      "rebuild_index": "重建索引",
+      "rebuilding": "正在重建…",
+      "save_failed": "保存文件搜索设置失败",
+      "state_building": "正在建立索引…",
+      "state_cap_reached": "已达索引上限",
+      "state_disabled": "已停用",
+      "state_ready": "就绪",
+      "state_rescanning": "正在重新扫描…"
+    },
+    "general_tab": {
+      "shortcut_reserved": "无法保存，快捷键可能已被系统或其他应用占用",
+      "theme_apply_failed": "无法应用主题“{id}”"
+    },
+    "lan_picker": {
+      "allow_failed": "无法允许该设备。",
+      "endpoint_not_allowed": "不允许此端点。"
+    },
+    "launcher": {
+      "search_placeholder": "搜索或输入命令...",
+      "search_view_placeholder": "搜索..."
+    },
+    "onboarding": {
+      "bind_conflict": "无法绑定 {shortcut}。它已被“{name}”使用。请尝试其他快捷键。",
+      "bind_failed": "无法绑定 {shortcut}。请尝试其他快捷键。",
+      "no_ai_provider": "尚未连接 AI 提供商——请返回并连接一个。",
+      "sample_snippet_name": "我的邮箱",
+      "shortcut_set_failed": "无法设置该快捷键",
+      "step_of": "第 {position} 步，共 {total} 步",
+      "test_box_disabled": "完成上方设置后即可在此试用"
+    },
+    "permission_consent": {
+      "enable": "启用后将授予以下权限：",
+      "install": "安装后将授予以下权限：",
+      "review": "其请求的权限已更改，需要您审核：",
+      "title": "{name} 请求权限",
+      "update": "某次更新更改了其请求的权限："
+    },
+    "preferences_form": {
+      "app_path": "应用程序路径",
+      "dir_path": "文件夹路径",
+      "file_path": "文件路径",
+      "unknown_type": "未知类型：{type}"
+    },
+    "recorder": {
+      "already_assigned": "已分配给“{name}”",
+      "invalid_key": "无效按键",
+      "invalid_keys": "无效按键"
+    },
+    "required_prefs": {
+      "save_continue": "保存并继续"
+    },
+    "runtime_downloads": {
+      "unknown_size": "大小未知"
+    },
+    "scheduled_tasks": {
+      "every_days": "每 {count} 天",
+      "every_hours": "每 {count} 小时",
+      "every_minutes": "每 {count} 分钟",
+      "every_seconds": "每 {count} 秒"
+    },
+    "scripts_tab": {
+      "add_failed": "无法添加文件夹",
+      "remove_failed": "无法移除文件夹"
+    },
+    "search_header": {
+      "ask_ai": "问 AI"
+    },
+    "secret_redaction": {
+      "redacted": "已隐去 {count} 项"
+    },
+    "sections": {
+      "favorites": "收藏",
+      "other": "其他"
+    },
+    "settings_handlers": {
+      "auto_update_failed": "更新自动更新设置失败",
+      "developer_mode_failed": "更新开发者模式失败",
+      "developer_setting_failed": "更新开发者设置失败",
+      "dock_icon_failed": "更新程序坞图标设置失败",
+      "extension_update_failed": "更新扩展设置失败。",
+      "extension_updated": "扩展设置已更新。",
+      "extensions_load_failed": "加载扩展信息失败。",
+      "init_failed": "设置初始化失败，正在使用默认值。",
+      "launch_view_failed": "更新启动视图失败",
+      "load_failed": "加载设置失败，正在使用默认值。",
+      "menu_bar_icon_failed": "更新菜单栏图标设置失败",
+      "search_failed": "更新搜索设置失败",
+      "search_updated_restart": "搜索设置已更新。请重启 Asyar 以使更改生效。",
+      "setting_failed": "更新设置失败",
+      "shortcut_save_failed": "保存快捷键失败",
+      "shortcut_saved": "快捷键已保存",
+      "startup_failed": "更新启动设置失败",
+      "theme_failed": "更新主题失败",
+      "uninstall_failed": "卸载扩展失败。",
+      "uninstalled": "扩展“{name}”已成功卸载。"
+    },
+    "shell_trust": {
+      "trusted_days_ago": "{count} 天前已信任",
+      "trusted_today": "今天已信任",
+      "trusted_yesterday": "昨天已信任"
+    },
+    "show_more": {
+      "active": "{count} 个运行中",
+      "done": "{count} 个已完成",
+      "idle": "{count} 个空闲"
+    },
+    "snippets_card": {
+      "toggle_failed": "更新片段状态失败"
+    },
+    "split_list": {
+      "items": "项目"
+    },
+    "window_mode": {
+      "aria": "{mode}窗口模式"
+    }
   }
 }

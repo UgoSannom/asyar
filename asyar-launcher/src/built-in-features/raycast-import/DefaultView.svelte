@@ -201,8 +201,13 @@
       >
         <p class="text-title">{t('features.raycast_import.ui.protected')}</p>
         <p class="text-caption">
-          Enter the password you set in Raycast when exporting
-          {#if state.filePath}“{fileName(state.filePath)}”{/if}.
+          {#if state.filePath}
+            {t('features_extra.raycast_import.password_prompt_file', {
+              file: fileName(state.filePath),
+            })}
+          {:else}
+            {t('features_extra.raycast_import.password_prompt')}
+          {/if}
         </p>
         <Input
           textIntent="exact"
@@ -219,7 +224,11 @@
     {:else if state.phase === 'preview' && state.bundle}
       <div class="import-step">
         <p class="text-title">
-          Found in {state.filePath ? fileName(state.filePath) : 'export'}
+          {t('features_extra.raycast_import.found_in', {
+            name: state.filePath
+              ? fileName(state.filePath)
+              : t('features_extra.raycast_import.export_fallback'),
+          })}
         </p>
         <Card>
           {#each categories as category (category.key)}
@@ -238,14 +247,27 @@
         </Card>
         {#if state.bundle.skipped.hotkeys > 0 || state.bundle.skipped.aliases > 0}
           <p class="text-caption">
-            Not importable:
-            {#if state.bundle.skipped.hotkeys > 0}
-              {state.bundle.skipped.hotkeys} hotkey{state.bundle.skipped.hotkeys === 1 ? '' : 's'}
-              bound to Raycast commands or missing apps{/if}{#if state.bundle.skipped.hotkeys > 0 && state.bundle.skipped.aliases > 0},
-            {/if}
-            {#if state.bundle.skipped.aliases > 0}
-              {state.bundle.skipped.aliases} alias{state.bundle.skipped.aliases === 1 ? '' : 'es'}
-              bound to Raycast commands, missing apps, or with characters Asyar can't use{/if}.
+            {t('features_extra.raycast_import.not_importable')}
+            {[
+              state.bundle.skipped.hotkeys > 0
+                ? t(
+                    state.bundle.skipped.hotkeys === 1
+                      ? 'features_extra.raycast_import.skipped_hotkeys_one'
+                      : 'features_extra.raycast_import.skipped_hotkeys_other',
+                    { count: state.bundle.skipped.hotkeys },
+                  )
+                : null,
+              state.bundle.skipped.aliases > 0
+                ? t(
+                    state.bundle.skipped.aliases === 1
+                      ? 'features_extra.raycast_import.skipped_aliases_one'
+                      : 'features_extra.raycast_import.skipped_aliases_other',
+                    { count: state.bundle.skipped.aliases },
+                  )
+                : null,
+            ]
+              .filter(Boolean)
+              .join(', ')}.
           </p>
         {/if}
       </div>
@@ -266,16 +288,28 @@
         {/snippet}
         <div class="summary-rows">
           <span class="text-body"
-            >Snippets: {state.summary.snippets.added} added, {state.summary.snippets.skipped} skipped</span
+            >{t('features_extra.raycast_import.summary_snippets', {
+              added: state.summary.snippets.added,
+              skipped: state.summary.snippets.skipped,
+            })}</span
           >
           <span class="text-body"
-            >Portals: {state.summary.portals.added} added, {state.summary.portals.skipped} skipped</span
+            >{t('features_extra.raycast_import.summary_portals', {
+              added: state.summary.portals.added,
+              skipped: state.summary.portals.skipped,
+            })}</span
           >
           <span class="text-body"
-            >Shortcuts: {state.summary.shortcuts.added} added, {state.summary.shortcuts.skipped} skipped</span
+            >{t('features_extra.raycast_import.summary_shortcuts', {
+              added: state.summary.shortcuts.added,
+              skipped: state.summary.shortcuts.skipped,
+            })}</span
           >
           <span class="text-body"
-            >Aliases: {state.summary.aliases.added} added, {state.summary.aliases.skipped} skipped</span
+            >{t('features_extra.raycast_import.summary_aliases', {
+              added: state.summary.aliases.added,
+              skipped: state.summary.aliases.skipped,
+            })}</span
           >
         </div>
         <Button class="btn-primary" onclick={() => state.reset()}

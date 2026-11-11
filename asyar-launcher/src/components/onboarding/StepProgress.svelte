@@ -1,8 +1,9 @@
 <script lang="ts">
+  import { t } from '../../services/i18n';
   let { total, position } = $props<{ total: number; position: number }>();
 </script>
 
-<ol class="dots" aria-label={`Step ${position} of ${total}`}>
+<ol class="dots" aria-label={t('ui_extra.onboarding.step_of', { position, total })}>
   {#each Array(total) as _, i}
     <li class:dot--active={i + 1 === position}></li>
   {/each}

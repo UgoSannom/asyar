@@ -1,5 +1,6 @@
 import { logService } from '../log/logService';
 import type { ExtensionManifest } from 'asyar-sdk/contracts';
+import { localizeBuiltInManifest } from '../i18n/builtInManifestI18n';
 
 /**
  * Statically compiled registry of built-in platform features.
@@ -77,11 +78,15 @@ export const builtInManifestContext = import.meta.glob<ExtensionManifest>(
   { eager: true, import: 'default' },
 );
 
+/**
+ * Built-in manifest with its display text in the active locale. Use
+ * `builtInManifestContext` for the raw English manifest.
+ */
 export function getBuiltInManifest(extensionId: string): ExtensionManifest | undefined {
   const match = Object.entries(builtInManifestContext).find(([path]) =>
     path.includes(`/${extensionId}/manifest.json`),
   );
-  return match ? match[1] : undefined;
+  return match ? localizeBuiltInManifest(match[1]) : undefined;
 }
 
 export function isBuiltInDisableable(extensionId: string): boolean {

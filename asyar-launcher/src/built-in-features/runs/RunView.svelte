@@ -15,7 +15,7 @@
   import { invokeSafe } from '../../lib/ipc/invokeSafe';
   import { scrollSelectedIntoView, resetListScroll } from '../../lib/listScroll';
   import type { Run } from 'asyar-sdk/contracts';
-  import { t } from '../../services/i18n';
+  import { t, i18nService } from '../../services/i18n';
 
   let combinedRuns = $derived(runService.combined);
   let selectedRun = $derived(combinedRuns.find((r) => r.id === runService.selectedRunId) ?? null);
@@ -99,12 +99,14 @@
     }
   }
 
-  const relativeTimeFormat = new Intl.RelativeTimeFormat(undefined, { numeric: 'auto' });
+  const relativeTimeFormat = $derived(
+    new Intl.RelativeTimeFormat(i18nService.locale, { numeric: 'auto' }),
+  );
 
   function formatRelativeTime(ms: number): string {
     const diffSeconds = Math.round((ms - Date.now()) / 1000);
     const abs = Math.abs(diffSeconds);
-    if (abs < 60) return 'just now';
+    if (abs < 60) return t('features_extra.time.just_now');
     if (abs < 3600) return relativeTimeFormat.format(Math.round(diffSeconds / 60), 'minute');
     if (abs < 86400) return relativeTimeFormat.format(Math.round(diffSeconds / 3600), 'hour');
     return relativeTimeFormat.format(Math.round(diffSeconds / 86400), 'day');
@@ -231,7 +233,7 @@
             {
               label: t('features.runs.ui.started'),
               value: formatRelativeTime(selectedRun.startedAt),
-              title: new Date(selectedRun.startedAt).toLocaleString(),
+              title: new Date(selectedRun.startedAt).toLocaleString(i18nService.locale),
             },
             {
               label: t('features.runs.ui.duration'),

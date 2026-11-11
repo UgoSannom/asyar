@@ -139,10 +139,12 @@ where
 
 #[tauri::command]
 pub async fn ai_check_cli_status(
+    locale: tauri::State<'_, crate::locale::LocaleService>,
     provider_id: String,
     custom_path: Option<String>,
 ) -> Result<crate::ai::types::CliStatus, AppError> {
-    Ok(crate::ai::cli::check_cli_status(&provider_id, custom_path.as_deref()).await)
+    let locale = locale.current_locale();
+    Ok(crate::ai::cli::check_cli_status(&provider_id, custom_path.as_deref(), &locale).await)
 }
 
 pub use crate::storage::ai_credentials::{AiCredentialStatus, CredentialState, CredentialTarget};

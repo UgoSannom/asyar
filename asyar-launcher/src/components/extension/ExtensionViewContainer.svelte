@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '../../services/i18n';
   import ExtensionIframe from './ExtensionIframe.svelte';
   import { isBuiltInFeature } from '../../services/extension/extensionDiscovery';
   import { searchBarAccessoryService } from '../../services/search/searchBarAccessoryService.svelte';
@@ -57,7 +58,7 @@
         <ActiveComponent {extensionManager} />
       {:else}
         <div class="p-4 text-center text-[var(--accent-danger)] font-mono text-sm">
-          Error: Built-in feature {extensionId} has no export matching '{viewName}'
+          {t('ui_extra.extension_view.missing_export', { id: extensionId, view: viewName })}
         </div>
       {/if}
     {:else}

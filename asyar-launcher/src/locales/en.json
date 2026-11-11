@@ -2206,5 +2206,1438 @@
     "direct_subtitle": "{extensionName} is requesting access to {host}:{port}",
     "scanning": "Scanning local network…",
     "no_devices": "No devices found on the local network."
+  },
+  "features_extra": {
+    "time": {
+      "just_now": "just now",
+      "min_ago": "{count} min ago",
+      "h_ago": "{count} h ago",
+      "d_ago": "{count} d ago",
+      "mo_ago": "{count} mo ago",
+      "y_ago": "{count} y ago",
+      "m_ago_short": "{count}m ago",
+      "h_ago_short": "{count}h ago",
+      "d_ago_short": "{count}d ago"
+    },
+    "clipboard": {
+      "title_image": "Image",
+      "title_files": "Files",
+      "title_empty": "Empty",
+      "file_count_one": "{count} file",
+      "file_count_other": "{count} files",
+      "word_count_one": "{count} word",
+      "word_count_other": "{count} words",
+      "char_count": "{count} chars",
+      "truncated": "Showing first {shown} of {total} characters",
+      "preview_of": "Preview of {name}",
+      "multi_selected": "{count} items selected · Enter to merge & paste",
+      "type_image": "Image",
+      "type_file": "File",
+      "paste": "Paste"
+    },
+    "notes": {
+      "still_indexing": "Still indexing your notes…",
+      "no_notes_found": "No notes found",
+      "toast_saved": "Note saved",
+      "toast_added_today": "Added to today",
+      "toast_unstuck": "Unstuck from desktop",
+      "toast_stuck": "Stuck to desktop",
+      "toast_exported": "Note exported",
+      "persist": {
+        "save": "Note failed to save — change may not survive restart",
+        "update": "Note failed to update — change may not survive restart",
+        "delete": "Note failed to delete — change may not survive restart",
+        "toggle_pin": "Note failed to toggle pin — change may not survive restart"
+      }
+    },
+    "common": {
+      "name_copy": "{name} Copy"
+    },
+    "shortcuts": {
+      "persist": {
+        "save": "Shortcut failed to save — change may not survive restart",
+        "update": "Shortcut failed to update — change may not survive restart",
+        "delete": "Shortcut failed to delete — change may not survive restart"
+      },
+      "register_failed": "Failed to register shortcut",
+      "launcher_toggle": "Launcher Toggle",
+      "no_item_selected": "No item selected",
+      "unsupported_key": "Unsupported key or OS error",
+      "assign_failed": "Could not assign: {reason}",
+      "press_combination": "Press the combination you want to use for {name}."
+    },
+    "snippets": {
+      "persist": {
+        "save": "Snippet failed to save — change may not survive restart",
+        "update": "Snippet failed to update — change may not survive restart",
+        "delete": "Snippet failed to delete — change may not survive restart",
+        "toggle_pin": "Snippet failed to toggle pin — change may not survive restart",
+        "toggle_private": "Snippet failed to toggle private — change may not survive restart",
+        "clear_all": "Snippet failed to clear all — change may not survive restart"
+      },
+      "err_name_required": "Name is required.",
+      "err_expansion_required": "Expansion is required.",
+      "err_keyword_lowercase": "Keyword must be lowercase.",
+      "err_keyword_in_use": "Keyword is already in use.",
+      "new_snippet": "New Snippet",
+      "keyword_placeholder": "e.g. ;email",
+      "expansion_placeholder": "e.g. hello@example.com",
+      "supported_prefix": "Supported:",
+      "custom_format_pre": "Custom format supported e.g."
+    },
+    "store": {
+      "download_url_missing": "Extension download URL is not available. Please try again.",
+      "install_info_failed": "Failed to get install info: {status} {detail}",
+      "p_installed": "{name} installed",
+      "p_install_failed": "Failed to install {name}",
+      "p_uninstalled": "{name} uninstalled",
+      "p_uninstall_failed": "Failed to uninstall {name}",
+      "p_updated": "{name} updated to v{version}",
+      "p_update_failed": "Failed to update {name}",
+      "load_failed": "Failed to load extensions: {error}",
+      "show_details": "Show Details",
+      "details_load_failed": "Failed to load details: {error}",
+      "err_install": "Installation failed: {error}",
+      "err_uninstall": "Uninstall failed: {error}",
+      "err_update": "Update failed: {error}",
+      "unknown": "Unknown",
+      "installs_count": "{count} Installs",
+      "update_to": "Update to v{version}",
+      "requires_sdk_tooltip": "This extension requires Asyar SDK {sdk}. Please update Asyar to install.",
+      "incompatible": "Incompatible (Requires SDK {sdk})",
+      "install_theme": "Install Theme",
+      "requires_newer": "This extension requires a newer version of Asyar (SDK {sdk})",
+      "no_description": "No description provided.",
+      "command_count_one": "{count} command",
+      "command_count_other": "{count} commands",
+      "mode_view": "View",
+      "mode_background": "Background",
+      "aria_list": "Store Extensions",
+      "by_author": "By {name}"
+    },
+    "scripts": {
+      "issue_dir_unavailable": "Directory unavailable",
+      "issue_metadata_unavailable": "Metadata unavailable",
+      "issue_path_unavailable": "Path unavailable",
+      "issue_not_executable": "Not executable",
+      "issue_unreadable": "Unreadable",
+      "issue_invalid_header": "Invalid header",
+      "issue": "Issue",
+      "none": "None",
+      "inline_clamped": "Inline script {name} requested a refreshTime below 10s. Raised to 10s (Asyar minimum).",
+      "inline_capped": "Inline scripts cap reached (10 max). These scripts will not auto-refresh: {scripts}. They can still be run manually by selecting them.",
+      "inline_error": "error: {error}"
+    },
+    "agents": {
+      "silent_running": "✨ {name}…",
+      "silent_empty_hud": "⚠️ Empty response",
+      "silent_empty_detail": "Agent returned empty response",
+      "ai_command": "AI command",
+      "silent_failed": "⚠️ {name} failed",
+      "no_selection": "No selection",
+      "read_selection_failed": "Could not read selection",
+      "clipboard_empty": "Clipboard is empty",
+      "read_clipboard_failed": "Could not read clipboard",
+      "copied_hud": "✓ Copied",
+      "agent_not_found": "Agent '{id}' not found",
+      "promoted": "✓ Promoted to snippet",
+      "promote_failed": "Failed to promote",
+      "delete_failed": "Failed to delete",
+      "clear_failed": "Failed to clear",
+      "edit_heading": "Edit agent",
+      "new_heading": "New agent",
+      "shortcode_placeholder": "e.g. : or ;",
+      "new_thread": "New thread",
+      "threads": "Threads"
+    },
+    "window_management": {
+      "saved": "Saved \"{name}\"",
+      "renamed": "Renamed to \"{name}\"",
+      "deleted": "Deleted \"{name}\"",
+      "layout_subtitle": "{width}×{height} at ({x}, {y})",
+      "no_layout_arg": "No layout name or ID provided",
+      "layout_not_found": "Layout \"{name}\" not found",
+      "restored": "Restored"
+    },
+    "file_search": {
+      "aria_files": "Files",
+      "folder_path": "Folder — {path}"
+    },
+    "mcp": {
+      "download_failed_install": "Failed to download {name}. Try again from the install form.",
+      "install_failed": "Could not install this MCP server — check its command/arguments and try again.",
+      "download_failed_here": "Failed to download {name}. Try again from here.",
+      "enable_failed": "Could not enable this MCP server — check its configuration and try again.",
+      "err_id_required": "ID is required.",
+      "err_display_name_required": "Display name is required.",
+      "err_command_required": "Command is required for stdio transport.",
+      "err_url_required": "A valid URL starting with http:// or https:// is required.",
+      "import_failed": "Import failed.",
+      "import_selected": "Import Selected",
+      "parse_failed": "Failed to parse the JSON. Check the format and try again.",
+      "servers_found": "{count} server(s) found:",
+      "remove_argument": "Remove argument",
+      "remove_variable": "Remove variable",
+      "remove_header": "Remove header",
+      "tools_found": "Tools found: {count}",
+      "test_error": "Error: {error}",
+      "unknown_size": "an unknown size",
+      "transport_label": "Transport: {transport}",
+      "tools_count": "{count} tools",
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "agent_short": "agent {id}",
+      "an_agent": "an agent",
+      "value_placeholder": "value",
+      "cwd_placeholder": "/optional/working/directory"
+    },
+    "portals": {
+      "placeholder_count_one": "{count} placeholder",
+      "placeholder_count_other": "{count} placeholders",
+      "edit_portal": "Edit Portal"
+    },
+    "runs": {
+      "running": "Running · {elapsed}",
+      "succeeded_after": "Succeeded · {duration}",
+      "succeeded": "Succeeded",
+      "unknown_error": "unknown error",
+      "failed": "Failed · {error}",
+      "cancelled": "Cancelled"
+    },
+    "walkthrough": {
+      "req_manual": "Tick when done",
+      "req_days": "Use on {count} separate days",
+      "req_times": "Use {count} times",
+      "req_auto": "Completes as you use it",
+      "marked_done": "Marked done",
+      "progress_of": "{current} of {target}",
+      "progress_days": "{current} of {target} days",
+      "progress_times": "{current} of {target} times",
+      "open_task": "Open Task"
+    },
+    "raycast_import": {
+      "password_prompt": "Enter the password you set in Raycast when exporting.",
+      "password_prompt_file": "Enter the password you set in Raycast when exporting “{file}”.",
+      "found_in": "Found in {name}",
+      "export_fallback": "export",
+      "not_importable": "Not importable:",
+      "skipped_hotkeys_one": "{count} hotkey bound to Raycast commands or missing apps",
+      "skipped_hotkeys_other": "{count} hotkeys bound to Raycast commands or missing apps",
+      "skipped_aliases_one": "{count} alias bound to Raycast commands, missing apps, or with characters Asyar can't use",
+      "skipped_aliases_other": "{count} aliases bound to Raycast commands, missing apps, or with characters Asyar can't use",
+      "summary_snippets": "Snippets: {added} added, {skipped} skipped",
+      "summary_portals": "Portals: {added} added, {skipped} skipped",
+      "summary_shortcuts": "Shortcuts: {added} added, {skipped} skipped",
+      "summary_aliases": "Aliases: {added} added, {skipped} skipped"
+    },
+    "aliases": {
+      "reassign_message": "'{name}' already uses '{alias}'. Reassign?"
+    },
+    "calculator": {
+      "copied_value": "Copied: {value}"
+    },
+    "create_extension": {
+      "p_preparing": "Preparing file system...",
+      "p_theme_files": "Writing theme files...",
+      "p_opening_ide": "Opening IDE...",
+      "p_done": "Done!",
+      "p_resolving_sdk": "Resolving latest SDK version...",
+      "p_scaffold_files": "Writing scaffold files...",
+      "p_pnpm_install": "Running 'pnpm install'... (this may take a minute)",
+      "p_building": "Building extension...",
+      "p_build_failed_note": "Note: Could not build automatically. Please run 'pnpm install && pnpm run build' in the extension directory.",
+      "p_registering": "Registering development extension...",
+      "p_register_failed_note": "Note: Failed to register for auto-loading. You may need to run 'asyar link'."
+    },
+    "ai_builder": {
+      "secret_refused": "Refused: hardcoded secret found in {path}",
+      "download_declined": "Download declined.",
+      "download_failed": "Failed to download {name}. Try again from the AI Extension Builder.",
+      "cred_check_failed": "Failed to verify AI credential status. Please check Settings → AI.",
+      "needs_anthropic_key": "This feature needs an Anthropic API key. Add one in Settings → AI → Anthropic.",
+      "start_failed": "Failed to start the build. Please try again.",
+      "runtime_unavailable": "A required runtime became unavailable. Please try again.",
+      "starting": "Starting…",
+      "could_not_start": "Build could not start.",
+      "steps_completed_one": "{count} step completed",
+      "steps_completed_other": "{count} steps completed",
+      "answer": "Answer"
+    },
+    "usage_stats": {
+      "launch_one": "Launch",
+      "launch_other": "Launches",
+      "active_day_one": "Active day",
+      "active_day_other": "Active days"
+    },
+    "help": {
+      "open_guide": "Open Guide"
+    }
+  },
+  "builtin": {
+    "agents": {
+      "name": "Agents",
+      "description": "Run AI agents with tool access",
+      "commands": {
+        "manage-agents": {
+          "name": "Manage Agents",
+          "description": "Open the Agents manager"
+        },
+        "ask": {
+          "name": "Ask AI",
+          "description": "Ask an AI agent a question"
+        }
+      },
+      "walkthrough": {
+        "ask-ai": {
+          "title": "Ask AI without switching apps",
+          "summary": "Put a question straight into the search bar",
+          "body": "Ask a question from the search bar and get an answer in place — no browser tab, no app switch, no losing what you were doing.\n\nAgents can also use tools, so they can act on your machine rather than only answering.\n\n## To complete the task\n\nRun **Ask** and put a real question to it."
+        }
+      }
+    },
+    "calculator": {
+      "name": "Calculator",
+      "description": "Natural-language calculator: math, unit and currency conversion, percentages and tips, dates (\"days until christmas\"), world clocks (\"5pm ldn in sf\"), number bases, ratios, and color conversions — right in the search bar.",
+      "preferences": {
+        "refreshInterval": {
+          "title": "Currency refresh interval",
+          "description": "How often to refresh exchange rates in the background, in hours (1–24)."
+        },
+        "numberFormat": {
+          "title": "Number format",
+          "description": "How you write decimals. \"Automatic\" follows your system's region setting.",
+          "options": {
+            "auto": "Automatic (system region)",
+            "point": "1,234.56 — point decimal",
+            "comma": "1.234,56 — comma decimal"
+          }
+        },
+        "preferredCurrency": {
+          "title": "Preferred currency",
+          "description": "3-letter code (e.g. USD, EUR, IQD) used when you type an amount like \"50 usd\" without a target currency."
+        }
+      },
+      "walkthrough": {
+        "calculate": {
+          "title": "A calculator you never have to open",
+          "summary": "Type a calculation straight into the search bar",
+          "body": "Type a sum, a unit conversion, a currency conversion, or a date difference straight into the search bar and the answer appears as you type. No app to open, no mode to switch into.\n\nTry these:\n\n- `1234 * 56`\n- `120 usd in eur`\n- `18% of 240`\n- `days until dec 25`\n\n## To complete the task\n\nDo one calculation in the search bar, then mark this task complete."
+        }
+      }
+    },
+    "clipboard-history": {
+      "name": "Clipboard History",
+      "description": "Manage and access your clipboard history",
+      "commands": {
+        "show-clipboard": {
+          "name": "Clipboard History",
+          "description": "View and manage clipboard history",
+          "accessory": {
+            "all": "All Types",
+            "text": "Text",
+            "images": "Images",
+            "files": "Files"
+          }
+        }
+      },
+      "walkthrough": {
+        "clipboard-habit": {
+          "title": "Never lose what you copied again",
+          "summary": "Open clipboard history on three separate days",
+          "body": "Everything you copy is kept, searchable, and one keystroke away. No more copying something and losing what was there before, no more re-finding the same link twice.\n\nClipboard history is the single feature people say changed how they work — but only after it has caught them a few times. That is why this task asks for three days rather than one visit.\n\n## To complete the task\n\n1. Copy a few things as you normally would.\n2. Open **Clipboard History** and paste something from further back.\n3. Do it again on three separate days."
+        }
+      }
+    },
+    "create-extension": {
+      "name": "Developer Tools",
+      "description": "Scaffold new Asyar extensions",
+      "commands": {
+        "open": {
+          "name": "Create Extension",
+          "description": "Scaffold a new Asyar extension for development"
+        },
+        "build-with-ai": {
+          "name": "Build Extension with AI",
+          "description": "Describe an extension in words and let AI build it"
+        },
+        "my-extensions": {
+          "name": "My Extensions",
+          "description": "Browse the extensions you've built and publish them"
+        }
+      },
+      "walkthrough": {
+        "build-an-extension": {
+          "title": "Build your first extension",
+          "summary": "Scaffold an extension and make Asyar yours",
+          "body": "Every built-in feature you have used in this walkthrough is an extension using the same public API you get. If Asyar is missing something you need, that gap is a few hours of work, not a feature request.\n\n## To complete the task\n\nRun **Developer Tools** and scaffold your first extension."
+        }
+      }
+    },
+    "feedback": {
+      "name": "Feedback",
+      "description": "Send feedback, feature ideas, or report a problem to the Asyar team",
+      "commands": {
+        "send-feedback": {
+          "name": "Send Feedback",
+          "description": "Share an idea, praise, or a bug report"
+        }
+      }
+    },
+    "file-search": {
+      "name": "File Search",
+      "description": "Search files across your home folder",
+      "commands": {
+        "show-files": {
+          "name": "Search Files",
+          "description": "Search files by name",
+          "accessory": {
+            "all": "All Files",
+            "document": "Documents",
+            "image": "Images",
+            "code": "Code",
+            "audio-video": "Audio & Video",
+            "archive": "Archives",
+            "folder": "Folders"
+          }
+        }
+      },
+      "walkthrough": {
+        "find-a-file": {
+          "title": "Find a file without opening a window",
+          "summary": "Search your files straight from the launcher",
+          "body": "File search indexes your files locally and finds them by fuzzy name — no folder navigation, no waiting for a file manager to open. Results can be opened, revealed in the file manager, or pinned so they always come up first.\n\n## To complete the task\n\nRun **File Search** and open a file from the results."
+        }
+      }
+    },
+    "help": {
+      "name": "Help",
+      "description": "Keyboard shortcuts, feature guides, and the Asyar user manual",
+      "commands": {
+        "show-help": {
+          "name": "Help",
+          "description": "View keyboard shortcuts and open the user guide"
+        }
+      }
+    },
+    "mcp": {
+      "name": "MCP Servers",
+      "description": "Manage Model Context Protocol (MCP) servers",
+      "commands": {
+        "manage": {
+          "name": "Manage MCP Servers",
+          "description": "Open the MCP server manager"
+        }
+      }
+    },
+    "notes": {
+      "name": "Notes",
+      "description": "Write and organize Markdown notes without leaving your keyboard",
+      "commands": {
+        "open-notes": {
+          "name": "Notes",
+          "description": "Browse, search, and write notes"
+        },
+        "quick-note": {
+          "name": "Quick Note",
+          "description": "Capture a note instantly without opening the editor",
+          "arguments": {
+            "text": {
+              "placeholder": "What's on your mind?"
+            }
+          }
+        },
+        "new-sticky": {
+          "name": "New Sticky Note",
+          "description": "Create a blank note pinned to your desktop"
+        },
+        "append-today": {
+          "name": "Add to Today",
+          "description": "Append a line to today's daily note (creates it if needed)",
+          "arguments": {
+            "text": {
+              "placeholder": "What happened?"
+            }
+          }
+        }
+      },
+      "walkthrough": {
+        "first-note": {
+          "title": "Write the thought down before it goes",
+          "summary": "Capture a note without leaving what you were doing",
+          "body": "Notes are for the thought that arrives while you are busy with something else — a reminder, a meeting note, a snippet of a conversation. They open over whatever you are doing and get out of the way again.\n\nPro tip: bind a hotkey to **Quick Note** so capture costs one key press.\n\n## To complete the task\n\nRun **Notes** or **Quick Note** and write something down."
+        }
+      }
+    },
+    "portals": {
+      "name": "Portals",
+      "description": "Save URLs as named, searchable shortcuts",
+      "commands": {
+        "open-portals": {
+          "name": "Portals",
+          "description": "Manage your saved portals"
+        }
+      },
+      "walkthrough": {
+        "first-portal": {
+          "title": "Jump straight to the links you live in",
+          "summary": "Save a URL as a named, searchable portal",
+          "body": "A portal turns a URL into something you can summon by name — a dashboard, a repo, a ticket board, a playlist. Portals can take a query too, so one portal becomes a search box for any site you use.\n\n## To complete the task\n\n1. Run **Portals**.\n2. Add a link you open most days.\n3. Summon it by name from the search bar."
+        }
+      }
+    },
+    "quit": {
+      "name": "Asyar",
+      "description": "Quit the Asyar application",
+      "commands": {
+        "quit-asyar": {
+          "name": "Quit Asyar",
+          "description": "Quit the Asyar application"
+        }
+      }
+    },
+    "raycast-import": {
+      "name": "Raycast Import",
+      "description": "Bring your Raycast snippets, quicklinks, and app hotkeys into Asyar",
+      "commands": {
+        "import-raycast": {
+          "name": "Import from Raycast",
+          "description": "Import snippets, portals, and shortcuts from a Raycast export file"
+        }
+      }
+    },
+    "runs": {
+      "name": "Runs",
+      "description": "View and manage active and recent runs",
+      "commands": {
+        "open-runs": {
+          "name": "Runs",
+          "description": "Open runs view"
+        }
+      }
+    },
+    "screen-ocr": {
+      "name": "Screen OCR",
+      "description": "Extract and copy text from any region of your screen",
+      "commands": {
+        "capture-text": {
+          "name": "Capture Text from Screen",
+          "description": "Select a screen area to recognize and copy text"
+        }
+      }
+    },
+    "scripts": {
+      "name": "Scripts",
+      "description": "Run and manage scripts from watched directories",
+      "commands": {
+        "script-library": {
+          "name": "Script Library",
+          "description": "Inspect, run, and troubleshoot scripts"
+        }
+      }
+    },
+    "settings": {
+      "name": "Settings",
+      "description": "Open application settings",
+      "commands": {
+        "open-settings": {
+          "name": "Settings",
+          "description": "Open application settings"
+        }
+      }
+    },
+    "shortcuts": {
+      "name": "Shortcuts",
+      "description": "Global user shortcuts for applications and commands",
+      "commands": {
+        "open-shortcuts": {
+          "name": "Shortcuts",
+          "description": "Manage assigned global shortcuts"
+        }
+      },
+      "walkthrough": {
+        "first-hotkey": {
+          "title": "Open anything with one key press",
+          "summary": "Bind a global hotkey to a command you use constantly",
+          "body": "A global hotkey opens a specific command from anywhere on your desktop, without going through the search bar first. The commands you run ten times a day should never cost you a search.\n\n## To complete the task\n\n1. Run **Shortcuts**.\n2. Bind a hotkey to the command you run most.\n3. Use it from another app."
+        },
+        "first-alias": {
+          "title": "Give your favourites a two-letter name",
+          "summary": "Set an alias so one command always wins the search",
+          "body": "An alias is a short word that jumps straight to one item — type it and that item is selected, every time, no matter what else matches.\n\nAliases are for the things you refuse to hunt for: `f` for file search, `cb` for clipboard history, `dw` for define word.\n\n## To complete the task\n\nSelect any item in the search results, open the action panel, and give it an alias."
+        }
+      }
+    },
+    "snippets": {
+      "name": "Snippets",
+      "description": "Text expansion — type a keyword, get the full text",
+      "commands": {
+        "open-snippets": {
+          "name": "Snippets",
+          "description": "Manage text expansion snippets"
+        }
+      },
+      "walkthrough": {
+        "first-snippet": {
+          "title": "Stop typing the same thing twice",
+          "summary": "Create a snippet that expands from a keyword",
+          "body": "A snippet is a block of text you type constantly — your email address, a canned reply, a code block, your bank details — stored once and expanded by a short keyword, in any app.\n\nA good first one is your email with the keyword `@@`.\n\n## To complete the task\n\n1. Run **Snippets** and create your first one.\n2. Give it a keyword you would never type by accident.\n3. Try the keyword in any other app."
+        }
+      }
+    },
+    "store": {
+      "name": "Store",
+      "description": "Browse and install Asyar extensions.",
+      "commands": {
+        "browse": {
+          "name": "Browse Extension Store",
+          "description": "Find and install new extensions"
+        }
+      },
+      "walkthrough": {
+        "install-an-extension": {
+          "title": "Add something Asyar does not do yet",
+          "summary": "Install your first extension from the Store",
+          "body": "Extensions are built on the same API the built-in features use, so anything in the Store behaves like it shipped with the app — same search, same actions, same keyboard rules.\n\n## To complete the task\n\nOpen the **Store**, find something you would actually use, and install it."
+        }
+      }
+    },
+    "system-settings": {
+      "name": "System Settings",
+      "description": "Search and open macOS System Settings panes (Sound, Displays, Wi-Fi…)"
+    },
+    "system": {
+      "name": "System",
+      "description": "System commands: sleep, lock screen, restart, shut down"
+    },
+    "url-opener": {
+      "name": "URL Opener",
+      "description": "Type or paste a web address into the search bar and open it in your browser."
+    },
+    "usage-stats": {
+      "name": "Usage Stats",
+      "description": "See a local-only dashboard of how often you launch and which commands you run most",
+      "commands": {
+        "open-usage-stats": {
+          "name": "Usage Stats",
+          "description": "View your local usage dashboard"
+        }
+      }
+    },
+    "walkthrough": {
+      "name": "Walkthrough",
+      "description": "Short tasks that turn Asyar's features into habits, ticked off as you actually use them",
+      "commands": {
+        "show-walkthrough": {
+          "name": "Walkthrough",
+          "description": "Learn Asyar one task at a time"
+        }
+      },
+      "walkthrough": {
+        "start": {
+          "title": "Start the journey to becoming an expert",
+          "summary": "You are already here — that is the first task done",
+          "body": "Every task in this list teaches one thing Asyar can do that most people never find.\n\nYou do not tick these off by hand. Each task watches how you actually use Asyar and completes itself the moment you do the thing for real. Tasks you have already been doing for weeks are already ticked — the list only ever shows you what is genuinely left.\n\n## To complete the task\n\nOpen the Walkthrough. Done."
+        },
+        "favorite-an-item": {
+          "title": "Keep a favorite ready",
+          "summary": "Favorite an application or command you use often",
+          "body": "Favorites stay at the top when the search is empty, ahead of Asyar's automatic usage ranking. They can be applications or commands, and typed searches still rank by relevance.\n\n## To complete the task\n\n1. Select any application or command in the launcher.\n2. Open **Actions** with **⌘K**.\n3. Choose **Add to favorites**.\n4. Clear the search to see it at the top."
+        }
+      }
+    },
+    "window-management": {
+      "name": "Window Management",
+      "description": "Resize and reposition the frontmost window using layout presets",
+      "commands": {
+        "left-half": {
+          "name": "Left Half",
+          "description": "Left 50% of screen"
+        },
+        "right-half": {
+          "name": "Right Half",
+          "description": "Right 50% of screen"
+        },
+        "top-half": {
+          "name": "Top Half",
+          "description": "Top 50% of screen"
+        },
+        "bottom-half": {
+          "name": "Bottom Half",
+          "description": "Bottom 50% of screen"
+        },
+        "top-left-quarter": {
+          "name": "Top Left Quarter",
+          "description": "Top-left 25% of screen"
+        },
+        "top-right-quarter": {
+          "name": "Top Right Quarter",
+          "description": "Top-right 25% of screen"
+        },
+        "bottom-left-quarter": {
+          "name": "Bottom Left Quarter",
+          "description": "Bottom-left 25% of screen"
+        },
+        "bottom-right-quarter": {
+          "name": "Bottom Right Quarter",
+          "description": "Bottom-right 25% of screen"
+        },
+        "left-third": {
+          "name": "Left Third",
+          "description": "Left 33% of screen"
+        },
+        "center-third": {
+          "name": "Center Third",
+          "description": "Center 33% of screen"
+        },
+        "right-third": {
+          "name": "Right Third",
+          "description": "Right 33% of screen"
+        },
+        "left-two-thirds": {
+          "name": "Left Two Thirds",
+          "description": "Left 66% of screen"
+        },
+        "right-two-thirds": {
+          "name": "Right Two Thirds",
+          "description": "Right 66% of screen"
+        },
+        "first-fourth": {
+          "name": "First Fourth",
+          "description": "First 25% of screen"
+        },
+        "second-fourth": {
+          "name": "Second Fourth",
+          "description": "Second 25% of screen"
+        },
+        "third-fourth": {
+          "name": "Third Fourth",
+          "description": "Third 25% of screen"
+        },
+        "last-fourth": {
+          "name": "Last Fourth",
+          "description": "Last 25% of screen"
+        },
+        "center": {
+          "name": "Center",
+          "description": "Centered, 80% × 80% of screen"
+        },
+        "almost-maximize": {
+          "name": "Almost Maximize",
+          "description": "Centered, 90% × 90% of screen"
+        },
+        "maximize": {
+          "name": "Maximize",
+          "description": "Fill the entire screen (fullscreen)"
+        },
+        "restore": {
+          "name": "Restore Previous Bounds",
+          "description": "Undo the last applied window layout"
+        },
+        "manage-layouts": {
+          "name": "Manage Window Layouts",
+          "description": "View, add, and delete custom window layouts"
+        },
+        "switch-windows": {
+          "name": "Switch Windows",
+          "description": "Switch to an active application window"
+        },
+        "save-current-layout": {
+          "name": "Save Current Window as Layout",
+          "description": "Save the frontmost window position and size as a custom layout"
+        },
+        "previous-display": {
+          "name": "Previous Display",
+          "description": "Move frontmost window to the previous display"
+        },
+        "next-display": {
+          "name": "Next Display",
+          "description": "Move frontmost window to the next display"
+        },
+        "apply-layout": {
+          "name": "Apply Layout",
+          "description": "Apply a custom window layout by name or ID",
+          "arguments": {
+            "name": {
+              "placeholder": "Layout Name"
+            },
+            "id": {
+              "placeholder": "Layout ID"
+            }
+          }
+        }
+      },
+      "walkthrough": {
+        "tile-a-window": {
+          "title": "Arrange windows without touching the mouse",
+          "summary": "Move a window with a command instead of a drag",
+          "body": "Halves, thirds, fourths, quarters, centre, maximize, restore — every window layout you drag for is a command you can run or bind to a hotkey.\n\nThe payoff comes when they are on hotkeys: two key presses to put two apps side by side.\n\n## To complete the task\n\n1. Search `left half` or `maximize` and run it.\n2. Bind your two favourites to hotkeys."
+        }
+      }
+    }
+  },
+  "permissions_catalog": {
+    "not_recognized": "Not recognized by this version of Asyar.",
+    "entries": {
+      "network": {
+        "title": "Network access",
+        "description": "Make outbound HTTP requests."
+      },
+      "network_lan": {
+        "title": "Local network access",
+        "description": "Connect to local-network devices you approve in Settings. Loopback, link-local, and cloud metadata addresses are always blocked."
+      },
+      "network_secrets": {
+        "title": "Send secret references",
+        "description": "Send login secrets from declared sources to declared HTTPS hosts without exposing the token to the extension. Requires network access. Only approve hosts you trust."
+      },
+      "notifications_send": {
+        "title": "Send notifications",
+        "description": "Post notifications to the system notification center."
+      },
+      "clipboard_read": {
+        "title": "Read clipboard",
+        "description": "Read the current system clipboard content."
+      },
+      "clipboard_write": {
+        "title": "Write clipboard",
+        "description": "Write or paste content to the system clipboard."
+      },
+      "clipboard_history_read": {
+        "title": "Read clipboard history",
+        "description": "Query and search stored clipboard history records."
+      },
+      "clipboard_history_capture": {
+        "title": "Capture clipboard history",
+        "description": "Subscribe to background clipboard changes to record history."
+      },
+      "clipboard_history_manage": {
+        "title": "Manage clipboard history",
+        "description": "Delete records, toggle favorites, or clear stored clipboard history."
+      },
+      "storage_read": {
+        "title": "Read extension storage",
+        "description": "Read from the extension's own key-value store."
+      },
+      "storage_write": {
+        "title": "Write extension storage",
+        "description": "Write to the extension's own key-value store."
+      },
+      "store_read": {
+        "title": "Read extension store data",
+        "description": "Read from the extension's data store."
+      },
+      "store_write": {
+        "title": "Write extension store data",
+        "description": "Write to the extension's data store."
+      },
+      "cache_read": {
+        "title": "Read extension cache",
+        "description": "Read from the extension's cache."
+      },
+      "cache_write": {
+        "title": "Write extension cache",
+        "description": "Write to the extension's cache."
+      },
+      "fs_read": {
+        "title": "Reveal files",
+        "description": "Show files in the system file manager."
+      },
+      "fs_write": {
+        "title": "Move files to trash",
+        "description": "Move files to the system trash."
+      },
+      "fs_watch": {
+        "title": "Watch files",
+        "description": "Observe filesystem changes under the declared glob patterns."
+      },
+      "files_search": {
+        "title": "Search local files",
+        "description": "Search the local file index (file names and metadata, not file contents)."
+      },
+      "files_read": {
+        "title": "Read file contents",
+        "description": "Read the text contents, list the file names, and render thumbnails of files matching the declared path patterns. Credential stores and OS locations are always excluded."
+      },
+      "files_search_provider": {
+        "title": "Contribute remote file search",
+        "description": "Provide search results for remote and cloud files."
+      },
+      "notes_read": {
+        "title": "Search and read your notes",
+        "description": "Search your Notes and read the full content of any note."
+      },
+      "notes_write": {
+        "title": "Create and append to notes",
+        "description": "Create new notes and add text to the end of existing ones. Cannot overwrite or delete a note's existing content."
+      },
+      "shell_spawn": {
+        "title": "Run programs",
+        "description": "Spawn OS processes and read their output. Grants broad system access."
+      },
+      "shell_open_url": {
+        "title": "Open URLs",
+        "description": "Open web links (http, https, mailto, tel) in the default browser — plus any additional URL schemes the extension declares, which can launch the apps registered for them."
+      },
+      "shell_open_path": {
+        "title": "Open files and folders",
+        "description": "Open local files, folders, and workspaces with default or specified applications."
+      },
+      "entitlements_read": {
+        "title": "Read subscription status",
+        "description": "Read the user's active subscription entitlements."
+      },
+      "selection_read": {
+        "title": "Read selection",
+        "description": "Read the currently selected text or file-manager items from the frontmost application."
+      },
+      "oauth_use": {
+        "title": "Sign in to services",
+        "description": "Run OAuth authorization flows with third-party providers."
+      },
+      "extension_invoke": {
+        "title": "Invoke other extensions",
+        "description": "Launch commands in other installed extensions."
+      },
+      "application_read": {
+        "title": "Read installed apps",
+        "description": "List installed applications and query the frontmost or running apps."
+      },
+      "window_manage": {
+        "title": "Manage windows",
+        "description": "Read and change the position, size, and fullscreen state of the frontmost window."
+      },
+      "screen_pick_color": {
+        "title": "Pick colors from the screen",
+        "description": "Show the OS eyedropper and read the color of a screen pixel the user picks."
+      },
+      "screen_capture": {
+        "title": "Capture screen text",
+        "description": "Capture screen regions and extract text via on-device optical character recognition (OCR)."
+      },
+      "calculator_evaluate": {
+        "title": "Evaluate math and conversions",
+        "description": "Evaluate mathematical expressions, unit conversions, and currency calculations."
+      },
+      "power_inhibit": {
+        "title": "Keep system awake",
+        "description": "Prevent the OS from sleeping while extension logic is running."
+      },
+      "media_control": {
+        "title": "Control media playback",
+        "description": "Read what is playing in media players and apps (such as Music, TV, Spotify, VLC, or a browser) and send play, pause, and skip commands."
+      },
+      "calendar_read": {
+        "title": "Read calendars and events",
+        "description": "List your calendars and read the events in them."
+      },
+      "calendar_write": {
+        "title": "Create calendar events",
+        "description": "Add new events to your calendars."
+      },
+      "reminders_read": {
+        "title": "Read reminders",
+        "description": "List your reminder lists and the reminders in them."
+      },
+      "reminders_write": {
+        "title": "Create and complete reminders",
+        "description": "Add new reminders and mark existing ones as done or not done."
+      },
+      "shortcuts_read": {
+        "title": "List Apple Shortcuts",
+        "description": "See the names of the shortcuts in your Apple Shortcuts library."
+      },
+      "shortcuts_run": {
+        "title": "Run Apple Shortcuts",
+        "description": "Run any of your Apple Shortcuts, optionally passing it text. A shortcut can do anything it is built to do."
+      },
+      "process_read": {
+        "title": "List processes",
+        "description": "List running processes with CPU and memory usage."
+      },
+      "process_kill": {
+        "title": "Terminate processes",
+        "description": "Terminate or force-kill running processes."
+      },
+      "systemEvents_read": {
+        "title": "Observe system events",
+        "description": "Subscribe to OS sleep, wake, lid, battery, and power-source events."
+      },
+      "app_frontmost_watch": {
+        "title": "Observe app activity",
+        "description": "Subscribe to application launched, terminated, and frontmost-changed events."
+      },
+      "timers_schedule": {
+        "title": "Schedule timers",
+        "description": "Schedule persistent one-shot timers that fire even after relaunch."
+      },
+      "timers_cancel": {
+        "title": "Cancel timers",
+        "description": "Cancel previously scheduled timers."
+      },
+      "timers_list": {
+        "title": "List timers",
+        "description": "List scheduled timers."
+      },
+      "preferences_read": {
+        "title": "Read preferences",
+        "description": "Read the extension's own preference values."
+      },
+      "preferences_write": {
+        "title": "Write preferences",
+        "description": "Change the extension's own preference values."
+      },
+      "feedback_announce": {
+        "title": "Show rare announcements",
+        "description": "Request a host-controlled announcement such as What's New."
+      },
+      "tools_register": {
+        "title": "Register agent tools",
+        "description": "Expose tools to the agent runtime for use during tool-calling."
+      },
+      "snippets_contribute": {
+        "title": "Contribute snippets",
+        "description": "Contribute shortcode expansions to the global keystroke matcher, replacing typed shortcodes in any app."
+      },
+      "runs_track": {
+        "title": "Track background runs",
+        "description": "Start and manage long-running work shown in the launcher's runs UI."
+      },
+      "browser_tabs_read": {
+        "title": "Read browser tabs",
+        "description": "List and inspect tabs in the paired browser."
+      },
+      "browser_tabs_write": {
+        "title": "Control browser tabs",
+        "description": "Open, activate, and close tabs in the paired browser."
+      },
+      "browser_bookmarks_read": {
+        "title": "Read bookmarks",
+        "description": "Read the paired browser's bookmarks."
+      },
+      "browser_history_read": {
+        "title": "Read browsing history",
+        "description": "Search the paired browser's history."
+      },
+      "browser_page_read": {
+        "title": "Read page content",
+        "description": "Read the content of the current page in the paired browser."
+      },
+      "browser_page_write": {
+        "title": "Act on pages",
+        "description": "Interact with page content in the paired browser."
+      },
+      "mcp": {
+        "title": "Model Context Protocol (MCP)",
+        "description": "Discover configured MCP servers and invoke external tools."
+      },
+      "ai": {
+        "title": "Prompt AI model",
+        "description": "Prompt the host's configured AI model for completions and streaming responses."
+      }
+    }
+  },
+  "diagnostics_messages": {
+    "permission_denied": "Access to {permission} was denied",
+    "permission_denied_generic": "Access to a resource was denied",
+    "policy_denied": "Action denied: {policyError}",
+    "policy_denied_generic": "Action denied by policy",
+    "network_failure": "Network error",
+    "lock_poisoned": "Internal lock corrupted; please restart Asyar",
+    "database_failure": "Database error",
+    "not_found": "Could not find {target}",
+    "not_found_generic": "Could not find item",
+    "extension_failure": "Extension error: {extension}",
+    "extension_failure_generic": "Extension error: unknown",
+    "shortcut_failure": "Shortcut error: {shortcut}",
+    "shortcut_failure_generic": "Shortcut error: unknown",
+    "platform_failure": "Platform error: {platform}",
+    "platform_failure_generic": "Platform error: unknown",
+    "validation_failure": "Invalid input: {field}",
+    "validation_failure_generic": "Invalid input: value",
+    "encryption_failure": "Encryption error",
+    "auth_failure": "Authentication failed ({provider})",
+    "auth_failure_generic": "Authentication failed",
+    "oauth_failure": "OAuth error ({provider})",
+    "oauth_failure_generic": "OAuth error",
+    "power_failure": "Power management error",
+    "run_failed": "Run failed: {message}",
+    "run_failed_id": "Run {id} failed",
+    "run_failed_id_generic": "Run unknown failed",
+    "sync_entitlement_required": "Cloud sync requires an active plan",
+    "sync_quota_exceeded": "Cloud sync storage quota exceeded ({usedBytes} / {limitBytes} bytes)",
+    "sync_quota_exceeded_generic": "Cloud sync storage quota exceeded",
+    "sync_rate_limited": "Cloud sync is rate limited. Retrying in {retryAfter}s",
+    "sync_server_unavailable": "Cloud sync server is temporarily unavailable: {detail}",
+    "sync_server_unavailable_generic": "Cloud sync server is temporarily unavailable",
+    "sync_e2ee_locked": "Cloud sync is locked on this device. Enter your recovery phrase or approve from another device.",
+    "sync_e2ee_not_enrolled": "End-to-end encryption is not enabled for this account",
+    "sync_e2ee_already_enrolled": "End-to-end encryption is already enabled for this account",
+    "sync_e2ee_wrong_mode": "Operation not supported for this encryption mode",
+    "sync_finalize_behind": "Cloud sync finalization was postponed until local state catches up",
+    "sync_pairing_not_found": "Device pairing request not found or expired",
+    "sync_pairing_not_pending": "Device pairing request is no longer pending",
+    "sync_pairing_fingerprint_mismatch": "Device pairing fingerprint mismatch: the verification words do not match the requesting device.",
+    "sync_pairing_too_many": "Too many active pairing requests; please try again later",
+    "io_failure": "I/O error",
+    "json_failure": "Data format error",
+    "unexpected_error": "Unexpected error",
+    "search_lock_poisoned": "Search index lock corrupted",
+    "search_json_failure": "Search data format error",
+    "search_io_failure": "Search I/O error",
+    "search_not_found": "Search did not find {target}",
+    "search_not_found_generic": "Search did not find item",
+    "search_other": "Search error: {detail}",
+    "search_other_generic": "Search error",
+    "render_error": "A view failed to render",
+    "invoke_unknown": "Command failed: {command}",
+    "invoke_unknown_generic": "Command failed",
+    "extension_proxy_error": "Extension call failed ({method})",
+    "extension_proxy_error_generic": "Extension call failed",
+    "extension_crash": "{extensionId} ({role}) stopped responding",
+    "extension_crash_generic": "Extension ({role}) stopped responding",
+    "iframe_uncaught": "{extensionId} hit an unexpected error",
+    "iframe_uncaught_generic": "Extension hit an unexpected error",
+    "iframe_unhandled_rejection": "{extensionId} promise was rejected",
+    "iframe_unhandled_rejection_generic": "Extension promise was rejected",
+    "rpc_timeout": "{method} timed out",
+    "rpc_timeout_generic": "Operation timed out",
+    "panic": "Asyar encountered a fatal error",
+    "error": "Error",
+    "action_failed": "Action failed",
+    "mcp_permission_required": "Permission required to use {tool}",
+    "mcp_permission_required_generic": "Permission required to use this MCP tool",
+    "e2ee_enrollment_failed": "Couldn't enable encrypted sync. Check your connection and try again.",
+    "e2ee_passphrase_required": "Encrypted sync needs your passphrase to continue.",
+    "e2ee_key_derivation_failed": "Couldn't derive your sync key. Try closing other apps and retrying.",
+    "e2ee_decrypt_failed": "An item failed to decrypt — your data may be corrupted, or the passphrase has changed.",
+    "e2ee_key_version_mismatch": "Your encrypted sync needs to refresh. Pulling latest…"
+  },
+  "services_extra": {
+    "runtime": {
+      "status_checking": "Checking for updates…",
+      "status_downloading_progress": "Downloading… {done} / {total}",
+      "status_verifying": "Verifying download…",
+      "status_finishing": "Finishing setup…",
+      "status_failed": "Download failed",
+      "unknown_size": "an unknown size",
+      "size_mb": "{value} MB",
+      "size_kb": "{value} KB",
+      "confirm_title_one": "Download required runtime?",
+      "confirm_title_other": "Download required runtimes?",
+      "confirm_message": "This needs {names}, totaling {total}. Asyar downloads it once and reuses it everywhere it's needed.",
+      "removal_warning_one": "This runtime is still needed by 1 consumer ({list}). Remove it anyway?",
+      "removal_warning_other": "This runtime is still needed by {count} consumers ({list}). Remove it anyway?"
+    },
+    "gate": {
+      "sync_sign_in": "Cloud sync requires a signed-in account.",
+      "sync_entitlement": "Cloud sync requires an active subscription with the sync:settings entitlement.",
+      "sync_disabled": "Cloud sync is disabled in settings.",
+      "ai_sign_in": "Cloud AI models require a signed-in account.",
+      "ai_pro": "This AI model requires an active Pro subscription.",
+      "ai_history_sign_in": "AI history sync requires a signed-in account.",
+      "ai_history_entitlement": "AI history sync requires the sync:ai-conversations entitlement.",
+      "crash_disabled": "Crash reporting is disabled in settings.",
+      "usage_disabled": "Anonymous usage metrics sharing is disabled.",
+      "feature_sign_in": "This feature requires a signed-in account.",
+      "feature_entitlement": "This feature requires the '{ability}' subscription entitlement."
+    },
+    "auth": {
+      "server_no_response": "Server did not respond",
+      "login_failed": "Login failed: {error}",
+      "login_timed_out": "Login timed out. Please try again.",
+      "login_start_failed": "Could not start login: {error}",
+      "login_expired": "Login session expired. Please try again."
+    },
+    "profile": {
+      "settings": "Application Settings",
+      "ai_settings": "AI Settings",
+      "extension_preferences": "Extension Preferences"
+    },
+    "clipboard": {
+      "image_preview": "Image: {width}×{height}",
+      "files_preview_one": "{count} file: {names}",
+      "files_preview_other": "{count} files: {names}",
+      "encrypted_secret": "[Encrypted secret]",
+      "accessibility_paste": "Asyar needs macOS Accessibility permission to paste. Enable Asyar under System Settings → Privacy & Security → Accessibility, then try again."
+    },
+    "whats_new": {
+      "title": "Updated to v{version}",
+      "message": "Click to see what changed"
+    },
+    "command_args": {
+      "fill_required": "Fill required fields",
+      "required": "Required",
+      "either_two": "{first} or {second}",
+      "either_many": "{list}, or {last}"
+    },
+    "onboarding": {
+      "ai_status_failed": "Could not check AI setup status.",
+      "ai_skip_failed": "Could not skip AI setup. Please try again.",
+      "ai_save_failed": "Could not save AI setup. Please try again."
+    },
+    "extension_loader": {
+      "permission_review": "{name} needs a permission review in Settings"
+    },
+    "ai_providers": {
+      "ollama": "Ollama (local)",
+      "custom": "Custom (OpenAI-compatible)"
+    },
+    "secret_refs": {
+      "json": "at `{pointer}` in `{path}`",
+      "keychain": "the Keychain item “{service}” at `{pointer}`",
+      "keychain_account": "the Keychain item “{service}” (account “{account}”) at `{pointer}`",
+      "keychain_lead": "in the Keychain item “{service}” at `{pointer}`",
+      "keychain_account_lead": "in the Keychain item “{service}” (account “{account}”) at `{pointer}`",
+      "or_source": "(or {source})",
+      "all_paths": "(all paths)",
+      "sentence": "Sends the secret {source} to {hosts} — {methods} {paths} — as the {header} header.",
+      "keychain_note": "macOS may ask you to allow Asyar to read this Keychain item."
+    },
+    "launcher": {
+      "unknown_item": "Unknown Item",
+      "action_failed": "Action failed for {name}",
+      "command_failed": "Failed to run command {name}",
+      "action_invalid": "Action is invalid for {name}",
+      "open_failed": "Failed to open {name}",
+      "no_action": "No action for {name}",
+      "run_kind_agent": "Agent",
+      "run_kind_script": "Script",
+      "run_failed": "Failed · {output}",
+      "run_done": "Done · {output}",
+      "no_output": "(no output)",
+      "running": "Running",
+      "dismiss_result": "Dismiss Result",
+      "dismiss_thread": "Dismiss Thread",
+      "dismiss_result_desc": "Remove this script result row and free its output (history record is kept)",
+      "dismiss_thread_desc": "Remove this completed thread from the launcher list (still kept in history)",
+      "dev_build": "Development build",
+      "shortcut_save_failed": "Failed to save shortcut"
+    }
+  },
+  "ui_extra": {
+    "about": {
+      "available": "Update {version} is available. Starting download...",
+      "check_failed": "Update check failed: {error}",
+      "checking": "Checking for updates...",
+      "downloading": "Downloading and installing update {version}...",
+      "installed": "Update {version} installed. Restart Asyar to apply.",
+      "up_to_date": "You're running the latest version.",
+      "update_ready": "Update {version} ready",
+      "version": "Version {version}"
+    },
+    "account": {
+      "days_ago_one": "{count} day ago",
+      "days_ago_other": "{count} days ago",
+      "ent_advanced_models": "Advanced AI Models",
+      "ent_ai_chat": "AI Chat",
+      "ent_ai_history_sync": "AI Conversation History Sync",
+      "ent_premium_extensions": "Premium Extensions",
+      "ent_settings_sync": "Settings Sync",
+      "hours_ago_one": "{count} hour ago",
+      "hours_ago_other": "{count} hours ago",
+      "just_now": "Just now",
+      "minutes_ago_one": "{count} minute ago",
+      "minutes_ago_other": "{count} minutes ago",
+      "signing_out": "Signing out…"
+    },
+    "ai_tab": {
+      "engine_unavailable": "The search engine \"{name}\" is unavailable or deprecated. Select an available engine above.",
+      "get_api_key": "Get API key",
+      "legacy_unavailable": "Legacy / Unavailable",
+      "name_api_key": "{name} API Key",
+      "name_base_url": "{name} Base URL",
+      "name_unavailable": "{name} (Unavailable)",
+      "reader_unavailable": "The reader \"{name}\" is unavailable or deprecated. Select an available reader above."
+    },
+    "applications": {
+      "load_failed": "Failed to load applications. You can try refreshing.",
+      "no_app_selected": "No application selected"
+    },
+    "arg_dropdown": {
+      "search_aria": "Search {name}"
+    },
+    "backup": {
+      "conflicts_one": "{count} conflict",
+      "conflicts_other": "{count} conflicts",
+      "preview_counts": "Local: {local} → Incoming: {incoming}",
+      "read_failed": "Failed to read profile archive",
+      "restored": "Backup restored successfully.",
+      "saved": "Backup saved successfully."
+    },
+    "bottom_bar": {
+      "update_ready": "Update ready",
+      "update_ready_restart": "Update {version} ready. Click to restart.",
+      "update_ready_restart_generic": "Update ready. Click to restart."
+    },
+    "builtin_features": {
+      "render_failed": "Failed to render {title} settings: {error}"
+    },
+    "clipboard_privacy": {
+      "skipped": "{count} skipped"
+    },
+    "common": {
+      "already_in_list": "{path} is already in the list",
+      "could_not_assign": "Could not assign: {reason}",
+      "could_not_open_picker": "Could not open directory picker",
+      "remove_alias_for": "Remove alias for {name}",
+      "remove_hotkey_for": "Remove hotkey for {name}",
+      "unknown": "Unknown",
+      "unsupported_key": "Unsupported key or OS error"
+    },
+    "encryption": {
+      "intro": "Clipboard items, snippet expansions, AI conversations, and encrypted extension preferences are stored as ciphertext on disk."
+    },
+    "entitlement": {
+      "upgrade_required_aria": "{feature} — upgrade required"
+    },
+    "extension_commands": {
+      "no_command_selected": "No command selected"
+    },
+    "extension_detail": {
+      "platform_unsupported": "{platform} not supported",
+      "requires_app": "Requires app v{version}+",
+      "requires_sdk": "Requires SDK {version}"
+    },
+    "extension_iframe": {
+      "title": "Extension Sandbox - {name}"
+    },
+    "extension_table": {
+      "collapse": "Collapse",
+      "expand": "Expand",
+      "install_failed": "Installation failed: {error}",
+      "installed": "Extension installed successfully. Restart to activate.",
+      "installing": "Installing extension…",
+      "updates_available_one": "{count} extension can be updated",
+      "updates_available_other": "{count} extensions can be updated"
+    },
+    "extension_view": {
+      "missing_export": "Error: Built-in feature {id} has no export matching '{view}'"
+    },
+    "feedback": {
+      "error": "Error",
+      "feedback": "Feedback",
+      "unknown_error": "Unknown error"
+    },
+    "file_search_tab": {
+      "add_root": "Add Root",
+      "already_excluded": "\"{pattern}\" is already excluded",
+      "already_ignored": "\"{pattern}\" is already ignored",
+      "files_indexed": "{count} files indexed",
+      "last_scan": "last scan {ms}ms",
+      "rebuild_index": "Rebuild Index",
+      "rebuilding": "Rebuilding…",
+      "save_failed": "Failed to save file search settings",
+      "state_building": "Building…",
+      "state_cap_reached": "Index cap reached",
+      "state_disabled": "Disabled",
+      "state_ready": "Ready",
+      "state_rescanning": "Rescanning…"
+    },
+    "general_tab": {
+      "shortcut_reserved": "Cannot save, shortcut may be reserved by the OS or another app",
+      "theme_apply_failed": "Could not apply theme \"{id}\""
+    },
+    "lan_picker": {
+      "allow_failed": "Failed to allow device.",
+      "endpoint_not_allowed": "This endpoint is not allowed."
+    },
+    "launcher": {
+      "search_placeholder": "Search or type a command...",
+      "search_view_placeholder": "Search..."
+    },
+    "onboarding": {
+      "bind_conflict": "Couldn't bind {shortcut}. It's already used by \"{name}\". Try a different hotkey.",
+      "bind_failed": "Couldn't bind {shortcut}. Try a different hotkey.",
+      "no_ai_provider": "No AI provider is connected yet — go back and connect one.",
+      "sample_snippet_name": "My email",
+      "shortcut_set_failed": "Could not set that shortcut",
+      "step_of": "Step {position} of {total}",
+      "test_box_disabled": "Finish setup above to try it here"
+    },
+    "permission_consent": {
+      "enable": "Enabling it grants the following permissions:",
+      "install": "Installing it grants the following permissions:",
+      "review": "Its requested permissions have changed and need your review:",
+      "title": "{name} requests permissions",
+      "update": "An update changed the permissions it requests:"
+    },
+    "preferences_form": {
+      "app_path": "Application path",
+      "dir_path": "Directory path",
+      "file_path": "File path",
+      "unknown_type": "Unknown type: {type}"
+    },
+    "recorder": {
+      "already_assigned": "Already assigned to '{name}'",
+      "invalid_key": "Invalid key",
+      "invalid_keys": "Invalid keys"
+    },
+    "required_prefs": {
+      "save_continue": "Save & Continue"
+    },
+    "runtime_downloads": {
+      "unknown_size": "an unknown size"
+    },
+    "scheduled_tasks": {
+      "every_days": "every {count} days",
+      "every_hours": "every {count} hours",
+      "every_minutes": "every {count} minutes",
+      "every_seconds": "every {count} seconds"
+    },
+    "scripts_tab": {
+      "add_failed": "Could not add directory",
+      "remove_failed": "Could not remove directory"
+    },
+    "search_header": {
+      "ask_ai": "Ask AI"
+    },
+    "secret_redaction": {
+      "redacted": "{count} redacted"
+    },
+    "sections": {
+      "favorites": "Favorites",
+      "other": "Other"
+    },
+    "settings_handlers": {
+      "auto_update_failed": "Failed to update auto-update setting",
+      "developer_mode_failed": "Failed to update developer mode",
+      "developer_setting_failed": "Failed to update developer setting",
+      "dock_icon_failed": "Failed to update dock icon setting",
+      "extension_update_failed": "Failed to update extension settings.",
+      "extension_updated": "Extension settings updated.",
+      "extensions_load_failed": "Failed to load extensions information.",
+      "init_failed": "Settings initialization failed. Using defaults.",
+      "launch_view_failed": "Failed to update launch view",
+      "load_failed": "Failed to load settings. Using defaults.",
+      "menu_bar_icon_failed": "Failed to update menu bar icon setting",
+      "search_failed": "Failed to update search setting",
+      "search_updated_restart": "Search settings updated. Please restart Asyar for these changes to take effect.",
+      "setting_failed": "Failed to update setting",
+      "shortcut_save_failed": "Failed to save shortcut",
+      "shortcut_saved": "Shortcut saved successfully",
+      "startup_failed": "Failed to update startup setting",
+      "theme_failed": "Failed to update theme",
+      "uninstall_failed": "Failed to uninstall extension.",
+      "uninstalled": "Extension \"{name}\" uninstalled successfully."
+    },
+    "shell_trust": {
+      "trusted_days_ago": "Trusted {count} days ago",
+      "trusted_today": "Trusted Today",
+      "trusted_yesterday": "Trusted Yesterday"
+    },
+    "show_more": {
+      "active": "{count} Active",
+      "done": "{count} Done",
+      "idle": "{count} Idle"
+    },
+    "snippets_card": {
+      "toggle_failed": "Failed to update snippets state"
+    },
+    "split_list": {
+      "items": "Items"
+    },
+    "window_mode": {
+      "aria": "{mode} window mode"
+    }
   }
 }

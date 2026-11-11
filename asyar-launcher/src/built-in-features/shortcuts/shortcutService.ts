@@ -14,6 +14,7 @@ import { portalStore } from '../portals/portalStore.svelte';
 import { logService } from '../../services/log/logService';
 import { commandService } from '../../services/extension/commandService.svelte';
 import { showWindow, registerItemShortcut, unregisterItemShortcut } from '../../lib/ipc/commands';
+import { t } from '../../services/i18n';
 
 class ShortcutService {
   async init(): Promise<void> {
@@ -65,7 +66,7 @@ class ShortcutService {
       logService.error(`Failed to register shortcut for ${objectId}`);
       return {
         ok: false,
-        conflict: { objectId: 'error', itemName: 'Failed to register shortcut' },
+        conflict: { objectId: 'error', itemName: t('features_extra.shortcuts.register_failed') },
       };
     }
     shortcutStore.add({
@@ -123,7 +124,7 @@ class ShortcutService {
           : persisted.key;
         const launcherShortcut = normalizeShortcut(launcherRaw);
         if (normalized === launcherShortcut) {
-          return { objectId: 'launcher', itemName: 'Launcher Toggle' };
+          return { objectId: 'launcher', itemName: t('features_extra.shortcuts.launcher_toggle') };
         }
       }
     } catch (e) {

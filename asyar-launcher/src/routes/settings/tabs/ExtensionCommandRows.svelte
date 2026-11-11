@@ -86,7 +86,7 @@
   }
 
   async function saveShortcut(detail: { modifier: string; key: string }): Promise<string | true> {
-    if (!editingShortcutTarget) return 'No command selected';
+    if (!editingShortcutTarget) return t('ui_extra.extension_commands.no_command_selected');
     const result = await shortcutService.register(
       editingShortcutTarget.objectId,
       editingShortcutTarget.name,
@@ -94,7 +94,9 @@
       `${detail.modifier}+${detail.key}`,
     );
     if (!result.ok) {
-      return `Could not assign: ${result.conflict?.itemName ?? 'Unsupported key or OS error'}`;
+      return t('ui_extra.common.could_not_assign', {
+        reason: result.conflict?.itemName ?? t('ui_extra.common.unsupported_key'),
+      });
     }
     return true;
   }
@@ -158,7 +160,7 @@
         <button
           type="button"
           class="clear-btn"
-          aria-label="Remove alias for {cmd.name}"
+          aria-label={t('ui_extra.common.remove_alias_for', { name: cmd.name })}
           onclick={(e) => {
             e.stopPropagation();
             void removeAlias(cmd);
@@ -195,7 +197,7 @@
         <button
           type="button"
           class="clear-btn"
-          aria-label="Remove hotkey for {cmd.name}"
+          aria-label={t('ui_extra.common.remove_hotkey_for', { name: cmd.name })}
           onclick={(e) => {
             e.stopPropagation();
             void removeShortcut(cmd);

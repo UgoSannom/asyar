@@ -1,3 +1,4 @@
+import { t } from '../i18n';
 import {
   searchBuiltinProviders,
   executeBuiltinSearchResult,
@@ -317,7 +318,9 @@ class SearchOrchestratorClass {
           extensionId: entry.extensionId,
           category: 'extension',
           kindLabel: entry.provider.name,
-          primaryActionLabel: item.url ? 'Open in Browser' : 'Open',
+          primaryActionLabel: item.url
+            ? t('features.url_opener.open_in_browser')
+            : t('actions.open'),
           score: 0.6,
           tier: 5,
           path: item.path,

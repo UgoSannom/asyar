@@ -95,7 +95,7 @@
       logService.warn(`Failed to load applications: ${err}`);
       // A silent refresh that fails keeps showing the cached list.
       if (!applicationsCache.hasLoadedOnce) {
-        errorMessage = 'Failed to load applications. You can try refreshing.';
+        errorMessage = t('ui_extra.applications.load_failed');
       }
     } finally {
       isLoading = false;
@@ -205,7 +205,7 @@
       await addDirectory(picked);
     } catch (err) {
       logService.warn(`Directory picker failed: ${err}`);
-      errorMessage = 'Could not open directory picker';
+      errorMessage = t('ui_extra.common.could_not_open_picker');
     } finally {
       await setFocusLock(false);
       isBrowsing = false;
@@ -233,7 +233,7 @@
     modifier: string;
     key: string;
   }): Promise<string | true> {
-    if (!editingApp) return 'No application selected';
+    if (!editingApp) return t('ui_extra.applications.no_app_selected');
     const shortcut = `${detail.modifier}+${detail.key}`;
     const result = await shortcutService.register(
       editingApp.id,
@@ -244,8 +244,8 @@
       editingApp.icon ?? undefined,
     );
     if (!result.ok) {
-      const reason = result.conflict?.itemName ?? 'Unsupported key or OS error';
-      return `Could not assign: ${reason}`;
+      const reason = result.conflict?.itemName ?? t('ui_extra.common.unsupported_key');
+      return t('ui_extra.common.could_not_assign', { reason });
     }
     return true;
   }
@@ -283,7 +283,7 @@
             <button
               type="button"
               class="btn btn-danger remove-btn"
-              aria-label="Remove {row.path}"
+              aria-label={t('settings.ai.remove_named', { name: row.path })}
               onclick={() => handleRemoveDirectory(row.path)}
             >
               <Icon name="trash" size={14} />
@@ -406,7 +406,7 @@
                 <button
                   type="button"
                   class="clear-btn"
-                  aria-label="Remove alias for {app.name}"
+                  aria-label={t('ui_extra.common.remove_alias_for', { name: app.name })}
                   onclick={() => handleRemoveAlias(app)}
                 >
                   ✕
@@ -430,7 +430,7 @@
                 <button
                   type="button"
                   class="clear-btn"
-                  aria-label="Remove hotkey for {app.name}"
+                  aria-label={t('ui_extra.common.remove_hotkey_for', { name: app.name })}
                   onclick={() => handleRemoveShortcut(app)}
                 >
                   ✕

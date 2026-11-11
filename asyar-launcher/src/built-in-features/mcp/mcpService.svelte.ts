@@ -27,6 +27,7 @@ import { listen, type UnlistenFn } from '@tauri-apps/api/event';
 import { logService } from '../../services/log/logService';
 import { runtimeService } from '../../services/runtime/runtimeService.svelte';
 import { feedbackService } from '../../services/feedback/feedbackService.svelte';
+import { t } from '../../services/i18n';
 
 interface StatusChangedEvent {
   serverId: string;
@@ -135,14 +136,13 @@ export class McpService {
       const approved = await this.requestRuntimeConsent(result.name, result.sizeBytes);
       if (!approved) return null; // an intentional decline, not an error
       if (!(await this.downloadRuntimeOrReportFailure(result.name))) {
-        this.installError = `Failed to download ${result.name}. Try again from the install form.`;
+        this.installError = t('features_extra.mcp.download_failed_install', { name: result.name });
         return null;
       }
       result = await mcpInstallServer(input);
     }
     if (isRuntimeConsentNeeded(result)) {
-      this.installError =
-        'Could not install this MCP server — check its command/arguments and try again.';
+      this.installError = t('features_extra.mcp.install_failed');
       return null;
     }
     await this.refreshServers();
@@ -161,7 +161,7 @@ export class McpService {
       const approved = await this.requestRuntimeConsent(result.name, result.sizeBytes);
       if (!approved) return; // an intentional decline, not an error
       if (!(await this.downloadRuntimeOrReportFailure(result.name))) {
-        this.enableError = `Failed to download ${result.name}. Try again from here.`;
+        this.enableError = t('features_extra.mcp.download_failed_here', { name: result.name });
         return;
       }
       result = await mcpSetServerEnabled(serverId, enabled);
@@ -169,8 +169,7 @@ export class McpService {
     if (result === true) {
       await this.refreshServers();
     } else {
-      this.enableError =
-        'Could not enable this MCP server — check its configuration and try again.';
+      this.enableError = t('features_extra.mcp.enable_failed');
     }
   }
 

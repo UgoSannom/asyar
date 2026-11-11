@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import { extensionStateManager } from '../../extension/extensionStateManager.svelte';
 import { settingsService } from '../../settings/settingsService.svelte';
 import type {
@@ -27,7 +28,9 @@ interface ExtensionsData {
 
 export class ExtensionsSyncProvider implements ISyncProvider {
   readonly id = 'extensions';
-  readonly displayName = 'Extensions';
+  get displayName(): string {
+    return t('settings.tabs.extensions');
+  }
   readonly icon = 'puzzle';
   readonly syncTier = 'core' as const;
   readonly defaultEnabled = true;

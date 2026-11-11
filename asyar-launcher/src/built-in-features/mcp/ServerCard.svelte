@@ -2,6 +2,7 @@
   import { mcpService } from './mcpService.svelte';
   import { statusBadgeColor, transportLabel } from './manageServersView.helpers';
   import type { McpServerSummary } from './types';
+  import { t } from '../../services/i18n';
   import Toggle from '../../components/base/Toggle.svelte';
   import Button from '../../components/base/Button.svelte';
 
@@ -42,17 +43,23 @@
   </div>
 
   <div class="card-meta">
-    <span class="meta-item">Transport: {transportText}</span>
-    <span class="meta-item">{server.toolsCount} tools</span>
+    <span class="meta-item">
+      {t('features_extra.mcp.transport_label', { transport: transportText })}
+    </span>
+    <span class="meta-item">
+      {t('features_extra.mcp.tools_count', { count: server.toolsCount })}
+    </span>
   </div>
 
   <div class="card-actions">
     <span class="toggle-label">
       <Toggle checked={server.enabled} onchange={handleToggleEnabled} />
-      <span>{server.enabled ? 'Enabled' : 'Disabled'}</span>
+      <span>
+        {server.enabled ? t('features_extra.mcp.enabled') : t('features_extra.mcp.disabled')}
+      </span>
     </span>
     <Button class="btn-danger" onclick={handleUninstall} disabled={uninstalling}>
-      {uninstalling ? 'Uninstalling…' : 'Uninstall'}
+      {uninstalling ? t('settings.extensions.uninstalling') : t('common.uninstall')}
     </Button>
   </div>
 </div>

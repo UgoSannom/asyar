@@ -1,3 +1,4 @@
+import { t } from '../i18n';
 import type { IconSource } from '../../lib/icon';
 import type { CommandArgument } from 'asyar-sdk/contracts';
 import { logService } from '../log/logService';
@@ -165,8 +166,12 @@ const EMPTY_FLAGGED: ReadonlySet<string> = new Set();
 /** "A or B" for two, "A, B, or C" beyond: the bar's either-list copy. */
 function eitherList(labels: string[]): string {
   if (labels.length <= 1) return labels[0] ?? '';
-  if (labels.length === 2) return `${labels[0]} or ${labels[1]}`;
-  return `${labels.slice(0, -1).join(', ')}, or ${labels[labels.length - 1]}`;
+  if (labels.length === 2)
+    return t('services_extra.command_args.either_two', { first: labels[0], second: labels[1] });
+  return t('services_extra.command_args.either_many', {
+    list: labels.slice(0, -1).join(', '),
+    last: labels[labels.length - 1],
+  });
 }
 
 /** What Enter on a command should do, and what it should run with. */
@@ -684,7 +689,7 @@ export class CommandArgumentsService {
    */
   private missingArgumentNotice(resolved: ArgumentModelResolution): string {
     const active = this._active;
-    if (!active) return 'Fill required fields';
+    if (!active) return t('services_extra.command_args.fill_required');
     const items: Array<{ idx: number; text: string }> = [];
     for (const name of resolved.unfilledRequiredVisible) {
       const idx = active.args.findIndex((a) => a.name === name);
@@ -703,10 +708,12 @@ export class CommandArgumentsService {
         text: eitherList(labels),
       });
     }
-    if (!items.length) return 'Fill required fields';
+    if (!items.length) return t('services_extra.command_args.fill_required');
     items.sort((a, b) => a.idx - b.idx);
     // Two spaces after the label, which BottomActionBar renders bold: it
     // string-matches this exact "Required  " prefix, so they change together.
+    // The prefix is a machine marker, not display text: BottomActionBar
+    // replaces the word with t('services_extra.command_args.required').
     return `Required  ${items.map((i) => i.text).join(' • ')}`;
   }
 

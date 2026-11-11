@@ -251,7 +251,13 @@ pub async fn show_open_extension_dialog(app_handle: AppHandle) -> Result<Option<
     app_handle
         .dialog()
         .file()
-        .add_filter("Asyar Package", &["asyar"])
+        .add_filter(
+            crate::locale::app_native_text(
+                &app_handle,
+                crate::locale::NativeText::DialogFilterPackage,
+            ),
+            &["asyar"],
+        )
         .pick_file(move |file_path| {
             let _ = tx.send(file_path);
         });

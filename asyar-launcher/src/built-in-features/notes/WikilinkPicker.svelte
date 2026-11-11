@@ -70,7 +70,7 @@
             highlightedIndex = i;
           }}
         >
-          {note.title || 'Untitled Note'}
+          {note.title || t('features.notes.ui.untitled')}
         </li>
       {/each}
     </ul>

@@ -2206,5 +2206,1438 @@
     "direct_subtitle": "{extensionName} 請求存取 {host}:{port}",
     "scanning": "正在掃描區域網路…",
     "no_devices": "未在區域網路上找到任何裝置。"
+  },
+  "features_extra": {
+    "time": {
+      "just_now": "剛剛",
+      "min_ago": "{count} 分鐘前",
+      "h_ago": "{count} 小時前",
+      "d_ago": "{count} 天前",
+      "mo_ago": "{count} 個月前",
+      "y_ago": "{count} 年前",
+      "m_ago_short": "{count} 分鐘前",
+      "h_ago_short": "{count} 小時前",
+      "d_ago_short": "{count} 天前"
+    },
+    "clipboard": {
+      "title_image": "圖片",
+      "title_files": "檔案",
+      "title_empty": "空",
+      "file_count_one": "{count} 個檔案",
+      "file_count_other": "{count} 個檔案",
+      "word_count_one": "{count} 個字詞",
+      "word_count_other": "{count} 個字詞",
+      "char_count": "{count} 個字元",
+      "truncated": "顯示前 {shown} 個字元（共 {total} 個）",
+      "preview_of": "{name} 的預覽",
+      "multi_selected": "已選取 {count} 項 · 按 Enter 合併並貼上",
+      "type_image": "圖片",
+      "type_file": "檔案",
+      "paste": "貼上"
+    },
+    "notes": {
+      "still_indexing": "仍在為你的筆記建立索引…",
+      "no_notes_found": "未找到筆記",
+      "toast_saved": "筆記已儲存",
+      "toast_added_today": "已加入今日筆記",
+      "toast_unstuck": "已從桌面取下",
+      "toast_stuck": "已貼到桌面",
+      "toast_exported": "筆記已匯出",
+      "persist": {
+        "save": "筆記儲存失敗——變更可能在重新啟動後遺失",
+        "update": "筆記更新失敗——變更可能在重新啟動後遺失",
+        "delete": "筆記刪除失敗——變更可能在重新啟動後遺失",
+        "toggle_pin": "筆記固定/取消固定失敗——變更可能在重新啟動後遺失"
+      }
+    },
+    "common": {
+      "name_copy": "{name} 副本"
+    },
+    "shortcuts": {
+      "persist": {
+        "save": "快捷鍵儲存失敗——變更可能在重新啟動後遺失",
+        "update": "快捷鍵更新失敗——變更可能在重新啟動後遺失",
+        "delete": "快捷鍵刪除失敗——變更可能在重新啟動後遺失"
+      },
+      "register_failed": "註冊快捷鍵失敗",
+      "launcher_toggle": "啟動器開關",
+      "no_item_selected": "未選取項目",
+      "unsupported_key": "不支援的按鍵或系統錯誤",
+      "assign_failed": "無法指派：{reason}",
+      "press_combination": "按下要用於 {name} 的組合鍵。"
+    },
+    "snippets": {
+      "persist": {
+        "save": "片段儲存失敗——變更可能在重新啟動後遺失",
+        "update": "片段更新失敗——變更可能在重新啟動後遺失",
+        "delete": "片段刪除失敗——變更可能在重新啟動後遺失",
+        "toggle_pin": "片段固定/取消固定失敗——變更可能在重新啟動後遺失",
+        "toggle_private": "片段切換私密狀態失敗——變更可能在重新啟動後遺失",
+        "clear_all": "清除全部片段失敗——變更可能在重新啟動後遺失"
+      },
+      "err_name_required": "名稱為必填項。",
+      "err_expansion_required": "展開內容為必填項。",
+      "err_keyword_lowercase": "關鍵詞必須為小寫。",
+      "err_keyword_in_use": "該關鍵詞已被使用。",
+      "new_snippet": "新增片段",
+      "keyword_placeholder": "例如 ;email",
+      "expansion_placeholder": "例如 hello@example.com",
+      "supported_prefix": "支援：",
+      "custom_format_pre": "支援自訂格式，例如"
+    },
+    "store": {
+      "download_url_missing": "擴充功能下載網址無法使用，請再試一次。",
+      "install_info_failed": "取得安裝資訊失敗：{status} {detail}",
+      "p_installed": "{name} 已安裝",
+      "p_install_failed": "安裝 {name} 失敗",
+      "p_uninstalled": "{name} 已解除安裝",
+      "p_uninstall_failed": "解除安裝 {name} 失敗",
+      "p_updated": "{name} 已更新至 v{version}",
+      "p_update_failed": "更新 {name} 失敗",
+      "load_failed": "載入擴充功能失敗：{error}",
+      "show_details": "顯示詳情",
+      "details_load_failed": "載入詳情失敗：{error}",
+      "err_install": "安裝失敗：{error}",
+      "err_uninstall": "解除安裝失敗：{error}",
+      "err_update": "更新失敗：{error}",
+      "unknown": "未知",
+      "installs_count": "{count} 次安裝",
+      "update_to": "更新至 v{version}",
+      "requires_sdk_tooltip": "此擴充功能需要 Asyar SDK {sdk}。請更新 Asyar 後再安裝。",
+      "incompatible": "不相容（需要 SDK {sdk}）",
+      "install_theme": "安裝主題",
+      "requires_newer": "此擴充功能需要更新版本的 Asyar（SDK {sdk}）",
+      "no_description": "未提供描述。",
+      "command_count_one": "{count} 個指令",
+      "command_count_other": "{count} 個指令",
+      "mode_view": "檢視",
+      "mode_background": "背景",
+      "aria_list": "商店擴充功能",
+      "by_author": "作者：{name}"
+    },
+    "scripts": {
+      "issue_dir_unavailable": "目錄無法使用",
+      "issue_metadata_unavailable": "中繼資料無法使用",
+      "issue_path_unavailable": "路徑無法使用",
+      "issue_not_executable": "無法執行",
+      "issue_unreadable": "無法讀取",
+      "issue_invalid_header": "標頭無效",
+      "issue": "問題",
+      "none": "無",
+      "inline_clamped": "內嵌指令碼 {name} 要求的 refreshTime 低於 10 秒，已提高至 10 秒（Asyar 最小值）。",
+      "inline_capped": "已達內嵌指令碼上限（最多 10 個）。以下指令碼將不會自動重新整理：{scripts}。仍可透過選取它們手動執行。",
+      "inline_error": "錯誤：{error}"
+    },
+    "agents": {
+      "silent_running": "✨ {name}…",
+      "silent_empty_hud": "⚠️ 回應為空",
+      "silent_empty_detail": "智慧代理傳回了空回應",
+      "ai_command": "AI 指令",
+      "silent_failed": "⚠️ {name} 失敗",
+      "no_selection": "未選取內容",
+      "read_selection_failed": "無法讀取所選內容",
+      "clipboard_empty": "剪貼簿是空的",
+      "read_clipboard_failed": "無法讀取剪貼簿",
+      "copied_hud": "✓ 已複製",
+      "agent_not_found": "找不到智慧代理「{id}」",
+      "promoted": "✓ 已轉為片段",
+      "promote_failed": "轉換失敗",
+      "delete_failed": "刪除失敗",
+      "clear_failed": "清除失敗",
+      "edit_heading": "編輯智慧代理",
+      "new_heading": "新增智慧代理",
+      "shortcode_placeholder": "例如 : 或 ;",
+      "new_thread": "新增對話",
+      "threads": "會話"
+    },
+    "window_management": {
+      "saved": "已儲存「{name}」",
+      "renamed": "已重新命名為「{name}」",
+      "deleted": "已刪除「{name}」",
+      "layout_subtitle": "{width}×{height}，位於 ({x}, {y})",
+      "no_layout_arg": "未提供佈局名稱或 ID",
+      "layout_not_found": "找不到佈局「{name}」",
+      "restored": "已還原"
+    },
+    "file_search": {
+      "aria_files": "檔案",
+      "folder_path": "資料夾 — {path}"
+    },
+    "mcp": {
+      "download_failed_install": "下載 {name} 失敗。請從安裝表單再試一次。",
+      "install_failed": "無法安裝此 MCP 伺服器——請檢查其指令/引數後再試一次。",
+      "download_failed_here": "下載 {name} 失敗。請在此處再試一次。",
+      "enable_failed": "無法啟用此 MCP 伺服器——請檢查其設定後再試一次。",
+      "err_id_required": "ID 為必填項。",
+      "err_display_name_required": "顯示名稱為必填項。",
+      "err_command_required": "stdio 傳輸方式需要填寫指令。",
+      "err_url_required": "需要以 http:// 或 https:// 開頭的有效 URL。",
+      "import_failed": "匯入失敗。",
+      "import_selected": "匯入所選",
+      "parse_failed": "JSON 解析失敗。請檢查格式後再試一次。",
+      "servers_found": "找到 {count} 個伺服器：",
+      "remove_argument": "移除引數",
+      "remove_variable": "移除變數",
+      "remove_header": "移除標頭",
+      "tools_found": "找到的工具：{count}",
+      "test_error": "錯誤：{error}",
+      "unknown_size": "未知大小",
+      "transport_label": "傳輸方式：{transport}",
+      "tools_count": "{count} 個工具",
+      "enabled": "已啟用",
+      "disabled": "已停用",
+      "agent_short": "智慧代理 {id}",
+      "an_agent": "某個智慧代理",
+      "value_placeholder": "值",
+      "cwd_placeholder": "/選用/工作/目錄"
+    },
+    "portals": {
+      "placeholder_count_one": "{count} 個預留位置",
+      "placeholder_count_other": "{count} 個預留位置",
+      "edit_portal": "編輯傳送門"
+    },
+    "runs": {
+      "running": "執行中 · {elapsed}",
+      "succeeded_after": "成功 · {duration}",
+      "succeeded": "成功",
+      "unknown_error": "未知錯誤",
+      "failed": "失敗 · {error}",
+      "cancelled": "已取消"
+    },
+    "walkthrough": {
+      "req_manual": "完成後勾選",
+      "req_days": "在 {count} 個不同的日子使用",
+      "req_times": "使用 {count} 次",
+      "req_auto": "使用時自動完成",
+      "marked_done": "已標記為完成",
+      "progress_of": "{current}/{target}",
+      "progress_days": "{current}/{target} 天",
+      "progress_times": "{current}/{target} 次",
+      "open_task": "開啟任務"
+    },
+    "raycast_import": {
+      "password_prompt": "請輸入在 Raycast 中匯出時設定的密碼。",
+      "password_prompt_file": "請輸入在 Raycast 中匯出「{file}」時設定的密碼。",
+      "found_in": "在 {name} 中找到",
+      "export_fallback": "匯出檔案",
+      "not_importable": "無法匯入：",
+      "skipped_hotkeys_one": "{count} 個快捷鍵綁定到 Raycast 指令或缺少的應用程式",
+      "skipped_hotkeys_other": "{count} 個快捷鍵綁定到 Raycast 指令或缺少的應用程式",
+      "skipped_aliases_one": "{count} 個別名綁定到 Raycast 指令、缺少的應用程式，或包含 Asyar 無法使用的字元",
+      "skipped_aliases_other": "{count} 個別名綁定到 Raycast 指令、缺少的應用程式，或包含 Asyar 無法使用的字元",
+      "summary_snippets": "片段：已新增 {added} 個，略過 {skipped} 個",
+      "summary_portals": "傳送門：已新增 {added} 個，略過 {skipped} 個",
+      "summary_shortcuts": "快捷鍵：已新增 {added} 個，略過 {skipped} 個",
+      "summary_aliases": "別名：已新增 {added} 個，略過 {skipped} 個"
+    },
+    "aliases": {
+      "reassign_message": "「{name}」已在使用「{alias}」。要重新指派嗎？"
+    },
+    "calculator": {
+      "copied_value": "已複製：{value}"
+    },
+    "create_extension": {
+      "p_preparing": "正在準備檔案系統…",
+      "p_theme_files": "正在寫入主題檔案…",
+      "p_opening_ide": "正在開啟 IDE…",
+      "p_done": "完成！",
+      "p_resolving_sdk": "正在取得最新 SDK 版本…",
+      "p_scaffold_files": "正在寫入範本檔案…",
+      "p_pnpm_install": "正在執行「pnpm install」…（可能需要一分鐘）",
+      "p_building": "正在建置擴充功能…",
+      "p_build_failed_note": "注意：無法自動建置。請在擴充功能目錄中執行「pnpm install && pnpm run build」。",
+      "p_registering": "正在註冊開發擴充功能…",
+      "p_register_failed_note": "注意：註冊自動載入失敗。你可能需要執行「asyar link」。"
+    },
+    "ai_builder": {
+      "secret_refused": "已拒絕：在 {path} 中發現硬編碼的密鑰",
+      "download_declined": "已拒絕下載。",
+      "download_failed": "下載 {name} 失敗。請從 AI 擴充功能建構器再試一次。",
+      "cred_check_failed": "無法驗證 AI 憑證狀態。請檢查「設定 → AI」。",
+      "needs_anthropic_key": "此功能需要 Anthropic API 金鑰。請在「設定 → AI → Anthropic」中新增。",
+      "start_failed": "無法開始建置。請再試一次。",
+      "runtime_unavailable": "所需的執行環境已無法使用。請再試一次。",
+      "starting": "正在啟動…",
+      "could_not_start": "建置無法啟動。",
+      "steps_completed_one": "已完成 {count} 個步驟",
+      "steps_completed_other": "已完成 {count} 個步驟",
+      "answer": "回答"
+    },
+    "usage_stats": {
+      "launch_one": "次啟動",
+      "launch_other": "次啟動",
+      "active_day_one": "活躍天數",
+      "active_day_other": "活躍天數"
+    },
+    "help": {
+      "open_guide": "開啟指南"
+    }
+  },
+  "builtin": {
+    "agents": {
+      "name": "代理",
+      "description": "執行可使用工具的 AI 代理",
+      "commands": {
+        "manage-agents": {
+          "name": "管理代理",
+          "description": "開啟代理管理器"
+        },
+        "ask": {
+          "name": "詢問 AI",
+          "description": "向 AI 代理提問"
+        }
+      },
+      "walkthrough": {
+        "ask-ai": {
+          "title": "不必切換 App 即可詢問 AI",
+          "summary": "直接在搜尋列中提出問題",
+          "body": "在搜尋列中提問，就地取得答案——不必開瀏覽器分頁，不必切換 App，也不會打斷手邊的工作。\n\n代理還能使用工具，因此不只是回答問題，還能在你的電腦上執行操作。\n\n## 完成任務\n\n執行 **詢問 AI**，向它提出一個真正的問題。"
+        }
+      }
+    },
+    "calculator": {
+      "name": "計算機",
+      "description": "自然語言計算機：數學運算、單位和貨幣換算、百分比和小費、日期（\"days until christmas\"）、世界時鐘（\"5pm ldn in sf\"）、進位轉換、比例以及顏色轉換——直接在搜尋列中完成。",
+      "preferences": {
+        "refreshInterval": {
+          "title": "匯率更新間隔",
+          "description": "在背景更新匯率的頻率，單位為小時（1–24）。"
+        },
+        "numberFormat": {
+          "title": "數字格式",
+          "description": "你書寫小數的方式。「自動」會依照系統的地區設定。",
+          "options": {
+            "auto": "自動（系統地區）",
+            "point": "1,234.56 — 小數點",
+            "comma": "1.234,56 — 小數逗號"
+          }
+        },
+        "preferredCurrency": {
+          "title": "偏好貨幣",
+          "description": "3 個字母的代碼（如 USD、EUR、IQD），在你輸入「50 usd」這類未指定目標貨幣的金額時使用。"
+        }
+      },
+      "walkthrough": {
+        "calculate": {
+          "title": "一個永遠不必開啟的計算機",
+          "summary": "直接在搜尋列中輸入算式",
+          "body": "直接在搜尋列中輸入算式、單位換算、貨幣換算或日期差，邊輸入邊顯示答案。不必開啟 App，也不必切換模式。\n\n試試這些：\n\n- `1234 * 56`\n- `120 usd in eur`\n- `18% of 240`\n- `days until dec 25`\n\n## 完成任務\n\n在搜尋列中完成一次計算，然後將此任務標示為完成。"
+        }
+      }
+    },
+    "clipboard-history": {
+      "name": "剪貼簿歷史",
+      "description": "管理和存取剪貼簿歷史",
+      "commands": {
+        "show-clipboard": {
+          "name": "剪貼簿歷史",
+          "description": "檢視和管理剪貼簿歷史",
+          "accessory": {
+            "all": "所有類型",
+            "text": "文字",
+            "images": "圖片",
+            "files": "檔案"
+          }
+        }
+      },
+      "walkthrough": {
+        "clipboard-habit": {
+          "title": "再也不會遺失複製的內容",
+          "summary": "在三個不同的日子開啟剪貼簿歷史",
+          "body": "你複製的所有內容都會被保留、可搜尋，一鍵即可取用。不會再因為複製新內容而弄丟之前的內容，也不必再把同一個連結找兩遍。\n\n剪貼簿歷史是大家公認改變了工作方式的功能——但前提是它已經幫過你幾次。所以這項任務要求三天，而不是只開啟一次。\n\n## 完成任務\n\n1. 像平常一樣複製一些內容。\n2. 開啟 **剪貼簿歷史**，貼上一則較早的內容。\n3. 在三個不同的日子重複這樣做。"
+        }
+      }
+    },
+    "create-extension": {
+      "name": "開發者工具",
+      "description": "建立新的 Asyar 擴充套件框架",
+      "commands": {
+        "open": {
+          "name": "建立擴充套件",
+          "description": "建立一個用於開發的新 Asyar 擴充套件框架"
+        },
+        "build-with-ai": {
+          "name": "用 AI 建立擴充套件",
+          "description": "用文字描述擴充套件，讓 AI 來建立"
+        },
+        "my-extensions": {
+          "name": "我的擴充套件",
+          "description": "瀏覽你建立的擴充套件並發佈它們"
+        }
+      },
+      "walkthrough": {
+        "build-an-extension": {
+          "title": "建立你的第一個擴充套件",
+          "summary": "建立擴充套件框架，讓 Asyar 為你所用",
+          "body": "你在本指引中用過的每個內建功能，都是以你同樣可以使用的公開 API 建立的擴充套件。如果 Asyar 缺少你需要的功能，補上它只需幾個小時，而不必提出功能請求。\n\n## 完成任務\n\n執行 **開發者工具**，建立你的第一個擴充套件框架。"
+        }
+      }
+    },
+    "feedback": {
+      "name": "回饋",
+      "description": "向 Asyar 團隊傳送回饋、功能建議或回報問題",
+      "commands": {
+        "send-feedback": {
+          "name": "傳送回饋",
+          "description": "分享想法、讚美或錯誤回報"
+        }
+      }
+    },
+    "file-search": {
+      "name": "檔案搜尋",
+      "description": "在你的個人資料夾中搜尋檔案",
+      "commands": {
+        "show-files": {
+          "name": "搜尋檔案",
+          "description": "依名稱搜尋檔案",
+          "accessory": {
+            "all": "所有檔案",
+            "document": "文件",
+            "image": "圖片",
+            "code": "程式碼",
+            "audio-video": "音訊和影片",
+            "archive": "壓縮檔",
+            "folder": "資料夾"
+          }
+        }
+      },
+      "walkthrough": {
+        "find-a-file": {
+          "title": "不必開啟視窗就能找到檔案",
+          "summary": "直接從啟動器搜尋檔案",
+          "body": "檔案搜尋會在本機為你的檔案建立索引，並依模糊名稱尋找——不必逐層瀏覽資料夾，也不必等待檔案管理器開啟。結果可以直接開啟、在檔案管理器中顯示，或釘選以永遠排在最前面。\n\n## 完成任務\n\n執行 **檔案搜尋**，從結果中開啟一個檔案。"
+        }
+      }
+    },
+    "help": {
+      "name": "說明",
+      "description": "鍵盤快速鍵、功能指南和 Asyar 使用手冊",
+      "commands": {
+        "show-help": {
+          "name": "說明",
+          "description": "檢視鍵盤快速鍵並開啟使用指南"
+        }
+      }
+    },
+    "mcp": {
+      "name": "MCP 伺服器",
+      "description": "管理 Model Context Protocol（MCP）伺服器",
+      "commands": {
+        "manage": {
+          "name": "管理 MCP 伺服器",
+          "description": "開啟 MCP 伺服器管理器"
+        }
+      }
+    },
+    "notes": {
+      "name": "筆記",
+      "description": "不必離開鍵盤即可撰寫和整理 Markdown 筆記",
+      "commands": {
+        "open-notes": {
+          "name": "筆記",
+          "description": "瀏覽、搜尋和撰寫筆記"
+        },
+        "quick-note": {
+          "name": "快速筆記",
+          "description": "不必開啟編輯器即可立即記下筆記",
+          "arguments": {
+            "text": {
+              "placeholder": "在想什麼？"
+            }
+          }
+        },
+        "new-sticky": {
+          "name": "新增便利貼",
+          "description": "建立一張釘選在桌面上的空白便利貼"
+        },
+        "append-today": {
+          "name": "加入今天",
+          "description": "在今天的每日筆記中附加一行（若不存在則建立）",
+          "arguments": {
+            "text": {
+              "placeholder": "發生了什麼事？"
+            }
+          }
+        }
+      },
+      "walkthrough": {
+        "first-note": {
+          "title": "在想法溜走前記下來",
+          "summary": "不中斷手邊工作即可記筆記",
+          "body": "筆記用來記下你忙於別的事時冒出的想法——一個提醒、一則會議記錄、一段對話的片段。它會在你目前的工作之上開啟，用完即走。\n\n小技巧：為 **快速筆記** 綁定一個快速鍵，按一次鍵就能記錄。\n\n## 完成任務\n\n執行 **筆記** 或 **快速筆記**，寫點東西。"
+        }
+      }
+    },
+    "portals": {
+      "name": "門戶",
+      "description": "將 URL 儲存為可命名、可搜尋的捷徑",
+      "commands": {
+        "open-portals": {
+          "name": "門戶",
+          "description": "管理已儲存的門戶"
+        }
+      },
+      "walkthrough": {
+        "first-portal": {
+          "title": "直達你常用的連結",
+          "summary": "將 URL 儲存為可命名、可搜尋的門戶",
+          "body": "門戶可以把一個 URL 變成按名稱就能叫出的東西——儀表板、程式碼儲存庫、工單看板、播放清單。門戶還能接受查詢，讓一個門戶成為你常用網站的搜尋框。\n\n## 完成任務\n\n1. 執行 **門戶**。\n2. 加入一個你幾乎每天都會開啟的連結。\n3. 在搜尋列中依名稱叫出它。"
+        }
+      }
+    },
+    "quit": {
+      "name": "Asyar",
+      "description": "結束 Asyar 應用程式",
+      "commands": {
+        "quit-asyar": {
+          "name": "結束 Asyar",
+          "description": "結束 Asyar 應用程式"
+        }
+      }
+    },
+    "raycast-import": {
+      "name": "Raycast 匯入",
+      "description": "將 Raycast 的片段、快速連結和 App 快速鍵匯入 Asyar",
+      "commands": {
+        "import-raycast": {
+          "name": "從 Raycast 匯入",
+          "description": "從 Raycast 匯出檔匯入片段、門戶和快速鍵"
+        }
+      }
+    },
+    "runs": {
+      "name": "執行",
+      "description": "檢視和管理進行中及最近的執行",
+      "commands": {
+        "open-runs": {
+          "name": "執行",
+          "description": "開啟執行檢視"
+        }
+      }
+    },
+    "screen-ocr": {
+      "name": "螢幕 OCR",
+      "description": "從螢幕任意區域擷取並複製文字",
+      "commands": {
+        "capture-text": {
+          "name": "從螢幕擷取文字",
+          "description": "選取螢幕區域以辨識並複製文字"
+        }
+      }
+    },
+    "scripts": {
+      "name": "指令碼",
+      "description": "執行和管理監看目錄中的指令碼",
+      "commands": {
+        "script-library": {
+          "name": "指令碼庫",
+          "description": "檢查、執行和疑難排解指令碼"
+        }
+      }
+    },
+    "settings": {
+      "name": "設定",
+      "description": "開啟應用程式設定",
+      "commands": {
+        "open-settings": {
+          "name": "設定",
+          "description": "開啟應用程式設定"
+        }
+      }
+    },
+    "shortcuts": {
+      "name": "快速鍵",
+      "description": "用於應用程式和指令的全域使用者快速鍵",
+      "commands": {
+        "open-shortcuts": {
+          "name": "快速鍵",
+          "description": "管理已指派的全域快速鍵"
+        }
+      },
+      "walkthrough": {
+        "first-hotkey": {
+          "title": "一鍵開啟任何東西",
+          "summary": "為常用指令綁定全域快速鍵",
+          "body": "全域快速鍵可以在桌面上的任何地方直接開啟指定指令，不必先經過搜尋列。一天執行十次的指令，不該每次都要搜尋。\n\n## 完成任務\n\n1. 執行 **快速鍵**。\n2. 為你最常執行的指令綁定一個快速鍵。\n3. 在其他 App 中使用它。"
+        },
+        "first-alias": {
+          "title": "幫你的常用項目取個兩個字母的名字",
+          "summary": "設定別名，讓某個指令在搜尋中永遠排第一",
+          "body": "別名是直達某個項目的短詞——輸入它，該項目每次都會被選取，無論還有什麼其他相符項目。\n\n別名適合那些你不想每次都去找的東西：`f` 對應檔案搜尋，`cb` 對應剪貼簿歷史，`dw` 對應查詢字義。\n\n## 完成任務\n\n在搜尋結果中選取任一項目，開啟操作面板，為它設定一個別名。"
+        }
+      }
+    },
+    "snippets": {
+      "name": "片段",
+      "description": "文字展開——輸入關鍵字，取得完整文字",
+      "commands": {
+        "open-snippets": {
+          "name": "片段",
+          "description": "管理文字展開片段"
+        }
+      },
+      "walkthrough": {
+        "first-snippet": {
+          "title": "同樣的內容不必再打兩遍",
+          "summary": "建立一個由關鍵字展開的片段",
+          "body": "片段是你經常輸入的一段文字——你的電子郵件地址、常用回覆、程式碼區塊、銀行資訊——只需儲存一次，就能在任何 App 中透過短關鍵字展開。\n\n不錯的第一個片段：你的電子郵件，關鍵字設為 `@@`。\n\n## 完成任務\n\n1. 執行 **片段** 並建立第一個片段。\n2. 幫它設定一個你絕不會誤打的關鍵字。\n3. 在其他 App 中試試這個關鍵字。"
+        }
+      }
+    },
+    "store": {
+      "name": "商店",
+      "description": "瀏覽並安裝 Asyar 擴充套件。",
+      "commands": {
+        "browse": {
+          "name": "瀏覽擴充套件商店",
+          "description": "尋找並安裝新的擴充套件"
+        }
+      },
+      "walkthrough": {
+        "install-an-extension": {
+          "title": "加入 Asyar 還沒有的功能",
+          "summary": "從商店安裝你的第一個擴充套件",
+          "body": "擴充套件與內建功能使用同一套 API，因此商店裡的任何擴充套件用起來都像是應用程式內建的——同樣的搜尋、同樣的操作、同樣的鍵盤規則。\n\n## 完成任務\n\n開啟 **商店**，找到你真正會用的擴充套件並安裝它。"
+        }
+      }
+    },
+    "system-settings": {
+      "name": "系統設定",
+      "description": "搜尋並開啟 macOS 系統設定面板（聲音、顯示器、Wi-Fi…）"
+    },
+    "system": {
+      "name": "系統",
+      "description": "系統指令：睡眠、鎖定螢幕、重新開機、關機"
+    },
+    "url-opener": {
+      "name": "URL 開啟器",
+      "description": "在搜尋列中輸入或貼上網址，即可在瀏覽器中開啟。"
+    },
+    "usage-stats": {
+      "name": "使用統計",
+      "description": "檢視僅存於本機的儀表板，了解你啟動的頻率以及最常執行的指令",
+      "commands": {
+        "open-usage-stats": {
+          "name": "使用統計",
+          "description": "檢視本機使用儀表板"
+        }
+      }
+    },
+    "walkthrough": {
+      "name": "操作指引",
+      "description": "將 Asyar 功能變成習慣的小任務，在你實際使用時自動勾選",
+      "commands": {
+        "show-walkthrough": {
+          "name": "操作指引",
+          "description": "一次一個任務，逐步學習 Asyar"
+        }
+      },
+      "walkthrough": {
+        "start": {
+          "title": "展開成為高手之旅",
+          "summary": "你已經來到這裡——第一個任務已完成",
+          "body": "清單中的每項任務都會教你一件 Asyar 能做、但大多數人從未發現的事。\n\n你不必手動勾選。每項任務都會觀察你實際如何使用 Asyar，在你真正做到的那一刻自動完成。你已經做了好幾週的任務會直接顯示為已完成——清單只會顯示真正剩下的內容。\n\n## 完成任務\n\n開啟操作指引。完成。"
+        },
+        "favorite-an-item": {
+          "title": "把常用項目放在手邊",
+          "summary": "將常用的應用程式或指令加入我的最愛",
+          "body": "搜尋為空時，我的最愛會固定在最上方，優先於 Asyar 的自動使用排序。我的最愛可以是應用程式或指令，輸入搜尋時仍依相關性排序。\n\n## 完成任務\n\n1. 在啟動器中選取任一應用程式或指令。\n2. 按 **⌘K** 開啟 **操作**。\n3. 選擇 **加入我的最愛**。\n4. 清除搜尋，即可看到它出現在最上方。"
+        }
+      }
+    },
+    "window-management": {
+      "name": "視窗管理",
+      "description": "使用版面配置預設調整最前方視窗的大小和位置",
+      "commands": {
+        "left-half": {
+          "name": "左半屏",
+          "description": "螢幕左側 50%"
+        },
+        "right-half": {
+          "name": "右半屏",
+          "description": "螢幕右側 50%"
+        },
+        "top-half": {
+          "name": "上半屏",
+          "description": "螢幕上方 50%"
+        },
+        "bottom-half": {
+          "name": "下半屏",
+          "description": "螢幕下方 50%"
+        },
+        "top-left-quarter": {
+          "name": "左上四分之一",
+          "description": "螢幕左上 25%"
+        },
+        "top-right-quarter": {
+          "name": "右上四分之一",
+          "description": "螢幕右上 25%"
+        },
+        "bottom-left-quarter": {
+          "name": "左下四分之一",
+          "description": "螢幕左下 25%"
+        },
+        "bottom-right-quarter": {
+          "name": "右下四分之一",
+          "description": "螢幕右下 25%"
+        },
+        "left-third": {
+          "name": "左三分之一",
+          "description": "螢幕左側 33%"
+        },
+        "center-third": {
+          "name": "中間三分之一",
+          "description": "螢幕中間 33%"
+        },
+        "right-third": {
+          "name": "右三分之一",
+          "description": "螢幕右側 33%"
+        },
+        "left-two-thirds": {
+          "name": "左三分之二",
+          "description": "螢幕左側 66%"
+        },
+        "right-two-thirds": {
+          "name": "右三分之二",
+          "description": "螢幕右側 66%"
+        },
+        "first-fourth": {
+          "name": "第一個四分之一",
+          "description": "螢幕第一個 25%"
+        },
+        "second-fourth": {
+          "name": "第二個四分之一",
+          "description": "螢幕第二個 25%"
+        },
+        "third-fourth": {
+          "name": "第三個四分之一",
+          "description": "螢幕第三個 25%"
+        },
+        "last-fourth": {
+          "name": "最後一個四分之一",
+          "description": "螢幕最後一個 25%"
+        },
+        "center": {
+          "name": "居中",
+          "description": "居中，佔螢幕 80% × 80%"
+        },
+        "almost-maximize": {
+          "name": "接近最大化",
+          "description": "居中，佔螢幕 90% × 90%"
+        },
+        "maximize": {
+          "name": "最大化",
+          "description": "填滿整個螢幕（全螢幕）"
+        },
+        "restore": {
+          "name": "還原先前的位置",
+          "description": "復原上一次套用的視窗版面配置"
+        },
+        "manage-layouts": {
+          "name": "管理視窗版面配置",
+          "description": "檢視、新增和刪除自訂視窗版面配置"
+        },
+        "switch-windows": {
+          "name": "切換視窗",
+          "description": "切換到某個正在執行的應用程式視窗"
+        },
+        "save-current-layout": {
+          "name": "將目前視窗儲存為佈局",
+          "description": "將最前方視窗的位置和大小儲存為自訂版面配置"
+        },
+        "previous-display": {
+          "name": "上一臺顯示器",
+          "description": "將最前方視窗移到上一臺顯示器"
+        },
+        "next-display": {
+          "name": "下一臺顯示器",
+          "description": "將最前方視窗移到下一臺顯示器"
+        },
+        "apply-layout": {
+          "name": "套用版面配置",
+          "description": "依名稱或 ID 套用自訂視窗版面配置",
+          "arguments": {
+            "name": {
+              "placeholder": "版面配置名稱"
+            },
+            "id": {
+              "placeholder": "版面配置 ID"
+            }
+          }
+        }
+      },
+      "walkthrough": {
+        "tile-a-window": {
+          "title": "不碰滑鼠也能排列視窗",
+          "summary": "用指令取代拖曳來移動視窗",
+          "body": "半屏、三分之一、四分之一、居中、最大化、還原——你需要拖曳才能完成的每種視窗版面配置，都是一個可以執行或綁定快速鍵的指令。\n\n綁定快速鍵後效益最大：按兩次鍵就能讓兩個 App 並排顯示。\n\n## 完成任務\n\n1. 搜尋 `左半屏` 或 `最大化` 並執行。\n2. 為你最常用的兩個版面配置綁定快速鍵。"
+        }
+      }
+    }
+  },
+  "permissions_catalog": {
+    "not_recognized": "此版本的 Asyar 無法辨識。",
+    "entries": {
+      "network": {
+        "title": "網路存取",
+        "description": "發出對外 HTTP 請求。"
+      },
+      "network_lan": {
+        "title": "區域網路存取",
+        "description": "連線至你在設定中核准的區域網路裝置。回送、鏈路本機與雲端中繼資料位址一律封鎖。"
+      },
+      "network_secrets": {
+        "title": "傳送密鑰參照",
+        "description": "將來自已宣告來源的登入密鑰傳送至已宣告的 HTTPS 主機，且不向擴充套件公開權杖。需要網路存取權限。請只核准你信任的主機。"
+      },
+      "notifications_send": {
+        "title": "傳送通知",
+        "description": "向系統通知中心發布通知。"
+      },
+      "clipboard_read": {
+        "title": "讀取剪貼簿",
+        "description": "讀取系統剪貼簿的目前內容。"
+      },
+      "clipboard_write": {
+        "title": "寫入剪貼簿",
+        "description": "向系統剪貼簿寫入或貼上內容。"
+      },
+      "clipboard_history_read": {
+        "title": "讀取剪貼簿歷史",
+        "description": "查詢及搜尋已儲存的剪貼簿歷史記錄。"
+      },
+      "clipboard_history_capture": {
+        "title": "擷取剪貼簿歷史",
+        "description": "在背景訂閱剪貼簿變更以記錄歷史。"
+      },
+      "clipboard_history_manage": {
+        "title": "管理剪貼簿歷史",
+        "description": "刪除記錄、切換收藏或清除已儲存的剪貼簿歷史。"
+      },
+      "storage_read": {
+        "title": "讀取擴充套件儲存空間",
+        "description": "讀取擴充套件自身的鍵值儲存空間。"
+      },
+      "storage_write": {
+        "title": "寫入擴充套件儲存空間",
+        "description": "寫入擴充套件自身的鍵值儲存空間。"
+      },
+      "store_read": {
+        "title": "讀取擴充套件資料",
+        "description": "讀取擴充套件的資料存放區。"
+      },
+      "store_write": {
+        "title": "寫入擴充套件資料",
+        "description": "寫入擴充套件的資料存放區。"
+      },
+      "cache_read": {
+        "title": "讀取擴充套件快取",
+        "description": "讀取擴充套件的快取。"
+      },
+      "cache_write": {
+        "title": "寫入擴充套件快取",
+        "description": "寫入擴充套件的快取。"
+      },
+      "fs_read": {
+        "title": "顯示檔案",
+        "description": "在系統檔案管理器中顯示檔案。"
+      },
+      "fs_write": {
+        "title": "將檔案移至垃圾桶",
+        "description": "將檔案移至系統垃圾桶。"
+      },
+      "fs_watch": {
+        "title": "監看檔案",
+        "description": "監看已宣告 glob 模式下的檔案系統變更。"
+      },
+      "files_search": {
+        "title": "搜尋本機檔案",
+        "description": "搜尋本機檔案索引（檔案名稱與中繼資料，不含檔案內容）。"
+      },
+      "files_read": {
+        "title": "讀取檔案內容",
+        "description": "讀取與已宣告路徑模式相符之檔案的文字內容、列出檔案名稱並轉譯縮圖。憑證存放區與系統位置一律排除在外。"
+      },
+      "files_search_provider": {
+        "title": "提供遠端檔案搜尋",
+        "description": "為遠端與雲端檔案提供搜尋結果。"
+      },
+      "notes_read": {
+        "title": "搜尋及讀取你的筆記",
+        "description": "搜尋你的筆記並讀取任何筆記的完整內容。"
+      },
+      "notes_write": {
+        "title": "建立及附加筆記",
+        "description": "建立新筆記並在現有筆記末尾加入文字。無法覆寫或刪除筆記的現有內容。"
+      },
+      "shell_spawn": {
+        "title": "執行程式",
+        "description": "啟動系統程序並讀取其輸出。這會授予廣泛的系統存取權限。"
+      },
+      "shell_open_url": {
+        "title": "開啟 URL",
+        "description": "在預設瀏覽器中開啟網頁連結（http、https、mailto、tel），以及擴充套件宣告的其他 URL 協定，這些協定可能會啟動為其註冊的應用程式。"
+      },
+      "shell_open_path": {
+        "title": "開啟檔案與資料夾",
+        "description": "使用預設或指定的應用程式開啟本機檔案、資料夾與工作區。"
+      },
+      "entitlements_read": {
+        "title": "讀取訂閱狀態",
+        "description": "讀取使用者目前有效的訂閱權益。"
+      },
+      "selection_read": {
+        "title": "讀取所選內容",
+        "description": "讀取最前端應用程式中目前選取的文字或檔案管理器項目。"
+      },
+      "oauth_use": {
+        "title": "登入服務",
+        "description": "與第三方供應商執行 OAuth 授權流程。"
+      },
+      "extension_invoke": {
+        "title": "呼叫其他擴充套件",
+        "description": "啟動其他已安裝擴充套件中的命令。"
+      },
+      "application_read": {
+        "title": "讀取已安裝的應用程式",
+        "description": "列出已安裝的應用程式，並查詢最前端或執行中的應用程式。"
+      },
+      "window_manage": {
+        "title": "管理視窗",
+        "description": "讀取並變更最前端視窗的位置、大小與全螢幕狀態。"
+      },
+      "screen_pick_color": {
+        "title": "從螢幕取色",
+        "description": "顯示系統滴管工具，並讀取使用者所選螢幕像素的顏色。"
+      },
+      "screen_capture": {
+        "title": "擷取螢幕文字",
+        "description": "擷取螢幕區域，並透過裝置端光學字元辨識 (OCR) 擷取文字。"
+      },
+      "calculator_evaluate": {
+        "title": "數學計算與換算",
+        "description": "計算數學運算式、單位換算與貨幣換算。"
+      },
+      "power_inhibit": {
+        "title": "保持系統喚醒",
+        "description": "在擴充套件邏輯執行期間防止系統進入睡眠。"
+      },
+      "media_control": {
+        "title": "控制媒體播放",
+        "description": "讀取媒體播放器與應用程式（如音樂、TV、Spotify、VLC 或瀏覽器）中正在播放的內容，並傳送播放、暫停與跳過命令。"
+      },
+      "calendar_read": {
+        "title": "讀取行事曆與活動",
+        "description": "列出你的行事曆並讀取其中的活動。"
+      },
+      "calendar_write": {
+        "title": "建立行事曆活動",
+        "description": "在你的行事曆中新增活動。"
+      },
+      "reminders_read": {
+        "title": "讀取提醒事項",
+        "description": "列出你的提醒事項列表及其中的提醒事項。"
+      },
+      "reminders_write": {
+        "title": "建立及完成提醒事項",
+        "description": "新增提醒事項，並將現有提醒事項標示為已完成或未完成。"
+      },
+      "shortcuts_read": {
+        "title": "列出 Apple 捷徑",
+        "description": "查看你的 Apple 捷徑資料庫中捷徑的名稱。"
+      },
+      "shortcuts_run": {
+        "title": "執行 Apple 捷徑",
+        "description": "執行你的任何 Apple 捷徑，並可選擇傳入文字。捷徑可以執行其設計的任何動作。"
+      },
+      "process_read": {
+        "title": "列出程序",
+        "description": "列出執行中的程序及其 CPU 與記憶體用量。"
+      },
+      "process_kill": {
+        "title": "終止程序",
+        "description": "終止或強制結束執行中的程序。"
+      },
+      "systemEvents_read": {
+        "title": "觀察系統事件",
+        "description": "訂閱系統的睡眠、喚醒、闔上螢幕、電池與電源事件。"
+      },
+      "app_frontmost_watch": {
+        "title": "觀察應用程式活動",
+        "description": "訂閱應用程式啟動、終止與最前端應用程式變更事件。"
+      },
+      "timers_schedule": {
+        "title": "排定計時器",
+        "description": "排定持久的一次性計時器，即使重新啟動後也會觸發。"
+      },
+      "timers_cancel": {
+        "title": "取消計時器",
+        "description": "取消先前排定的計時器。"
+      },
+      "timers_list": {
+        "title": "列出計時器",
+        "description": "列出已排定的計時器。"
+      },
+      "preferences_read": {
+        "title": "讀取偏好設定",
+        "description": "讀取擴充套件自身的偏好設定值。"
+      },
+      "preferences_write": {
+        "title": "寫入偏好設定",
+        "description": "變更擴充套件自身的偏好設定值。"
+      },
+      "feedback_announce": {
+        "title": "顯示少量公告",
+        "description": "請求由主程式控制的公告，例如「新功能」。"
+      },
+      "tools_register": {
+        "title": "註冊代理工具",
+        "description": "向代理執行環境公開工具，以便在工具呼叫期間使用。"
+      },
+      "snippets_contribute": {
+        "title": "提供片段",
+        "description": "向全域按鍵比對器提供短代碼展開，在任何應用程式中取代輸入的短代碼。"
+      },
+      "runs_track": {
+        "title": "追蹤背景執行",
+        "description": "啟動並管理在啟動器執行介面中顯示的長時間工作。"
+      },
+      "browser_tabs_read": {
+        "title": "讀取瀏覽器分頁",
+        "description": "列出並檢查已配對瀏覽器中的分頁。"
+      },
+      "browser_tabs_write": {
+        "title": "控制瀏覽器分頁",
+        "description": "在已配對瀏覽器中開啟、啟用與關閉分頁。"
+      },
+      "browser_bookmarks_read": {
+        "title": "讀取書籤",
+        "description": "讀取已配對瀏覽器的書籤。"
+      },
+      "browser_history_read": {
+        "title": "讀取瀏覽記錄",
+        "description": "搜尋已配對瀏覽器的瀏覽記錄。"
+      },
+      "browser_page_read": {
+        "title": "讀取頁面內容",
+        "description": "讀取已配對瀏覽器中目前頁面的內容。"
+      },
+      "browser_page_write": {
+        "title": "操作頁面",
+        "description": "與已配對瀏覽器中的頁面內容互動。"
+      },
+      "mcp": {
+        "title": "Model Context Protocol (MCP)",
+        "description": "探索已設定的 MCP 伺服器並呼叫外部工具。"
+      },
+      "ai": {
+        "title": "向 AI 模型傳送提示",
+        "description": "向主程式設定的 AI 模型傳送提示，以取得補全與串流回應。"
+      }
+    }
+  },
+  "diagnostics_messages": {
+    "permission_denied": "對 {permission} 的存取遭拒",
+    "permission_denied_generic": "對某項資源的存取遭拒",
+    "policy_denied": "動作遭拒：{policyError}",
+    "policy_denied_generic": "動作遭原則拒絕",
+    "network_failure": "網路錯誤",
+    "lock_poisoned": "內部鎖定已損毀，請重新啟動 Asyar",
+    "database_failure": "資料庫錯誤",
+    "not_found": "找不到 {target}",
+    "not_found_generic": "找不到項目",
+    "extension_failure": "擴充套件錯誤：{extension}",
+    "extension_failure_generic": "擴充套件錯誤：未知",
+    "shortcut_failure": "快速鍵錯誤：{shortcut}",
+    "shortcut_failure_generic": "快速鍵錯誤：未知",
+    "platform_failure": "平台錯誤：{platform}",
+    "platform_failure_generic": "平台錯誤：未知",
+    "validation_failure": "輸入無效：{field}",
+    "validation_failure_generic": "輸入無效：值",
+    "encryption_failure": "加密錯誤",
+    "auth_failure": "驗證失敗（{provider}）",
+    "auth_failure_generic": "驗證失敗",
+    "oauth_failure": "OAuth 錯誤（{provider}）",
+    "oauth_failure_generic": "OAuth 錯誤",
+    "power_failure": "電源管理錯誤",
+    "run_failed": "執行失敗：{message}",
+    "run_failed_id": "執行 {id} 失敗",
+    "run_failed_id_generic": "未知執行失敗",
+    "sync_entitlement_required": "雲端同步需要有效的方案",
+    "sync_quota_exceeded": "雲端同步儲存配額已超出（{usedBytes} / {limitBytes} 位元組）",
+    "sync_quota_exceeded_generic": "雲端同步儲存配額已超出",
+    "sync_rate_limited": "雲端同步請求過於頻繁，將在 {retryAfter} 秒後重試",
+    "sync_server_unavailable": "雲端同步伺服器暫時無法使用：{detail}",
+    "sync_server_unavailable_generic": "雲端同步伺服器暫時無法使用",
+    "sync_e2ee_locked": "此裝置上的雲端同步已鎖定。請輸入恢復短語或在其他裝置上核准。",
+    "sync_e2ee_not_enrolled": "此帳號未啟用端對端加密",
+    "sync_e2ee_already_enrolled": "此帳號已啟用端對端加密",
+    "sync_e2ee_wrong_mode": "此加密模式不支援該操作",
+    "sync_finalize_behind": "雲端同步的最終處理已延後，等待本機狀態跟上",
+    "sync_pairing_not_found": "找不到裝置配對請求或請求已過期",
+    "sync_pairing_not_pending": "裝置配對請求已不再處於待處理狀態",
+    "sync_pairing_fingerprint_mismatch": "裝置配對指紋不符：驗證詞與發出請求的裝置不一致。",
+    "sync_pairing_too_many": "進行中的配對請求過多，請稍後再試",
+    "io_failure": "I/O 錯誤",
+    "json_failure": "資料格式錯誤",
+    "unexpected_error": "未預期的錯誤",
+    "search_lock_poisoned": "搜尋索引鎖定已損毀",
+    "search_json_failure": "搜尋資料格式錯誤",
+    "search_io_failure": "搜尋 I/O 錯誤",
+    "search_not_found": "搜尋找不到 {target}",
+    "search_not_found_generic": "搜尋找不到項目",
+    "search_other": "搜尋錯誤：{detail}",
+    "search_other_generic": "搜尋錯誤",
+    "render_error": "檢視轉譯失敗",
+    "invoke_unknown": "命令失敗：{command}",
+    "invoke_unknown_generic": "命令失敗",
+    "extension_proxy_error": "擴充套件呼叫失敗（{method}）",
+    "extension_proxy_error_generic": "擴充套件呼叫失敗",
+    "extension_crash": "{extensionId}（{role}）已停止回應",
+    "extension_crash_generic": "擴充套件（{role}）已停止回應",
+    "iframe_uncaught": "{extensionId} 發生未預期的錯誤",
+    "iframe_uncaught_generic": "擴充套件發生未預期的錯誤",
+    "iframe_unhandled_rejection": "{extensionId} 的 Promise 遭拒絕",
+    "iframe_unhandled_rejection_generic": "擴充套件的 Promise 遭拒絕",
+    "rpc_timeout": "{method} 逾時",
+    "rpc_timeout_generic": "操作逾時",
+    "panic": "Asyar 發生嚴重錯誤",
+    "error": "錯誤",
+    "action_failed": "動作失敗",
+    "mcp_permission_required": "需要權限才能使用 {tool}",
+    "mcp_permission_required_generic": "需要權限才能使用此 MCP 工具",
+    "e2ee_enrollment_failed": "無法啟用加密同步。請檢查網路連線後再試一次。",
+    "e2ee_passphrase_required": "加密同步需要你的口令才能繼續。",
+    "e2ee_key_derivation_failed": "無法衍生你的同步金鑰。請關閉其他應用程式後再試一次。",
+    "e2ee_decrypt_failed": "某個項目解密失敗——你的資料可能已損毀，或口令已變更。",
+    "e2ee_key_version_mismatch": "你的加密同步需要重新整理。正在擷取最新資料…"
+  },
+  "services_extra": {
+    "runtime": {
+      "status_checking": "正在檢查更新…",
+      "status_downloading_progress": "下載中… {done} / {total}",
+      "status_verifying": "正在驗證下載…",
+      "status_finishing": "正在完成設定…",
+      "status_failed": "下載失敗",
+      "unknown_size": "未知大小",
+      "size_mb": "{value} MB",
+      "size_kb": "{value} KB",
+      "confirm_title_one": "下載所需的執行環境？",
+      "confirm_title_other": "下載所需的執行環境？",
+      "confirm_message": "需要 {names}，共 {total}。Asyar 只下載一次，並在所有需要的地方重複使用。",
+      "removal_warning_one": "此執行環境仍被 1 個使用方需要（{list}）。仍要移除嗎？",
+      "removal_warning_other": "此執行環境仍被 {count} 個使用方需要（{list}）。仍要移除嗎？"
+    },
+    "gate": {
+      "sync_sign_in": "雲端同步需要登入帳號。",
+      "sync_entitlement": "雲端同步需要包含 sync:settings 權益的有效訂閱。",
+      "sync_disabled": "雲端同步已在設定中停用。",
+      "ai_sign_in": "雲端 AI 模型需要登入帳號。",
+      "ai_pro": "此 AI 模型需要有效的 Pro 訂閱。",
+      "ai_history_sign_in": "AI 歷史同步需要登入帳號。",
+      "ai_history_entitlement": "AI 歷史同步需要 sync:ai-conversations 權益。",
+      "crash_disabled": "當機報告已在設定中停用。",
+      "usage_disabled": "匿名使用統計分享已停用。",
+      "feature_sign_in": "此功能需要登入帳號。",
+      "feature_entitlement": "此功能需要「{ability}」訂閱權益。"
+    },
+    "auth": {
+      "server_no_response": "伺服器未回應",
+      "login_failed": "登入失敗：{error}",
+      "login_timed_out": "登入逾時，請再試一次。",
+      "login_start_failed": "無法開始登入：{error}",
+      "login_expired": "登入工作階段已過期，請再試一次。"
+    },
+    "profile": {
+      "settings": "應用程式設定",
+      "ai_settings": "AI 設定",
+      "extension_preferences": "擴充套件偏好設定"
+    },
+    "clipboard": {
+      "image_preview": "圖片：{width}×{height}",
+      "files_preview_one": "{count} 個檔案：{names}",
+      "files_preview_other": "{count} 個檔案：{names}",
+      "encrypted_secret": "[已加密的機密]",
+      "accessibility_paste": "Asyar 需要 macOS 輔助使用權限才能貼上。請在「系統設定 → 隱私權與安全性 → 輔助使用」中啟用 Asyar，然後再試一次。"
+    },
+    "whats_new": {
+      "title": "已更新至 v{version}",
+      "message": "按一下查看更新內容"
+    },
+    "command_args": {
+      "fill_required": "請填寫必填欄位",
+      "required": "必填",
+      "either_two": "{first}或{second}",
+      "either_many": "{list}或{last}"
+    },
+    "onboarding": {
+      "ai_status_failed": "無法檢查 AI 設定狀態。",
+      "ai_skip_failed": "無法略過 AI 設定，請再試一次。",
+      "ai_save_failed": "無法儲存 AI 設定，請再試一次。"
+    },
+    "extension_loader": {
+      "permission_review": "{name} 需要在設定中審查權限"
+    },
+    "ai_providers": {
+      "ollama": "Ollama（本機）",
+      "custom": "自訂（相容 OpenAI）"
+    },
+    "secret_refs": {
+      "json": "位於 `{path}` 中的 `{pointer}`",
+      "keychain": "鑰匙圈項目「{service}」中的 `{pointer}`",
+      "keychain_account": "鑰匙圈項目「{service}」（帳號「{account}」）中的 `{pointer}`",
+      "keychain_lead": "鑰匙圈項目「{service}」中的 `{pointer}`",
+      "keychain_account_lead": "鑰匙圈項目「{service}」（帳號「{account}」）中的 `{pointer}`",
+      "or_source": "（或{source}）",
+      "all_paths": "（所有路徑）",
+      "sentence": "將{source}的機密作為 {header} 標頭傳送至 {hosts} — {methods} {paths}。",
+      "keychain_note": "macOS 可能會要求您允許 Asyar 讀取此鑰匙圈項目。"
+    },
+    "launcher": {
+      "unknown_item": "未知項目",
+      "action_failed": "{name} 的動作失敗",
+      "command_failed": "無法執行命令 {name}",
+      "action_invalid": "{name} 的動作無效",
+      "open_failed": "無法開啟 {name}",
+      "no_action": "{name} 沒有可用動作",
+      "run_kind_agent": "代理",
+      "run_kind_script": "指令碼",
+      "run_failed": "失敗 · {output}",
+      "run_done": "完成 · {output}",
+      "no_output": "（無輸出）",
+      "running": "執行中",
+      "dismiss_result": "忽略結果",
+      "dismiss_thread": "忽略對話",
+      "dismiss_result_desc": "移除此指令碼結果列並釋放其輸出（保留歷史記錄）",
+      "dismiss_thread_desc": "從啟動器清單中移除此已完成的對話（仍保留在歷史記錄中）",
+      "dev_build": "開發版本",
+      "shortcut_save_failed": "無法儲存快速鍵"
+    }
+  },
+  "ui_extra": {
+    "about": {
+      "available": "有可用的更新 {version}，正在開始下載...",
+      "check_failed": "檢查更新失敗：{error}",
+      "checking": "正在檢查更新...",
+      "downloading": "正在下載並安裝更新 {version}...",
+      "installed": "更新 {version} 已安裝。重新啟動 Asyar 以套用。",
+      "up_to_date": "您正在使用最新版本。",
+      "update_ready": "更新 {version} 已就緒",
+      "version": "版本 {version}"
+    },
+    "account": {
+      "days_ago_one": "{count} 天前",
+      "days_ago_other": "{count} 天前",
+      "ent_advanced_models": "進階 AI 模型",
+      "ent_ai_chat": "AI 聊天",
+      "ent_ai_history_sync": "AI 對話記錄同步",
+      "ent_premium_extensions": "進階擴充功能",
+      "ent_settings_sync": "設定同步",
+      "hours_ago_one": "{count} 小時前",
+      "hours_ago_other": "{count} 小時前",
+      "just_now": "剛剛",
+      "minutes_ago_one": "{count} 分鐘前",
+      "minutes_ago_other": "{count} 分鐘前",
+      "signing_out": "正在登出…"
+    },
+    "ai_tab": {
+      "engine_unavailable": "搜尋引擎「{name}」無法使用或已淘汰。請在上方選擇可用的引擎。",
+      "get_api_key": "取得 API 金鑰",
+      "legacy_unavailable": "舊版 / 無法使用",
+      "name_api_key": "{name} API 金鑰",
+      "name_base_url": "{name} 基礎 URL",
+      "name_unavailable": "{name}（無法使用）",
+      "reader_unavailable": "閱讀器「{name}」無法使用或已淘汰。請在上方選擇可用的閱讀器。"
+    },
+    "applications": {
+      "load_failed": "無法載入應用程式。您可以嘗試重新整理。",
+      "no_app_selected": "未選取應用程式"
+    },
+    "arg_dropdown": {
+      "search_aria": "搜尋 {name}"
+    },
+    "backup": {
+      "conflicts_one": "{count} 個衝突",
+      "conflicts_other": "{count} 個衝突",
+      "preview_counts": "本機：{local} → 匯入：{incoming}",
+      "read_failed": "無法讀取設定檔封存",
+      "restored": "備份已成功還原。",
+      "saved": "備份已成功儲存。"
+    },
+    "bottom_bar": {
+      "update_ready": "更新已就緒",
+      "update_ready_restart": "更新 {version} 已就緒。按一下以重新啟動。",
+      "update_ready_restart_generic": "更新已就緒。按一下以重新啟動。"
+    },
+    "builtin_features": {
+      "render_failed": "無法呈現 {title} 設定：{error}"
+    },
+    "clipboard_privacy": {
+      "skipped": "已略過 {count} 項"
+    },
+    "common": {
+      "already_in_list": "{path} 已在清單中",
+      "could_not_assign": "無法指派：{reason}",
+      "could_not_open_picker": "無法開啟資料夾選擇器",
+      "remove_alias_for": "移除 {name} 的別名",
+      "remove_hotkey_for": "移除 {name} 的快速鍵",
+      "unknown": "未知",
+      "unsupported_key": "不支援的按鍵或系統錯誤"
+    },
+    "encryption": {
+      "intro": "剪貼簿項目、片段展開、AI 對話和加密的擴充功能偏好設定均以密文形式儲存在磁碟上。"
+    },
+    "entitlement": {
+      "upgrade_required_aria": "{feature} — 需要升級"
+    },
+    "extension_commands": {
+      "no_command_selected": "未選取指令"
+    },
+    "extension_detail": {
+      "platform_unsupported": "不支援 {platform}",
+      "requires_app": "需要應用程式 v{version}+",
+      "requires_sdk": "需要 SDK {version}"
+    },
+    "extension_iframe": {
+      "title": "擴充功能沙箱 - {name}"
+    },
+    "extension_table": {
+      "collapse": "摺疊",
+      "expand": "展開",
+      "install_failed": "安裝失敗：{error}",
+      "installed": "擴充功能安裝成功。重新啟動以啟用。",
+      "installing": "正在安裝擴充功能…",
+      "updates_available_one": "{count} 個擴充功能可更新",
+      "updates_available_other": "{count} 個擴充功能可更新"
+    },
+    "extension_view": {
+      "missing_export": "錯誤：內建功能 {id} 沒有與「{view}」相符的匯出"
+    },
+    "feedback": {
+      "error": "錯誤",
+      "feedback": "訊息",
+      "unknown_error": "未知錯誤"
+    },
+    "file_search_tab": {
+      "add_root": "新增根目錄",
+      "already_excluded": "「{pattern}」已被排除",
+      "already_ignored": "「{pattern}」已被忽略",
+      "files_indexed": "已索引 {count} 個檔案",
+      "last_scan": "上次掃描 {ms} 毫秒",
+      "rebuild_index": "重建索引",
+      "rebuilding": "正在重建…",
+      "save_failed": "無法儲存檔案搜尋設定",
+      "state_building": "正在建立索引…",
+      "state_cap_reached": "已達索引上限",
+      "state_disabled": "已停用",
+      "state_ready": "就緒",
+      "state_rescanning": "正在重新掃描…"
+    },
+    "general_tab": {
+      "shortcut_reserved": "無法儲存，快速鍵可能已被系統或其他應用程式佔用",
+      "theme_apply_failed": "無法套用主題「{id}」"
+    },
+    "lan_picker": {
+      "allow_failed": "無法允許此裝置。",
+      "endpoint_not_allowed": "不允許此端點。"
+    },
+    "launcher": {
+      "search_placeholder": "搜尋或輸入指令...",
+      "search_view_placeholder": "搜尋..."
+    },
+    "onboarding": {
+      "bind_conflict": "無法綁定 {shortcut}。它已被「{name}」使用。請嘗試其他快速鍵。",
+      "bind_failed": "無法綁定 {shortcut}。請嘗試其他快速鍵。",
+      "no_ai_provider": "尚未連接 AI 供應商——請返回並連接一個。",
+      "sample_snippet_name": "我的電子郵件",
+      "shortcut_set_failed": "無法設定該快速鍵",
+      "step_of": "第 {position} 步，共 {total} 步",
+      "test_box_disabled": "完成上方設定後即可在此試用"
+    },
+    "permission_consent": {
+      "enable": "啟用後將授予以下權限：",
+      "install": "安裝後將授予以下權限：",
+      "review": "其要求的權限已變更，需要您審核：",
+      "title": "{name} 要求權限",
+      "update": "某次更新變更了其要求的權限："
+    },
+    "preferences_form": {
+      "app_path": "應用程式路徑",
+      "dir_path": "資料夾路徑",
+      "file_path": "檔案路徑",
+      "unknown_type": "未知類型：{type}"
+    },
+    "recorder": {
+      "already_assigned": "已指派給「{name}」",
+      "invalid_key": "無效按鍵",
+      "invalid_keys": "無效按鍵"
+    },
+    "required_prefs": {
+      "save_continue": "儲存並繼續"
+    },
+    "runtime_downloads": {
+      "unknown_size": "大小未知"
+    },
+    "scheduled_tasks": {
+      "every_days": "每 {count} 天",
+      "every_hours": "每 {count} 小時",
+      "every_minutes": "每 {count} 分鐘",
+      "every_seconds": "每 {count} 秒"
+    },
+    "scripts_tab": {
+      "add_failed": "無法新增資料夾",
+      "remove_failed": "無法移除資料夾"
+    },
+    "search_header": {
+      "ask_ai": "問 AI"
+    },
+    "secret_redaction": {
+      "redacted": "已遮蔽 {count} 項"
+    },
+    "sections": {
+      "favorites": "我的最愛",
+      "other": "其他"
+    },
+    "settings_handlers": {
+      "auto_update_failed": "無法更新自動更新設定",
+      "developer_mode_failed": "無法更新開發者模式",
+      "developer_setting_failed": "無法更新開發者設定",
+      "dock_icon_failed": "無法更新 Dock 圖示設定",
+      "extension_update_failed": "無法更新擴充功能設定。",
+      "extension_updated": "擴充功能設定已更新。",
+      "extensions_load_failed": "無法載入擴充功能資訊。",
+      "init_failed": "設定初始化失敗，正在使用預設值。",
+      "launch_view_failed": "無法更新啟動檢視",
+      "load_failed": "無法載入設定，正在使用預設值。",
+      "menu_bar_icon_failed": "無法更新選單列圖示設定",
+      "search_failed": "無法更新搜尋設定",
+      "search_updated_restart": "搜尋設定已更新。請重新啟動 Asyar 以套用變更。",
+      "setting_failed": "無法更新設定",
+      "shortcut_save_failed": "無法儲存快速鍵",
+      "shortcut_saved": "快速鍵已儲存",
+      "startup_failed": "無法更新啟動設定",
+      "theme_failed": "無法更新主題",
+      "uninstall_failed": "無法解除安裝擴充功能。",
+      "uninstalled": "擴充功能「{name}」已成功解除安裝。"
+    },
+    "shell_trust": {
+      "trusted_days_ago": "{count} 天前已信任",
+      "trusted_today": "今天已信任",
+      "trusted_yesterday": "昨天已信任"
+    },
+    "show_more": {
+      "active": "{count} 個執行中",
+      "done": "{count} 個已完成",
+      "idle": "{count} 個閒置"
+    },
+    "snippets_card": {
+      "toggle_failed": "無法更新片段狀態"
+    },
+    "split_list": {
+      "items": "項目"
+    },
+    "window_mode": {
+      "aria": "{mode}視窗模式"
+    }
   }
 }

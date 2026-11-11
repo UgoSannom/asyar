@@ -167,7 +167,7 @@ class SnippetsExtension implements Extension {
         }
         const dup = {
           id: newId,
-          name: s.name + ' Copy',
+          name: t('features_extra.common.name_copy', { name: s.name }),
           keyword: newKeyword,
           expansion: s.expansion,
           createdAt: Date.now(),

@@ -117,7 +117,9 @@
 
       <div class="flex justify-end gap-3">
         <Button type="button" onclick={oncancel} disabled={saving}>{t('common.cancel')}</Button>
-        <Button type="submit" disabled={saving}>{saving ? 'Saving…' : t('common.save')}</Button>
+        <Button type="submit" disabled={saving}
+          >{saving ? t('settings.ai.saving') : t('common.save')}</Button
+        >
       </div>
     </form>
   {/snippet}
@@ -126,7 +128,12 @@
 <ConfirmDialog
   bind:isOpen={confirmOpen}
   title={t('features.aliases.reassign_alias')}
-  message={conflictName ? `'${conflictName}' already uses '${pendingAlias}'. Reassign?` : ''}
+  message={conflictName
+    ? t('features_extra.aliases.reassign_message', {
+        name: conflictName,
+        alias: pendingAlias ?? '',
+      })
+    : ''}
   confirmButtonText={t('features.aliases.reassign')}
   cancelButtonText={t('common.cancel')}
   onconfirm={handleConfirmReassign}

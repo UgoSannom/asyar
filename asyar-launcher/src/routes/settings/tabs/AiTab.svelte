@@ -1407,14 +1407,14 @@
                 <select class="card-select provider-picker" value="" onchange={onDraftProviderPick}>
                   <option value="" disabled>{t('settings.ai.choose_provider')}</option>
                   {#if availableForDraft.some((p) => !p.id.startsWith('ext:'))}
-                    <optgroup label="Built-in">
+                    <optgroup label={t('settings.extensions.type_builtin')}>
                       {#each availableForDraft.filter((p) => !p.id.startsWith('ext:')) as p (p.id)}
                         <option value={p.id}>{p.name}</option>
                       {/each}
                     </optgroup>
                   {/if}
                   {#if availableForDraft.some((p) => p.id.startsWith('ext:'))}
-                    <optgroup label="Extensions">
+                    <optgroup label={t('settings.tabs.extensions')}>
                       {#each availableForDraft.filter((p) => p.id.startsWith('ext:')) as p (p.id)}
                         <option value={p.id}>{p.name}</option>
                       {/each}
@@ -1450,12 +1450,12 @@
                   engine: (e.currentTarget as HTMLSelectElement).value as WebSearchEngine,
                 })}
             >
-              <optgroup label="Built-in">
+              <optgroup label={t('settings.extensions.type_builtin')}>
                 <option value="duckduckgo">{t('settings.ai.engine_duckduckgo')}</option>
                 <option value="searxng">{t('settings.ai.engine_searxng')}</option>
               </optgroup>
               {#if extensionSearchEngines.length > 0}
-                <optgroup label="Extensions">
+                <optgroup label={t('settings.tabs.extensions')}>
                   {#each extensionSearchEngines as item (item.fullId)}
                     <option value={item.fullId}>
                       {item.engine.name} ({item.extensionName})
@@ -1464,9 +1464,9 @@
                 </optgroup>
               {/if}
               {#if !isKnownEngine}
-                <optgroup label="Legacy / Unavailable">
+                <optgroup label={t('ui_extra.ai_tab.legacy_unavailable')}>
                   <option value={webSearchSettings.engine}>
-                    {webSearchSettings.engine} (Unavailable)
+                    {t('ui_extra.ai_tab.name_unavailable', { name: webSearchSettings.engine })}
                   </option>
                 </optgroup>
               {/if}
@@ -1507,7 +1507,7 @@
               {#if credLoaded}
                 <div class="card-field">
                   <CredentialField
-                    label="{extEngine.name} API Key"
+                    label={t('ui_extra.ai_tab.name_api_key', { name: extEngine.name })}
                     inputId="web-search-extension-key"
                     placeholder={selectedExtMeta.keyPlaceholder ??
                       t('settings.ai.api_key_placeholder')}
@@ -1521,7 +1521,7 @@
             {#if extEngine.requiresBaseUrl}
               <div class="card-field">
                 <label class="field-label" for="web-search-base-url"
-                  >{extEngine.name} Base URL</label
+                  >{t('ui_extra.ai_tab.name_base_url', { name: extEngine.name })}</label
                 >
                 <Input
                   unstyled
@@ -1561,15 +1561,14 @@
                     rel="noreferrer"
                     class="external-link"
                   >
-                    Get API key
+                    {t('ui_extra.ai_tab.get_api_key')}
                   </a>
                 {/if}
               </p>
             {/if}
           {:else if !isKnownEngine}
             <p class="field-description">
-              The search engine "{webSearchSettings.engine}" is unavailable or deprecated. Select an
-              available engine above.
+              {t('ui_extra.ai_tab.engine_unavailable', { name: webSearchSettings.engine })}
             </p>
           {/if}
         </div>
@@ -1591,11 +1590,11 @@
                   reader: (e.currentTarget as HTMLSelectElement).value as WebReaderEngine,
                 })}
             >
-              <optgroup label="Built-in">
+              <optgroup label={t('settings.extensions.type_builtin')}>
                 <option value="builtin">{t('settings.ai.reader_builtin')}</option>
               </optgroup>
               {#if extensionWebReaders.length > 0}
-                <optgroup label="Extensions">
+                <optgroup label={t('settings.tabs.extensions')}>
                   {#each extensionWebReaders as item (item.fullId)}
                     <option value={item.fullId}>
                       {item.reader.name} ({item.extensionName})
@@ -1604,9 +1603,9 @@
                 </optgroup>
               {/if}
               {#if !isKnownReader}
-                <optgroup label="Legacy / Unavailable">
+                <optgroup label={t('ui_extra.ai_tab.legacy_unavailable')}>
                   <option value={webReaderSettings.reader}>
-                    {webReaderSettings.reader} (Unavailable)
+                    {t('ui_extra.ai_tab.name_unavailable', { name: webReaderSettings.reader })}
                   </option>
                 </optgroup>
               {/if}
@@ -1623,7 +1622,7 @@
               {#if credLoaded}
                 <div class="card-field">
                   <CredentialField
-                    label="{extReader.name} API Key"
+                    label={t('ui_extra.ai_tab.name_api_key', { name: extReader.name })}
                     inputId="web-reader-extension-key"
                     placeholder={selectedReaderMeta.keyPlaceholder ??
                       t('settings.ai.api_key_placeholder')}
@@ -1637,7 +1636,7 @@
             {#if extReader.requiresBaseUrl}
               <div class="card-field">
                 <label class="field-label" for="web-reader-base-url"
-                  >{extReader.name} Base URL</label
+                  >{t('ui_extra.ai_tab.name_base_url', { name: extReader.name })}</label
                 >
                 <Input
                   unstyled
@@ -1677,15 +1676,14 @@
                     rel="noreferrer"
                     class="external-link"
                   >
-                    Get API key
+                    {t('ui_extra.ai_tab.get_api_key')}
                   </a>
                 {/if}
               </p>
             {/if}
           {:else if !isKnownReader}
             <p class="field-description">
-              The reader "{webReaderSettings.reader}" is unavailable or deprecated. Select an
-              available reader above.
+              {t('ui_extra.ai_tab.reader_unavailable', { name: webReaderSettings.reader })}
             </p>
           {/if}
         </div>

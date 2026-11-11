@@ -36,7 +36,7 @@
       class:selected={value === option.id}
       role="radio"
       aria-checked={value === option.id}
-      aria-label="{option.label} window mode"
+      aria-label={t('ui_extra.window_mode.aria', { mode: option.label })}
       type="button"
       onclick={() => onchange?.(option.id)}
     >

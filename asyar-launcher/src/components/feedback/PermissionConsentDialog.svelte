@@ -15,13 +15,13 @@
   const subtitle = $derived.by(() => {
     switch (request.reason) {
       case 'install':
-        return 'Installing it grants the following permissions:';
+        return t('ui_extra.permission_consent.install');
       case 'enable':
-        return 'Enabling it grants the following permissions:';
+        return t('ui_extra.permission_consent.enable');
       case 'update':
-        return 'An update changed the permissions it requests:';
+        return t('ui_extra.permission_consent.update');
       case 'review':
-        return 'Its requested permissions have changed and need your review:';
+        return t('ui_extra.permission_consent.review');
     }
   });
 </script>
@@ -29,7 +29,7 @@
 <Modal isOpen={true} labelledBy="permission-consent-title" onEscape={onDecline} onEnter={onAccept}>
   {#snippet children()}
     <h2 id="permission-consent-title" class="text-xl font-semibold mb-2 text-[var(--text-primary)]">
-      {request.extensionName} requests permissions
+      {t('ui_extra.permission_consent.title', { name: request.extensionName })}
     </h2>
     <p class="text-[var(--text-secondary)] text-sm mb-4">{subtitle}</p>
 

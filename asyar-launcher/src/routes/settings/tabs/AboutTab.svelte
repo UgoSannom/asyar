@@ -96,17 +96,17 @@
 
   let updateStatusText = $derived(
     updateStatus === 'checking'
-      ? 'Checking for updates...'
+      ? t('ui_extra.about.checking')
       : updateStatus === 'available'
-        ? `Update ${updateVersion} is available. Starting download...`
+        ? t('ui_extra.about.available', { version: updateVersion })
         : updateStatus === 'downloading'
-          ? `Downloading and installing update ${updateVersion}...`
+          ? t('ui_extra.about.downloading', { version: updateVersion })
           : updateStatus === 'installed'
-            ? `Update ${updateVersion} installed. Restart Asyar to apply.`
+            ? t('ui_extra.about.installed', { version: updateVersion })
             : updateStatus === 'up-to-date'
-              ? "You're running the latest version."
+              ? t('ui_extra.about.up_to_date')
               : updateStatus === 'error'
-                ? `Update check failed: ${updateError}`
+                ? t('ui_extra.about.check_failed', { error: updateError })
                 : '',
   );
 
@@ -121,7 +121,7 @@
       <div class="app-header">
         <img src={logoUrl} alt="Asyar" class="app-logo" />
         <div class="app-name">Asyar</div>
-        <div class="app-version">Version {appVersion}</div>
+        <div class="app-version">{t('ui_extra.about.version', { version: appVersion })}</div>
       </div>
 
       <SettingsRow
@@ -153,7 +153,7 @@
 
       {#if isUpdateReady}
         <SettingsRow
-          label={`Update ${readyVersion} ready`}
+          label={t('ui_extra.about.update_ready', { version: readyVersion })}
           description={t('settings.about.auto_install_next_launch')}
         >
           {#snippet children()}

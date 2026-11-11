@@ -105,9 +105,9 @@
   function formatRelativeTime(timestamp: number) {
     const diff = Date.now() - timestamp;
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    if (days === 0) return 'Today';
-    if (days === 1) return 'Yesterday';
-    return `${days} days ago`;
+    if (days === 0) return t('ui_extra.shell_trust.trusted_today');
+    if (days === 1) return t('ui_extra.shell_trust.trusted_yesterday');
+    return t('ui_extra.shell_trust.trusted_days_ago', { count: days });
   }
 
   onMount(() => {
@@ -148,7 +148,7 @@
                       {binary.binaryPath}
                     </span>
                     <span class="trust-binary-meta text-caption">
-                      Trusted {formatRelativeTime(binary.trustedAt)}
+                      {formatRelativeTime(binary.trustedAt)}
                     </span>
                   </div>
 

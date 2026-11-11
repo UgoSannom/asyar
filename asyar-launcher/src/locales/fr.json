@@ -2206,5 +2206,1438 @@
     "direct_subtitle": "{extensionName} demande l'accès à {host}:{port}",
     "scanning": "Analyse du réseau local…",
     "no_devices": "Aucun appareil trouvé sur le réseau local."
+  },
+  "features_extra": {
+    "time": {
+      "just_now": "à l'instant",
+      "min_ago": "il y a {count} min",
+      "h_ago": "il y a {count} h",
+      "d_ago": "il y a {count} j",
+      "mo_ago": "il y a {count} mois",
+      "y_ago": "il y a {count} an(s)",
+      "m_ago_short": "il y a {count} min",
+      "h_ago_short": "il y a {count} h",
+      "d_ago_short": "il y a {count} j"
+    },
+    "clipboard": {
+      "title_image": "Image",
+      "title_files": "Fichiers",
+      "title_empty": "Vide",
+      "file_count_one": "{count} fichier",
+      "file_count_other": "{count} fichiers",
+      "word_count_one": "{count} mot",
+      "word_count_other": "{count} mots",
+      "char_count": "{count} car.",
+      "truncated": "Affichage des {shown} premiers caractères sur {total}",
+      "preview_of": "Aperçu de {name}",
+      "multi_selected": "{count} éléments sélectionnés · Entrée pour fusionner et coller",
+      "type_image": "Image",
+      "type_file": "Fichier",
+      "paste": "Coller"
+    },
+    "notes": {
+      "still_indexing": "Indexation de vos notes en cours…",
+      "no_notes_found": "Aucune note trouvée",
+      "toast_saved": "Note enregistrée",
+      "toast_added_today": "Ajouté à la note du jour",
+      "toast_unstuck": "Retirée du bureau",
+      "toast_stuck": "Épinglée au bureau",
+      "toast_exported": "Note exportée",
+      "persist": {
+        "save": "Échec de l'enregistrement de la note : la modification risque de ne pas être conservée après un redémarrage",
+        "update": "Échec de la mise à jour de la note : la modification risque de ne pas être conservée après un redémarrage",
+        "delete": "Échec de la suppression de la note : la modification risque de ne pas être conservée après un redémarrage",
+        "toggle_pin": "Échec de l'épinglage de la note : la modification risque de ne pas être conservée après un redémarrage"
+      }
+    },
+    "common": {
+      "name_copy": "{name} (copie)"
+    },
+    "shortcuts": {
+      "persist": {
+        "save": "Échec de l'enregistrement du raccourci : la modification risque de ne pas être conservée après un redémarrage",
+        "update": "Échec de la mise à jour du raccourci : la modification risque de ne pas être conservée après un redémarrage",
+        "delete": "Échec de la suppression du raccourci : la modification risque de ne pas être conservée après un redémarrage"
+      },
+      "register_failed": "Échec de l'enregistrement du raccourci",
+      "launcher_toggle": "Affichage du lanceur",
+      "no_item_selected": "Aucun élément sélectionné",
+      "unsupported_key": "Touche non prise en charge ou erreur système",
+      "assign_failed": "Impossible d'attribuer : {reason}",
+      "press_combination": "Appuyez sur la combinaison à utiliser pour {name}."
+    },
+    "snippets": {
+      "persist": {
+        "save": "Échec de l'enregistrement du snippet : la modification risque de ne pas être conservée après un redémarrage",
+        "update": "Échec de la mise à jour du snippet : la modification risque de ne pas être conservée après un redémarrage",
+        "delete": "Échec de la suppression du snippet : la modification risque de ne pas être conservée après un redémarrage",
+        "toggle_pin": "Échec de l'épinglage du snippet : la modification risque de ne pas être conservée après un redémarrage",
+        "toggle_private": "Échec du changement de confidentialité du snippet : la modification risque de ne pas être conservée après un redémarrage",
+        "clear_all": "Échec de la suppression des snippets : la modification risque de ne pas être conservée après un redémarrage"
+      },
+      "err_name_required": "Le nom est requis.",
+      "err_expansion_required": "Le texte de remplacement est requis.",
+      "err_keyword_lowercase": "Le mot-clé doit être en minuscules.",
+      "err_keyword_in_use": "Ce mot-clé est déjà utilisé.",
+      "new_snippet": "Nouveau snippet",
+      "keyword_placeholder": "ex. ;email",
+      "expansion_placeholder": "ex. bonjour@exemple.com",
+      "supported_prefix": "Pris en charge :",
+      "custom_format_pre": "Format personnalisé possible, ex."
+    },
+    "store": {
+      "download_url_missing": "L'URL de téléchargement de l'extension n'est pas disponible. Veuillez réessayer.",
+      "install_info_failed": "Impossible d'obtenir les informations d'installation : {status} {detail}",
+      "p_installed": "{name} installé",
+      "p_install_failed": "Échec de l'installation de {name}",
+      "p_uninstalled": "{name} désinstallé",
+      "p_uninstall_failed": "Échec de la désinstallation de {name}",
+      "p_updated": "{name} mis à jour en v{version}",
+      "p_update_failed": "Échec de la mise à jour de {name}",
+      "load_failed": "Impossible de charger les extensions : {error}",
+      "show_details": "Afficher les détails",
+      "details_load_failed": "Impossible de charger les détails : {error}",
+      "err_install": "Échec de l'installation : {error}",
+      "err_uninstall": "Échec de la désinstallation : {error}",
+      "err_update": "Échec de la mise à jour : {error}",
+      "unknown": "Inconnu",
+      "installs_count": "{count} installations",
+      "update_to": "Mettre à jour (v{version})",
+      "requires_sdk_tooltip": "Cette extension nécessite le SDK Asyar {sdk}. Mettez à jour Asyar pour l'installer.",
+      "incompatible": "Incompatible (SDK {sdk} requis)",
+      "install_theme": "Installer le thème",
+      "requires_newer": "Cette extension nécessite une version plus récente d'Asyar (SDK {sdk})",
+      "no_description": "Aucune description fournie.",
+      "command_count_one": "{count} commande",
+      "command_count_other": "{count} commandes",
+      "mode_view": "Vue",
+      "mode_background": "Arrière-plan",
+      "aria_list": "Extensions de la boutique",
+      "by_author": "Par {name}"
+    },
+    "scripts": {
+      "issue_dir_unavailable": "Dossier indisponible",
+      "issue_metadata_unavailable": "Métadonnées indisponibles",
+      "issue_path_unavailable": "Chemin indisponible",
+      "issue_not_executable": "Non exécutable",
+      "issue_unreadable": "Illisible",
+      "issue_invalid_header": "En-tête non valide",
+      "issue": "Problème",
+      "none": "Aucun",
+      "inline_clamped": "Le script en ligne {name} demandait un refreshTime inférieur à 10 s. Valeur portée à 10 s (minimum d'Asyar).",
+      "inline_capped": "Limite de scripts en ligne atteinte (10 max). Ces scripts ne s'actualiseront pas automatiquement : {scripts}. Vous pouvez toujours les exécuter manuellement en les sélectionnant.",
+      "inline_error": "erreur : {error}"
+    },
+    "agents": {
+      "silent_running": "✨ {name}…",
+      "silent_empty_hud": "⚠️ Réponse vide",
+      "silent_empty_detail": "L'agent a renvoyé une réponse vide",
+      "ai_command": "Commande IA",
+      "silent_failed": "⚠️ Échec de {name}",
+      "no_selection": "Aucune sélection",
+      "read_selection_failed": "Impossible de lire la sélection",
+      "clipboard_empty": "Le presse-papiers est vide",
+      "read_clipboard_failed": "Impossible de lire le presse-papiers",
+      "copied_hud": "✓ Copié",
+      "agent_not_found": "Agent « {id} » introuvable",
+      "promoted": "✓ Converti en snippet",
+      "promote_failed": "Échec de la conversion",
+      "delete_failed": "Échec de la suppression",
+      "clear_failed": "Échec de l'effacement",
+      "edit_heading": "Modifier l'agent",
+      "new_heading": "Nouvel agent",
+      "shortcode_placeholder": "ex. : ou ;",
+      "new_thread": "Nouvelle conversation",
+      "threads": "Conversations"
+    },
+    "window_management": {
+      "saved": "« {name} » enregistré",
+      "renamed": "Renommé en « {name} »",
+      "deleted": "« {name} » supprimé",
+      "layout_subtitle": "{width}×{height} à ({x}, {y})",
+      "no_layout_arg": "Aucun nom ni ID de disposition fourni",
+      "layout_not_found": "Disposition « {name} » introuvable",
+      "restored": "Restauré"
+    },
+    "file_search": {
+      "aria_files": "Fichiers",
+      "folder_path": "Dossier — {path}"
+    },
+    "mcp": {
+      "download_failed_install": "Échec du téléchargement de {name}. Réessayez depuis le formulaire d'installation.",
+      "install_failed": "Impossible d'installer ce serveur MCP : vérifiez sa commande et ses arguments, puis réessayez.",
+      "download_failed_here": "Échec du téléchargement de {name}. Réessayez depuis cette page.",
+      "enable_failed": "Impossible d'activer ce serveur MCP : vérifiez sa configuration, puis réessayez.",
+      "err_id_required": "L'ID est requis.",
+      "err_display_name_required": "Le nom d'affichage est requis.",
+      "err_command_required": "La commande est requise pour le transport stdio.",
+      "err_url_required": "Une URL valide commençant par http:// ou https:// est requise.",
+      "import_failed": "Échec de l'importation.",
+      "import_selected": "Importer la sélection",
+      "parse_failed": "Impossible d'analyser le JSON. Vérifiez le format et réessayez.",
+      "servers_found": "{count} serveur(s) trouvé(s) :",
+      "remove_argument": "Supprimer l'argument",
+      "remove_variable": "Supprimer la variable",
+      "remove_header": "Supprimer l'en-tête",
+      "tools_found": "Outils trouvés : {count}",
+      "test_error": "Erreur : {error}",
+      "unknown_size": "une taille inconnue",
+      "transport_label": "Transport : {transport}",
+      "tools_count": "{count} outils",
+      "enabled": "Activé",
+      "disabled": "Désactivé",
+      "agent_short": "agent {id}",
+      "an_agent": "un agent",
+      "value_placeholder": "valeur",
+      "cwd_placeholder": "/dossier/de/travail/facultatif"
+    },
+    "portals": {
+      "placeholder_count_one": "{count} variable",
+      "placeholder_count_other": "{count} variables",
+      "edit_portal": "Modifier le portail"
+    },
+    "runs": {
+      "running": "En cours · {elapsed}",
+      "succeeded_after": "Réussi · {duration}",
+      "succeeded": "Réussi",
+      "unknown_error": "erreur inconnue",
+      "failed": "Échec · {error}",
+      "cancelled": "Annulé"
+    },
+    "walkthrough": {
+      "req_manual": "À cocher une fois fait",
+      "req_days": "À utiliser sur {count} jours différents",
+      "req_times": "À utiliser {count} fois",
+      "req_auto": "Se termine à l'usage",
+      "marked_done": "Marqué comme fait",
+      "progress_of": "{current} sur {target}",
+      "progress_days": "{current} jours sur {target}",
+      "progress_times": "{current} fois sur {target}",
+      "open_task": "Ouvrir la tâche"
+    },
+    "raycast_import": {
+      "password_prompt": "Saisissez le mot de passe défini dans Raycast lors de l'export.",
+      "password_prompt_file": "Saisissez le mot de passe défini dans Raycast lors de l'export de « {file} ».",
+      "found_in": "Trouvé dans {name}",
+      "export_fallback": "l'export",
+      "not_importable": "Non importable :",
+      "skipped_hotkeys_one": "{count} raccourci lié à des commandes Raycast ou à des apps absentes",
+      "skipped_hotkeys_other": "{count} raccourcis liés à des commandes Raycast ou à des apps absentes",
+      "skipped_aliases_one": "{count} alias lié à des commandes Raycast, à des apps absentes ou contenant des caractères non pris en charge par Asyar",
+      "skipped_aliases_other": "{count} alias liés à des commandes Raycast, à des apps absentes ou contenant des caractères non pris en charge par Asyar",
+      "summary_snippets": "Snippets : {added} ajoutés, {skipped} ignorés",
+      "summary_portals": "Portails : {added} ajoutés, {skipped} ignorés",
+      "summary_shortcuts": "Raccourcis : {added} ajoutés, {skipped} ignorés",
+      "summary_aliases": "Alias : {added} ajoutés, {skipped} ignorés"
+    },
+    "aliases": {
+      "reassign_message": "« {name} » utilise déjà « {alias} ». Réattribuer ?"
+    },
+    "calculator": {
+      "copied_value": "Copié : {value}"
+    },
+    "create_extension": {
+      "p_preparing": "Préparation du système de fichiers…",
+      "p_theme_files": "Écriture des fichiers du thème…",
+      "p_opening_ide": "Ouverture de l'IDE…",
+      "p_done": "Terminé !",
+      "p_resolving_sdk": "Recherche de la dernière version du SDK…",
+      "p_scaffold_files": "Écriture des fichiers de base…",
+      "p_pnpm_install": "Exécution de « pnpm install »… (cela peut prendre une minute)",
+      "p_building": "Compilation de l'extension…",
+      "p_build_failed_note": "Remarque : la compilation automatique a échoué. Exécutez « pnpm install && pnpm run build » dans le dossier de l'extension.",
+      "p_registering": "Enregistrement de l'extension de développement…",
+      "p_register_failed_note": "Remarque : l'enregistrement pour le chargement automatique a échoué. Vous devrez peut-être exécuter « asyar link »."
+    },
+    "ai_builder": {
+      "secret_refused": "Refusé : secret codé en dur trouvé dans {path}",
+      "download_declined": "Téléchargement refusé.",
+      "download_failed": "Échec du téléchargement de {name}. Réessayez depuis le générateur d'extensions IA.",
+      "cred_check_failed": "Impossible de vérifier les identifiants IA. Vérifiez Réglages → IA.",
+      "needs_anthropic_key": "Cette fonction nécessite une clé API Anthropic. Ajoutez-en une dans Réglages → IA → Anthropic.",
+      "start_failed": "Impossible de lancer la génération. Veuillez réessayer.",
+      "runtime_unavailable": "Un composant requis n'est plus disponible. Veuillez réessayer.",
+      "starting": "Démarrage…",
+      "could_not_start": "La génération n'a pas pu démarrer.",
+      "steps_completed_one": "{count} étape terminée",
+      "steps_completed_other": "{count} étapes terminées",
+      "answer": "Répondre"
+    },
+    "usage_stats": {
+      "launch_one": "Lancement",
+      "launch_other": "Lancements",
+      "active_day_one": "Jour actif",
+      "active_day_other": "Jours actifs"
+    },
+    "help": {
+      "open_guide": "Ouvrir le guide"
+    }
+  },
+  "builtin": {
+    "agents": {
+      "name": "Agents",
+      "description": "Exécuter des agents IA avec accès aux outils",
+      "commands": {
+        "manage-agents": {
+          "name": "Gérer les agents",
+          "description": "Ouvrir le gestionnaire d'agents"
+        },
+        "ask": {
+          "name": "Demander à l'IA",
+          "description": "Poser une question à un agent IA"
+        }
+      },
+      "walkthrough": {
+        "ask-ai": {
+          "title": "Interroger l'IA sans changer d'app",
+          "summary": "Posez une question directement dans la barre de recherche",
+          "body": "Posez une question depuis la barre de recherche et obtenez la réponse sur place — sans onglet de navigateur, sans changer d'app, sans perdre le fil de ce que vous faisiez.\n\nLes agents peuvent aussi utiliser des outils : ils peuvent agir sur votre machine au lieu de seulement répondre.\n\n## Pour terminer la tâche\n\nLancez **Demander à l'IA** et posez-lui une vraie question."
+        }
+      }
+    },
+    "calculator": {
+      "name": "Calculatrice",
+      "description": "Calculatrice en langage naturel : calculs, conversions d'unités et de devises, pourcentages et pourboires, dates (« days until christmas »), fuseaux horaires (« 5pm ldn in sf »), bases numériques, ratios et conversions de couleurs — directement dans la barre de recherche.",
+      "preferences": {
+        "refreshInterval": {
+          "title": "Actualisation des devises",
+          "description": "Fréquence d'actualisation des taux de change en arrière-plan, en heures (1–24)."
+        },
+        "numberFormat": {
+          "title": "Format des nombres",
+          "description": "Votre façon d'écrire les décimales. « Automatique » suit le réglage de région du système.",
+          "options": {
+            "auto": "Automatique (région du système)",
+            "point": "1,234.56 — point décimal",
+            "comma": "1.234,56 — virgule décimale"
+          }
+        },
+        "preferredCurrency": {
+          "title": "Devise préférée",
+          "description": "Code à 3 lettres (ex. USD, EUR, IQD) utilisé quand vous saisissez un montant comme « 50 usd » sans devise cible."
+        }
+      },
+      "walkthrough": {
+        "calculate": {
+          "title": "Une calculatrice qu'on n'ouvre jamais",
+          "summary": "Saisissez un calcul directement dans la barre de recherche",
+          "body": "Saisissez une somme, une conversion d'unités, une conversion de devises ou un écart entre deux dates directement dans la barre de recherche : la réponse s'affiche pendant la saisie. Aucune app à ouvrir, aucun mode à activer.\n\nEssayez :\n\n- `1234 * 56`\n- `120 usd in eur`\n- `18% of 240`\n- `days until dec 25`\n\n## Pour terminer la tâche\n\nFaites un calcul dans la barre de recherche, puis marquez cette tâche comme terminée."
+        }
+      }
+    },
+    "clipboard-history": {
+      "name": "Historique du presse-papiers",
+      "description": "Gérer et consulter l'historique du presse-papiers",
+      "commands": {
+        "show-clipboard": {
+          "name": "Historique du presse-papiers",
+          "description": "Afficher et gérer l'historique du presse-papiers",
+          "accessory": {
+            "all": "Tous les types",
+            "text": "Texte",
+            "images": "Images",
+            "files": "Fichiers"
+          }
+        }
+      },
+      "walkthrough": {
+        "clipboard-habit": {
+          "title": "Ne perdez plus jamais ce que vous avez copié",
+          "summary": "Ouvrez l'historique du presse-papiers trois jours différents",
+          "body": "Tout ce que vous copiez est conservé, consultable et à une touche de distance. Fini de copier quelque chose en perdant ce qui s'y trouvait avant, fini de rechercher deux fois le même lien.\n\nL'historique du presse-papiers est la fonctionnalité dont on dit qu'elle a changé sa façon de travailler — mais seulement après qu'elle vous a sauvé la mise plusieurs fois. C'est pourquoi cette tâche demande trois jours plutôt qu'une seule visite.\n\n## Pour terminer la tâche\n\n1. Copiez quelques éléments comme d'habitude.\n2. Ouvrez **Historique du presse-papiers** et collez un élément plus ancien.\n3. Recommencez trois jours différents."
+        }
+      }
+    },
+    "create-extension": {
+      "name": "Outils de développement",
+      "description": "Générer de nouvelles extensions Asyar",
+      "commands": {
+        "open": {
+          "name": "Créer une extension",
+          "description": "Générer une nouvelle extension Asyar à développer"
+        },
+        "build-with-ai": {
+          "name": "Créer une extension avec l'IA",
+          "description": "Décrivez une extension avec vos mots et laissez l'IA la créer"
+        },
+        "my-extensions": {
+          "name": "Mes extensions",
+          "description": "Parcourir les extensions que vous avez créées et les publier"
+        }
+      },
+      "walkthrough": {
+        "build-an-extension": {
+          "title": "Créez votre première extension",
+          "summary": "Générez une extension et faites d'Asyar votre outil",
+          "body": "Chaque fonctionnalité intégrée utilisée dans cette visite guidée est une extension qui s'appuie sur la même API publique que la vôtre. S'il manque quelque chose à Asyar, ce manque représente quelques heures de travail, pas une demande de fonctionnalité.\n\n## Pour terminer la tâche\n\nLancez **Outils de développement** et générez votre première extension."
+        }
+      }
+    },
+    "feedback": {
+      "name": "Avis",
+      "description": "Envoyer un avis, une idée de fonctionnalité ou signaler un problème à l'équipe Asyar",
+      "commands": {
+        "send-feedback": {
+          "name": "Envoyer un avis",
+          "description": "Partager une idée, un compliment ou un rapport de bug"
+        }
+      }
+    },
+    "file-search": {
+      "name": "Recherche de fichiers",
+      "description": "Rechercher des fichiers dans votre dossier personnel",
+      "commands": {
+        "show-files": {
+          "name": "Rechercher des fichiers",
+          "description": "Rechercher des fichiers par nom",
+          "accessory": {
+            "all": "Tous les fichiers",
+            "document": "Documents",
+            "image": "Images",
+            "code": "Code",
+            "audio-video": "Audio et vidéo",
+            "archive": "Archives",
+            "folder": "Dossiers"
+          }
+        }
+      },
+      "walkthrough": {
+        "find-a-file": {
+          "title": "Trouver un fichier sans ouvrir de fenêtre",
+          "summary": "Recherchez vos fichiers directement depuis le lanceur",
+          "body": "La recherche de fichiers indexe vos fichiers localement et les retrouve par nom approximatif — sans parcourir de dossiers, sans attendre l'ouverture d'un gestionnaire de fichiers. Les résultats peuvent être ouverts, affichés dans le gestionnaire de fichiers ou épinglés pour toujours apparaître en premier.\n\n## Pour terminer la tâche\n\nLancez **Recherche de fichiers** et ouvrez un fichier parmi les résultats."
+        }
+      }
+    },
+    "help": {
+      "name": "Aide",
+      "description": "Raccourcis clavier, guides des fonctionnalités et manuel d'utilisation d'Asyar",
+      "commands": {
+        "show-help": {
+          "name": "Aide",
+          "description": "Afficher les raccourcis clavier et ouvrir le guide d'utilisation"
+        }
+      }
+    },
+    "mcp": {
+      "name": "Serveurs MCP",
+      "description": "Gérer les serveurs Model Context Protocol (MCP)",
+      "commands": {
+        "manage": {
+          "name": "Gérer les serveurs MCP",
+          "description": "Ouvrir le gestionnaire de serveurs MCP"
+        }
+      }
+    },
+    "notes": {
+      "name": "Notes",
+      "description": "Écrire et organiser des notes Markdown sans quitter le clavier",
+      "commands": {
+        "open-notes": {
+          "name": "Notes",
+          "description": "Parcourir, rechercher et écrire des notes"
+        },
+        "quick-note": {
+          "name": "Note rapide",
+          "description": "Saisir une note instantanément sans ouvrir l'éditeur",
+          "arguments": {
+            "text": {
+              "placeholder": "À quoi pensez-vous ?"
+            }
+          }
+        },
+        "new-sticky": {
+          "name": "Nouveau pense-bête",
+          "description": "Créer une note vierge épinglée sur votre bureau"
+        },
+        "append-today": {
+          "name": "Ajouter à aujourd'hui",
+          "description": "Ajouter une ligne à la note du jour (créée si nécessaire)",
+          "arguments": {
+            "text": {
+              "placeholder": "Que s'est-il passé ?"
+            }
+          }
+        }
+      },
+      "walkthrough": {
+        "first-note": {
+          "title": "Notez l'idée avant qu'elle ne file",
+          "summary": "Prenez une note sans quitter ce que vous faisiez",
+          "body": "Les notes servent aux idées qui surgissent quand vous êtes occupé à autre chose — un rappel, une note de réunion, un bout de conversation. Elles s'ouvrent par-dessus ce que vous faites, puis s'effacent aussitôt.\n\nAstuce : associez un raccourci à **Note rapide** pour noter en une seule touche.\n\n## Pour terminer la tâche\n\nLancez **Notes** ou **Note rapide** et écrivez quelque chose."
+        }
+      }
+    },
+    "portals": {
+      "name": "Portails",
+      "description": "Enregistrer des URL comme raccourcis nommés et consultables",
+      "commands": {
+        "open-portals": {
+          "name": "Portails",
+          "description": "Gérer vos portails enregistrés"
+        }
+      },
+      "walkthrough": {
+        "first-portal": {
+          "title": "Accédez directement à vos liens favoris",
+          "summary": "Enregistrez une URL comme portail nommé et consultable",
+          "body": "Un portail transforme une URL en élément que vous appelez par son nom — un tableau de bord, un dépôt, un tableau de tickets, une playlist. Les portails acceptent aussi une requête : un seul portail devient un champ de recherche pour n'importe quel site.\n\n## Pour terminer la tâche\n\n1. Lancez **Portails**.\n2. Ajoutez un lien que vous ouvrez presque tous les jours.\n3. Appelez-le par son nom depuis la barre de recherche."
+        }
+      }
+    },
+    "quit": {
+      "name": "Asyar",
+      "description": "Quitter l'application Asyar",
+      "commands": {
+        "quit-asyar": {
+          "name": "Quitter Asyar",
+          "description": "Quitter l'application Asyar"
+        }
+      }
+    },
+    "raycast-import": {
+      "name": "Import Raycast",
+      "description": "Importer vos snippets, liens rapides et raccourcis d'apps Raycast dans Asyar",
+      "commands": {
+        "import-raycast": {
+          "name": "Importer depuis Raycast",
+          "description": "Importer snippets, portails et raccourcis depuis un fichier d'export Raycast"
+        }
+      }
+    },
+    "runs": {
+      "name": "Exécutions",
+      "description": "Afficher et gérer les exécutions en cours et récentes",
+      "commands": {
+        "open-runs": {
+          "name": "Exécutions",
+          "description": "Ouvrir la vue des exécutions"
+        }
+      }
+    },
+    "screen-ocr": {
+      "name": "OCR d'écran",
+      "description": "Extraire et copier le texte de n'importe quelle zone de l'écran",
+      "commands": {
+        "capture-text": {
+          "name": "Capturer du texte à l'écran",
+          "description": "Sélectionner une zone de l'écran pour en reconnaître et copier le texte"
+        }
+      }
+    },
+    "scripts": {
+      "name": "Scripts",
+      "description": "Exécuter et gérer les scripts des dossiers surveillés",
+      "commands": {
+        "script-library": {
+          "name": "Bibliothèque de scripts",
+          "description": "Inspecter, exécuter et dépanner des scripts"
+        }
+      }
+    },
+    "settings": {
+      "name": "Réglages",
+      "description": "Ouvrir les réglages de l'application",
+      "commands": {
+        "open-settings": {
+          "name": "Réglages",
+          "description": "Ouvrir les réglages de l'application"
+        }
+      }
+    },
+    "shortcuts": {
+      "name": "Raccourcis",
+      "description": "Raccourcis globaux pour les applications et les commandes",
+      "commands": {
+        "open-shortcuts": {
+          "name": "Raccourcis",
+          "description": "Gérer les raccourcis globaux attribués"
+        }
+      },
+      "walkthrough": {
+        "first-hotkey": {
+          "title": "Tout ouvrir d'une seule touche",
+          "summary": "Associez un raccourci global à une commande que vous utilisez sans cesse",
+          "body": "Un raccourci global ouvre une commande précise depuis n'importe où sur votre bureau, sans passer d'abord par la barre de recherche. Les commandes que vous lancez dix fois par jour ne devraient jamais vous coûter une recherche.\n\n## Pour terminer la tâche\n\n1. Lancez **Raccourcis**.\n2. Associez un raccourci à la commande que vous lancez le plus.\n3. Utilisez-le depuis une autre app."
+        },
+        "first-alias": {
+          "title": "Donnez un nom de deux lettres à vos favoris",
+          "summary": "Définissez un alias pour qu'une commande l'emporte toujours dans la recherche",
+          "body": "Un alias est un mot court qui mène directement à un élément — tapez-le et cet élément est sélectionné, à chaque fois, quels que soient les autres résultats.\n\nLes alias servent aux choses que vous refusez de chercher : `f` pour la recherche de fichiers, `cb` pour l'historique du presse-papiers, `dw` pour définir un mot.\n\n## Pour terminer la tâche\n\nSélectionnez un élément dans les résultats, ouvrez le panneau d'actions et donnez-lui un alias."
+        }
+      }
+    },
+    "snippets": {
+      "name": "Snippets",
+      "description": "Expansion de texte — tapez un mot-clé, obtenez le texte complet",
+      "commands": {
+        "open-snippets": {
+          "name": "Snippets",
+          "description": "Gérer les snippets d'expansion de texte"
+        }
+      },
+      "walkthrough": {
+        "first-snippet": {
+          "title": "Ne tapez plus deux fois la même chose",
+          "summary": "Créez un snippet qui se déploie à partir d'un mot-clé",
+          "body": "Un snippet est un bloc de texte que vous tapez sans cesse — votre adresse e-mail, une réponse type, un bloc de code, vos coordonnées bancaires — enregistré une fois et déployé par un mot-clé court, dans n'importe quelle app.\n\nUn bon premier choix : votre e-mail avec le mot-clé `@@`.\n\n## Pour terminer la tâche\n\n1. Lancez **Snippets** et créez votre premier snippet.\n2. Donnez-lui un mot-clé que vous ne taperiez jamais par accident.\n3. Essayez le mot-clé dans une autre app."
+        }
+      }
+    },
+    "store": {
+      "name": "Boutique",
+      "description": "Parcourir et installer des extensions Asyar.",
+      "commands": {
+        "browse": {
+          "name": "Parcourir la boutique d'extensions",
+          "description": "Trouver et installer de nouvelles extensions"
+        }
+      },
+      "walkthrough": {
+        "install-an-extension": {
+          "title": "Ajoutez ce qu'Asyar ne fait pas encore",
+          "summary": "Installez votre première extension depuis la Boutique",
+          "body": "Les extensions reposent sur la même API que les fonctionnalités intégrées : tout ce qui vient de la Boutique se comporte comme si c'était livré avec l'app — même recherche, mêmes actions, mêmes règles clavier.\n\n## Pour terminer la tâche\n\nOuvrez la **Boutique**, trouvez une extension qui vous servira vraiment et installez-la."
+        }
+      }
+    },
+    "system-settings": {
+      "name": "Réglages Système",
+      "description": "Rechercher et ouvrir les panneaux des Réglages Système de macOS (Son, Moniteurs, Wi-Fi…)"
+    },
+    "system": {
+      "name": "Système",
+      "description": "Commandes système : veille, verrouillage de l'écran, redémarrage, extinction"
+    },
+    "url-opener": {
+      "name": "Ouverture d'URL",
+      "description": "Saisissez ou collez une adresse web dans la barre de recherche pour l'ouvrir dans votre navigateur."
+    },
+    "usage-stats": {
+      "name": "Statistiques d'utilisation",
+      "description": "Un tableau de bord local indiquant à quelle fréquence vous lancez Asyar et les commandes que vous utilisez le plus",
+      "commands": {
+        "open-usage-stats": {
+          "name": "Statistiques d'utilisation",
+          "description": "Afficher votre tableau de bord d'utilisation local"
+        }
+      }
+    },
+    "walkthrough": {
+      "name": "Visite guidée",
+      "description": "De courtes tâches qui font des fonctionnalités d'Asyar des habitudes, cochées à mesure que vous les utilisez",
+      "commands": {
+        "show-walkthrough": {
+          "name": "Visite guidée",
+          "description": "Découvrir Asyar une tâche à la fois"
+        }
+      },
+      "walkthrough": {
+        "start": {
+          "title": "Lancez-vous pour devenir expert",
+          "summary": "Vous êtes déjà là — la première tâche est faite",
+          "body": "Chaque tâche de cette liste vous apprend une chose qu'Asyar sait faire et que la plupart des gens ne découvrent jamais.\n\nVous ne les cochez pas à la main. Chaque tâche observe votre utilisation réelle d'Asyar et se termine d'elle-même dès que vous faites la chose pour de vrai. Les tâches que vous pratiquez depuis des semaines sont déjà cochées — la liste ne montre que ce qui reste vraiment.\n\n## Pour terminer la tâche\n\nOuvrez la Visite guidée. C'est fait."
+        },
+        "favorite-an-item": {
+          "title": "Gardez un favori à portée de main",
+          "summary": "Ajoutez aux favoris une application ou une commande fréquente",
+          "body": "Les favoris restent en tête quand la recherche est vide, devant le classement automatique par utilisation d'Asyar. Il peut s'agir d'applications ou de commandes, et les recherches saisies restent classées par pertinence.\n\n## Pour terminer la tâche\n\n1. Sélectionnez une application ou une commande dans le lanceur.\n2. Ouvrez **Actions** avec **⌘K**.\n3. Choisissez **Ajouter aux favoris**.\n4. Effacez la recherche pour la voir en tête."
+        }
+      }
+    },
+    "window-management": {
+      "name": "Gestion des fenêtres",
+      "description": "Redimensionner et repositionner la fenêtre au premier plan à l'aide de dispositions prédéfinies",
+      "commands": {
+        "left-half": {
+          "name": "Moitié gauche",
+          "description": "50 % gauche de l'écran"
+        },
+        "right-half": {
+          "name": "Moitié droite",
+          "description": "50 % droite de l'écran"
+        },
+        "top-half": {
+          "name": "Moitié haute",
+          "description": "50 % haut de l'écran"
+        },
+        "bottom-half": {
+          "name": "Moitié basse",
+          "description": "50 % bas de l'écran"
+        },
+        "top-left-quarter": {
+          "name": "Quart supérieur gauche",
+          "description": "25 % en haut à gauche de l'écran"
+        },
+        "top-right-quarter": {
+          "name": "Quart supérieur droit",
+          "description": "25 % en haut à droite de l'écran"
+        },
+        "bottom-left-quarter": {
+          "name": "Quart inférieur gauche",
+          "description": "25 % en bas à gauche de l'écran"
+        },
+        "bottom-right-quarter": {
+          "name": "Quart inférieur droit",
+          "description": "25 % en bas à droite de l'écran"
+        },
+        "left-third": {
+          "name": "Tiers gauche",
+          "description": "33 % gauche de l'écran"
+        },
+        "center-third": {
+          "name": "Tiers central",
+          "description": "33 % central de l'écran"
+        },
+        "right-third": {
+          "name": "Tiers droit",
+          "description": "33 % droit de l'écran"
+        },
+        "left-two-thirds": {
+          "name": "Deux tiers gauche",
+          "description": "66 % gauche de l'écran"
+        },
+        "right-two-thirds": {
+          "name": "Deux tiers droit",
+          "description": "66 % droit de l'écran"
+        },
+        "first-fourth": {
+          "name": "Premier quart",
+          "description": "Premiers 25 % de l'écran"
+        },
+        "second-fourth": {
+          "name": "Deuxième quart",
+          "description": "Deuxièmes 25 % de l'écran"
+        },
+        "third-fourth": {
+          "name": "Troisième quart",
+          "description": "Troisièmes 25 % de l'écran"
+        },
+        "last-fourth": {
+          "name": "Dernier quart",
+          "description": "Derniers 25 % de l'écran"
+        },
+        "center": {
+          "name": "Centrer",
+          "description": "Centrée, 80 % × 80 % de l'écran"
+        },
+        "almost-maximize": {
+          "name": "Presque plein écran",
+          "description": "Centrée, 90 % × 90 % de l'écran"
+        },
+        "maximize": {
+          "name": "Agrandir",
+          "description": "Occuper tout l'écran (plein écran)"
+        },
+        "restore": {
+          "name": "Restaurer la position précédente",
+          "description": "Annuler la dernière disposition de fenêtre appliquée"
+        },
+        "manage-layouts": {
+          "name": "Gérer les dispositions",
+          "description": "Afficher, ajouter et supprimer des dispositions de fenêtre personnalisées"
+        },
+        "switch-windows": {
+          "name": "Changer de fenêtre",
+          "description": "Basculer vers une fenêtre d'application ouverte"
+        },
+        "save-current-layout": {
+          "name": "Enregistrer la fenêtre actuelle comme disposition",
+          "description": "Enregistrer la position et la taille de la fenêtre au premier plan comme disposition personnalisée"
+        },
+        "previous-display": {
+          "name": "Écran précédent",
+          "description": "Déplacer la fenêtre au premier plan vers l'écran précédent"
+        },
+        "next-display": {
+          "name": "Écran suivant",
+          "description": "Déplacer la fenêtre au premier plan vers l'écran suivant"
+        },
+        "apply-layout": {
+          "name": "Appliquer une disposition",
+          "description": "Appliquer une disposition de fenêtre personnalisée par nom ou identifiant",
+          "arguments": {
+            "name": {
+              "placeholder": "Nom de la disposition"
+            },
+            "id": {
+              "placeholder": "ID de la disposition"
+            }
+          }
+        }
+      },
+      "walkthrough": {
+        "tile-a-window": {
+          "title": "Organiser les fenêtres sans la souris",
+          "summary": "Déplacez une fenêtre par une commande plutôt qu'en la faisant glisser",
+          "body": "Moitiés, tiers, quarts, centrage, plein écran, restauration — chaque disposition que vous obtenez en faisant glisser une fenêtre est une commande à lancer ou à associer à un raccourci.\n\nLe vrai gain vient avec les raccourcis : deux touches pour placer deux apps côte à côte.\n\n## Pour terminer la tâche\n\n1. Recherchez `moitié gauche` ou `agrandir` et lancez la commande.\n2. Associez vos deux favorites à des raccourcis."
+        }
+      }
+    }
+  },
+  "permissions_catalog": {
+    "not_recognized": "Non reconnue par cette version d'Asyar.",
+    "entries": {
+      "network": {
+        "title": "Accès réseau",
+        "description": "Effectuer des requêtes HTTP sortantes."
+      },
+      "network_lan": {
+        "title": "Accès au réseau local",
+        "description": "Se connecter aux appareils du réseau local que vous approuvez dans les Réglages. Les adresses de bouclage, link-local et de métadonnées cloud sont toujours bloquées."
+      },
+      "network_secrets": {
+        "title": "Envoyer des références secrètes",
+        "description": "Envoyer des secrets de connexion issus de sources déclarées vers des hôtes HTTPS déclarés, sans exposer le jeton à l'extension. Nécessite l'accès réseau. N'approuvez que des hôtes de confiance."
+      },
+      "notifications_send": {
+        "title": "Envoyer des notifications",
+        "description": "Publier des notifications dans le centre de notifications du système."
+      },
+      "clipboard_read": {
+        "title": "Lire le presse-papiers",
+        "description": "Lire le contenu actuel du presse-papiers du système."
+      },
+      "clipboard_write": {
+        "title": "Écrire dans le presse-papiers",
+        "description": "Écrire ou coller du contenu dans le presse-papiers du système."
+      },
+      "clipboard_history_read": {
+        "title": "Lire l'historique du presse-papiers",
+        "description": "Interroger et rechercher l'historique enregistré du presse-papiers."
+      },
+      "clipboard_history_capture": {
+        "title": "Capturer l'historique du presse-papiers",
+        "description": "Suivre en arrière-plan les changements du presse-papiers pour en enregistrer l'historique."
+      },
+      "clipboard_history_manage": {
+        "title": "Gérer l'historique du presse-papiers",
+        "description": "Supprimer des entrées, gérer les favoris ou effacer l'historique enregistré du presse-papiers."
+      },
+      "storage_read": {
+        "title": "Lire le stockage de l'extension",
+        "description": "Lire dans le stockage clé-valeur propre à l'extension."
+      },
+      "storage_write": {
+        "title": "Écrire dans le stockage de l'extension",
+        "description": "Écrire dans le stockage clé-valeur propre à l'extension."
+      },
+      "store_read": {
+        "title": "Lire les données de l'extension",
+        "description": "Lire dans le magasin de données de l'extension."
+      },
+      "store_write": {
+        "title": "Écrire les données de l'extension",
+        "description": "Écrire dans le magasin de données de l'extension."
+      },
+      "cache_read": {
+        "title": "Lire le cache de l'extension",
+        "description": "Lire dans le cache de l'extension."
+      },
+      "cache_write": {
+        "title": "Écrire dans le cache de l'extension",
+        "description": "Écrire dans le cache de l'extension."
+      },
+      "fs_read": {
+        "title": "Afficher des fichiers",
+        "description": "Afficher des fichiers dans le gestionnaire de fichiers du système."
+      },
+      "fs_write": {
+        "title": "Mettre des fichiers à la corbeille",
+        "description": "Déplacer des fichiers vers la corbeille du système."
+      },
+      "fs_watch": {
+        "title": "Surveiller des fichiers",
+        "description": "Observer les modifications du système de fichiers correspondant aux motifs glob déclarés."
+      },
+      "files_search": {
+        "title": "Rechercher des fichiers locaux",
+        "description": "Rechercher dans l'index des fichiers locaux (noms et métadonnées, pas le contenu)."
+      },
+      "files_read": {
+        "title": "Lire le contenu des fichiers",
+        "description": "Lire le contenu texte, lister les noms et afficher les miniatures des fichiers correspondant aux motifs de chemin déclarés. Les magasins d'identifiants et les emplacements système sont toujours exclus."
+      },
+      "files_search_provider": {
+        "title": "Fournir une recherche de fichiers distants",
+        "description": "Fournir des résultats de recherche pour les fichiers distants et cloud."
+      },
+      "notes_read": {
+        "title": "Rechercher et lire vos notes",
+        "description": "Rechercher dans vos Notes et lire le contenu complet de n'importe quelle note."
+      },
+      "notes_write": {
+        "title": "Créer et compléter des notes",
+        "description": "Créer de nouvelles notes et ajouter du texte à la fin des notes existantes. Ne peut ni écraser ni supprimer le contenu existant d'une note."
+      },
+      "shell_spawn": {
+        "title": "Exécuter des programmes",
+        "description": "Lancer des processus du système et lire leur sortie. Donne un large accès au système."
+      },
+      "shell_open_url": {
+        "title": "Ouvrir des URL",
+        "description": "Ouvrir des liens web (http, https, mailto, tel) dans le navigateur par défaut, ainsi que les schémas d'URL supplémentaires déclarés par l'extension, qui peuvent lancer les apps qui leur sont associées."
+      },
+      "shell_open_path": {
+        "title": "Ouvrir des fichiers et dossiers",
+        "description": "Ouvrir des fichiers, dossiers et espaces de travail locaux avec les applications par défaut ou indiquées."
+      },
+      "entitlements_read": {
+        "title": "Lire l'état de l'abonnement",
+        "description": "Lire les droits d'abonnement actifs de l'utilisateur."
+      },
+      "selection_read": {
+        "title": "Lire la sélection",
+        "description": "Lire le texte sélectionné ou les éléments du gestionnaire de fichiers sélectionnés dans l'application au premier plan."
+      },
+      "oauth_use": {
+        "title": "Se connecter à des services",
+        "description": "Exécuter des flux d'autorisation OAuth avec des fournisseurs tiers."
+      },
+      "extension_invoke": {
+        "title": "Appeler d'autres extensions",
+        "description": "Lancer des commandes d'autres extensions installées."
+      },
+      "application_read": {
+        "title": "Lire les apps installées",
+        "description": "Lister les applications installées et interroger l'app au premier plan ou celles en cours d'exécution."
+      },
+      "window_manage": {
+        "title": "Gérer les fenêtres",
+        "description": "Lire et modifier la position, la taille et l'état plein écran de la fenêtre au premier plan."
+      },
+      "screen_pick_color": {
+        "title": "Prélever des couleurs à l'écran",
+        "description": "Afficher la pipette du système et lire la couleur du pixel choisi par l'utilisateur."
+      },
+      "screen_capture": {
+        "title": "Capturer le texte de l'écran",
+        "description": "Capturer des zones de l'écran et en extraire le texte par reconnaissance optique de caractères (OCR) sur l'appareil."
+      },
+      "calculator_evaluate": {
+        "title": "Calculs et conversions",
+        "description": "Évaluer des expressions mathématiques, des conversions d'unités et des calculs de devises."
+      },
+      "power_inhibit": {
+        "title": "Empêcher la mise en veille",
+        "description": "Empêcher le système de se mettre en veille pendant que l'extension travaille."
+      },
+      "media_control": {
+        "title": "Contrôler la lecture multimédia",
+        "description": "Savoir ce qui est en cours de lecture dans les lecteurs et apps multimédias (comme Musique, TV, Spotify, VLC ou un navigateur) et envoyer des commandes lecture, pause et piste suivante/précédente."
+      },
+      "calendar_read": {
+        "title": "Lire les calendriers et événements",
+        "description": "Lister vos calendriers et lire leurs événements."
+      },
+      "calendar_write": {
+        "title": "Créer des événements",
+        "description": "Ajouter de nouveaux événements à vos calendriers."
+      },
+      "reminders_read": {
+        "title": "Lire les rappels",
+        "description": "Lister vos listes de rappels et les rappels qu'elles contiennent."
+      },
+      "reminders_write": {
+        "title": "Créer et terminer des rappels",
+        "description": "Ajouter de nouveaux rappels et marquer les rappels existants comme terminés ou non."
+      },
+      "shortcuts_read": {
+        "title": "Lister les Raccourcis Apple",
+        "description": "Voir les noms des raccourcis de votre bibliothèque Raccourcis Apple."
+      },
+      "shortcuts_run": {
+        "title": "Exécuter des Raccourcis Apple",
+        "description": "Exécuter n'importe lequel de vos Raccourcis Apple, éventuellement avec du texte en entrée. Un raccourci peut faire tout ce pour quoi il a été conçu."
+      },
+      "process_read": {
+        "title": "Lister les processus",
+        "description": "Lister les processus en cours avec leur utilisation du processeur et de la mémoire."
+      },
+      "process_kill": {
+        "title": "Arrêter des processus",
+        "description": "Arrêter ou forcer l'arrêt de processus en cours."
+      },
+      "systemEvents_read": {
+        "title": "Observer les événements système",
+        "description": "S'abonner aux événements de veille, de réveil, de capot, de batterie et de source d'alimentation."
+      },
+      "app_frontmost_watch": {
+        "title": "Observer l'activité des apps",
+        "description": "S'abonner aux événements de lancement, de fermeture et de changement d'app au premier plan."
+      },
+      "timers_schedule": {
+        "title": "Programmer des minuteurs",
+        "description": "Programmer des minuteurs ponctuels persistants qui se déclenchent même après un redémarrage."
+      },
+      "timers_cancel": {
+        "title": "Annuler des minuteurs",
+        "description": "Annuler des minuteurs programmés précédemment."
+      },
+      "timers_list": {
+        "title": "Lister les minuteurs",
+        "description": "Lister les minuteurs programmés."
+      },
+      "preferences_read": {
+        "title": "Lire les préférences",
+        "description": "Lire les valeurs des préférences propres à l'extension."
+      },
+      "preferences_write": {
+        "title": "Modifier les préférences",
+        "description": "Modifier les valeurs des préférences propres à l'extension."
+      },
+      "feedback_announce": {
+        "title": "Afficher des annonces ponctuelles",
+        "description": "Demander une annonce gérée par l'hôte, comme les Nouveautés."
+      },
+      "tools_register": {
+        "title": "Enregistrer des outils d'agent",
+        "description": "Exposer des outils au composant agent pour qu'il les utilise lors des appels d'outils."
+      },
+      "snippets_contribute": {
+        "title": "Fournir des snippets",
+        "description": "Ajouter des expansions de raccourcis au détecteur global de frappe, qui remplace les raccourcis saisis dans n'importe quelle app."
+      },
+      "runs_track": {
+        "title": "Suivre les exécutions en arrière-plan",
+        "description": "Démarrer et gérer des tâches longues affichées dans l'écran des exécutions du lanceur."
+      },
+      "browser_tabs_read": {
+        "title": "Lire les onglets du navigateur",
+        "description": "Lister et inspecter les onglets du navigateur associé."
+      },
+      "browser_tabs_write": {
+        "title": "Contrôler les onglets du navigateur",
+        "description": "Ouvrir, activer et fermer des onglets dans le navigateur associé."
+      },
+      "browser_bookmarks_read": {
+        "title": "Lire les favoris",
+        "description": "Lire les favoris du navigateur associé."
+      },
+      "browser_history_read": {
+        "title": "Lire l'historique de navigation",
+        "description": "Rechercher dans l'historique du navigateur associé."
+      },
+      "browser_page_read": {
+        "title": "Lire le contenu des pages",
+        "description": "Lire le contenu de la page actuelle dans le navigateur associé."
+      },
+      "browser_page_write": {
+        "title": "Agir sur les pages",
+        "description": "Interagir avec le contenu des pages dans le navigateur associé."
+      },
+      "mcp": {
+        "title": "Model Context Protocol (MCP)",
+        "description": "Découvrir les serveurs MCP configurés et appeler des outils externes."
+      },
+      "ai": {
+        "title": "Interroger le modèle d'IA",
+        "description": "Envoyer des requêtes au modèle d'IA configuré par l'hôte pour obtenir des réponses complètes ou en streaming."
+      }
+    }
+  },
+  "diagnostics_messages": {
+    "permission_denied": "Accès à {permission} refusé",
+    "permission_denied_generic": "Accès à une ressource refusé",
+    "policy_denied": "Action refusée : {policyError}",
+    "policy_denied_generic": "Action refusée par la politique",
+    "network_failure": "Erreur réseau",
+    "lock_poisoned": "Verrou interne corrompu ; veuillez redémarrer Asyar",
+    "database_failure": "Erreur de base de données",
+    "not_found": "Impossible de trouver {target}",
+    "not_found_generic": "Élément introuvable",
+    "extension_failure": "Erreur d'extension : {extension}",
+    "extension_failure_generic": "Erreur d'extension : inconnue",
+    "shortcut_failure": "Erreur de raccourci : {shortcut}",
+    "shortcut_failure_generic": "Erreur de raccourci : inconnue",
+    "platform_failure": "Erreur de plateforme : {platform}",
+    "platform_failure_generic": "Erreur de plateforme : inconnue",
+    "validation_failure": "Saisie non valide : {field}",
+    "validation_failure_generic": "Saisie non valide : valeur",
+    "encryption_failure": "Erreur de chiffrement",
+    "auth_failure": "Échec de l'authentification ({provider})",
+    "auth_failure_generic": "Échec de l'authentification",
+    "oauth_failure": "Erreur OAuth ({provider})",
+    "oauth_failure_generic": "Erreur OAuth",
+    "power_failure": "Erreur de gestion de l'alimentation",
+    "run_failed": "Échec de l'exécution : {message}",
+    "run_failed_id": "Échec de l'exécution {id}",
+    "run_failed_id_generic": "Échec d'une exécution inconnue",
+    "sync_entitlement_required": "La synchronisation cloud nécessite un abonnement actif",
+    "sync_quota_exceeded": "Quota de stockage de synchronisation dépassé ({usedBytes} / {limitBytes} octets)",
+    "sync_quota_exceeded_generic": "Quota de stockage de synchronisation dépassé",
+    "sync_rate_limited": "Synchronisation cloud limitée. Nouvel essai dans {retryAfter} s",
+    "sync_server_unavailable": "Le serveur de synchronisation cloud est temporairement indisponible : {detail}",
+    "sync_server_unavailable_generic": "Le serveur de synchronisation cloud est temporairement indisponible",
+    "sync_e2ee_locked": "La synchronisation cloud est verrouillée sur cet appareil. Saisissez votre phrase de récupération ou approuvez depuis un autre appareil.",
+    "sync_e2ee_not_enrolled": "Le chiffrement de bout en bout n'est pas activé pour ce compte",
+    "sync_e2ee_already_enrolled": "Le chiffrement de bout en bout est déjà activé pour ce compte",
+    "sync_e2ee_wrong_mode": "Opération non prise en charge pour ce mode de chiffrement",
+    "sync_finalize_behind": "La finalisation de la synchronisation a été reportée en attendant la mise à jour de l'état local",
+    "sync_pairing_not_found": "Demande d'association introuvable ou expirée",
+    "sync_pairing_not_pending": "La demande d'association n'est plus en attente",
+    "sync_pairing_fingerprint_mismatch": "Empreinte d'association non concordante : les mots de vérification ne correspondent pas à l'appareil demandeur.",
+    "sync_pairing_too_many": "Trop de demandes d'association actives ; veuillez réessayer plus tard",
+    "io_failure": "Erreur d'E/S",
+    "json_failure": "Erreur de format des données",
+    "unexpected_error": "Erreur inattendue",
+    "search_lock_poisoned": "Verrou de l'index de recherche corrompu",
+    "search_json_failure": "Erreur de format des données de recherche",
+    "search_io_failure": "Erreur d'E/S de la recherche",
+    "search_not_found": "La recherche n'a pas trouvé {target}",
+    "search_not_found_generic": "La recherche n'a pas trouvé l'élément",
+    "search_other": "Erreur de recherche : {detail}",
+    "search_other_generic": "Erreur de recherche",
+    "render_error": "Échec de l'affichage d'une vue",
+    "invoke_unknown": "Échec de la commande : {command}",
+    "invoke_unknown_generic": "Échec de la commande",
+    "extension_proxy_error": "Échec de l'appel d'extension ({method})",
+    "extension_proxy_error_generic": "Échec de l'appel d'extension",
+    "extension_crash": "{extensionId} ({role}) ne répond plus",
+    "extension_crash_generic": "L'extension ({role}) ne répond plus",
+    "iframe_uncaught": "{extensionId} a rencontré une erreur inattendue",
+    "iframe_uncaught_generic": "L'extension a rencontré une erreur inattendue",
+    "iframe_unhandled_rejection": "Une promesse de {extensionId} a été rejetée",
+    "iframe_unhandled_rejection_generic": "Une promesse de l'extension a été rejetée",
+    "rpc_timeout": "Délai dépassé pour {method}",
+    "rpc_timeout_generic": "Délai de l'opération dépassé",
+    "panic": "Asyar a rencontré une erreur fatale",
+    "error": "Erreur",
+    "action_failed": "Échec de l'action",
+    "mcp_permission_required": "Autorisation requise pour utiliser {tool}",
+    "mcp_permission_required_generic": "Autorisation requise pour utiliser cet outil MCP",
+    "e2ee_enrollment_failed": "Impossible d'activer la synchronisation chiffrée. Vérifiez votre connexion et réessayez.",
+    "e2ee_passphrase_required": "La synchronisation chiffrée a besoin de votre phrase secrète pour continuer.",
+    "e2ee_key_derivation_failed": "Impossible de dériver votre clé de synchronisation. Fermez d'autres apps et réessayez.",
+    "e2ee_decrypt_failed": "Un élément n'a pas pu être déchiffré : vos données sont peut-être corrompues, ou la phrase secrète a changé.",
+    "e2ee_key_version_mismatch": "Votre synchronisation chiffrée doit être actualisée. Récupération des dernières données…"
+  },
+  "services_extra": {
+    "runtime": {
+      "status_checking": "Recherche de mises à jour…",
+      "status_downloading_progress": "Téléchargement… {done} / {total}",
+      "status_verifying": "Vérification du téléchargement…",
+      "status_finishing": "Finalisation…",
+      "status_failed": "Échec du téléchargement",
+      "unknown_size": "une taille inconnue",
+      "size_mb": "{value} Mo",
+      "size_kb": "{value} Ko",
+      "confirm_title_one": "Télécharger le composant requis ?",
+      "confirm_title_other": "Télécharger les composants requis ?",
+      "confirm_message": "Nécessite {names}, soit {total} au total. Asyar le télécharge une seule fois et le réutilise partout où il est nécessaire.",
+      "removal_warning_one": "Ce composant est encore utilisé par 1 élément ({list}). Le supprimer quand même ?",
+      "removal_warning_other": "Ce composant est encore utilisé par {count} éléments ({list}). Le supprimer quand même ?"
+    },
+    "gate": {
+      "sync_sign_in": "La synchronisation cloud nécessite un compte connecté.",
+      "sync_entitlement": "La synchronisation cloud nécessite un abonnement actif incluant le droit sync:settings.",
+      "sync_disabled": "La synchronisation cloud est désactivée dans les réglages.",
+      "ai_sign_in": "Les modèles d'IA cloud nécessitent un compte connecté.",
+      "ai_pro": "Ce modèle d'IA nécessite un abonnement Pro actif.",
+      "ai_history_sign_in": "La synchronisation de l'historique IA nécessite un compte connecté.",
+      "ai_history_entitlement": "La synchronisation de l'historique IA nécessite le droit sync:ai-conversations.",
+      "crash_disabled": "Les rapports de plantage sont désactivés dans les réglages.",
+      "usage_disabled": "Le partage anonyme des statistiques d'utilisation est désactivé.",
+      "feature_sign_in": "Cette fonctionnalité nécessite un compte connecté.",
+      "feature_entitlement": "Cette fonctionnalité nécessite le droit d'abonnement « {ability} »."
+    },
+    "auth": {
+      "server_no_response": "Le serveur n'a pas répondu",
+      "login_failed": "Échec de la connexion : {error}",
+      "login_timed_out": "Délai de connexion dépassé. Veuillez réessayer.",
+      "login_start_failed": "Impossible de lancer la connexion : {error}",
+      "login_expired": "La session de connexion a expiré. Veuillez réessayer."
+    },
+    "profile": {
+      "settings": "Réglages de l'application",
+      "ai_settings": "Réglages IA",
+      "extension_preferences": "Préférences des extensions"
+    },
+    "clipboard": {
+      "image_preview": "Image : {width}×{height}",
+      "files_preview_one": "{count} fichier : {names}",
+      "files_preview_other": "{count} fichiers : {names}",
+      "encrypted_secret": "[Secret chiffré]",
+      "accessibility_paste": "Asyar a besoin de l'autorisation Accessibilité de macOS pour coller. Activez Asyar dans Réglages Système → Confidentialité et sécurité → Accessibilité, puis réessayez."
+    },
+    "whats_new": {
+      "title": "Mis à jour vers v{version}",
+      "message": "Cliquez pour voir les nouveautés"
+    },
+    "command_args": {
+      "fill_required": "Remplissez les champs requis",
+      "required": "Requis",
+      "either_two": "{first} ou {second}",
+      "either_many": "{list} ou {last}"
+    },
+    "onboarding": {
+      "ai_status_failed": "Impossible de vérifier la configuration de l'IA.",
+      "ai_skip_failed": "Impossible d'ignorer la configuration de l'IA. Veuillez réessayer.",
+      "ai_save_failed": "Impossible d'enregistrer la configuration de l'IA. Veuillez réessayer."
+    },
+    "extension_loader": {
+      "permission_review": "{name} nécessite une vérification des autorisations dans les Réglages"
+    },
+    "ai_providers": {
+      "ollama": "Ollama (local)",
+      "custom": "Personnalisé (compatible OpenAI)"
+    },
+    "secret_refs": {
+      "json": "à `{pointer}` dans `{path}`",
+      "keychain": "l'élément du trousseau « {service} » à `{pointer}`",
+      "keychain_account": "l'élément du trousseau « {service} » (compte « {account} ») à `{pointer}`",
+      "keychain_lead": "dans l'élément du trousseau « {service} » à `{pointer}`",
+      "keychain_account_lead": "dans l'élément du trousseau « {service} » (compte « {account} ») à `{pointer}`",
+      "or_source": "(ou {source})",
+      "all_paths": "(tous les chemins)",
+      "sentence": "Envoie le secret {source} à {hosts} — {methods} {paths} — dans l'en-tête {header}.",
+      "keychain_note": "macOS peut vous demander d'autoriser Asyar à lire cet élément du trousseau."
+    },
+    "launcher": {
+      "unknown_item": "Élément inconnu",
+      "action_failed": "Échec de l'action pour {name}",
+      "command_failed": "Impossible d'exécuter la commande {name}",
+      "action_invalid": "Action non valide pour {name}",
+      "open_failed": "Impossible d'ouvrir {name}",
+      "no_action": "Aucune action pour {name}",
+      "run_kind_agent": "Agent",
+      "run_kind_script": "Script",
+      "run_failed": "Échec · {output}",
+      "run_done": "Terminé · {output}",
+      "no_output": "(aucune sortie)",
+      "running": "En cours",
+      "dismiss_result": "Ignorer le résultat",
+      "dismiss_thread": "Ignorer la conversation",
+      "dismiss_result_desc": "Retire ce résultat de script et libère sa sortie (l'historique est conservé)",
+      "dismiss_thread_desc": "Retire cette conversation terminée de la liste du lanceur (toujours conservé dans l'historique)",
+      "dev_build": "Version de développement",
+      "shortcut_save_failed": "Impossible d'enregistrer le raccourci"
+    }
+  },
+  "ui_extra": {
+    "about": {
+      "available": "La mise à jour {version} est disponible. Téléchargement en cours…",
+      "check_failed": "Échec de la recherche de mises à jour : {error}",
+      "checking": "Recherche de mises à jour…",
+      "downloading": "Téléchargement et installation de la mise à jour {version}…",
+      "installed": "Mise à jour {version} installée. Redémarrez Asyar pour l'appliquer.",
+      "up_to_date": "Vous utilisez la dernière version.",
+      "update_ready": "Mise à jour {version} prête",
+      "version": "Version {version}"
+    },
+    "account": {
+      "days_ago_one": "Il y a {count} jour",
+      "days_ago_other": "Il y a {count} jours",
+      "ent_advanced_models": "Modèles IA avancés",
+      "ent_ai_chat": "Chat IA",
+      "ent_ai_history_sync": "Synchro de l'historique IA",
+      "ent_premium_extensions": "Extensions premium",
+      "ent_settings_sync": "Synchro des réglages",
+      "hours_ago_one": "Il y a {count} heure",
+      "hours_ago_other": "Il y a {count} heures",
+      "just_now": "À l'instant",
+      "minutes_ago_one": "Il y a {count} minute",
+      "minutes_ago_other": "Il y a {count} minutes",
+      "signing_out": "Déconnexion…"
+    },
+    "ai_tab": {
+      "engine_unavailable": "Le moteur de recherche « {name} » est indisponible ou obsolète. Choisissez un moteur disponible ci-dessus.",
+      "get_api_key": "Obtenir une clé API",
+      "legacy_unavailable": "Ancien / indisponible",
+      "name_api_key": "Clé API {name}",
+      "name_base_url": "URL de base {name}",
+      "name_unavailable": "{name} (indisponible)",
+      "reader_unavailable": "Le lecteur « {name} » est indisponible ou obsolète. Choisissez un lecteur disponible ci-dessus."
+    },
+    "applications": {
+      "load_failed": "Impossible de charger les applications. Essayez d'actualiser.",
+      "no_app_selected": "Aucune application sélectionnée"
+    },
+    "arg_dropdown": {
+      "search_aria": "Rechercher {name}"
+    },
+    "backup": {
+      "conflicts_one": "{count} conflit",
+      "conflicts_other": "{count} conflits",
+      "preview_counts": "Local : {local} → Importé : {incoming}",
+      "read_failed": "Impossible de lire l'archive du profil",
+      "restored": "Sauvegarde restaurée.",
+      "saved": "Sauvegarde enregistrée."
+    },
+    "bottom_bar": {
+      "update_ready": "Mise à jour prête",
+      "update_ready_restart": "Mise à jour {version} prête. Cliquez pour redémarrer.",
+      "update_ready_restart_generic": "Mise à jour prête. Cliquez pour redémarrer."
+    },
+    "builtin_features": {
+      "render_failed": "Impossible d'afficher les réglages de {title} : {error}"
+    },
+    "clipboard_privacy": {
+      "skipped": "{count} ignorés"
+    },
+    "common": {
+      "already_in_list": "{path} est déjà dans la liste",
+      "could_not_assign": "Attribution impossible : {reason}",
+      "could_not_open_picker": "Impossible d'ouvrir le sélecteur de dossier",
+      "remove_alias_for": "Supprimer l'alias de {name}",
+      "remove_hotkey_for": "Supprimer le raccourci de {name}",
+      "unknown": "Inconnu",
+      "unsupported_key": "Touche non prise en charge ou erreur système"
+    },
+    "encryption": {
+      "intro": "Les éléments du presse-papiers, les expansions de snippets, les conversations IA et les préférences chiffrées des extensions sont stockés chiffrés sur le disque."
+    },
+    "entitlement": {
+      "upgrade_required_aria": "{feature} — abonnement requis"
+    },
+    "extension_commands": {
+      "no_command_selected": "Aucune commande sélectionnée"
+    },
+    "extension_detail": {
+      "platform_unsupported": "{platform} non pris en charge",
+      "requires_app": "Nécessite l'app v{version}+",
+      "requires_sdk": "Nécessite le SDK {version}"
+    },
+    "extension_iframe": {
+      "title": "Bac à sable d'extension - {name}"
+    },
+    "extension_table": {
+      "collapse": "Réduire",
+      "expand": "Développer",
+      "install_failed": "Échec de l'installation : {error}",
+      "installed": "Extension installée. Redémarrez pour l'activer.",
+      "installing": "Installation de l'extension…",
+      "updates_available_one": "{count} extension peut être mise à jour",
+      "updates_available_other": "{count} extensions peuvent être mises à jour"
+    },
+    "extension_view": {
+      "missing_export": "Erreur : la fonction intégrée {id} n'a aucun export correspondant à « {view} »"
+    },
+    "feedback": {
+      "error": "Erreur",
+      "feedback": "Message",
+      "unknown_error": "Erreur inconnue"
+    },
+    "file_search_tab": {
+      "add_root": "Ajouter un dossier",
+      "already_excluded": "« {pattern} » est déjà exclu",
+      "already_ignored": "« {pattern} » est déjà ignoré",
+      "files_indexed": "{count} fichiers indexés",
+      "last_scan": "dernière analyse {ms} ms",
+      "rebuild_index": "Reconstruire l'index",
+      "rebuilding": "Reconstruction…",
+      "save_failed": "Impossible d'enregistrer les réglages de recherche de fichiers",
+      "state_building": "Indexation…",
+      "state_cap_reached": "Limite d'index atteinte",
+      "state_disabled": "Désactivé",
+      "state_ready": "Prêt",
+      "state_rescanning": "Nouvelle analyse…"
+    },
+    "general_tab": {
+      "shortcut_reserved": "Enregistrement impossible : le raccourci est peut-être réservé par le système ou une autre app",
+      "theme_apply_failed": "Impossible d'appliquer le thème « {id} »"
+    },
+    "lan_picker": {
+      "allow_failed": "Impossible d'autoriser l'appareil.",
+      "endpoint_not_allowed": "Ce point de terminaison n'est pas autorisé."
+    },
+    "launcher": {
+      "search_placeholder": "Rechercher ou saisir une commande…",
+      "search_view_placeholder": "Rechercher…"
+    },
+    "onboarding": {
+      "bind_conflict": "Impossible d'attribuer {shortcut}. Il est déjà utilisé par « {name} ». Essayez un autre raccourci.",
+      "bind_failed": "Impossible d'attribuer {shortcut}. Essayez un autre raccourci.",
+      "no_ai_provider": "Aucun fournisseur d'IA n'est connecté : revenez en arrière pour en connecter un.",
+      "sample_snippet_name": "Mon e-mail",
+      "shortcut_set_failed": "Impossible de définir ce raccourci",
+      "step_of": "Étape {position} sur {total}",
+      "test_box_disabled": "Terminez la configuration ci-dessus pour l'essayer ici"
+    },
+    "permission_consent": {
+      "enable": "L'activer accorde les autorisations suivantes :",
+      "install": "L'installer accorde les autorisations suivantes :",
+      "review": "Les autorisations demandées ont changé et doivent être vérifiées :",
+      "title": "{name} demande des autorisations",
+      "update": "Une mise à jour a modifié les autorisations demandées :"
+    },
+    "preferences_form": {
+      "app_path": "Chemin de l'application",
+      "dir_path": "Chemin du dossier",
+      "file_path": "Chemin du fichier",
+      "unknown_type": "Type inconnu : {type}"
+    },
+    "recorder": {
+      "already_assigned": "Déjà attribué à « {name} »",
+      "invalid_key": "Touche non valide",
+      "invalid_keys": "Touches non valides"
+    },
+    "required_prefs": {
+      "save_continue": "Enregistrer et continuer"
+    },
+    "runtime_downloads": {
+      "unknown_size": "taille inconnue"
+    },
+    "scheduled_tasks": {
+      "every_days": "tous les {count} jours",
+      "every_hours": "toutes les {count} heures",
+      "every_minutes": "toutes les {count} minutes",
+      "every_seconds": "toutes les {count} secondes"
+    },
+    "scripts_tab": {
+      "add_failed": "Impossible d'ajouter le dossier",
+      "remove_failed": "Impossible de supprimer le dossier"
+    },
+    "search_header": {
+      "ask_ai": "Demander à l'IA"
+    },
+    "secret_redaction": {
+      "redacted": "{count} masqués"
+    },
+    "sections": {
+      "favorites": "Favoris",
+      "other": "Autres"
+    },
+    "settings_handlers": {
+      "auto_update_failed": "Impossible de modifier la mise à jour automatique",
+      "developer_mode_failed": "Impossible de modifier le mode développeur",
+      "developer_setting_failed": "Impossible de modifier le réglage développeur",
+      "dock_icon_failed": "Impossible de modifier l'icône du Dock",
+      "extension_update_failed": "Impossible de mettre à jour les réglages de l'extension.",
+      "extension_updated": "Réglages de l'extension mis à jour.",
+      "extensions_load_failed": "Impossible de charger les informations des extensions.",
+      "init_failed": "Échec de l'initialisation des réglages. Valeurs par défaut utilisées.",
+      "launch_view_failed": "Impossible de modifier la vue de lancement",
+      "load_failed": "Impossible de charger les réglages. Valeurs par défaut utilisées.",
+      "menu_bar_icon_failed": "Impossible de modifier l'icône de la barre des menus",
+      "search_failed": "Impossible de modifier le réglage de recherche",
+      "search_updated_restart": "Réglages de recherche mis à jour. Redémarrez Asyar pour appliquer les changements.",
+      "setting_failed": "Impossible de modifier le réglage",
+      "shortcut_save_failed": "Impossible d'enregistrer le raccourci",
+      "shortcut_saved": "Raccourci enregistré",
+      "startup_failed": "Impossible de modifier le lancement au démarrage",
+      "theme_failed": "Impossible de modifier le thème",
+      "uninstall_failed": "Impossible de désinstaller l'extension.",
+      "uninstalled": "Extension « {name} » désinstallée."
+    },
+    "shell_trust": {
+      "trusted_days_ago": "Approuvé il y a {count} jours",
+      "trusted_today": "Approuvé aujourd'hui",
+      "trusted_yesterday": "Approuvé hier"
+    },
+    "show_more": {
+      "active": "{count} en cours",
+      "done": "{count} terminés",
+      "idle": "{count} inactifs"
+    },
+    "snippets_card": {
+      "toggle_failed": "Impossible de modifier l'état des snippets"
+    },
+    "split_list": {
+      "items": "Éléments"
+    },
+    "window_mode": {
+      "aria": "Mode de fenêtre {mode}"
+    }
   }
 }

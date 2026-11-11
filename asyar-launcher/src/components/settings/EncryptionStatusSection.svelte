@@ -23,7 +23,7 @@
 <SettingsCard>
   <SettingsRow
     label={t('settings.privacy.encryption_at_rest')}
-    description={`Clipboard items, snippet expansions, AI conversations, and encrypted extension preferences are stored as ciphertext on disk. ${description}`}
+    description={`${t('ui_extra.encryption.intro')} ${description}`}
   >
     {#snippet children()}
       <div class="status-row">

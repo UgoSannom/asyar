@@ -1,3 +1,5 @@
+import { t } from '../i18n';
+
 /**
  * `null` means safe to remove silently; otherwise a human-readable warning
  * naming every consumer id (e.g. `mcp:<id>`, `ext:<id>`, `builtin:ext-builder`)
@@ -8,7 +10,7 @@ export function describeRuntimeRemovalWarning(consumers: string[]): string | nul
 
   const list = consumers.join(', ');
   if (consumers.length === 1) {
-    return `This runtime is still needed by 1 consumer (${list}). Remove it anyway?`;
+    return t('services_extra.runtime.removal_warning_one', { list });
   }
-  return `This runtime is still needed by ${consumers.length} consumers (${list}). Remove it anyway?`;
+  return t('services_extra.runtime.removal_warning_other', { count: consumers.length, list });
 }

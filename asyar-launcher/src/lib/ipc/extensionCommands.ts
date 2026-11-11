@@ -6,6 +6,7 @@ import type { ExtensionRecord } from '../../types/ExtensionRecord';
 import type { ManifestIcon } from '../../bindings';
 import type { ResolvedIcon } from '../../bindings';
 import type { AvailableUpdate } from '../../types/ExtensionUpdate';
+import { localizeBuiltInRecords } from '../../services/i18n/builtInManifestI18n';
 
 // ── Extensions ────────────────────────────────────────────────────────────────
 
@@ -63,8 +64,10 @@ export async function killExtension(extensionId: string): Promise<void> {
   await invokeSafe('kill_extension', { id: extensionId });
 }
 
+// Built-in manifests arrive in English (Rust embeds the manifest.json files);
+// their display text is localized here so every consumer sees one locale.
 export async function discoverExtensions(): Promise<ExtensionRecord[]> {
-  return invokeSafe<ExtensionRecord[]>('discover_extensions');
+  return localizeBuiltInRecords(await invokeSafe<ExtensionRecord[]>('discover_extensions'));
 }
 
 export async function setExtensionEnabled(extensionId: string, enabled: boolean): Promise<boolean> {
@@ -75,7 +78,9 @@ export async function setExtensionEnabled(extensionId: string, enabled: boolean)
 }
 
 export async function getExtension(extensionId: string): Promise<ExtensionRecord> {
-  return invokeSafe<ExtensionRecord>('get_extension', { extensionId });
+  return localizeBuiltInRecords(
+    await invokeSafe<ExtensionRecord>('get_extension', { extensionId }),
+  );
 }
 
 // -- Extension Updates --
