@@ -17,7 +17,10 @@
   const key = $derived(settingsService.currentSettings.shortcut.key);
 
   const rows = $derived([
-    { keys: `${mod}+${key}`, label: t('onboarding.shortcut_toggle') },
+    {
+      keys: `${localizeKeyName(mod)}+${localizeKeyName(key)}`,
+      label: t('onboarding.shortcut_toggle'),
+    },
     { keys: 'Tab', label: t('onboarding.shortcut_ai') },
     { keys: localizeKeyName('Space'), label: t('onboarding.cheatsheet_quick_look') },
     { keys: toInlineShortcut('Mod+K'), label: t('onboarding.shortcut_action_panel') },
