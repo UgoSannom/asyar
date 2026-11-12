@@ -25,7 +25,10 @@ vi.mock('tauri-plugin-clipboard-x-api', () => ({
   hasFiles: vi.fn(),
   startListening: vi.fn(),
   stopListening: vi.fn(),
-  onClipboardChange: vi.fn().mockResolvedValue(vi.fn()),
+}));
+
+vi.mock('./safeClipboardChange', () => ({
+  onClipboardChangeSafe: vi.fn().mockResolvedValue(vi.fn()),
 }));
 
 vi.mock('@tauri-apps/api/core', () => ({ invoke: vi.fn() }));
@@ -1054,7 +1057,8 @@ describe('Android fallback', () => {
 
   it('uses polling on Android instead of event-driven monitoring', async () => {
     const { platform } = await import('@tauri-apps/plugin-os');
-    const { startListening, onClipboardChange } = await import('tauri-plugin-clipboard-x-api');
+    const { startListening } = await import('tauri-plugin-clipboard-x-api');
+    const { onClipboardChangeSafe: onClipboardChange } = await import('./safeClipboardChange');
 
     vi.mocked(platform).mockResolvedValue('android' as any);
 
@@ -1186,7 +1190,8 @@ describe('monitoring lifecycle and fail-closed gate', () => {
   });
 
   it('startMonitoring initializes listener and sets monitoring state', async () => {
-    const { startListening, onClipboardChange } = await import('tauri-plugin-clipboard-x-api');
+    const { startListening } = await import('tauri-plugin-clipboard-x-api');
+    const { onClipboardChangeSafe: onClipboardChange } = await import('./safeClipboardChange');
     const svc = getInstance(false);
     await svc.startMonitoring();
 
@@ -1195,7 +1200,8 @@ describe('monitoring lifecycle and fail-closed gate', () => {
   });
 
   it('startMonitoring is idempotent and does not attach duplicate listeners', async () => {
-    const { startListening, onClipboardChange } = await import('tauri-plugin-clipboard-x-api');
+    const { startListening } = await import('tauri-plugin-clipboard-x-api');
+    const { onClipboardChangeSafe: onClipboardChange } = await import('./safeClipboardChange');
     const svc = getInstance(false);
     await svc.startMonitoring();
     await svc.startMonitoring();
@@ -1207,7 +1213,7 @@ describe('monitoring lifecycle and fail-closed gate', () => {
   it('stopMonitoring detaches listener and calls stopListening', async () => {
     const { stopListening } = await import('tauri-plugin-clipboard-x-api');
     const unlistenFn = vi.fn();
-    const { onClipboardChange } = await import('tauri-plugin-clipboard-x-api');
+    const { onClipboardChangeSafe: onClipboardChange } = await import('./safeClipboardChange');
     vi.mocked(onClipboardChange).mockResolvedValueOnce(unlistenFn);
 
     const svc = getInstance(false);
@@ -1220,7 +1226,7 @@ describe('monitoring lifecycle and fail-closed gate', () => {
 
   it('clipboard events after stopMonitoring do not persist anything (fail-closed gate)', async () => {
     let capturedCallback: ((result: any) => Promise<void>) | null = null;
-    const { onClipboardChange } = await import('tauri-plugin-clipboard-x-api');
+    const { onClipboardChangeSafe: onClipboardChange } = await import('./safeClipboardChange');
     vi.mocked(onClipboardChange).mockImplementationOnce(async (cb: any) => {
       capturedCallback = cb;
       return vi.fn<() => void>();

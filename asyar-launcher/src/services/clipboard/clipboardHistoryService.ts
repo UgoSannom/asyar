@@ -16,9 +16,9 @@ import {
   hasFiles,
   startListening,
   stopListening,
-  onClipboardChange,
   type ReadClipboard,
 } from 'tauri-plugin-clipboard-x-api';
+import { onClipboardChangeSafe } from './safeClipboardChange';
 import { platform } from '@tauri-apps/plugin-os';
 import { t } from '../i18n';
 import { listen, type UnlistenFn } from '@tauri-apps/api/event';
@@ -201,10 +201,17 @@ export class ClipboardHistoryService implements IClipboardHistoryService {
 
     // Desktop: event-driven monitoring
     await startListening();
-    this.unlistenClipboard = await onClipboardChange(async (result: ReadClipboard) => {
-      if (!this.isMonitoring) return;
-      await this.handleClipboardChange(result);
-    });
+    this.unlistenClipboard = await onClipboardChangeSafe(
+      async (result: ReadClipboard) => {
+        if (!this.isMonitoring) return;
+        await this.handleClipboardChange(result);
+      },
+      {
+        // The clipboard is briefly locked by the app that just wrote to it
+        // (Windows OSError 5). Skipping one capture is better than an error.
+        onError: (error) => logService.warn(`Clipboard read failed, change skipped: ${error}`),
+      },
+    );
     this.isMonitoring = true;
 
     logService.debug('Started clipboard monitoring (event-driven)');
